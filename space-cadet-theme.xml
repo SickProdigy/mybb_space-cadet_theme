@@ -209,6 +209,32 @@ a:active {
 	color: #fff;
 }
 
+.header_extras_menu {
+	box-sizing: border-box;
+	min-width: 170px;
+	padding: 5px 0;
+	background: #2f2f32;
+	border: 1px solid #444;
+	border-radius: 3px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.header_extras_menu .popup_item_container { margin: 0; }
+
+.popup_menu.header_extras_menu .popup_item {
+	box-sizing: border-box;
+	display: block;
+	padding: 7px 12px;
+	background: #2f2f32;
+	color: #eee;
+	white-space: nowrap;
+}
+
+.popup_menu.header_extras_menu .popup_item:hover {
+	background: #414145;
+	color: #fff;
+}
+
 #panel ul.menu {
 	margin: 0;
 	display: flex;
@@ -1082,7 +1108,19 @@ blockquote,
 						{$menu_memberlist}
 						{$menu_calendar}
 						<li><a href="{$mybb->settings['bburl']}/misc.php?action=help" class="help"><i class="fa-solid fa-circle-question fa-fw" aria-hidden="true"></i> {$lang->toplinks_help}</a></li>
+						<li><a href="javascript:void(0)" id="header_extras_menu"><i class="fa-solid fa-chevron-down fa-fw" aria-hidden="true"></i> Extras</a></li>
 					</ul>
+					<div id="header_extras_menu_popup" class="popup_menu header_extras_menu" style="display: none;">
+						<div class="popup_item_container"><a class="popup_item" href="{$mybb->settings['bburl']}/misc.php?action=help&amp;hid=14">Account Upgrades</a></div>
+						<div class="popup_item_container"><a class="popup_item" href="{$mybb->settings['bburl']}/stats.php">Forum Stats</a></div>
+						<div class="popup_item_container"><a class="popup_item" href="{$mybb->settings['bburl']}/showteam.php">Show Team</a></div>
+						<div class="popup_item_container"><a class="popup_item" href="{$mybb->settings['bburl']}/search.php?action=getnew">{$lang->welcome_newposts}</a></div>
+						<div class="popup_item_container"><a class="popup_item" href="{$mybb->settings['bburl']}/search.php?action=getdaily">{$lang->welcome_todaysposts}</a></div>
+						<div class="popup_item_container"><a class="popup_item" href="{$mybb->settings['bburl']}/misc.php?action=help&amp;hid=21">Keep in Touch!</a></div>
+					</div>
+					<script type="text/javascript">
+						$("#header_extras_menu").popupMenu();
+					</script>
 					<a href="{$mybb->settings['bburl']}/index.php"><img src="{$theme['logo']}" alt="{$mybb->settings['bbname']}" title="{$mybb->settings['bbname']}" /></a>
 				</div>
 			</div>

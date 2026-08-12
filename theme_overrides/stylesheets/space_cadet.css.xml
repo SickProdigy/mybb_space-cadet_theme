@@ -197,6 +197,32 @@ a:active {
 	color: #fff;
 }
 
+.header_extras_menu {
+	box-sizing: border-box;
+	min-width: 170px;
+	padding: 5px 0;
+	background: #2f2f32;
+	border: 1px solid #444;
+	border-radius: 3px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.header_extras_menu .popup_item_container { margin: 0; }
+
+.popup_menu.header_extras_menu .popup_item {
+	box-sizing: border-box;
+	display: block;
+	padding: 7px 12px;
+	background: #2f2f32;
+	color: #eee;
+	white-space: nowrap;
+}
+
+.popup_menu.header_extras_menu .popup_item:hover {
+	background: #414145;
+	color: #fff;
+}
+
 #panel ul.menu {
 	margin: 0;
 	display: flex;
