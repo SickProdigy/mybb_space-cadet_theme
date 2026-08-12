@@ -614,6 +614,20 @@ blockquote,
 #footer .lower {
 	background: #0e0e0e;
 	color: #969696;
+	text-align: center;
+}
+
+#footer .lower .wrapper { text-align: center; }
+
+#footer #copyright {
+	display: block;
+	float: none;
+	line-height: 1.35;
+}
+
+.footer_credit_separator {
+	margin: 0 3px;
+	color: #666;
 }
 
 #footer a:link,

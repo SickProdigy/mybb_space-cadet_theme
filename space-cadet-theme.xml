@@ -626,6 +626,20 @@ blockquote,
 #footer .lower {
 	background: #0e0e0e;
 	color: #969696;
+	text-align: center;
+}
+
+#footer .lower .wrapper { text-align: center; }
+
+#footer #copyright {
+	display: block;
+	float: none;
+	line-height: 1.35;
+}
+
+.footer_credit_separator {
+	margin: 0 3px;
+	color: #666;
 }
 
 #footer a:link,
@@ -732,9 +746,10 @@ blockquote,
 <div id="footer">
 	<div class="lower">
 		<div class="wrapper">
-			<span id="current_time">{$lang->welcome_current_time}</span>
 			<span id="copyright">
-				Copyright &copy; 2026 SickGaming
+				Powered By <a href="https://mybb.com" target="_blank" rel="noopener">MyBB</a>
+				<span class="footer_credit_separator" aria-hidden="true">&middot;</span>
+				&copy; 2026 <a href="https://sickgaming.net" target="_blank" rel="noopener">SickGaming.net</a>
 			</span>
 		</div>
 	</div>
