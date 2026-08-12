@@ -3,14 +3,15 @@
 		<div id="header">
 			<div id="logo">
 				<div class="wrapper">
-					<a href="{$mybb->settings['bburl']}/index.php"><img src="{$theme['logo']}" alt="{$mybb->settings['bbname']}" title="{$mybb->settings['bbname']}" /></a>
 					<ul class="menu top_links">
-						{$menu_portal}
+						<li><a href="{$mybb->settings['bburl']}/portal.php"><i class="fa-solid fa-house fa-fw" aria-hidden="true"></i> Portal</a></li>
+						<li><a href="{$mybb->settings['bburl']}/index.php"><i class="fa-solid fa-comments fa-fw" aria-hidden="true"></i> Forum</a></li>
 						{$menu_search}
 						{$menu_memberlist}
 						{$menu_calendar}
 						<li><a href="{$mybb->settings['bburl']}/misc.php?action=help" class="help"><i class="fa-solid fa-circle-question fa-fw" aria-hidden="true"></i> {$lang->toplinks_help}</a></li>
 					</ul>
+					<a href="{$mybb->settings['bburl']}/index.php"><img src="{$theme['logo']}" alt="{$mybb->settings['bbname']}" title="{$mybb->settings['bbname']}" /></a>
 				</div>
 			</div>
 			<div id="panel">
