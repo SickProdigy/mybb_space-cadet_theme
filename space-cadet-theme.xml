@@ -293,6 +293,17 @@ a:active {
 	font-size: 22px;
 }
 
+.forum_counts_header { padding-right: 12px; }
+
+.forum_counts {
+	box-sizing: border-box;
+	width: 130px;
+	padding-right: 12px;
+	line-height: 1.45;
+}
+
+.forum_counts span { display: block; }
+
 .trow1,
 .trow2 {
 	color: #ccc;
@@ -544,10 +555,47 @@ blockquote,
 
 @media (max-width: 480px) {
 	.post.classic .post_author div.author_statistics { display: none; }
+	.forum_counts_header { display: none; }
+	.forum_counts { display: none; }
 }
 ]]></stylesheet>
 </stylesheets>
 <templates>
+<template name="forumbit_depth1_cat" version="1800"><![CDATA[<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+<thead>
+<tr>
+<td class="thead{$expthead}" colspan="4">
+<div class="expcolimage"><img src="{$theme['imgdir']}/{$expcolimage}" id="cat_{$forum['fid']}_img" class="expander" alt="{$expaltext}" title="{$expaltext}" /></div>
+<div><strong><a href="{$forum_url}">{$forum['name']}</a></strong><br /><div class="smalltext">{$forum['description']}</div></div>
+</td>
+</tr>
+</thead>
+<tbody style="{$expdisplay}" id="cat_{$forum['fid']}_e">
+<tr>
+<td class="tcat" colspan="2"><span class="smalltext"><strong>{$lang->forumbit_forum}</strong></span></td>
+<td class="tcat forum_counts_header" width="130" align="right" style="white-space: nowrap"><span class="smalltext"><strong>Topics / Replies</strong></span></td>
+<td class="tcat" width="200" align="center"><span class="smalltext"><strong>{$lang->forumbit_lastpost}</strong></span></td>
+</tr>
+{$sub_forums}
+</tbody>
+</table>
+<br />]]></template>
+<template name="forumbit_depth2_cat" version="1804"><![CDATA[<tr>
+<td class="{$bgcolor}" align="center" width="1"><span class="forum_status forum_{$lightbulb['folder']} ajax_mark_read" title="{$lightbulb['altonoff']}" id="mark_read_{$forum['fid']}"></span></td>
+<td class="{$bgcolor}">
+<strong><a href="{$forum_url}">{$forum['name']}</a></strong>{$forum_viewers_text}<div class="smalltext">{$forum['description']}{$subforums}</div>
+</td>
+<td class="{$bgcolor} forum_counts" align="right" style="white-space: nowrap"><span>{$threads}{$unapproved['unapproved_threads']} Topics</span><span>{$posts}{$unapproved['unapproved_posts']} Replies</span></td>
+<td class="{$bgcolor}" align="right" style="white-space: nowrap">{$lastpost}</td>
+</tr>]]></template>
+<template name="forumbit_depth2_forum" version="1804"><![CDATA[<tr>
+<td class="{$bgcolor}" align="center" width="1"><span class="forum_status forum_{$lightbulb['folder']} ajax_mark_read" title="{$lightbulb['altonoff']}" id="mark_read_{$forum['fid']}"></span></td>
+<td class="{$bgcolor}">
+<strong><a href="{$forum_url}">{$forum['name']}</a></strong>{$forum_viewers_text}<div class="smalltext">{$forum['description']}{$modlist}{$subforums}</div>
+</td>
+<td class="{$bgcolor} forum_counts" align="right" style="white-space: nowrap"><span>{$threads}{$unapproved['unapproved_threads']} Topics</span><span>{$posts}{$unapproved['unapproved_posts']} Replies</span></td>
+<td class="{$bgcolor}" align="right" style="white-space: nowrap">{$lastpost}</td>
+</tr>]]></template>
 <template name="header" version="1820"><![CDATA[<div id="container">
 		<a name="top" id="top"></a>
 		<div id="header">
