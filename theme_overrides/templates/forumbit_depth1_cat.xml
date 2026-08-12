@@ -8,11 +8,6 @@
 </tr>
 </thead>
 <tbody style="{$expdisplay}" id="cat_{$forum['fid']}_e">
-<tr>
-<td class="tcat" colspan="2"><span class="smalltext"><strong>{$lang->forumbit_forum}</strong></span></td>
-<td class="tcat forum_counts_header" width="130" align="right" style="white-space: nowrap"><span class="smalltext"><strong>{$lang->forumbit_threads} / {$lang->forumbit_posts}</strong></span></td>
-<td class="tcat" width="200" align="center"><span class="smalltext"><strong>{$lang->forumbit_lastpost}</strong></span></td>
-</tr>
 {$sub_forums}
 </tbody>
 </table>

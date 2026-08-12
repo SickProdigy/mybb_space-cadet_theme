@@ -293,16 +293,21 @@ a:active {
 	font-size: 22px;
 }
 
-.forum_counts_header { padding-right: 12px; }
-
 .forum_counts {
 	box-sizing: border-box;
 	width: 130px;
-	padding-right: 12px;
+	padding-right: 6px;
 	line-height: 1.45;
 }
 
 .forum_counts span { display: block; }
+
+.forum_lastpost {
+	box-sizing: border-box;
+	width: 220px;
+	padding-left: 6px;
+	text-align: left;
+}
 
 .forum_row td {
 	border-left-color: transparent;
@@ -564,7 +569,6 @@ blockquote,
 
 @media (max-width: 480px) {
 	.post.classic .post_author div.author_statistics { display: none; }
-	.forum_counts_header { display: none; }
 	.forum_counts { display: none; }
 }
 ]]></stylesheet>
@@ -580,11 +584,6 @@ blockquote,
 </tr>
 </thead>
 <tbody style="{$expdisplay}" id="cat_{$forum['fid']}_e">
-<tr>
-<td class="tcat" colspan="2"><span class="smalltext"><strong>{$lang->forumbit_forum}</strong></span></td>
-<td class="tcat forum_counts_header" width="130" align="right" style="white-space: nowrap"><span class="smalltext"><strong>{$lang->forumbit_threads} / {$lang->forumbit_posts}</strong></span></td>
-<td class="tcat" width="200" align="center"><span class="smalltext"><strong>{$lang->forumbit_lastpost}</strong></span></td>
-</tr>
 {$sub_forums}
 </tbody>
 </table>
@@ -595,7 +594,7 @@ blockquote,
 <strong><a href="{$forum_url}">{$forum['name']}</a></strong>{$forum_viewers_text}<div class="smalltext">{$forum['description']}{$subforums}</div>
 </td>
 <td class="{$bgcolor} forum_counts" align="right" style="white-space: nowrap"><span>{$threads}{$unapproved['unapproved_threads']} {$lang->forumbit_threads}</span><span>{$posts}{$unapproved['unapproved_posts']} {$lang->forumbit_posts}</span></td>
-<td class="{$bgcolor}" align="right" style="white-space: nowrap">{$lastpost}</td>
+<td class="{$bgcolor} forum_lastpost" align="left" style="white-space: nowrap">{$lastpost}</td>
 </tr>]]></template>
 <template name="forumbit_depth2_forum" version="1804"><![CDATA[<tr class="forum_row">
 <td class="{$bgcolor}" align="center" width="1"><span class="forum_status forum_{$lightbulb['folder']} ajax_mark_read" title="{$lightbulb['altonoff']}" id="mark_read_{$forum['fid']}"></span></td>
@@ -603,7 +602,7 @@ blockquote,
 <strong><a href="{$forum_url}">{$forum['name']}</a></strong>{$forum_viewers_text}<div class="smalltext">{$forum['description']}{$modlist}{$subforums}</div>
 </td>
 <td class="{$bgcolor} forum_counts" align="right" style="white-space: nowrap"><span>{$threads}{$unapproved['unapproved_threads']} {$lang->forumbit_threads}</span><span>{$posts}{$unapproved['unapproved_posts']} {$lang->forumbit_posts}</span></td>
-<td class="{$bgcolor}" align="right" style="white-space: nowrap">{$lastpost}</td>
+<td class="{$bgcolor} forum_lastpost" align="left" style="white-space: nowrap">{$lastpost}</td>
 </tr>]]></template>
 <template name="header" version="1820"><![CDATA[<div id="container">
 		<a name="top" id="top"></a>

@@ -281,16 +281,21 @@ a:active {
 	font-size: 22px;
 }
 
-.forum_counts_header { padding-right: 12px; }
-
 .forum_counts {
 	box-sizing: border-box;
 	width: 130px;
-	padding-right: 12px;
+	padding-right: 6px;
 	line-height: 1.45;
 }
 
 .forum_counts span { display: block; }
+
+.forum_lastpost {
+	box-sizing: border-box;
+	width: 220px;
+	padding-left: 6px;
+	text-align: left;
+}
 
 .forum_row td {
 	border-left-color: transparent;
@@ -552,7 +557,6 @@ blockquote,
 
 @media (max-width: 480px) {
 	.post.classic .post_author div.author_statistics { display: none; }
-	.forum_counts_header { display: none; }
 	.forum_counts { display: none; }
 }
 ]]></stylesheet>
