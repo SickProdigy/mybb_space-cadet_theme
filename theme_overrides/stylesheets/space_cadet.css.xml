@@ -565,6 +565,13 @@ blockquote,
 	overflow-wrap: anywhere;
 }
 
+.post_moderator_info_title {
+	display: block;
+	margin-bottom: 6px;
+	text-align: center;
+	color: #fff;
+}
+
 .post.classic .post_content {
 	box-sizing: border-box;
 	grid-column: 2;

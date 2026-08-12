@@ -577,6 +577,13 @@ blockquote,
 	overflow-wrap: anywhere;
 }
 
+.post_moderator_info_title {
+	display: block;
+	margin-bottom: 6px;
+	text-align: center;
+	color: #fff;
+}
+
 .post.classic .post_content {
 	box-sizing: border-box;
 	grid-column: 2;
@@ -1481,12 +1488,14 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 </div>]]></template>
 <template name="postbit_iplogged_hiden" version="1815"><![CDATA[<div class="post_moderator_info">
-<strong>{$lang->postbit_ipaddress}</strong> <a href="moderation.php?action={$action}&amp;{$idtype}={$post[$idtype]}" onclick="MyBB.{$javascript}({$post[$idtype]}); return false;">{$lang->postbit_ipaddress_logged}</a><br />
-<strong>{$lang->email}</strong> <a href="mailto:{$post['email']}">{$post['email']}</a>
+<strong class="post_moderator_info_title">Mod Tools</strong>
+<strong>IP:</strong> <a href="moderation.php?action={$action}&amp;{$idtype}={$post[$idtype]}" onclick="MyBB.{$javascript}({$post[$idtype]}); return false;">{$lang->postbit_ipaddress_logged}</a><br />
+<strong>Email:</strong> <a href="mailto:{$post['email']}">{$post['email']}</a>
 </div>]]></template>
 <template name="postbit_iplogged_show" version="1800"><![CDATA[<div class="post_moderator_info">
-<strong>{$lang->postbit_ipaddress}</strong> {$ipaddress}<br />
-<strong>{$lang->email}</strong> <a href="mailto:{$post['email']}">{$post['email']}</a>
+<strong class="post_moderator_info_title">Mod Tools</strong>
+<strong>IP:</strong> {$ipaddress}<br />
+<strong>Email:</strong> <a href="mailto:{$post['email']}">{$post['email']}</a>
 </div>]]></template>
 </templates>
 </theme>

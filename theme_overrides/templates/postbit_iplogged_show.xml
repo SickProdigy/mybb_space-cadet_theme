@@ -1,4 +1,5 @@
 <template name="postbit_iplogged_show" version="1800"><![CDATA[<div class="post_moderator_info">
-<strong>{$lang->postbit_ipaddress}</strong> {$ipaddress}<br />
-<strong>{$lang->email}</strong> <a href="mailto:{$post['email']}">{$post['email']}</a>
+<strong class="post_moderator_info_title">Mod Tools</strong>
+<strong>IP:</strong> {$ipaddress}<br />
+<strong>Email:</strong> <a href="mailto:{$post['email']}">{$post['email']}</a>
 </div>]]></template>
