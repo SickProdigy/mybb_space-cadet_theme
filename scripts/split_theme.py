@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Split the official MyBB 1.8.40 master theme into editable fragments."""
+"""Refresh the split MyBB 1.8.40 upstream reference."""
 
 from __future__ import annotations
 
@@ -10,17 +10,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "upstream" / "mybb-1.8.40" / "mybb_theme.xml"
-OUTPUT = ROOT / "theme_parts"
+OUTPUT = ROOT / "upstream" / "mybb-1.8.40" / "theme_parts"
 
 
-def extract_one(source: str, tag: str) -> str:
+def one(source: str, tag: str) -> str:
     match = re.search(rf"<{tag}\b.*?</{tag}>", source, re.DOTALL)
-    if match is None:
-        raise ValueError(f"{SOURCE.name} does not contain <{tag}>")
+    if not match:
+        raise ValueError(f"Missing <{tag}> in {SOURCE.name}")
     return match.group(0).strip()
 
 
-def extract_named(source: str, tag: str) -> list[tuple[str, str]]:
+def named(source: str, tag: str) -> list[tuple[str, str]]:
     pattern = re.compile(
         rf"(<{tag}\s+[^>]*\bname=([\"'])(.*?)\2[^>]*>.*?</{tag}>)",
         re.DOTALL,
@@ -30,30 +30,23 @@ def extract_named(source: str, tag: str) -> list[tuple[str, str]]:
 
 def main() -> None:
     source = SOURCE.read_text(encoding="utf-8-sig")
-    stylesheets = extract_named(source, "stylesheet")
-    templates = extract_named(source, "template")
-
+    stylesheets = named(source, "stylesheet")
+    templates = named(source, "template")
     if OUTPUT.exists():
         shutil.rmtree(OUTPUT)
-    stylesheet_dir = OUTPUT / "stylesheets"
-    template_dir = OUTPUT / "templates"
-    stylesheet_dir.mkdir(parents=True)
-    template_dir.mkdir(parents=True)
-
-    (OUTPUT / "properties.xml").write_text(
-        extract_one(source, "properties") + "\n", encoding="utf-8"
-    )
+    (OUTPUT / "stylesheets").mkdir(parents=True)
+    (OUTPUT / "templates").mkdir()
+    (OUTPUT / "properties.xml").write_text(one(source, "properties") + "\n", encoding="utf-8")
     for name, fragment in stylesheets:
-        (stylesheet_dir / f"{name}.xml").write_text(fragment + "\n", encoding="utf-8")
+        (OUTPUT / "stylesheets" / f"{name}.xml").write_text(fragment + "\n", encoding="utf-8")
     for name, fragment in templates:
-        (template_dir / f"{name}.xml").write_text(fragment + "\n", encoding="utf-8")
-
-    print(f"Split {len(stylesheets)} stylesheets and {len(templates)} templates into theme_parts/.")
+        (OUTPUT / "templates" / f"{name}.xml").write_text(fragment + "\n", encoding="utf-8")
+    print(f"Refreshed upstream split: {len(stylesheets)} stylesheets and {len(templates)} templates.")
 
 
 if __name__ == "__main__":
     try:
         main()
     except (OSError, ValueError) as error:
-        print(f"Theme split failed: {error}", file=sys.stderr)
+        print(f"Upstream split failed: {error}", file=sys.stderr)
         raise SystemExit(1) from error
