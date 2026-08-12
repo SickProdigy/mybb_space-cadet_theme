@@ -1,0 +1,123 @@
+<template name="member_profile" version="1820"><![CDATA[<html>
+<head>
+<title>{$mybb->settings['bbname']} - {$lang->profile}</title>
+{$headerinclude}
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/report.js?ver=1820"></script>
+</head>
+<body>
+{$header}
+<div class="profile_actions">{$buddy_options}{$ignore_options}{$report_options}</div>
+<fieldset>
+	<table width="100%" cellspacing="0" cellpadding="0" border="0">
+		<tr>
+			<td width="75%">
+				<span class="largetext"><strong>{$formattedname}</strong></span><br />
+				<span class="smalltext">
+					({$usertitle})<br />
+					{$groupimage}
+					{$userstars}<br />
+					<br />
+					<strong>{$lang->registration_date}</strong> {$memregdate}<br />
+					<strong>{$lang->date_of_birth}</strong> {$membday} {$membdayage}<br />
+					<strong>{$lang->local_time}</strong> {$localtime}<br />
+					<strong>{$lang->postbit_status}</strong> {$online_status}
+				</span>
+			</td>
+			<td width="25%" align="right" valign="middle">{$avatar}</td>
+		</tr>
+	</table>
+</fieldset>
+<br />
+{$awaybit}{$bannedbit}
+
+<div class="profile_tabs" data-profile-tabs>
+	<div class="profile_tablist" role="tablist" aria-label="Member profile sections">
+		<button type="button" class="profile_tab is_active" id="profile_tab_forum" role="tab" aria-selected="true" aria-controls="profile_panel_forum" tabindex="0">Forum Info</button>
+		<button type="button" class="profile_tab" id="profile_tab_profile" role="tab" aria-selected="false" aria-controls="profile_panel_profile" tabindex="-1">Profile</button>
+		<button type="button" class="profile_tab" id="profile_tab_moderate" role="tab" aria-selected="false" aria-controls="profile_panel_moderate" tabindex="-1">Moderate</button>
+	</div>
+
+	<section class="profile_tabpanel is_active" id="profile_panel_forum" role="tabpanel" aria-labelledby="profile_tab_forum">
+			<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+				<tr>
+					<td colspan="2" class="thead"><strong>{$lang->users_forum_info}</strong></td>
+				</tr>
+				<tr>
+					<td class="trow1" style="width: 30%;"><strong>{$lang->joined}</strong></td>
+					<td class="trow1">{$memregdate}</td>
+				</tr>
+				<tr>
+					<td class="trow2"><strong>{$lang->lastvisit}</strong></td>
+					<td class="trow2">{$memlastvisitdate}</td>
+				</tr>
+				<tr>
+					<td class="trow1"><strong>{$lang->total_posts}</strong></td>
+					<td class="trow1">{$memprofile['postnum']} ({$lang->ppd_percent_total}){$findposts}</td>
+				</tr>
+				<tr>
+					<td class="trow2"><strong>{$lang->total_threads}</strong></td>
+					<td class="trow2">{$memprofile['threadnum']} ({$lang->tpd_percent_total}){$findthreads}</td>
+				</tr>
+				<tr>
+					<td class="trow1"><strong>{$lang->timeonline}</strong></td>
+					<td class="trow1">{$timeonline}</td>
+				</tr>
+				{$referrals}
+				{$reputation}
+				{$warning_level}
+			</table>
+	</section>
+
+	<section class="profile_tabpanel" id="profile_panel_profile" role="tabpanel" aria-labelledby="profile_tab_profile" hidden>
+		{$profilefields}
+		{$contact_details}
+		{$signature}
+	</section>
+
+	<section class="profile_tabpanel" id="profile_panel_moderate" role="tabpanel" aria-labelledby="profile_tab_moderate" hidden>
+		{$modoptions}
+		{$adminoptions}
+	</section>
+</div>
+
+<script type="text/javascript">
+(function() {
+	var container = document.querySelector("[data-profile-tabs]");
+	if (!container) return;
+	var tabs = Array.prototype.slice.call(container.querySelectorAll('[role="tab"]'));
+	var panels = Array.prototype.slice.call(container.querySelectorAll('[role="tabpanel"]'));
+
+	function activate(tab, focus) {
+		tabs.forEach(function(item) {
+			var active = item === tab;
+			item.classList.toggle("is_active", active);
+			item.setAttribute("aria-selected", active ? "true" : "false");
+			item.tabIndex = active ? 0 : -1;
+		});
+		panels.forEach(function(panel) {
+			var active = panel.id === tab.getAttribute("aria-controls");
+			panel.classList.toggle("is_active", active);
+			panel.hidden = !active;
+		});
+		if (focus) tab.focus();
+	}
+
+	tabs.forEach(function(tab, index) {
+		tab.addEventListener("click", function() { activate(tab, false); });
+		tab.addEventListener("keydown", function(event) {
+			var target = null;
+			if (event.key === "ArrowRight") target = tabs[(index + 1) % tabs.length];
+			if (event.key === "ArrowLeft") target = tabs[(index - 1 + tabs.length) % tabs.length];
+			if (event.key === "Home") target = tabs[0];
+			if (event.key === "End") target = tabs[tabs.length - 1];
+			if (target) {
+				event.preventDefault();
+				activate(target, true);
+			}
+		});
+	});
+})();
+</script>
+{$footer}
+</body>
+</html>]]></template>
