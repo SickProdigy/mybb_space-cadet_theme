@@ -1062,7 +1062,7 @@ blockquote,
 		right: auto;
 		bottom: auto;
 		align-self: flex-end;
-		margin: 5px 0;
+		margin: auto 0 -20px;
 	}
 
 	.header_guest_account {
@@ -1070,7 +1070,7 @@ blockquote,
 		right: auto;
 		bottom: auto;
 		align-self: flex-end;
-		margin: 5px 0;
+		margin: auto 0 -20px;
 	}
 
 	#search {
