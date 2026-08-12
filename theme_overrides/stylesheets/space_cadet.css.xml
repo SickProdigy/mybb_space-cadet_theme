@@ -126,10 +126,65 @@ a:active {
 
 #panel .upper .wrapper,
 #panel .lower .wrapper {
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	gap: 20px;
+}
+
+.header_account {
+	position: absolute;
+	right: 0;
+	bottom: calc(100% + 12px);
+	z-index: 100;
+}
+
+.header_account_toggle {
+	display: block;
+	padding: 8px 10px;
+	background: rgba(8, 8, 12, 0.7);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 4px;
+	color: #fff;
+	-webkit-backdrop-filter: blur(3px);
+	backdrop-filter: blur(3px);
+}
+
+.header_account_toggle:hover { background: rgba(24, 24, 30, 0.88); }
+
+.header_account_toggle .fa-circle-user { color: #7289da; }
+
+.header_account_chevron {
+	margin-left: 3px;
+	font-size: 9px;
+	color: #aaa;
+}
+
+.header_account_menu {
+	box-sizing: border-box;
+	min-width: 155px;
+	padding: 5px 0;
+	background: #2f2f32;
+	border: 1px solid #444;
+	border-radius: 3px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.header_account_menu li { margin: 0; }
+
+.header_account_menu li > a {
+	box-sizing: border-box;
+	display: block;
+	padding: 7px 12px;
+	background: transparent;
+	color: #eee;
+	white-space: nowrap;
+}
+
+.header_account_menu li > a:hover {
+	background: #414145;
+	color: #fff;
 }
 
 #panel ul.menu {
@@ -767,6 +822,19 @@ blockquote,
 
 	#logo img { max-width: 100%; }
 	#logo ul.top_links { justify-content: flex-start; }
+
+	.header_account {
+		position: relative;
+		right: auto;
+		bottom: auto;
+		align-self: flex-end;
+		margin: 5px 0;
+	}
+
+	.header_account_menu {
+		left: auto !important;
+		right: 0;
+	}
 
 	#search {
 		order: 0;

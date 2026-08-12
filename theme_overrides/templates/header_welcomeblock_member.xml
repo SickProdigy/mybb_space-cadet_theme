@@ -1,4 +1,22 @@
 <template name="header_welcomeblock_member" version="1821"><![CDATA[<!-- Continuation of div(class="upper") as opened in the header template -->
+	<div class="header_account">
+		<a href="{$mybb->settings['bburl']}/usercp.php" id="header_account_menu" class="header_account_toggle"><i class="fa-solid fa-circle-user fa-fw" aria-hidden="true"></i> {$mybb->user['username']} <i class="fa-solid fa-chevron-down header_account_chevron" aria-hidden="true"></i></a>
+		<ul id="header_account_menu_popup" class="popup_menu header_account_menu" style="display: none;">
+			<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php">User Panel</a></li>
+			<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=profile">Edit Profile</a></li>
+			<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=options">Edit Options</a></li>
+			<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=editsig">Edit Signature</a></li>
+			<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=editlists">Friends List</a></li>
+			<li><a class="popup_item" href="{$mybb->settings['bburl']}/member.php?action=logout&amp;logoutkey={$mybb->user['logoutkey']}">Sign Out</a></li>
+			{$modcplink}
+			{$admincplink}
+		</ul>
+	</div>
+	<script type="text/javascript">
+		$(function() {
+			$("#header_account_menu").popupMenu();
+		});
+	</script>
 	<span class="welcome">{$lang->welcome_back} <a href="{$mybb->settings['bburl']}/member.php?action=logout&amp;logoutkey={$mybb->user['logoutkey']}" class="logout"><i class="fa-solid fa-right-from-bracket fa-fw" aria-hidden="true"></i> {$lang->welcome_logout}</a></span>
 	</div>
 </div>
