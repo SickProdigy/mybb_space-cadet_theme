@@ -21,6 +21,9 @@
 						<div class="popup_item_container"><a class="popup_item" href="{$mybb->settings['bburl']}/misc.php?action=help&amp;hid=21">Keep in Touch!</a></div>
 					</div>
 					<script type="text/javascript">
+						$(document).on("click.spaceCadetMenus", "#header_extras_menu, #header_account_menu, #header_messages_menu", function() {
+							$(".header_extras_menu, .header_account_menu").not("#" + this.id + "_popup").hide();
+						});
 						$("#header_extras_menu").popupMenu();
 					</script>
 					<a href="{$mybb->settings['bburl']}/index.php"><img src="{$theme['logo']}" alt="{$mybb->settings['bbname']}" title="{$mybb->settings['bbname']}" /></a>

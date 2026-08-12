@@ -174,7 +174,10 @@ a:active {
 .header_guest_account a { margin-left: 8px; }
 
 .header_account_toggle {
-	display: block;
+	display: flex;
+	align-items: center;
+	height: 100%;
+	box-sizing: border-box;
 	padding: 8px 10px;
 	background: rgba(8, 8, 12, 0.7);
 	border: 1px solid rgba(255, 255, 255, 0.1);
@@ -183,6 +186,15 @@ a:active {
 	-webkit-backdrop-filter: blur(3px);
 	backdrop-filter: blur(3px);
 }
+
+.header_account_toggle:link,
+.header_account_toggle:visited,
+.header_account_toggle:hover,
+.header_account_toggle:active,
+.header_messages_toggle:link,
+.header_messages_toggle:visited,
+.header_messages_toggle:hover,
+.header_messages_toggle:active { color: #fff; }
 
 .header_account_toggle:hover { background: rgba(24, 24, 30, 0.88); }
 
@@ -206,11 +218,14 @@ a:active {
 .header_messages_count {
 	margin-left: 8px;
 	padding: 2px 6px;
-	background: #a72626;
+	background: #666;
 	border-radius: 2px;
 	color: #fff;
 	font-weight: bold;
+	line-height: 1.2;
 }
+
+.header_messages_count:not([data-count="0"]) { background: #25833b; }
 
 .header_account_toggle .fa-circle-user { color: #7289da; }
 
@@ -1175,6 +1190,9 @@ blockquote,
 						<div class="popup_item_container"><a class="popup_item" href="{$mybb->settings['bburl']}/misc.php?action=help&amp;hid=21">Keep in Touch!</a></div>
 					</div>
 					<script type="text/javascript">
+						$(document).on("click.spaceCadetMenus", "#header_extras_menu, #header_account_menu, #header_messages_menu", function() {
+							$(".header_extras_menu, .header_account_menu").not("#" + this.id + "_popup").hide();
+						});
 						$("#header_extras_menu").popupMenu();
 					</script>
 					<a href="{$mybb->settings['bburl']}/index.php"><img src="{$theme['logo']}" alt="{$mybb->settings['bbname']}" title="{$mybb->settings['bbname']}" /></a>
@@ -1232,7 +1250,7 @@ blockquote,
 			</ul>
 		</div>
 		<div class="header_messages">
-			<a href="{$mybb->settings['bburl']}/private.php" id="header_messages_menu" class="header_messages_toggle">Messages <i class="fa-solid fa-chevron-down header_account_chevron" aria-hidden="true"></i> <span class="header_messages_count">{$mybb->user['pms_unread']}</span></a>
+			<a href="{$mybb->settings['bburl']}/private.php" id="header_messages_menu" class="header_messages_toggle">Messages <i class="fa-solid fa-chevron-down header_account_chevron" aria-hidden="true"></i> <span class="header_messages_count" data-count="{$mybb->user['pms_unread']}">{$mybb->user['pms_unread']}</span></a>
 			<ul id="header_messages_menu_popup" class="popup_menu header_account_menu header_messages_menu" style="display: none;">
 				<li><a class="popup_item" href="{$mybb->settings['bburl']}/private.php?fid=1">Inbox</a></li>
 				<li><a class="popup_item" href="{$mybb->settings['bburl']}/private.php?action=send">Compose</a></li>
