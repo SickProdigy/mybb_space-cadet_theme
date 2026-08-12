@@ -705,6 +705,28 @@ form[action^="newreply.php"] input.button[name="submit"]:hover,
 	border-color: #8298e8;
 }
 
+form[action^="newreply.php"] input.button[name="previewpost"],
+form[action^="newreply.php"] input.button[name="savedraft"] {
+	box-sizing: border-box;
+	min-height: 32px;
+	margin: 2px;
+	padding: 6px 11px;
+	background: #29292c;
+	border: 1px solid #414145;
+	border-radius: 3px;
+	box-shadow: inset 0 1px rgba(255, 255, 255, 0.04);
+	color: #ddd;
+	font-size: 12px;
+	line-height: 1.2;
+}
+
+form[action^="newreply.php"] input.button[name="previewpost"]:hover,
+form[action^="newreply.php"] input.button[name="savedraft"]:hover {
+	background: #3a3a3e;
+	border-color: #5b5b61;
+	color: #fff;
+}
+
 a.button.new_thread_button span,
 a.button.new_reply_button span {
 	display: inline-flex;
