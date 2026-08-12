@@ -667,6 +667,7 @@ a.button.new_reply_button:visited,
 a.button.new_reply_button:hover,
 a.button.new_reply_button:active,
 form[action^="newreply.php"] input.button[name="submit"],
+form[action^="newthread.php"] input.button[name="submit"],
 #quick_reply_submit {
 	box-sizing: border-box;
 	display: inline-flex;
@@ -688,13 +689,16 @@ form[action^="newreply.php"] input.button[name="submit"],
 a.button.new_thread_button:hover,
 a.button.new_reply_button:hover,
 form[action^="newreply.php"] input.button[name="submit"]:hover,
+form[action^="newthread.php"] input.button[name="submit"]:hover,
 #quick_reply_submit:hover {
 	background: #566fc0;
 	border-color: #8298e8;
 }
 
 form[action^="newreply.php"] input.button[name="previewpost"],
-form[action^="newreply.php"] input.button[name="savedraft"] {
+form[action^="newreply.php"] input.button[name="savedraft"],
+form[action^="newthread.php"] input.button[name="previewpost"],
+form[action^="newthread.php"] input.button[name="savedraft"] {
 	box-sizing: border-box;
 	min-height: 32px;
 	margin: 2px;
@@ -709,7 +713,9 @@ form[action^="newreply.php"] input.button[name="savedraft"] {
 }
 
 form[action^="newreply.php"] input.button[name="previewpost"]:hover,
-form[action^="newreply.php"] input.button[name="savedraft"]:hover {
+form[action^="newreply.php"] input.button[name="savedraft"]:hover,
+form[action^="newthread.php"] input.button[name="previewpost"]:hover,
+form[action^="newthread.php"] input.button[name="savedraft"]:hover {
 	background: #3a3a3e;
 	border-color: #5b5b61;
 	color: #fff;
