@@ -611,18 +611,23 @@ blockquote,
 .boardstats_selectors .language,
 .boardstats_selectors .theme { float: none; }
 
-#footer .lower {
-	background: #0e0e0e;
+.site_footer {
+	box-sizing: border-box;
+	padding: 4px 0 18px;
 	color: #969696;
 	text-align: center;
 }
 
-#footer .lower .wrapper { text-align: center; }
-
-#footer #copyright {
+.site_footer #copyright {
 	display: block;
 	float: none;
 	line-height: 1.35;
+}
+
+.site_footer #debug {
+	float: none;
+	margin: 7px 0 0;
+	text-align: center;
 }
 
 .footer_credit_separator {

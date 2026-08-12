@@ -623,18 +623,23 @@ blockquote,
 .boardstats_selectors .language,
 .boardstats_selectors .theme { float: none; }
 
-#footer .lower {
-	background: #0e0e0e;
+.site_footer {
+	box-sizing: border-box;
+	padding: 4px 0 18px;
 	color: #969696;
 	text-align: center;
 }
 
-#footer .lower .wrapper { text-align: center; }
-
-#footer #copyright {
+.site_footer #copyright {
 	display: block;
 	float: none;
 	line-height: 1.35;
+}
+
+.site_footer #debug {
+	float: none;
+	margin: 7px 0 0;
+	text-align: center;
 }
 
 .footer_credit_separator {
@@ -740,19 +745,15 @@ blockquote,
 ]]></stylesheet>
 </stylesheets>
 <templates>
-<template name="footer" version="1820"><![CDATA[<debugstuff>
-	</div>
+<template name="footer" version="1820"><![CDATA[	</div>
 </div>
-<div id="footer">
-	<div class="lower">
-		<div class="wrapper">
-			<span id="copyright">
-				Powered By <a href="https://mybb.com" target="_blank" rel="noopener">MyBB</a>
-				<span class="footer_credit_separator" aria-hidden="true">&middot;</span>
-				&copy; 2026 <a href="https://sickgaming.net" target="_blank" rel="noopener">SickGaming.net</a>
-			</span>
-		</div>
-	</div>
+<div id="footer" class="wrapper site_footer">
+	<span id="copyright">
+		Powered By <a href="https://mybb.com" target="_blank" rel="noopener">MyBB</a>
+		<span class="footer_credit_separator" aria-hidden="true">&middot;</span>
+		&copy; 2026 <a href="https://sickgaming.net" target="_blank" rel="noopener">SickGaming.net</a>
+	</span>
+	<debugstuff>
 </div>
 <!-- The following piece of code allows MyBB to run scheduled tasks. DO NOT REMOVE -->{$task_image}<!-- End task image code -->
 {$auto_dst_detection}
