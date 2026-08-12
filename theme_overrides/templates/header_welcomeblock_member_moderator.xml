@@ -1,0 +1,1 @@
+<template name="header_welcomeblock_member_moderator" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/modcp.php" class="modcp"><i class="fa-solid fa-shield-halved fa-fw" aria-hidden="true"></i> {$lang->welcome_modcp}</a></li>]]></template>

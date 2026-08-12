@@ -109,6 +109,23 @@ a:active {
 	display: inline-block;
 }
 
+#panel a i {
+	color: #7289da;
+	font-size: 12px;
+}
+
+#panel .upper,
+#panel .lower {
+	padding: 3px 0;
+}
+
+#panel .lower a {
+	display: inline-block;
+	padding: 4px 2px;
+}
+
+#panel .lower a:hover { color: #fff; }
+
 #panel .lower ul.panel_links,
 #panel .lower ul.user_links { float: none; }
 

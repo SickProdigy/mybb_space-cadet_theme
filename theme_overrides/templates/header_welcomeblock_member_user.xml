@@ -1,0 +1,1 @@
+<template name="header_welcomeblock_member_user" version="1809"><![CDATA[<li><a href="{$mybb->settings['bburl']}/usercp.php" class="usercp"><i class="fa-solid fa-user-gear fa-fw" aria-hidden="true"></i> {$lang->welcome_usercp}</a></li>]]></template>

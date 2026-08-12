@@ -121,6 +121,23 @@ a:active {
 	display: inline-block;
 }
 
+#panel a i {
+	color: #7289da;
+	font-size: 12px;
+}
+
+#panel .upper,
+#panel .lower {
+	padding: 3px 0;
+}
+
+#panel .lower a {
+	display: inline-block;
+	padding: 4px 2px;
+}
+
+#panel .lower a:hover { color: #fff; }
+
 #panel .lower ul.panel_links,
 #panel .lower ul.user_links { float: none; }
 
@@ -348,6 +365,52 @@ blockquote,
 <template name="header_menu_memberlist" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/memberlist.php" class="memberlist"><i class="fa-solid fa-users fa-fw" aria-hidden="true"></i> {$lang->toplinks_memberlist}</a></li>]]></template>
 <template name="header_menu_portal" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/portal.php" class="portal"><i class="fa-solid fa-house fa-fw" aria-hidden="true"></i> {$lang->toplinks_portal}</a></li>]]></template>
 <template name="header_menu_search" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/search.php" class="search"><i class="fa-solid fa-magnifying-glass fa-fw" aria-hidden="true"></i> {$lang->toplinks_search}</a></li>]]></template>
+<template name="header_welcomeblock_guest" version="1816"><![CDATA[						<!-- Continuation of div(class="upper") as opened in the header template -->
+						<span class="welcome">{$lang->welcome_guest} <a href="{$mybb->settings['bburl']}/member.php?action=login" onclick="$('#quick_login').modal({ fadeDuration: 250, keepelement: true, zIndex: (typeof modal_zindex !== 'undefined' ? modal_zindex : 9999) }); return false;" class="login"><i class="fa-solid fa-key fa-fw" aria-hidden="true"></i> {$lang->welcome_login}</a> <a href="{$mybb->settings['bburl']}/member.php?action=register" class="register"><i class="fa-solid fa-user-plus fa-fw" aria-hidden="true"></i> {$lang->welcome_register}</a></span>
+					</div>
+				</div>
+				<div class="modal" id="quick_login" style="display: none;">
+					<form method="post" action="{$mybb->settings['bburl']}/member.php">
+						<input name="action" type="hidden" value="do_login" />
+						<input name="url" type="hidden" value="" />
+						<input name="quick_login" type="hidden" value="1" />
+						<input name="my_post_key" type="hidden" value="{$mybb->post_code}" />
+						<table width="100%" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" border="0" class="tborder">
+							<tr>
+								<td class="thead" colspan="2"><strong>{$lang->login}</strong></td>
+							</tr>
+							{$loginform}
+						</table>
+					</form>
+				</div>
+				<script type="text/javascript">
+					$("#quick_login input[name='url']").val($(location).attr('href'));
+				</script>]]></template>
+<template name="header_welcomeblock_member" version="1821"><![CDATA[<!-- Continuation of div(class="upper") as opened in the header template -->
+	<span class="welcome">{$lang->welcome_back} <a href="{$mybb->settings['bburl']}/member.php?action=logout&amp;logoutkey={$mybb->user['logoutkey']}" class="logout"><i class="fa-solid fa-right-from-bracket fa-fw" aria-hidden="true"></i> {$lang->welcome_logout}</a></span>
+	</div>
+</div>
+<div class="lower">
+	<div class="wrapper">
+		<ul class="menu panel_links">
+			{$usercplink}
+			{$modcplink}
+			{$admincplink}
+		</ul>
+		<ul class="menu user_links">
+			{$buddylink}
+			{$searchlink}
+			{$pmslink}
+		</ul>
+	</div>
+	<br class="clear" />
+</div>]]></template>
+<template name="header_welcomeblock_member_admin" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/{$admin_dir}/index.php" class="admincp"><i class="fa-solid fa-screwdriver-wrench fa-fw" aria-hidden="true"></i> {$lang->welcome_admin}</a></li>]]></template>
+<template name="header_welcomeblock_member_moderator" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/modcp.php" class="modcp"><i class="fa-solid fa-shield-halved fa-fw" aria-hidden="true"></i> {$lang->welcome_modcp}</a></li>]]></template>
+<template name="header_welcomeblock_member_pms" version="1809"><![CDATA[<li><a href="{$mybb->settings['bburl']}/private.php"><i class="fa-solid fa-envelope fa-fw" aria-hidden="true"></i> {$lang->welcome_pms}</a> {$lang->welcome_pms_usage}</li>]]></template>
+<template name="header_welcomeblock_member_search" version="1809"><![CDATA[<li><a href="{$mybb->settings['bburl']}/search.php?action=getnew"><i class="fa-solid fa-bolt fa-fw" aria-hidden="true"></i> {$lang->welcome_newposts}</a></li>
+<li><a href="{$mybb->settings['bburl']}/search.php?action=getdaily"><i class="fa-solid fa-clock fa-fw" aria-hidden="true"></i> {$lang->welcome_todaysposts}</a></li>]]></template>
+<template name="header_welcomeblock_member_user" version="1809"><![CDATA[<li><a href="{$mybb->settings['bburl']}/usercp.php" class="usercp"><i class="fa-solid fa-user-gear fa-fw" aria-hidden="true"></i> {$lang->welcome_usercp}</a></li>]]></template>
 <template name="headerinclude" version="1827"><![CDATA[<link rel="alternate" type="application/rss+xml" title="{$lang->latest_threads} (RSS 2.0)" href="{$mybb->settings['bburl']}/syndication.php" />
 <link rel="alternate" type="application/atom+xml" title="{$lang->latest_threads} (Atom 1.0)" href="{$mybb->settings['bburl']}/syndication.php?type=atom1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset={$charset}" />

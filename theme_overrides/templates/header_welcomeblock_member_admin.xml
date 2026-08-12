@@ -1,0 +1,1 @@
+<template name="header_welcomeblock_member_admin" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/{$admin_dir}/index.php" class="admincp"><i class="fa-solid fa-screwdriver-wrench fa-fw" aria-hidden="true"></i> {$lang->welcome_admin}</a></li>]]></template>
