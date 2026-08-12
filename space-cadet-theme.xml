@@ -728,6 +728,20 @@ blockquote,
 
 .profile_tabpanel > br:first-child { display: none; }
 
+.profile_tabpanel .trow1,
+.profile_tabpanel .trow2 {
+	background: #181818;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	border-top-color: transparent;
+	border-bottom-color: #292929;
+}
+
+.profile_tabpanel tr:last-child > .trow1,
+.profile_tabpanel tr:last-child > .trow2 {
+	border-bottom-color: transparent;
+}
+
 .footer_credit_separator {
 	margin: 0 3px;
 	color: #666;
@@ -1360,6 +1374,13 @@ document.addEventListener("DOMContentLoaded", function() {
 {$footer}
 </body>
 </html>]]></template>
+<template name="member_profile_modoptions_ipaddress" version="1812"><![CDATA[<tr>
+<td class="trow1">
+<strong>{$lang->registration_ip}</strong> {$memprofile['regip']}<br />
+<strong>{$lang->last_known_ip}</strong> {$memprofile['lastip']}<br />
+<strong>{$lang->email}</strong> <a href="mailto:{$memprofile['email']}">{$memprofile['email']}</a>
+</td>
+</tr>]]></template>
 <template name="postbit" version="1813"><![CDATA[{$ignore_bit}{$deleted_bit}
 <a name="pid{$post['pid']}" id="pid{$post['pid']}"></a>
 <div class="post classic {$unapproved_shade}" style="{$post_visibility}" id="post_{$post['pid']}">
