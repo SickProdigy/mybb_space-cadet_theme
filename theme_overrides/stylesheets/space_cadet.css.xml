@@ -558,6 +558,13 @@ blockquote,
 	line-height: 1.5;
 }
 
+.post_moderator_info {
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: 1px solid #333;
+	overflow-wrap: anywhere;
+}
+
 .post.classic .post_content {
 	box-sizing: border-box;
 	grid-column: 2;
