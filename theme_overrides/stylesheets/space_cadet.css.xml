@@ -569,7 +569,7 @@ blockquote,
 	display: block;
 	margin-bottom: 6px;
 	text-align: center;
-	color: #fff;
+	color: #888;
 }
 
 .post.classic .post_content {
