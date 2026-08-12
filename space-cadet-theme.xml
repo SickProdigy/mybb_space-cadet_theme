@@ -775,9 +775,9 @@ blockquote,
 	box-sizing: border-box;
 	display: inline-flex;
 	align-items: center;
-	min-height: 28px;
+	min-height: 24px;
 	margin: 0;
-	padding: 5px 9px;
+	padding: 4px 7px;
 	background: #29292c;
 	border: 1px solid #414145;
 	border-radius: 3px;
@@ -813,24 +813,37 @@ blockquote,
 }
 
 .postbit_buttons a:hover span::before { color: #fff; }
-.postbit_buttons a.postbit_find span::before { content: "\\f002"; }
-.postbit_buttons a.postbit_reputation_add span::before { content: "\\2b"; }
-.postbit_buttons a.postbit_email span::before { content: "\\f0e0"; }
-.postbit_buttons a.postbit_website span::before { content: "\\f0ac"; }
-.postbit_buttons a.postbit_pm span::before { content: "\\f075"; }
-.postbit_buttons a.postbit_quote span::before { content: "\\f10e"; }
+.postbit_buttons a.postbit_find span::before { content: "\f002"; }
+.postbit_buttons a.postbit_reputation_add span::before { content: "\2b"; }
+.postbit_buttons a.postbit_email span::before { content: "\f0e0"; }
+.postbit_buttons a.postbit_website span::before { content: "\f0ac"; }
+.postbit_buttons a.postbit_pm span::before { content: "\f075"; }
+.postbit_buttons a.postbit_quote span::before { content: "\f10e"; }
 .postbit_buttons a.postbit_multiquote span::before,
-.postbit_buttons a.postbit_multiquote_on span::before { content: "\\f24d"; }
-.postbit_buttons a.postbit_edit span::before { content: "\\f304"; }
+.postbit_buttons a.postbit_multiquote_on span::before { content: "\f24d"; }
+.postbit_buttons a.postbit_edit span::before { content: "\f304"; }
 .postbit_buttons a.postbit_qdelete span::before,
-.postbit_buttons a.postbit_delete_pm span::before { content: "\\f2ed"; }
-.postbit_buttons a.postbit_qrestore span::before { content: "\\f2ea"; }
-.postbit_buttons a.postbit_report span::before { content: "\\f024"; }
-.postbit_buttons a.postbit_warn span::before { content: "\\f071"; }
-.postbit_buttons a.postbit_purgespammer span::before { content: "\\f51a"; }
-.postbit_buttons a.postbit_reply_pm span::before { content: "\\f3e5"; }
-.postbit_buttons a.postbit_reply_all span::before { content: "\\f122"; }
-.postbit_buttons a.postbit_forward_pm span::before { content: "\\f064"; }
+.postbit_buttons a.postbit_delete_pm span::before { content: "\f2ed"; }
+.postbit_buttons a.postbit_qrestore span::before { content: "\f2ea"; }
+.postbit_buttons a.postbit_report span::before { content: "\f024"; }
+.postbit_buttons a.postbit_warn span::before { content: "\f071"; }
+.postbit_buttons a.postbit_purgespammer span::before { content: "\f51a"; }
+.postbit_buttons a.postbit_reply_pm span::before { content: "\f3e5"; }
+.postbit_buttons a.postbit_reply_all span::before { content: "\f122"; }
+.postbit_buttons a.postbit_forward_pm span::before { content: "\f064"; }
+
+.postbit_buttons.author_buttons > a {
+	justify-content: center;
+	min-width: 26px;
+	padding: 4px 6px;
+}
+
+.postbit_buttons.author_buttons > a span { font-size: 0; }
+
+.postbit_buttons.author_buttons > a span::before {
+	margin-right: 0;
+	font-size: 11px;
+}
 
 .postbit_buttons > a.postbit_qdelete,
 .postbit_buttons > a.postbit_delete_pm,
