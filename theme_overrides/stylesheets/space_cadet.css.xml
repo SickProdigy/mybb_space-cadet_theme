@@ -179,16 +179,18 @@ a:active {
 
 .header_account_menu li { margin: 0; }
 
-.header_account_menu li > a {
+.popup_menu.header_account_menu li > a,
+.popup_menu.header_account_menu .popup_item {
 	box-sizing: border-box;
 	display: block;
 	padding: 7px 12px;
-	background: transparent;
+	background: #2f2f32;
 	color: #eee;
 	white-space: nowrap;
 }
 
-.header_account_menu li > a:hover {
+.popup_menu.header_account_menu li > a:hover,
+.popup_menu.header_account_menu .popup_item:hover {
 	background: #414145;
 	color: #fff;
 }
