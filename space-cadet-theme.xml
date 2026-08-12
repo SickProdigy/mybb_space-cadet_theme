@@ -151,14 +151,14 @@ a:active {
 .header_account {
 	position: absolute;
 	right: 0;
-	bottom: 0;
+	bottom: -20px;
 	z-index: 100;
 }
 
 .header_guest_account {
 	position: absolute;
 	right: 0;
-	bottom: 0;
+	bottom: -20px;
 	padding: 8px 10px;
 	background: rgba(8, 8, 12, 0.7);
 	border: 1px solid rgba(255, 255, 255, 0.1);
