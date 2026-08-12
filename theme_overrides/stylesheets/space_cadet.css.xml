@@ -820,19 +820,6 @@ blockquote,
 .postbit_buttons a.postbit_reply_all span::before { content: "\f122"; }
 .postbit_buttons a.postbit_forward_pm span::before { content: "\f064"; }
 
-.postbit_buttons.author_buttons > a {
-	justify-content: center;
-	min-width: 26px;
-	padding: 4px 6px;
-}
-
-.postbit_buttons.author_buttons > a span { font-size: 0; }
-
-.postbit_buttons.author_buttons > a span::before {
-	margin-right: 0;
-	font-size: 11px;
-}
-
 .postbit_buttons > a.postbit_qdelete,
 .postbit_buttons > a.postbit_delete_pm,
 .postbit_buttons > a.postbit_purgespammer {

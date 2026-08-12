@@ -832,19 +832,6 @@ blockquote,
 .postbit_buttons a.postbit_reply_all span::before { content: "\f122"; }
 .postbit_buttons a.postbit_forward_pm span::before { content: "\f064"; }
 
-.postbit_buttons.author_buttons > a {
-	justify-content: center;
-	min-width: 26px;
-	padding: 4px 6px;
-}
-
-.postbit_buttons.author_buttons > a span { font-size: 0; }
-
-.postbit_buttons.author_buttons > a span::before {
-	margin-right: 0;
-	font-size: 11px;
-}
-
 .postbit_buttons > a.postbit_qdelete,
 .postbit_buttons > a.postbit_delete_pm,
 .postbit_buttons > a.postbit_purgespammer {
@@ -1744,7 +1731,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="post_controls">
 	<div class="postbit_buttons author_buttons float_left">
-		{$post['button_email']}{$post['button_pm']}{$post['button_www']}{$post['button_find']}{$post['button_rep']}
+		{$post['button_pm']}{$post['button_find']}{$post['button_rep']}
 	</div>
 	<div class="postbit_buttons post_management_buttons float_right">
 		{$post['button_edit']}{$post['button_quickdelete']}{$post['button_quickrestore']}{$post['button_quote']}{$post['button_multiquote']}{$post['button_report']}{$post['button_warn']}{$post['button_purgespammer']}{$post['button_reply_pm']}{$post['button_replyall_pm']}{$post['button_forward_pm']}{$post['button_delete_pm']}
@@ -1790,7 +1777,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="post_controls">
 	<div class="postbit_buttons author_buttons float_left">
-		{$post['button_email']}{$post['button_pm']}{$post['button_www']}{$post['button_find']}{$post['button_rep']}
+		{$post['button_pm']}{$post['button_find']}{$post['button_rep']}
 	</div>
 	<div class="postbit_buttons post_management_buttons float_right">
 		{$post['button_edit']}{$post['button_quickdelete']}{$post['button_quickrestore']}{$post['button_quote']}{$post['button_multiquote']}{$post['button_report']}{$post['button_warn']}{$post['button_purgespammer']}{$post['button_reply_pm']}{$post['button_replyall_pm']}{$post['button_forward_pm']}{$post['button_delete_pm']}
