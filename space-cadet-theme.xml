@@ -326,6 +326,93 @@ a:active {
 	border-bottom-color: #242424;
 }
 
+.index_layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 280px;
+	align-items: start;
+	gap: 18px;
+}
+
+.index_forums,
+.index_sidebar { min-width: 0; }
+
+.sidebar_panel {
+	margin-bottom: 18px;
+	background: #181818;
+	border: 1px solid #292929;
+}
+
+.sidebar_panel .thead {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 10px;
+	font-size: 12px;
+}
+
+.sidebar_content { padding: 12px; }
+
+.social_links {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 7px;
+}
+
+.social_links a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 30px;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 16px;
+	transition: filter 0.15s ease, transform 0.15s ease;
+}
+
+.social_links a:hover {
+	filter: brightness(1.15);
+	transform: translateY(-1px);
+}
+
+.social_links .discord { background: #5865f2; }
+.social_links .instagram { background: #c13584; }
+.social_links .facebook { background: #4267b2; }
+.social_links .twitter { background: #1da1f2; }
+.social_links .telegram { background: #229ed9; }
+.social_links .youtube { background: #f00; }
+
+.latest_posts {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.latest_posts li {
+	padding: 0 0 10px;
+	margin: 0 0 10px;
+	border-bottom: 1px solid #292929;
+}
+
+.latest_posts li:last-child {
+	padding-bottom: 0;
+	margin-bottom: 0;
+	border-bottom: 0;
+}
+
+.latest_posts a {
+	display: block;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.latest_posts time {
+	display: block;
+	margin-top: 3px;
+	color: #999;
+	font-size: 11px;
+}
+
 .trow1,
 .trow2 {
 	color: #ccc;
@@ -521,6 +608,9 @@ blockquote,
 		min-width: 0;
 		flex: 1;
 	}
+
+	.index_layout { grid-template-columns: minmax(0, 1fr); }
+	.index_sidebar { margin-top: 4px; }
 
 	.post.classic { grid-template-columns: minmax(0, 1fr); }
 
@@ -796,6 +886,7 @@ blockquote,
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <link rel="stylesheet" href="{$mybb->asset_url}/images/space-cadet/fontawesome/css/fontawesome.min.css" />
 <link rel="stylesheet" href="{$mybb->asset_url}/images/space-cadet/fontawesome/css/solid.min.css" />
+<link rel="stylesheet" href="{$mybb->asset_url}/images/space-cadet/fontawesome/css/brands.min.css" />
 <script type="text/javascript" src="{$mybb->asset_url}/jscripts/jquery.js?ver=1823"></script>
 <script type="text/javascript" src="{$mybb->asset_url}/jscripts/jquery.plugins.min.js?ver=1821"></script>
 <script type="text/javascript" src="{$mybb->asset_url}/jscripts/general.js?ver=1827"></script>
@@ -844,6 +935,104 @@ blockquote,
 	var modal_zindex = 9999;
 // -->
 </script>]]></template>
+<template name="index" version="1817"><![CDATA[<html>
+<head>
+<title>{$mybb->settings['bbname']}</title>
+{$headerinclude}
+<script type="text/javascript">
+<!--
+	lang.no_new_posts = "{$lang->no_new_posts}";
+	lang.click_mark_read = "{$lang->click_mark_read}";
+// -->
+</script>
+</head>
+<body>
+{$header}
+
+<div class="index_layout">
+	<main class="index_forums">
+		{$forums}
+		{$boardstats}
+
+		<dl class="forum_legend smalltext">
+			<dt><span class="forum_status forum_on" title="{$lang->new_posts}"></span></dt>
+			<dd>{$lang->new_posts}</dd>
+
+			<dt><span class="forum_status forum_off" title="{$lang->no_new_posts}"></span></dt>
+			<dd>{$lang->no_new_posts}</dd>
+
+			<dt><span class="forum_status forum_offclose" title="{$lang->forum_closed}"></span></dt>
+			<dd>{$lang->forum_closed}</dd>
+
+			<dt><span class="forum_status forum_offlink" title="{$lang->forum_redirect}"></span></dt>
+			<dd>{$lang->forum_redirect}</dd>
+		</dl>
+		<br class="clear" />
+	</main>
+
+	<aside class="index_sidebar" aria-label="Forum sidebar">
+		<section class="sidebar_panel">
+			<h2 class="thead">Go Social</h2>
+			<div class="sidebar_content social_links">
+				<a class="discord" href="https://discord.gg/eQj8wyY" aria-label="Discord"><i class="fa-brands fa-discord" aria-hidden="true"></i></a>
+				<a class="instagram" href="https://www.instagram.com/SickGamingNet" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+				<a class="facebook" href="https://www.facebook.com/S1ckGaming" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+				<a class="twitter" href="https://x.com/_SickGaming" aria-label="X"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+				<a class="telegram" href="https://t.me/Sick_Gaming" aria-label="Telegram"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
+				<a class="youtube" href="https://www.youtube.com/SickGamingNet/" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+			</div>
+		</section>
+
+		<section class="sidebar_panel">
+			<h2 class="thead">Latest Posts</h2>
+			<div class="sidebar_content">
+				<ul class="latest_posts" id="latest_posts"><li>Loading latest posts&hellip;</li></ul>
+			</div>
+		</section>
+	</aside>
+</div>
+<br class="clear" />
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+	var list = document.getElementById("latest_posts");
+	var feedUrl = "{$mybb->settings['bburl']}/syndication.php?limit=5";
+
+	fetch(feedUrl, { credentials: "same-origin" })
+		.then(function(response) {
+			if (!response.ok) throw new Error("Feed request failed");
+			return response.text();
+		})
+		.then(function(source) {
+			var feed = new DOMParser().parseFromString(source, "application/xml");
+			var items = Array.prototype.slice.call(feed.querySelectorAll("item"), 0, 5);
+			if (!items.length) throw new Error("No feed items");
+
+			list.textContent = "";
+			items.forEach(function(item) {
+				var title = item.querySelector("title");
+				var link = item.querySelector("link");
+				var date = item.querySelector("pubDate");
+				var row = document.createElement("li");
+				var anchor = document.createElement("a");
+				anchor.href = link ? link.textContent : feedUrl;
+				anchor.textContent = title ? title.textContent : "Forum post";
+				row.appendChild(anchor);
+				if (date) {
+					var time = document.createElement("time");
+					time.textContent = new Date(date.textContent).toLocaleString();
+					row.appendChild(time);
+				}
+				list.appendChild(row);
+			});
+		})
+		.catch(function() {
+			list.innerHTML = '<li><a href="' + feedUrl + '">View the latest forum posts</a></li>';
+		});
+});
+</script>
+{$footer}
+</body>
+</html>]]></template>
 <template name="postbit" version="1813"><![CDATA[{$ignore_bit}{$deleted_bit}
 <a name="pid{$post['pid']}" id="pid{$post['pid']}"></a>
 <div class="post classic {$unapproved_shade}" style="{$post_visibility}" id="post_{$post['pid']}">

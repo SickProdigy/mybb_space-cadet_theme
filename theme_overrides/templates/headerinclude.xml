@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <link rel="stylesheet" href="{$mybb->asset_url}/images/space-cadet/fontawesome/css/fontawesome.min.css" />
 <link rel="stylesheet" href="{$mybb->asset_url}/images/space-cadet/fontawesome/css/solid.min.css" />
+<link rel="stylesheet" href="{$mybb->asset_url}/images/space-cadet/fontawesome/css/brands.min.css" />
 <script type="text/javascript" src="{$mybb->asset_url}/jscripts/jquery.js?ver=1823"></script>
 <script type="text/javascript" src="{$mybb->asset_url}/jscripts/jquery.plugins.min.js?ver=1821"></script>
 <script type="text/javascript" src="{$mybb->asset_url}/jscripts/general.js?ver=1827"></script>
