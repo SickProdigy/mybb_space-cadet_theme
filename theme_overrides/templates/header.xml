@@ -2,7 +2,8 @@
 		<a name="top" id="top"></a>
 		<div id="header">
 			<div id="logo">
-				<div class="wrapper">
+				<div class="header_nav">
+					<div class="wrapper">
 					<ul class="menu top_links">
 						<li><a href="{$mybb->settings['bburl']}/portal.php"><i class="fa-solid fa-house fa-fw" aria-hidden="true"></i> Portal</a></li>
 						<li><a href="{$mybb->settings['bburl']}/index.php"><i class="fa-solid fa-comments fa-fw" aria-hidden="true"></i> Forum</a></li>
@@ -26,6 +27,9 @@
 						});
 						$("#header_extras_menu").popupMenu();
 					</script>
+					</div>
+				</div>
+				<div class="wrapper header_banner_content">
 					<a href="{$mybb->settings['bburl']}/index.php"><img src="{$theme['logo']}" alt="{$mybb->settings['bbname']}" title="{$mybb->settings['bbname']}" /></a>
 					{$welcomeblock}
 				</div>
