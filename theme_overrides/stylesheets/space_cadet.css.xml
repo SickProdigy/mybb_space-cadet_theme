@@ -658,6 +658,59 @@ button:hover,
 	border-color: #7289da;
 }
 
+a.button.new_thread_button:link,
+a.button.new_thread_button:visited,
+a.button.new_thread_button:hover,
+a.button.new_thread_button:active,
+a.button.new_reply_button:link,
+a.button.new_reply_button:visited,
+a.button.new_reply_button:hover,
+a.button.new_reply_button:active,
+form[action^="newreply.php"] input.button[name="submit"],
+#quick_reply_submit {
+	box-sizing: border-box;
+	display: inline-flex;
+	align-items: center;
+	min-height: 32px;
+	margin: 2px;
+	padding: 6px 11px;
+	background: #33446d;
+	border: 1px solid #617ed0;
+	border-radius: 3px;
+	box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 1.2;
+	text-decoration: none;
+}
+
+a.button.new_thread_button:hover,
+a.button.new_reply_button:hover,
+form[action^="newreply.php"] input.button[name="submit"]:hover,
+#quick_reply_submit:hover {
+	background: #566fc0;
+	border-color: #8298e8;
+}
+
+a.button.new_thread_button span,
+a.button.new_reply_button span {
+	display: inline-flex;
+	align-items: center;
+	padding: 0;
+	background: none;
+}
+
+a.button.new_thread_button span::before,
+a.button.new_reply_button span::before {
+	margin-right: 6px;
+	font-family: "Font Awesome 6 Free";
+	font-weight: 900;
+}
+
+a.button.new_thread_button span::before { content: "\f044"; }
+a.button.new_reply_button span::before { content: "\f3e5"; }
+
 .pagination a:hover,
 .pagination .pagination_current {
 	background: #667bc4;
