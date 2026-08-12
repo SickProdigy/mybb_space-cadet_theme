@@ -293,7 +293,9 @@ a:active {
 .forum_counts span { display: block; }
 
 .forum_row td {
-	border-top-color: transparent;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	border-top-color: #101010;
 	border-bottom-color: #242424;
 }
 
