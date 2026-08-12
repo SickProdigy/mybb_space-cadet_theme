@@ -892,6 +892,7 @@ blockquote,
 .boardstats_links {
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 	gap: 6px;
 	margin: 0;
 	padding: 0;
@@ -905,8 +906,8 @@ blockquote,
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
-	width: 30px;
-	height: 30px;
+	min-height: 30px;
+	padding: 5px 9px;
 	background: #202020;
 	border: 1px solid #303030;
 	border-radius: 3px;
@@ -920,7 +921,10 @@ blockquote,
 	text-decoration: none;
 }
 
-.boardstats_links i { font-size: 14px; }
+.boardstats_links i {
+	margin-right: 5px;
+	font-size: 13px;
+}
 
 .boardstats_selectors {
 	display: flex;
@@ -1151,7 +1155,7 @@ blockquote,
 <!-- The following piece of code allows MyBB to run scheduled tasks. DO NOT REMOVE -->{$task_image}<!-- End task image code -->
 {$auto_dst_detection}
 </div>]]></template>
-<template name="footer_contactus" version="1800"><![CDATA[<li><a href="{$mybb->settings['contactlink']}" title="{$lang->bottomlinks_contactus}" aria-label="{$lang->bottomlinks_contactus}"><i class="fa-solid fa-envelope fa-fw" aria-hidden="true"></i></a></li>]]></template>
+<template name="footer_contactus" version="1800"><![CDATA[<li><a href="{$mybb->settings['contactlink']}" title="{$lang->bottomlinks_contactus}"><i class="fa-solid fa-envelope fa-fw" aria-hidden="true"></i><span>Contact Us</span></a></li>]]></template>
 <template name="footer_showteamlink" version="1820"><![CDATA[<li><a href="showteam.php" title="{$lang->bottomlinks_forumteam}" aria-label="{$lang->bottomlinks_forumteam}"><i class="fa-solid fa-users-gear fa-fw" aria-hidden="true"></i></a></li>]]></template>
 <template name="forumbit_depth1_cat" version="1800"><![CDATA[<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
 <thead>
@@ -1548,11 +1552,11 @@ document.addEventListener("DOMContentLoaded", function() {
 <tr>
 	<td class="tfoot boardstats_footer">
 		<ul class="boardstats_links">
-			<li><a href="{$mybb->settings['bburl']}/misc.php?action=syndication" title="{$lang->bottomlinks_syndication}" aria-label="{$lang->bottomlinks_syndication}"><i class="fa-solid fa-rss fa-fw" aria-hidden="true"></i></a></li>
-			<li><a href="<archive_url>" title="{$lang->bottomlinks_litemode}" aria-label="{$lang->bottomlinks_litemode}"><i class="fa-solid fa-box-archive fa-fw" aria-hidden="true"></i></a></li>
+			<li><a href="{$mybb->settings['bburl']}/misc.php?action=syndication" title="{$lang->bottomlinks_syndication}"><i class="fa-solid fa-rss fa-fw" aria-hidden="true"></i><span>RSS</span></a></li>
+			<li><a href="<archive_url>" title="{$lang->bottomlinks_litemode}"><i class="fa-solid fa-box-archive fa-fw" aria-hidden="true"></i><span>Archive</span></a></li>
 			{$contact_us}
-			<li><a href="{$mybb->settings['bburl']}/misc.php?action=markread{$post_code_string}" title="{$lang->bottomlinks_markread}" aria-label="{$lang->bottomlinks_markread}"><i class="fa-solid fa-check-double fa-fw" aria-hidden="true"></i></a></li>
-			<li><a href="#top" title="{$lang->bottomlinks_returntop}" aria-label="{$lang->bottomlinks_returntop}"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i></a></li>
+			<li><a href="{$mybb->settings['bburl']}/misc.php?action=markread{$post_code_string}" title="{$lang->bottomlinks_markread}"><i class="fa-solid fa-check-double fa-fw" aria-hidden="true"></i><span>Mark All Read</span></a></li>
+			<li><a href="#top" title="{$lang->bottomlinks_returntop}"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span>Top</span></a></li>
 		</ul>
 		<div class="boardstats_selectors">{$lang_select}{$theme_select}</div>
 	</td>

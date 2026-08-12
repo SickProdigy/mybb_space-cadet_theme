@@ -880,6 +880,7 @@ blockquote,
 .boardstats_links {
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 	gap: 6px;
 	margin: 0;
 	padding: 0;
@@ -893,8 +894,8 @@ blockquote,
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
-	width: 30px;
-	height: 30px;
+	min-height: 30px;
+	padding: 5px 9px;
 	background: #202020;
 	border: 1px solid #303030;
 	border-radius: 3px;
@@ -908,7 +909,10 @@ blockquote,
 	text-decoration: none;
 }
 
-.boardstats_links i { font-size: 14px; }
+.boardstats_links i {
+	margin-right: 5px;
+	font-size: 13px;
+}
 
 .boardstats_selectors {
 	display: flex;
