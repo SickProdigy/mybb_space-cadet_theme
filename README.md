@@ -1,56 +1,68 @@
 # Space Cadet Theme for MyBB
 
-Space Cadet is a custom MyBB theme built from the open-source MyBB 1.8.40 Master Style. The project begins with the complete stock theme so every template and stylesheet can be inspected, then modified components can be retained while unchanged components are eventually removed from the release export.
+Space Cadet is a MyBB 1.8.40 child theme built from the open-source MyBB Master Style. The complete stock theme is retained as a versioned reference, while the importable release contains only intentional Space Cadet overrides.
 
 ## Repository Structure
 
 ```text
-theme_parts/
+upstream/mybb-1.8.40/
+├── mybb_theme.xml          # untouched official master theme
+└── theme_parts/
+    ├── properties.xml
+    ├── stylesheets/        # 7 stock stylesheets
+    └── templates/          # 971 stock templates
+theme_overrides/
 ├── properties.xml
-├── stylesheets/       # 7 editable stock stylesheets
-└── templates/         # 971 editable stock templates
-upstream/
-└── mybb-1.8.40/
-    └── mybb_theme.xml # untouched upstream reference
+├── stylesheets/            # Space Cadet additions or replacements
+└── templates/              # modified stock templates only
 scripts/
 ├── split_theme.py
 └── assemble_theme.py
-theme.json
-space-cadet-theme.xml
+theme.json                  # project and compatibility metadata
+space-cadet-theme.xml       # generated minimal import file
 ```
 
-The `upstream/` file is the authoritative MyBB baseline and should not be edited. Make theme changes under `theme_parts/`.
+Treat everything under `upstream/` as read-only. Do not edit the generated `space-cadet-theme.xml` directly.
 
 ## Development Workflow
 
-To reset `theme_parts/` from the untouched upstream theme:
+When changing a stock MyBB component, copy it from the upstream split into the matching override directory and edit the copy:
 
-```bash
-python3 scripts/split_theme.py
+```text
+upstream/mybb-1.8.40/theme_parts/templates/header.xml
+→ theme_overrides/templates/header.xml
 ```
 
-**Warning:** this command deletes and recreates `theme_parts/`, overwriting theme work. Use it only when intentionally resetting or updating the baseline.
+Custom components can be created directly under `theme_overrides/`. If a file exists there, it should represent an intentional Space Cadet change.
 
-After editing templates or stylesheets, rebuild the importable theme:
+Build the importable child theme after editing overrides:
 
 ```bash
 python3 scripts/assemble_theme.py
 ```
 
-The generated file is `space-cadet-theme.xml`. Import it through MyBB Admin CP under **Templates & Style → Import a Theme** and test it on a non-production forum.
+The assembler includes theme properties, override stylesheets, and override templates only. All other components inherit from MyBB Master Style. Import `space-cadet-theme.xml` through **Admin CP → Templates & Style → Import a Theme** on a non-production forum.
+
+To refresh the split upstream reference from the official XML:
+
+```bash
+python3 scripts/split_theme.py
+```
+
+This command deletes and recreates only `upstream/mybb-1.8.40/theme_parts/`; it does not modify `theme_overrides/`.
 
 ## Versioning
 
 Project metadata lives in `theme.json`:
 
 - `theme_version` is the Space Cadet release version and follows semantic versioning.
-- `mybb_version` is MyBB's compatibility code. Keep it at `1840` while the theme targets MyBB 1.8.40.
+- `mybb_version` is MyBB's compatibility code. Keep it at `1840` while targeting MyBB 1.8.40.
 - `name` and `output` control the generated theme name and filename.
 
 ## Testing
 
-Test guest and member views, forum and thread pages, profiles, private messages, moderation controls, and responsive layouts. Re-import the generated XML into a clean MyBB 1.8.40 test installation before publishing a release.
+Confirm the generated XML parses and imports without warnings. Test guest/member sessions, forum and thread pages, profiles, private messages, moderation controls, and narrow screens. Re-import into a clean MyBB 1.8.40 test installation before publishing a release.
 
 ## License
 
-The baseline theme is derived from MyBB. Retain the applicable MyBB copyright and license notices. New Space Cadet assets and licensing should be documented here before the first public release.
+The baseline derives from MyBB. Retain applicable MyBB copyright and license notices. Document the license for new Space Cadet code and assets before the first public release.
