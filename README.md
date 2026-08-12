@@ -27,6 +27,19 @@ space-cadet-theme.xml       # generated minimal import file
 
 Treat everything under `upstream/` as read-only. Do not edit the generated `space-cadet-theme.xml` directly.
 
+## Installation
+
+Space Cadet requires MyBB 1.8.40. Use the generated `space-cadet-theme.xml` for the theme import; do not import the upstream XML or individual override fragments.
+
+1. Copy the repository's `images/space-cadet/` directory to `images/space-cadet/` under the MyBB forum root. Keep the included Font Awesome and Droid Sans files in their existing subdirectories.
+2. In MyBB Admin CP, open **Templates & Style → Themes → Import a Theme**.
+3. Select `space-cadet-theme.xml`, give the theme a name if desired, and import it. Leave **Ignore Version Compatibility** disabled when installing on MyBB 1.8.40.
+4. Set Space Cadet as the default theme or select it for the test account under **User CP → Edit Options**.
+5. Confirm the imported theme inherits unchanged components from **MyBB Master Style**. Do not detach or copy all master templates into Space Cadet.
+6. Hard-refresh the browser and clear any proxy/CDN cache, then test the index, thread, profile, private-message, and moderation pages on desktop and mobile.
+
+For upgrades, replace `images/space-cadet/` with the release assets and import the new generated XML. Test upgrades on a non-production forum first; importing may create a separate theme instead of overwriting an existing customized installation.
+
 ## Development Workflow
 
 When changing a stock MyBB component, copy it from the upstream split into the matching override directory and edit the copy:
@@ -42,9 +55,11 @@ Build the importable child theme after editing overrides:
 
 ```bash
 python3 scripts/assemble_theme.py
+python3 -c "import xml.etree.ElementTree as ET; ET.parse('space-cadet-theme.xml')"
+git diff --check
 ```
 
-The assembler includes theme properties, override stylesheets, and override templates only. All other components inherit from MyBB Master Style. Import `space-cadet-theme.xml` through **Admin CP → Templates & Style → Import a Theme** on a non-production forum.
+The first command assembles the release; the next two validate its XML and check for whitespace errors. The assembler includes theme properties, override stylesheets, and override templates only. All other components inherit from MyBB Master Style. Import `space-cadet-theme.xml` through **Admin CP → Templates & Style → Import a Theme** on a non-production forum.
 
 The XML does not contain binary assets. Copy `images/space-cadet/` to the same path beneath the MyBB installation before testing or publishing. Font Awesome Free 6.4.0 assets are vendored under `images/space-cadet/fontawesome/`, and Droid Sans webfonts are under `images/space-cadet/fonts/droid-sans/`. Retain both included license files when redistributing the theme.
 
@@ -66,7 +81,7 @@ Project metadata lives in `theme.json`:
 
 ## Testing
 
-Confirm the generated XML parses and imports without warnings. Test guest/member sessions, forum and thread pages, profiles, private messages, moderation controls, and narrow screens. Re-import into a clean MyBB 1.8.40 test installation before publishing a release.
+Confirm the generated XML parses and imports without warnings. Test guest/member sessions, forum and thread pages, profiles, private messages, moderation controls, header dropdowns, and post actions. Check desktop, tablet, and phone widths, including menus near viewport edges. Re-import into a clean MyBB 1.8.40 test installation before publishing a release.
 
 ## License
 
