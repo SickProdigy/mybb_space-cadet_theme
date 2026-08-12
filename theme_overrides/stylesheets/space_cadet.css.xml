@@ -145,6 +145,20 @@ a:active {
 
 #search input { margin: 0; }
 
+#search input.textbox {
+	background: #181818;
+	border-color: #4a4a4a;
+	box-shadow: inset 0 1px 2px #0a0a0a;
+}
+
+#search input.textbox:hover { border-color: #606060; }
+
+#search input.textbox:focus {
+	background: #1d1d1d;
+	border-color: #7289da;
+	box-shadow: 0 0 0 1px rgba(114, 137, 218, 0.25);
+}
+
 #content {
 	box-sizing: border-box;
 	padding: 18px 0 28px;
