@@ -1,11 +1,37 @@
-<stylesheet name="space_cadet.css" version="1840" disporder="8"><![CDATA[html,
+<stylesheet name="space_cadet.css" version="1840" disporder="8"><![CDATA[@font-face {
+	font-family: "Droid Sans";
+	src: url(images/space-cadet/fonts/droid-sans/DroidSans-Regular.woff2) format("woff2"),
+		url(images/space-cadet/fonts/droid-sans/DroidSans-Regular.ttf) format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Droid Sans";
+	src: url(images/space-cadet/fonts/droid-sans/DroidSans-Bold.woff2) format("woff2"),
+		url(images/space-cadet/fonts/droid-sans/DroidSans-Bold.ttf) format("truetype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+html,
 body { background: #171b1d; }
 
 body,
-#container {
+#container,
+input,
+textarea,
+select,
+button {
 	color: #ccc;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 13px;
+	font-family: "Droid Sans", Arial, Helvetica, sans-serif;
+	}
+
+body,
+#container {
+	font-size: 14px;
 }
 
 #container { min-width: 0; }
@@ -191,6 +217,7 @@ a:active {
 
 .thead {
 	background: #151515;
+	padding: 10px;
 	color: #fff;
 	border-left: 3px solid #7289da;
 	border-bottom-color: #080808;
@@ -210,6 +237,7 @@ a:active {
 
 .tcat {
 	background: #202020;
+	padding: 7px 10px;
 	color: #ccc;
 	border-top-color: #111;
 	border-bottom-color: #303030;
@@ -316,7 +344,7 @@ a:active {
 
 .index_layout {
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) 280px;
+	grid-template-columns: minmax(0, 1fr) 300px;
 	align-items: start;
 	gap: 18px;
 }
@@ -404,6 +432,7 @@ a:active {
 .trow1,
 .trow2 {
 	color: #ccc;
+	padding: 9px 10px;
 	border-color: #101010 #292929 #292929 #101010;
 }
 
@@ -430,6 +459,8 @@ tr.trow_selected td {
 table,
 .smalltext,
 .navigation { color: #ccc; }
+
+.smalltext { font-size: 12px; }
 
 .navigation .active { color: #aaa; }
 

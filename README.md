@@ -16,7 +16,8 @@ theme_overrides/
 ├── stylesheets/            # Space Cadet additions or replacements
 └── templates/              # modified stock templates only
 images/space-cadet/
-└── fontawesome/             # self-hosted Font Awesome Free Solid and Brands assets
+├── fontawesome/             # self-hosted Font Awesome Free Solid and Brands assets
+└── fonts/droid-sans/        # local Droid Sans webfonts and Apache 2.0 license
 scripts/
 ├── split_theme.py
 └── assemble_theme.py
@@ -45,7 +46,7 @@ python3 scripts/assemble_theme.py
 
 The assembler includes theme properties, override stylesheets, and override templates only. All other components inherit from MyBB Master Style. Import `space-cadet-theme.xml` through **Admin CP → Templates & Style → Import a Theme** on a non-production forum.
 
-The XML does not contain binary assets. Copy `images/space-cadet/` to the same path beneath the MyBB installation before testing or publishing. Font Awesome Free 6.4.0 Solid and Brands assets are vendored under `images/space-cadet/fontawesome/`; retain the included `LICENSE.txt` when redistributing the theme.
+The XML does not contain binary assets. Copy `images/space-cadet/` to the same path beneath the MyBB installation before testing or publishing. Font Awesome Free 6.4.0 assets are vendored under `images/space-cadet/fontawesome/`, and Droid Sans webfonts are under `images/space-cadet/fonts/droid-sans/`. Retain both included license files when redistributing the theme.
 
 To refresh the split upstream reference from the official XML:
 
