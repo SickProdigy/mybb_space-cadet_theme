@@ -1,0 +1,1 @@
+<template name="footer_contactus" version="1800"><![CDATA[<li><a href="{$mybb->settings['contactlink']}" title="{$lang->bottomlinks_contactus}" aria-label="{$lang->bottomlinks_contactus}"><i class="fa-solid fa-envelope fa-fw" aria-hidden="true"></i></a></li>]]></template>

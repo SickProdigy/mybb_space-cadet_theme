@@ -1,0 +1,16 @@
+<template name="footer" version="1820"><![CDATA[<debugstuff>
+	</div>
+</div>
+<div id="footer">
+	<div class="lower">
+		<div class="wrapper">
+			<span id="current_time">{$lang->welcome_current_time}</span>
+			<span id="copyright">
+				Copyright &copy; 2026 SickGaming
+			</span>
+		</div>
+	</div>
+</div>
+<!-- The following piece of code allows MyBB to run scheduled tasks. DO NOT REMOVE -->{$task_image}<!-- End task image code -->
+{$auto_dst_detection}
+</div>]]></template>

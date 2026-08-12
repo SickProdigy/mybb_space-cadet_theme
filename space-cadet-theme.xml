@@ -574,6 +574,55 @@ blockquote,
 	border-color: #262626;
 }
 
+.boardstats_footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 15px;
+}
+
+.boardstats_links {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.boardstats_links li { margin: 0; }
+
+.boardstats_links a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	width: 30px;
+	height: 30px;
+	background: #202020;
+	border: 1px solid #303030;
+	border-radius: 3px;
+	color: #aaa;
+}
+
+.boardstats_links a:hover {
+	background: #262832;
+	border-color: #7289da;
+	color: #fff;
+	text-decoration: none;
+}
+
+.boardstats_links i { font-size: 14px; }
+
+.boardstats_selectors {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.boardstats_selectors .language,
+.boardstats_selectors .theme { float: none; }
+
 #footer .lower {
 	background: #0e0e0e;
 	color: #969696;
@@ -611,6 +660,11 @@ blockquote,
 
 	.index_layout { grid-template-columns: minmax(0, 1fr); }
 	.index_sidebar { margin-top: 4px; }
+
+	.boardstats_footer {
+		align-items: flex-start;
+		flex-direction: column;
+	}
 
 	.post.classic { grid-template-columns: minmax(0, 1fr); }
 
@@ -672,6 +726,24 @@ blockquote,
 ]]></stylesheet>
 </stylesheets>
 <templates>
+<template name="footer" version="1820"><![CDATA[<debugstuff>
+	</div>
+</div>
+<div id="footer">
+	<div class="lower">
+		<div class="wrapper">
+			<span id="current_time">{$lang->welcome_current_time}</span>
+			<span id="copyright">
+				Copyright &copy; 2026 SickGaming
+			</span>
+		</div>
+	</div>
+</div>
+<!-- The following piece of code allows MyBB to run scheduled tasks. DO NOT REMOVE -->{$task_image}<!-- End task image code -->
+{$auto_dst_detection}
+</div>]]></template>
+<template name="footer_contactus" version="1800"><![CDATA[<li><a href="{$mybb->settings['contactlink']}" title="{$lang->bottomlinks_contactus}" aria-label="{$lang->bottomlinks_contactus}"><i class="fa-solid fa-envelope fa-fw" aria-hidden="true"></i></a></li>]]></template>
+<template name="footer_showteamlink" version="1820"><![CDATA[<li><a href="showteam.php" title="{$lang->bottomlinks_forumteam}" aria-label="{$lang->bottomlinks_forumteam}"><i class="fa-solid fa-users-gear fa-fw" aria-hidden="true"></i></a></li>]]></template>
 <template name="forumbit_depth1_cat" version="1800"><![CDATA[<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
 <thead>
 <tr>
@@ -1033,6 +1105,36 @@ document.addEventListener("DOMContentLoaded", function() {
 {$footer}
 </body>
 </html>]]></template>
+<template name="index_boardstats" version="1820"><![CDATA[<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+<thead>
+<tr>
+<td class="thead{$collapsedthead['boardstats']}">
+<div class="expcolimage"><img src="{$theme['imgdir']}/collapse{$collapsedimg['boardstats']}.png" id="boardstats_img" class="expander" alt="{$expaltext}" title="{$expaltext}" /></div>
+<div><strong>{$lang->boardstats}</strong></div>
+</td>
+</tr>
+</thead>
+<tbody style="{$collapsed['boardstats_e']}" id="boardstats_e">
+{$whosonline}
+{$birthdays}
+{$forumstats}
+<tr>
+	<td class="tfoot boardstats_footer">
+		<ul class="boardstats_links">
+			{$showteamlink}
+			{$contact_us}
+			<li><a href="{$mybb->settings['homeurl']}" title="{$mybb->settings['homename']}" aria-label="{$mybb->settings['homename']}"><i class="fa-solid fa-house fa-fw" aria-hidden="true"></i></a></li>
+			<li><a href="#top" title="{$lang->bottomlinks_returntop}" aria-label="{$lang->bottomlinks_returntop}"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i></a></li>
+			<li><a href="<archive_url>" title="{$lang->bottomlinks_litemode}" aria-label="{$lang->bottomlinks_litemode}"><i class="fa-solid fa-box-archive fa-fw" aria-hidden="true"></i></a></li>
+			<li><a href="{$mybb->settings['bburl']}/misc.php?action=markread{$post_code_string}" title="{$lang->bottomlinks_markread}" aria-label="{$lang->bottomlinks_markread}"><i class="fa-solid fa-check-double fa-fw" aria-hidden="true"></i></a></li>
+			<li><a href="{$mybb->settings['bburl']}/misc.php?action=syndication" title="{$lang->bottomlinks_syndication}" aria-label="{$lang->bottomlinks_syndication}"><i class="fa-solid fa-rss fa-fw" aria-hidden="true"></i></a></li>
+		</ul>
+		<div class="boardstats_selectors">{$lang_select}{$theme_select}</div>
+	</td>
+</tr>
+</tbody>
+</table>
+<br />]]></template>
 <template name="postbit" version="1813"><![CDATA[{$ignore_bit}{$deleted_bit}
 <a name="pid{$post['pid']}" id="pid{$post['pid']}"></a>
 <div class="post classic {$unapproved_shade}" style="{$post_visibility}" id="post_{$post['pid']}">
