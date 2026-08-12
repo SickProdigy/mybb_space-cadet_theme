@@ -1,0 +1,1 @@
+<template name="header_menu_memberlist" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/memberlist.php" class="memberlist"><i class="fa-solid fa-users fa-fw" aria-hidden="true"></i> {$lang->toplinks_memberlist}</a></li>]]></template>

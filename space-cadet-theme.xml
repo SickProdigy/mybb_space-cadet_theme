@@ -11,9 +11,7 @@
 	</properties>
 <stylesheets>
 <stylesheet name="space_cadet.css" version="1840" disporder="8"><![CDATA[html,
-body {
-	background: #171b1d;
-}
+body { background: #171b1d; }
 
 body,
 #container {
@@ -22,14 +20,10 @@ body,
 	font-size: 13px;
 }
 
-#container {
-	min-width: 0;
-}
+#container { min-width: 0; }
 
 a:link,
-a:visited {
-	color: #7289da;
-}
+a:visited { color: #7289da; }
 
 a:hover,
 a:active {
@@ -82,14 +76,18 @@ a:active {
 }
 
 #header ul.menu li a {
-	padding: 8px 10px 8px 30px;
+	padding: 8px 10px;
+	background-image: none;
 	border-radius: 3px;
 	color: #fff;
 }
 
-#header ul.menu li a:hover {
-	background-color: #262626;
+#header ul.menu li a i {
+	color: #7289da;
+	font-size: 13px;
 }
+
+#header ul.menu li a:hover { background-color: #262626; }
 
 #panel .upper {
 	background: #0e0e0e;
@@ -124,20 +122,14 @@ a:active {
 }
 
 #panel .lower ul.panel_links,
-#panel .lower ul.user_links {
-	float: none;
-}
+#panel .lower ul.user_links { float: none; }
 
-#panel .lower br.clear {
-	display: none;
-}
+#panel .lower br.clear { display: none; }
 
 #panel .lower a:link,
 #panel .lower a:visited,
 #panel .lower a:hover,
-#panel .lower a:active {
-	color: #ccc;
-}
+#panel .lower a:active { color: #ccc; }
 
 #search {
 	order: 2;
@@ -146,9 +138,7 @@ a:active {
 	gap: 5px;
 }
 
-#search input {
-	margin: 0;
-}
+#search input { margin: 0; }
 
 #content {
 	box-sizing: border-box;
@@ -157,14 +147,10 @@ a:active {
 	color: #d3d3d3;
 }
 
-#content .navigation {
-	color: #aaa;
-}
+#content .navigation { color: #aaa; }
 
 #content .navigation a:link,
-#content .navigation a:visited {
-	color: #7289da;
-}
+#content .navigation a:visited { color: #7289da; }
 
 .tborder {
 	background: #161616;
@@ -175,10 +161,11 @@ a:active {
 }
 
 .thead {
-	background: #262832;
+	background: #151515;
 	color: #fff;
-	border-bottom-color: #101116;
-	box-shadow: inset 0 0 1px 1px #3a3d4c;
+	border-left: 3px solid #7289da;
+	border-bottom-color: #080808;
+	box-shadow: inset 0 0 1px 1px #292929;
 	text-transform: uppercase;
 	text-shadow: 1px 1px 0 #070707;
 }
@@ -190,9 +177,7 @@ a:active {
 .tcat a:link,
 .tcat a:visited,
 .tcat a:hover,
-.tcat a:active {
-	color: #fff;
-}
+.tcat a:active { color: #fff; }
 
 .tcat {
 	background: #202020;
@@ -201,19 +186,13 @@ a:active {
 	border-bottom-color: #303030;
 }
 
-.trow1 {
-	background: #181818;
-}
-
-.trow2 {
-	background: #1c1c1c;
-}
+.trow1 { background: #181818; }
+.trow2 { background: #1c1c1c; }
 
 .trow1,
 .trow2 {
 	color: #ccc;
-	border-top-color: #101010;
-	border-bottom-color: #292929;
+	border-color: #101010 #292929 #292929 #101010;
 }
 
 .trow_shaded,
@@ -231,20 +210,16 @@ tr.trow_selected td {
 }
 
 .tfoot a:link,
-.tfoot a:visited {
-	color: #ccc;
-}
+.tfoot a:visited { color: #ccc; }
 
 .tfoot a:hover,
-.tfoot a:active {
-	color: #fff;
-}
+.tfoot a:active { color: #fff; }
 
 table,
 .smalltext,
-.navigation {
-	color: #ccc;
-}
+.navigation { color: #ccc; }
+
+.navigation .active { color: #aaa; }
 
 input.textbox,
 textarea,
@@ -304,18 +279,11 @@ blockquote,
 #footer a:link,
 #footer a:visited,
 #footer a:hover,
-#footer a:active {
-	color: #ccc;
-}
+#footer a:active { color: #ccc; }
 
 @media (max-width: 760px) {
-	.wrapper {
-		width: calc(100% - 20px);
-	}
-
-	#logo {
-		min-height: 0;
-	}
+	.wrapper { width: calc(100% - 20px); }
+	#logo { min-height: 0; }
 
 	#logo .wrapper,
 	#panel .upper .wrapper,
@@ -324,13 +292,8 @@ blockquote,
 		flex-direction: column;
 	}
 
-	#logo img {
-		max-width: 100%;
-	}
-
-	#logo ul.top_links {
-		justify-content: flex-start;
-	}
+	#logo img { max-width: 100%; }
+	#logo ul.top_links { justify-content: flex-start; }
 
 	#search {
 		order: 0;
@@ -346,5 +309,98 @@ blockquote,
 ]]></stylesheet>
 </stylesheets>
 <templates>
+<template name="header" version="1820"><![CDATA[<div id="container">
+		<a name="top" id="top"></a>
+		<div id="header">
+			<div id="logo">
+				<div class="wrapper">
+					<a href="{$mybb->settings['bburl']}/index.php"><img src="{$theme['logo']}" alt="{$mybb->settings['bbname']}" title="{$mybb->settings['bbname']}" /></a>
+					<ul class="menu top_links">
+						{$menu_portal}
+						{$menu_search}
+						{$menu_memberlist}
+						{$menu_calendar}
+						<li><a href="{$mybb->settings['bburl']}/misc.php?action=help" class="help"><i class="fa-solid fa-circle-question fa-fw" aria-hidden="true"></i> {$lang->toplinks_help}</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="panel">
+				<div class="upper">
+					<div class="wrapper">
+						{$quicksearch}
+						{$welcomeblock}
+					<!-- </div> in header_welcomeblock_member and header_welcomeblock_guest -->
+				<!-- </div> in header_welcomeblock_member and header_welcomeblock_guest -->
+			</div>
+		</div>
+		<div id="content">
+			<div class="wrapper">
+				{$pm_notice}
+				{$remote_avatar_notice}
+				{$bannedwarning}
+				{$bbclosedwarning}
+				{$modnotice}
+				{$pending_joinrequests}
+				{$awaitingusers}
+				<navigation>
+				<br />]]></template>
+<template name="header_menu_calendar" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/calendar.php" class="calendar"><i class="fa-solid fa-calendar-days fa-fw" aria-hidden="true"></i> {$lang->toplinks_calendar}</a></li>]]></template>
+<template name="header_menu_memberlist" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/memberlist.php" class="memberlist"><i class="fa-solid fa-users fa-fw" aria-hidden="true"></i> {$lang->toplinks_memberlist}</a></li>]]></template>
+<template name="header_menu_portal" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/portal.php" class="portal"><i class="fa-solid fa-house fa-fw" aria-hidden="true"></i> {$lang->toplinks_portal}</a></li>]]></template>
+<template name="header_menu_search" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/search.php" class="search"><i class="fa-solid fa-magnifying-glass fa-fw" aria-hidden="true"></i> {$lang->toplinks_search}</a></li>]]></template>
+<template name="headerinclude" version="1827"><![CDATA[<link rel="alternate" type="application/rss+xml" title="{$lang->latest_threads} (RSS 2.0)" href="{$mybb->settings['bburl']}/syndication.php" />
+<link rel="alternate" type="application/atom+xml" title="{$lang->latest_threads} (Atom 1.0)" href="{$mybb->settings['bburl']}/syndication.php?type=atom1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" href="{$mybb->asset_url}/images/space-cadet/fontawesome/css/fontawesome.min.css" />
+<link rel="stylesheet" href="{$mybb->asset_url}/images/space-cadet/fontawesome/css/solid.min.css" />
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/jquery.js?ver=1823"></script>
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/jquery.plugins.min.js?ver=1821"></script>
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/general.js?ver=1827"></script>
+
+{$stylesheets}
+<script type="text/javascript">
+<!--
+	lang.unknown_error = "{$lang->unknown_error}";
+	lang.confirm_title = "{$lang->confirm_title}";
+	lang.expcol_collapse = "{$lang->expcol_collapse}";
+	lang.expcol_expand = "{$lang->expcol_expand}";
+	lang.select2_match = "{$lang->select2_match}";
+	lang.select2_matches = "{$lang->select2_matches}";
+	lang.select2_nomatches = "{$lang->select2_nomatches}";
+	lang.select2_inputtooshort_single = "{$lang->select2_inputtooshort_single}";
+	lang.select2_inputtooshort_plural = "{$lang->select2_inputtooshort_plural}";
+	lang.select2_inputtoolong_single = "{$lang->select2_inputtoolong_single}";
+	lang.select2_inputtoolong_plural = "{$lang->select2_inputtoolong_plural}";
+	lang.select2_selectiontoobig_single = "{$lang->select2_selectiontoobig_single}";
+	lang.select2_selectiontoobig_plural = "{$lang->select2_selectiontoobig_plural}";
+	lang.select2_loadmore = "{$lang->select2_loadmore}";
+	lang.select2_searching = "{$lang->select2_searching}";
+
+	var templates = {
+		modal: '{$jsTemplates['modal']}',
+		modal_button: '{$jsTemplates['modal_button']}'
+	};
+
+	var cookieDomain = "{$mybb->settings['cookiedomain']}";
+	var cookiePath = "{$mybb->settings['cookiepath']}";
+	var cookiePrefix = "{$mybb->settings['cookieprefix']}";
+	var cookieSecureFlag = "{$mybb->settings['cookiesecureflag']}";
+	var deleteevent_confirm = "{$lang->deleteevent_confirm}";
+	var removeattach_confirm = "{$lang->removeattach_confirm}";
+	var loading_text = '{$lang->ajax_loading}';
+	var saving_changes = '{$lang->saving_changes}';
+	var use_xmlhttprequest = "{$mybb->settings['use_xmlhttprequest']}";
+	var my_post_key = "{$mybb->post_code}";
+	var rootpath = "{$mybb->settings['bburl']}";
+	var imagepath = "{$theme['imgdir']}";
+  	var yes_confirm = "{$lang->yes}";
+	var no_confirm = "{$lang->no}";
+	var MyBBEditor = null;
+	var spinner_image = "{$theme['imgdir']}/spinner.gif";
+	var spinner = "<img src='" + spinner_image +"' alt='' />";
+	var modal_zindex = 9999;
+// -->
+</script>]]></template>
 </templates>
 </theme>

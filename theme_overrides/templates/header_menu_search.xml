@@ -1,0 +1,1 @@
+<template name="header_menu_search" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/search.php" class="search"><i class="fa-solid fa-magnifying-glass fa-fw" aria-hidden="true"></i> {$lang->toplinks_search}</a></li>]]></template>
