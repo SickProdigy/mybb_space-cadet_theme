@@ -211,6 +211,70 @@ a:active {
 .trow1 { background: #181818; }
 .trow2 { background: #1c1c1c; }
 
+/* Forum states use local Font Awesome badges instead of MyBB's sprite. */
+.forum_status {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	width: 38px;
+	height: 24px;
+	background: #252525;
+	border: 1px solid #303030;
+	border-radius: 12px;
+	color: #7289da;
+	font-family: "Font Awesome 6 Free";
+	font-size: 15px;
+	font-weight: 900;
+	line-height: 1;
+}
+
+.forum_status::before { content: "\f11b"; }
+
+.forum_status.forum_off {
+	color: #777;
+	opacity: 0.65;
+}
+
+.forum_status.forum_offclose {
+	color: #888;
+	opacity: 0.75;
+}
+
+.forum_status.forum_offclose::after,
+.forum_status.forum_offlink::after {
+	position: absolute;
+	right: -4px;
+	bottom: -4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	width: 14px;
+	height: 14px;
+	background: #111;
+	border: 1px solid #3b3b3b;
+	border-radius: 50%;
+	color: #aaa;
+	font-size: 8px;
+}
+
+.forum_status.forum_offclose::after { content: "\f023"; }
+
+.forum_status.forum_offlink {
+	color: #888;
+	opacity: 0.75;
+}
+
+.forum_status.forum_offlink::after { content: "\f061"; }
+
+.forum_legend .forum_status {
+	width: 34px;
+	height: 22px;
+	font-size: 13px;
+}
+
 .trow1,
 .trow2 {
 	color: #ccc;
