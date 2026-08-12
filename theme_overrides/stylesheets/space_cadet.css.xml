@@ -65,6 +65,7 @@ a:active {
 }
 
 #logo .wrapper {
+	position: relative;
 	display: flex;
 	align-items: flex-start;
 	flex-direction: column;
@@ -138,9 +139,22 @@ a:active {
 .header_account {
 	position: absolute;
 	right: 0;
-	bottom: calc(100% + 12px);
+	bottom: 0;
 	z-index: 100;
 }
+
+.header_guest_account {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	padding: 8px 10px;
+	background: rgba(8, 8, 12, 0.7);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 4px;
+	color: #ccc;
+}
+
+.header_guest_account a { margin-left: 8px; }
 
 .header_account_toggle {
 	display: block;
@@ -861,6 +875,14 @@ blockquote,
 	#logo ul.top_links { justify-content: center; }
 
 	.header_account {
+		position: relative;
+		right: auto;
+		bottom: auto;
+		align-self: flex-end;
+		margin: 5px 0;
+	}
+
+	.header_guest_account {
 		position: relative;
 		right: auto;
 		bottom: auto;

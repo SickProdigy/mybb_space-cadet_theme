@@ -24,15 +24,8 @@
 						$("#header_extras_menu").popupMenu();
 					</script>
 					<a href="{$mybb->settings['bburl']}/index.php"><img src="{$theme['logo']}" alt="{$mybb->settings['bbname']}" title="{$mybb->settings['bbname']}" /></a>
+					{$welcomeblock}
 				</div>
-			</div>
-			<div id="panel">
-				<div class="upper">
-					<div class="wrapper">
-						{$quicksearch}
-						{$welcomeblock}
-					<!-- </div> in header_welcomeblock_member and header_welcomeblock_guest -->
-				<!-- </div> in header_welcomeblock_member and header_welcomeblock_guest -->
 			</div>
 		</div>
 		<div id="content">

@@ -77,6 +77,7 @@ a:active {
 }
 
 #logo .wrapper {
+	position: relative;
 	display: flex;
 	align-items: flex-start;
 	flex-direction: column;
@@ -150,9 +151,22 @@ a:active {
 .header_account {
 	position: absolute;
 	right: 0;
-	bottom: calc(100% + 12px);
+	bottom: 0;
 	z-index: 100;
 }
+
+.header_guest_account {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	padding: 8px 10px;
+	background: rgba(8, 8, 12, 0.7);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 4px;
+	color: #ccc;
+}
+
+.header_guest_account a { margin-left: 8px; }
 
 .header_account_toggle {
 	display: block;
@@ -880,6 +894,14 @@ blockquote,
 		margin: 5px 0;
 	}
 
+	.header_guest_account {
+		position: relative;
+		right: auto;
+		bottom: auto;
+		align-self: flex-end;
+		margin: 5px 0;
+	}
+
 	#search {
 		order: 0;
 		width: 100%;
@@ -1123,15 +1145,8 @@ blockquote,
 						$("#header_extras_menu").popupMenu();
 					</script>
 					<a href="{$mybb->settings['bburl']}/index.php"><img src="{$theme['logo']}" alt="{$mybb->settings['bbname']}" title="{$mybb->settings['bbname']}" /></a>
+					{$welcomeblock}
 				</div>
-			</div>
-			<div id="panel">
-				<div class="upper">
-					<div class="wrapper">
-						{$quicksearch}
-						{$welcomeblock}
-					<!-- </div> in header_welcomeblock_member and header_welcomeblock_guest -->
-				<!-- </div> in header_welcomeblock_member and header_welcomeblock_guest -->
 			</div>
 		</div>
 		<div id="content">
@@ -1149,10 +1164,9 @@ blockquote,
 <template name="header_menu_memberlist" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/memberlist.php" class="memberlist"><i class="fa-solid fa-users fa-fw" aria-hidden="true"></i> {$lang->toplinks_memberlist}</a></li>]]></template>
 <template name="header_menu_portal" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/portal.php" class="portal"><i class="fa-solid fa-house fa-fw" aria-hidden="true"></i> {$lang->toplinks_portal}</a></li>]]></template>
 <template name="header_menu_search" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/search.php" class="search"><i class="fa-solid fa-magnifying-glass fa-fw" aria-hidden="true"></i> {$lang->toplinks_search}</a></li>]]></template>
-<template name="header_welcomeblock_guest" version="1816"><![CDATA[						<!-- Continuation of div(class="upper") as opened in the header template -->
-						<span class="welcome">{$lang->welcome_guest} <a href="{$mybb->settings['bburl']}/member.php?action=login" onclick="$('#quick_login').modal({ fadeDuration: 250, keepelement: true, zIndex: (typeof modal_zindex !== 'undefined' ? modal_zindex : 9999) }); return false;" class="login"><i class="fa-solid fa-key fa-fw" aria-hidden="true"></i> {$lang->welcome_login}</a> <a href="{$mybb->settings['bburl']}/member.php?action=register" class="register"><i class="fa-solid fa-user-plus fa-fw" aria-hidden="true"></i> {$lang->welcome_register}</a></span>
+<template name="header_welcomeblock_guest" version="1816"><![CDATA[					<div class="header_guest_account">
+						<span>{$lang->welcome_guest} <a href="{$mybb->settings['bburl']}/member.php?action=login" onclick="$('#quick_login').modal({ fadeDuration: 250, keepelement: true, zIndex: (typeof modal_zindex !== 'undefined' ? modal_zindex : 9999) }); return false;" class="login"><i class="fa-solid fa-key fa-fw" aria-hidden="true"></i> {$lang->welcome_login}</a> <a href="{$mybb->settings['bburl']}/member.php?action=register" class="register"><i class="fa-solid fa-user-plus fa-fw" aria-hidden="true"></i> {$lang->welcome_register}</a></span>
 					</div>
-				</div>
 				<div class="modal" id="quick_login" style="display: none;">
 					<form method="post" action="{$mybb->settings['bburl']}/member.php">
 						<input name="action" type="hidden" value="do_login" />
@@ -1170,8 +1184,7 @@ blockquote,
 				<script type="text/javascript">
 					$("#quick_login input[name='url']").val($(location).attr('href'));
 				</script>]]></template>
-<template name="header_welcomeblock_member" version="1821"><![CDATA[<!-- Continuation of div(class="upper") as opened in the header template -->
-	<div class="header_account">
+<template name="header_welcomeblock_member" version="1821"><![CDATA[<div class="header_account">
 		<a href="{$mybb->settings['bburl']}/usercp.php" id="header_account_menu" class="header_account_toggle"><i class="fa-solid fa-circle-user fa-fw" aria-hidden="true"></i> {$mybb->user['username']} <i class="fa-solid fa-chevron-down header_account_chevron" aria-hidden="true"></i></a>
 		<ul id="header_account_menu_popup" class="popup_menu header_account_menu" style="display: none;">
 			<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php">User Panel</a></li>
@@ -1179,6 +1192,7 @@ blockquote,
 			<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=options">Edit Options</a></li>
 			<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=editsig">Edit Signature</a></li>
 			<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=editlists">Friends List</a></li>
+			<li><a class="popup_item" href="{$mybb->settings['bburl']}/private.php">Messages ({$mybb->user['pms_unread']})</a></li>
 			<li><a class="popup_item" href="{$mybb->settings['bburl']}/member.php?action=logout&amp;logoutkey={$mybb->user['logoutkey']}">Sign Out</a></li>
 			{$modcplink}
 			{$admincplink}
@@ -1187,24 +1201,7 @@ blockquote,
 	<script type="text/javascript">
 		$("#header_account_menu").popupMenu();
 	</script>
-	<span class="welcome">{$lang->welcome_back} <a href="{$mybb->settings['bburl']}/member.php?action=logout&amp;logoutkey={$mybb->user['logoutkey']}" class="logout"><i class="fa-solid fa-right-from-bracket fa-fw" aria-hidden="true"></i> {$lang->welcome_logout}</a></span>
-	</div>
-</div>
-<div class="lower">
-	<div class="wrapper">
-		<ul class="menu panel_links">
-			{$usercplink}
-			{$modcplink}
-			{$admincplink}
-		</ul>
-		<ul class="menu user_links">
-			{$buddylink}
-			{$searchlink}
-			{$pmslink}
-		</ul>
-	</div>
-	<br class="clear" />
-</div>]]></template>
+]]></template>
 <template name="header_welcomeblock_member_admin" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/{$admin_dir}/index.php" class="admincp"><i class="fa-solid fa-screwdriver-wrench fa-fw" aria-hidden="true"></i> {$lang->welcome_admin}</a></li>]]></template>
 <template name="header_welcomeblock_member_moderator" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/modcp.php" class="modcp"><i class="fa-solid fa-shield-halved fa-fw" aria-hidden="true"></i> {$lang->welcome_modcp}</a></li>]]></template>
 <template name="header_welcomeblock_member_pms" version="1809"><![CDATA[<li><a href="{$mybb->settings['bburl']}/private.php"><i class="fa-solid fa-envelope fa-fw" aria-hidden="true"></i> {$lang->welcome_pms}</a> {$lang->welcome_pms_usage}</li>]]></template>
