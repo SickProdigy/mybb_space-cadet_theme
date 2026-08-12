@@ -14,13 +14,13 @@
 <tr>
 	<td class="tfoot boardstats_footer">
 		<ul class="boardstats_links">
+			<li><a href="{$mybb->settings['bburl']}/misc.php?action=syndication" title="{$lang->bottomlinks_syndication}" aria-label="{$lang->bottomlinks_syndication}"><i class="fa-solid fa-rss fa-fw" aria-hidden="true"></i></a></li>
+			<li><a href="<archive_url>" title="{$lang->bottomlinks_litemode}" aria-label="{$lang->bottomlinks_litemode}"><i class="fa-solid fa-box-archive fa-fw" aria-hidden="true"></i></a></li>
+			<li><a href="{$mybb->settings['bburl']}/stats.php" title="{$lang->bottomlinks_forumstats}" aria-label="{$lang->bottomlinks_forumstats}"><i class="fa-solid fa-chart-column fa-fw" aria-hidden="true"></i></a></li>
 			{$showteamlink}
 			{$contact_us}
-			<li><a href="{$mybb->settings['homeurl']}" title="{$mybb->settings['homename']}" aria-label="{$mybb->settings['homename']}"><i class="fa-solid fa-house fa-fw" aria-hidden="true"></i></a></li>
-			<li><a href="#top" title="{$lang->bottomlinks_returntop}" aria-label="{$lang->bottomlinks_returntop}"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i></a></li>
-			<li><a href="<archive_url>" title="{$lang->bottomlinks_litemode}" aria-label="{$lang->bottomlinks_litemode}"><i class="fa-solid fa-box-archive fa-fw" aria-hidden="true"></i></a></li>
 			<li><a href="{$mybb->settings['bburl']}/misc.php?action=markread{$post_code_string}" title="{$lang->bottomlinks_markread}" aria-label="{$lang->bottomlinks_markread}"><i class="fa-solid fa-check-double fa-fw" aria-hidden="true"></i></a></li>
-			<li><a href="{$mybb->settings['bburl']}/misc.php?action=syndication" title="{$lang->bottomlinks_syndication}" aria-label="{$lang->bottomlinks_syndication}"><i class="fa-solid fa-rss fa-fw" aria-hidden="true"></i></a></li>
+			<li><a href="#top" title="{$lang->bottomlinks_returntop}" aria-label="{$lang->bottomlinks_returntop}"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i></a></li>
 		</ul>
 		<div class="boardstats_selectors">{$lang_select}{$theme_select}</div>
 	</td>
