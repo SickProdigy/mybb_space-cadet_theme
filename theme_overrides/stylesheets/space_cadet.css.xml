@@ -306,6 +306,14 @@ a:active {
 
 .forum_row:last-child td { border-bottom-color: transparent; }
 
+.forum_threadlist .inline_row td,
+.forum_threadlist .announcement_row td {
+	border-left-color: transparent;
+	border-right-color: transparent;
+	border-top-color: #101010;
+	border-bottom-color: #242424;
+}
+
 .trow1,
 .trow2 {
 	color: #ccc;
