@@ -13,9 +13,7 @@
 		</ul>
 	</div>
 	<script type="text/javascript">
-		$(function() {
-			$("#header_account_menu").popupMenu();
-		});
+		$("#header_account_menu").popupMenu();
 	</script>
 	<span class="welcome">{$lang->welcome_back} <a href="{$mybb->settings['bburl']}/member.php?action=logout&amp;logoutkey={$mybb->user['logoutkey']}" class="logout"><i class="fa-solid fa-right-from-bracket fa-fw" aria-hidden="true"></i> {$lang->welcome_logout}</a></span>
 	</div>
