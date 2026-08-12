@@ -1,18 +1,29 @@
 <template name="header_welcomeblock_member" version="1821"><![CDATA[<div class="header_account">
-		<a href="{$mybb->settings['bburl']}/usercp.php" id="header_account_menu" class="header_account_toggle"><i class="fa-solid fa-circle-user fa-fw" aria-hidden="true"></i> {$mybb->user['username']} <i class="fa-solid fa-chevron-down header_account_chevron" aria-hidden="true"></i></a>
-		<ul id="header_account_menu_popup" class="popup_menu header_account_menu" style="display: none;">
-			<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php">User Panel</a></li>
-			<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=profile">Edit Profile</a></li>
-			<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=options">Edit Options</a></li>
-			<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=editsig">Edit Signature</a></li>
-			<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=editlists">Friends List</a></li>
-			<li><a class="popup_item" href="{$mybb->settings['bburl']}/private.php">Messages ({$mybb->user['pms_unread']})</a></li>
-			<li><a class="popup_item" href="{$mybb->settings['bburl']}/member.php?action=logout&amp;logoutkey={$mybb->user['logoutkey']}">Sign Out</a></li>
-			{$modcplink}
-			{$admincplink}
-		</ul>
+		<div class="header_account_member">
+			<a href="{$mybb->settings['bburl']}/usercp.php" id="header_account_menu" class="header_account_toggle"><i class="fa-solid fa-circle-user fa-fw" aria-hidden="true"></i> {$mybb->user['username']} <i class="fa-solid fa-chevron-down header_account_chevron" aria-hidden="true"></i></a>
+			<ul id="header_account_menu_popup" class="popup_menu header_account_menu" style="display: none;">
+				<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php">User Panel</a></li>
+				<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=profile">Edit Profile</a></li>
+				<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=options">Edit Options</a></li>
+				<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=editsig">Edit Signature</a></li>
+				<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=editlists">Friends List</a></li>
+				<li><a class="popup_item" href="{$mybb->settings['bburl']}/member.php?action=logout&amp;logoutkey={$mybb->user['logoutkey']}">Sign Out</a></li>
+				{$modcplink}
+				{$admincplink}
+			</ul>
+		</div>
+		<div class="header_messages">
+			<a href="{$mybb->settings['bburl']}/private.php" id="header_messages_menu" class="header_messages_toggle">Messages <i class="fa-solid fa-chevron-down header_account_chevron" aria-hidden="true"></i> <span class="header_messages_count">{$mybb->user['pms_unread']}</span></a>
+			<ul id="header_messages_menu_popup" class="popup_menu header_account_menu header_messages_menu" style="display: none;">
+				<li><a class="popup_item" href="{$mybb->settings['bburl']}/private.php?fid=1">Inbox</a></li>
+				<li><a class="popup_item" href="{$mybb->settings['bburl']}/private.php?action=send">Compose</a></li>
+				<li><a class="popup_item" href="{$mybb->settings['bburl']}/private.php?fid=2">Sent Items</a></li>
+				<li><a class="popup_item" href="{$mybb->settings['bburl']}/private.php?action=tracking">Tracking</a></li>
+			</ul>
+		</div>
 	</div>
 	<script type="text/javascript">
 		$("#header_account_menu").popupMenu();
+		$("#header_messages_menu").popupMenu();
 	</script>
 ]]></template>

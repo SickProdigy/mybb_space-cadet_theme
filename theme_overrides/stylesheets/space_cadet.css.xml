@@ -141,7 +141,12 @@ a:active {
 	right: 0;
 	bottom: -20px;
 	z-index: 100;
+	display: flex;
+	align-items: stretch;
 }
+
+.header_account_member,
+.header_messages { position: relative; }
 
 .header_guest_account {
 	position: absolute;
@@ -169,6 +174,32 @@ a:active {
 
 .header_account_toggle:hover { background: rgba(24, 24, 30, 0.88); }
 
+.header_messages_toggle {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 8px 10px;
+	background: rgba(8, 8, 12, 0.7);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-left: 0;
+	border-radius: 0 4px 4px 0;
+	color: #fff;
+}
+
+.header_account_member .header_account_toggle { border-radius: 4px 0 0 4px; }
+
+.header_messages_toggle:hover { background: rgba(24, 24, 30, 0.88); }
+
+.header_messages_count {
+	margin-left: 8px;
+	padding: 2px 6px;
+	background: #a72626;
+	border-radius: 2px;
+	color: #fff;
+	font-weight: bold;
+}
+
 .header_account_toggle .fa-circle-user { color: #7289da; }
 
 .header_account_chevron {
@@ -194,6 +225,8 @@ a:active {
 }
 
 .header_account_menu li { margin: 0; }
+
+.header_messages_menu { min-width: 130px; }
 
 .popup_menu.header_account_menu li > a,
 .popup_menu.header_account_menu .popup_item {
