@@ -1,0 +1,2 @@
+<template name="forumdisplay_inlinemoderation_approveunapprove" version="1800"><![CDATA[<option value="multiapprovethreads">{$lang->approve_threads}</option>
+<option value="multiunapprovethreads">{$lang->unapprove_threads}</option>]]></template>

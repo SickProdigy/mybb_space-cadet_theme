@@ -1,0 +1,4 @@
+<template name="misc_whoposted_poster" version="1807"><![CDATA[<tr>
+<td class="{$altbg}">{$profile_link}</td>
+<td class="{$altbg}">{$poster['posts']}</td>
+</tr>]]></template>

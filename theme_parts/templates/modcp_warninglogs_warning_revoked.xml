@@ -1,0 +1,1 @@
+<template name="modcp_warninglogs_warning_revoked" version="1400"><![CDATA[<br /><span class="smalltext"><strong>{$lang->revoked}</strong> {$revoked_date}</span>]]></template>

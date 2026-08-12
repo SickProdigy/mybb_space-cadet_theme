@@ -1,0 +1,7 @@
+<template name="printthread_post" version="1800"><![CDATA[<strong>{$postrow['subject']}</strong> - {$postrow['profilelink']} -  <strong>{$postrow['date']}</strong>
+<br />
+<br />
+{$postrow['message']}
+<br />
+<br />
+<hr size="1" />]]></template>

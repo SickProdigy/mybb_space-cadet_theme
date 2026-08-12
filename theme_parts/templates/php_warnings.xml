@@ -1,0 +1,10 @@
+<template name="php_warnings" version="1400"><![CDATA[<table border="0" cellspacing="1" cellpadding="4" align="center" class="tborder">
+<tr>
+<td class="tcat">
+<strong>{$lang->warnings}</strong>
+</td>
+</tr>
+<tr>
+<td class="trow1"><span class="smalltext">{$this->warnings}</span><br /></td>
+</tr>
+</table><br /><br />]]></template>

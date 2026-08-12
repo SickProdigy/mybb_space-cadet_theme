@@ -1,0 +1,11 @@
+<template name="usercp_options_pppselect" version="120"><![CDATA[<tr>
+<td colspan="2"><span class="smalltext">{$lang->ppp}</span></td>
+</tr>
+<tr>
+<td colspan="2">
+<select name="ppp">
+<option value="">{$lang->use_default}</option>
+{$pppoptions}
+</select>
+</td>
+</tr>]]></template>

@@ -1,0 +1,1 @@
+<template name="stats_topforum" version="1808"><![CDATA[<a href="{$forum['link']}">{$forum['name']}</a>]]></template>

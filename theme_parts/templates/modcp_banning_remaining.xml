@@ -1,0 +1,1 @@
+<template name="modcp_banning_remaining" version="1808"><![CDATA[<span class="{$banned_class}">({$ban_remaining})</span>]]></template>

@@ -1,0 +1,1 @@
+<template name="index_whosonline_memberbit" version="1818"><![CDATA[{$user['profilelink']}{$invisiblemark}]]></template>

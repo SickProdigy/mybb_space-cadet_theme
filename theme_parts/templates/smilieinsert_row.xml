@@ -1,0 +1,1 @@
+<template name="smilieinsert_row" version="1808"><![CDATA[<tr>{$smilie_icons}</tr>]]></template>

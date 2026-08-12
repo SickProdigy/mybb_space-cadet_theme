@@ -1,0 +1,7 @@
+<template name="error_inline" version="120"><![CDATA[<div class="error">
+	<p><em>{$title}</em></p>
+	<ul>
+		{$errorlist}
+	</ul>
+</div>
+<br />]]></template>

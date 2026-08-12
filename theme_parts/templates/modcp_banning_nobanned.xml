@@ -1,0 +1,3 @@
+<template name="modcp_banning_nobanned" version="1400"><![CDATA[<tr>
+	<td class="trow1" align="center" colspan="4">{$lang->no_banned}</td>
+</tr>]]></template>

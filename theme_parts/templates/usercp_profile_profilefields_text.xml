@@ -1,0 +1,1 @@
+<template name="usercp_profile_profilefields_text" version="1800"><![CDATA[<input type="text" name="profile_fields[$field]" class="textbox" size="{$profilefield['length']}"{$maxlength} value="{$value}" />]]></template>

@@ -1,0 +1,1 @@
+<template name="forumdisplay_thread_gotounread" version="1800"><![CDATA[<a href="{$thread['newpostlink']}"><img src="{$theme['imgdir']}/jump.png" alt="{$lang->goto_first_unread}" title="{$lang->goto_first_unread}" /></a> ]]></template>

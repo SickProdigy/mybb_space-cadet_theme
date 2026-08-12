@@ -1,0 +1,1 @@
+<template name="postbit_profilefield_multiselect_value" version="1800"><![CDATA[<li style="margin-left: 0;">{$val}</li>]]></template>

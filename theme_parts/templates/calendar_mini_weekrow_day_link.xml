@@ -1,0 +1,1 @@
+<template name="calendar_mini_weekrow_day_link" version="1808"><![CDATA[<a href="{$calendar['link']}">{$day}</a>]]></template>

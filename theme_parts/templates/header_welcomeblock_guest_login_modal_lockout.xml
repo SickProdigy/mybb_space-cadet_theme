@@ -1,0 +1,3 @@
+<template name="header_welcomeblock_guest_login_modal_lockout" version="1816"><![CDATA[<tr>
+	<td class="trow1" colspan="2">{$lang->failed_login_wait}</td>
+</tr>]]></template>

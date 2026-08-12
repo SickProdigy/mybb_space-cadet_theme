@@ -1,0 +1,2 @@
+<template name="private_archive_csv_message" version="1400"><![CDATA[{$senddate},"{$foldername}","{$message['subject']}","{$message['tousername']}","{$message['fromusername']}","{$message['message']}"
+]]></template>

@@ -1,0 +1,1 @@
+<template name="multipage_page_current" version="1400"><![CDATA[ <span class="pagination_current">{$i}</span>]]></template>

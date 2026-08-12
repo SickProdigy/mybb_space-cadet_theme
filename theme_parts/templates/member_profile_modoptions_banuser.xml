@@ -1,0 +1,1 @@
+<template name="member_profile_modoptions_banuser" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/modcp.php?action=banuser&amp;uid={$uid}">{$lang->ban_in_mcp}</a></li>]]></template>

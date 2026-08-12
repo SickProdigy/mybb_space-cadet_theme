@@ -1,0 +1,7 @@
+<template name="calendar_weekrow_day_today" version="1400"><![CDATA[				<td class="calendar_daybit_today">
+					<div class="float_right smalltext"><a href="{$day_link}">{$day}</a></div>
+					<div>
+					{$day_events}
+					{$day_birthdays}
+					</div>
+				</td>]]></template>

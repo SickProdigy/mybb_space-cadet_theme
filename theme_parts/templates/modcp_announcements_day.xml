@@ -1,0 +1,1 @@
+<template name="modcp_announcements_day" version="1809"><![CDATA[<option value="{$day}"{$selected}>{$day}</option>]]></template>

@@ -1,0 +1,3 @@
+<template name="usercp_forumsubscriptions_none" version="120"><![CDATA[<tr>
+<td class="trow1" colspan="5">{$lang->no_forum_subscriptions}</td>
+</tr>]]></template>

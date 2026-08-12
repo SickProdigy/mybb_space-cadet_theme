@@ -1,0 +1,7 @@
+<template name="member_register_additionalfields" version="1800"><![CDATA[<br />
+<fieldset class="trow2">
+<legend><strong>{$lang->additional_info}</strong></legend>
+<table cellspacing="0" cellpadding="{$theme['tablespace']}">
+{$customfields}
+</table>
+</fieldset>]]></template>

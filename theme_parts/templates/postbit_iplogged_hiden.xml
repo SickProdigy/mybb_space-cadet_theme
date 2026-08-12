@@ -1,0 +1,1 @@
+<template name="postbit_iplogged_hiden" version="1815"><![CDATA[{$lang->postbit_ipaddress} <a href="moderation.php?action={$action}&amp;{$idtype}={$post[$idtype]}" onclick="MyBB.{$javascript}({$post[$idtype]}); return false;">{$lang->postbit_ipaddress_logged}</a>]]></template>

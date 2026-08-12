@@ -1,0 +1,1 @@
+<template name="post_attachments_attachment_mod_approve" version="1823"><![CDATA[<input type="submit" class="button" name="approveattach_{$attachment['aid']}" value="{$lang->approve_attachment}" onclick="return Post.attachmentAction({$attachment['aid']},'approve');" />]]></template>

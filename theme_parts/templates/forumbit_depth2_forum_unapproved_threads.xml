@@ -1,0 +1,1 @@
+<template name="forumbit_depth2_forum_unapproved_threads" version="1800"><![CDATA[ <span title="{$unapproved_threads_count}">({$forum['unapprovedthreads']})</span>]]></template>

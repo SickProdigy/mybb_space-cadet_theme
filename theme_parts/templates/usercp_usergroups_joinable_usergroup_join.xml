@@ -1,0 +1,1 @@
+<template name="usercp_usergroups_joinable_usergroup_join" version="1800"><![CDATA[<a href="usercp.php?action=usergroups&amp;joingroup={$usergroup['gid']}&amp;my_post_key={$mybb->post_code}">{$lang->join_group}</a>]]></template>

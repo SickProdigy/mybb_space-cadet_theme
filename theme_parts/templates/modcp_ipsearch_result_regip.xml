@@ -1,0 +1,1 @@
+<template name="modcp_ipsearch_result_regip" version="1800"><![CDATA[<strong>{$lang->ipresult_regip}</strong> {$profile_link}]]></template>

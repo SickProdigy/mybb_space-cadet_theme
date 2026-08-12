@@ -1,0 +1,2 @@
+<template name="usercp_referrals" version="1600"><![CDATA[<strong>{$lang->members_referred}</strong> {$mybb->user['referrals']}<br />
+{$referral_link}]]></template>

@@ -1,0 +1,8 @@
+<template name="postbit_attachments" version="120"><![CDATA[<br />
+<br />
+<fieldset>
+<legend><strong>{$lang->postbit_attachments}</strong></legend>
+{$post['attachedthumbs']}
+{$post['attachedimages']}
+{$post['attachmentlist']}
+</fieldset>]]></template>

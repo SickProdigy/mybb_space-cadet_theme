@@ -1,0 +1,1 @@
+<template name="modcp_ipsearch_result_lastip" version="1800"><![CDATA[<strong>{$lang->ipresult_lastip}</strong> {$profile_link}]]></template>

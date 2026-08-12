@@ -1,0 +1,1 @@
+<template name="showthread_poll_editpoll" version="1800"><![CDATA[ | <a href="polls.php?action=editpoll&amp;pid={$poll['pid']}">{$lang->edit_poll}</a>]]></template>

@@ -1,0 +1,5 @@
+<template name="showthread_classic_header" version="1400"><![CDATA[<tr>
+			<td class="tcat" width="15%"><span class="smalltext"><strong>{$lang->author}</strong></span></td>
+			<td class="tcat"><span class="smalltext"><strong>{$lang->message}</strong></span></td>
+		</tr>
+		]]></template>

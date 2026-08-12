@@ -1,0 +1,1 @@
+<template name="usercp_editlists_no_buddies" version="1800"><![CDATA[<li>{$lang->buddy_list_empty}</li>]]></template>

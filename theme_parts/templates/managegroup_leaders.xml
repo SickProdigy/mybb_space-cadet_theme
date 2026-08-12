@@ -1,0 +1,1 @@
+<template name="managegroup_leaders" version="1600"><![CDATA[<p>{$lang->group_leaders}: {$leaders}</p>]]></template>

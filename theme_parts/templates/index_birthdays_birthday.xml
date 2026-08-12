@@ -1,0 +1,1 @@
+<template name="index_birthdays_birthday" version="1400"><![CDATA[{$comma}{$bdayuser['profilelink']}{$age}]]></template>

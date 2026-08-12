@@ -1,0 +1,1 @@
+<template name="calendar_prevlink" version="1813"><![CDATA[<a href="{$prev_link}">&laquo; {$prev_month['name']} {$prev_month['year']}</a>]]></template>

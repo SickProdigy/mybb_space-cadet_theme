@@ -1,0 +1,3 @@
+<template name="postbit_attachments_thumbnails" version="120"><![CDATA[<span class="smalltext"><strong>{$lang->postbit_attachments_thumbnails}</strong></span><br />
+{$post['thumblist']}
+<br />]]></template>

@@ -1,0 +1,1 @@
+<template name="showthread_moderationoptions_stickunstick" version="1818"><![CDATA[<option class="option_mirage" value="stick">{$lang->stick_unstick_thread}</option>]]></template>

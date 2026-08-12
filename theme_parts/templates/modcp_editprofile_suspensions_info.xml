@@ -1,0 +1,3 @@
+<template name="modcp_editprofile_suspensions_info" version="1600"><![CDATA[<tr>
+	<td colspan="2" class="smalltext"><em>{$suspension_info}</em></td>
+</tr>]]></template>

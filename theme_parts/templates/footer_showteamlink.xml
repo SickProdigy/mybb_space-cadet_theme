@@ -1,0 +1,1 @@
+<template name="footer_showteamlink" version="1820"><![CDATA[<li><a href="showteam.php">{$lang->bottomlinks_forumteam}</a></li>]]></template>

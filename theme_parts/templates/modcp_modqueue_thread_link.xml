@@ -1,0 +1,1 @@
+<template name="modcp_modqueue_thread_link" version="1800"><![CDATA[<a href="modcp.php?action=modqueue&amp;type=threads">{$lang->threads}</a>{$navsep}]]></template>

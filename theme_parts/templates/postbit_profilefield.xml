@@ -1,0 +1,1 @@
+<template name="postbit_profilefield" version="1800"><![CDATA[<br />{$post['fieldname']}: {$post['fieldvalue']}]]></template>

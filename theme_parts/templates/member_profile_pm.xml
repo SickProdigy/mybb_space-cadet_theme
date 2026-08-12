@@ -1,0 +1,4 @@
+<template name="member_profile_pm" version="1800"><![CDATA[<tr>
+	<td class="{$bgcolor}"><strong>{$lang->pm}</strong></td>
+	<td class="{$bgcolor}"><a href="private.php?action=send&amp;uid={$memprofile['uid']}">{$lang->send_pm}</a></td>
+</tr>]]></template>

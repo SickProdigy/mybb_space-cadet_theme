@@ -1,0 +1,2 @@
+<template name="private_archive_csv" version="120"><![CDATA[{$lang->export_date_sent},{$lang->export_folder},{$lang->export_subject},{$lang->export_to},{$lang->export_from},{$lang->export_message}
+{$pmsdownload}]]></template>

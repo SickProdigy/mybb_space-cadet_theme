@@ -1,0 +1,3 @@
+<template name="private_folders_folder" version="120"><![CDATA[<tr>
+<td class="trow1"><input type="text" class="textbox" name="folder[{$fid}]" size="25" value="{$foldername}" maxlength="30" /></td>
+</tr>]]></template>

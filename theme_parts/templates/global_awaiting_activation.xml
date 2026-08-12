@@ -1,0 +1,1 @@
+<template name="global_awaiting_activation" version="1800"><![CDATA[<div class="red_alert">{$awaiting_message}</div>]]></template>

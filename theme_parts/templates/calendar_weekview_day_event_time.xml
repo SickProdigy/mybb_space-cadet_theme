@@ -1,0 +1,1 @@
+<template name="calendar_weekview_day_event_time" version="1800"><![CDATA[<span class="smalltext"> ({$time_period})</span>]]></template>

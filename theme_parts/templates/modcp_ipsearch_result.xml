@@ -1,0 +1,4 @@
+<template name="modcp_ipsearch_result" version="1408"><![CDATA[<tr>
+<td class="{$trow}" align="center">{$ip}</td>
+<td class="{$trow}">{$subject}</td>
+</tr>]]></template>

@@ -1,0 +1,1 @@
+<template name="misc_smilies_popup_empty" version="1808"><![CDATA[<tr>{$smile_icons}<td colspan="2" class="{$class}">&nbsp;</td></tr>]]></template>

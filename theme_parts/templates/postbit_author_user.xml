@@ -1,0 +1,5 @@
+<template name="postbit_author_user" version="1800"><![CDATA[
+	{$lang->postbit_posts} {$post['postnum']}<br />
+	{$lang->postbit_threads} {$post['threadnum']}<br />
+	{$lang->postbit_joined} {$post['userregdate']}
+	{$post['replink']}{$post['profilefield']}{$post['warninglevel']}]]></template>

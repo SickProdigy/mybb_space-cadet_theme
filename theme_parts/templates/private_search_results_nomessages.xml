@@ -1,0 +1,3 @@
+<template name="private_search_results_nomessages" version="1600"><![CDATA[<tr>
+<td colspan="7" class="trow1">{$lang->nomessages}</td>
+</tr>]]></template>

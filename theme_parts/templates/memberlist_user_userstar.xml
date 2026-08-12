@@ -1,0 +1,1 @@
+<template name="memberlist_user_userstar" version="1800"><![CDATA[<img src="{$starimage}" border="0" alt="*" />]]></template>

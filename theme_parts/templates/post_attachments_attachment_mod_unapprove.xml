@@ -1,0 +1,1 @@
+<template name="post_attachments_attachment_mod_unapprove" version="1823"><![CDATA[<input type="submit" class="button" name="unapproveattach_{$attachment['aid']}" value="{$lang->unapprove_attachment}" onclick="return Post.attachmentAction({$attachment['aid']},'unapprove');" />]]></template>

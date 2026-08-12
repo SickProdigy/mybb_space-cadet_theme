@@ -1,0 +1,1 @@
+<template name="error_inline_item" version="1818"><![CDATA[<li>{$error}</li>]]></template>

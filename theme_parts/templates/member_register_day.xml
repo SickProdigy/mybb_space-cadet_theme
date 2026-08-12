@@ -1,0 +1,1 @@
+<template name="member_register_day" version="1800"><![CDATA[<option value="{$day}"{$selected}>{$day}</option>]]></template>

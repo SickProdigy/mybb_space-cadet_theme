@@ -1,0 +1,1 @@
+<template name="modcp_banuser_bangroups_group" version="1800"><![CDATA[<option value="{$group['gid']}"{$selected}>{$group['title']}</option>]]></template>

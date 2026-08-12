@@ -1,0 +1,1 @@
+<template name="mycode_url" version="1813"><![CDATA[<a href="{$url}" target="_blank"{$rel} class="mycode_url">{$name}</a>]]></template>

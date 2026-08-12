@@ -1,0 +1,1 @@
+<template name="showthread_moderationoptions_openclose" version="1818"><![CDATA[<option class="option_mirage" value="openclosethread">{$lang->open_close_thread}</option>]]></template>

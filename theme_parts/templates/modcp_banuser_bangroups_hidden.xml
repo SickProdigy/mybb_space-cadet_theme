@@ -1,0 +1,1 @@
+<template name="modcp_banuser_bangroups_hidden" version="1801"><![CDATA[<input type="hidden" name="usergroup" value="{$banned_group}" />]]></template>

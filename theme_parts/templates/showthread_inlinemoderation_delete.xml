@@ -1,0 +1,1 @@
+<template name="showthread_inlinemoderation_delete" version="1800"><![CDATA[<option value="multideleteposts">{$lang->inline_delete_posts}</option>]]></template>

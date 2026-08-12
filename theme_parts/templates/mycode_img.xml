@@ -1,0 +1,1 @@
+<template name="mycode_img" version="1823"><![CDATA[<img src="{$url}" loading="lazy" {$width}{$height} alt="{$alt}"{$css_align} class="mycode_img" />]]></template>

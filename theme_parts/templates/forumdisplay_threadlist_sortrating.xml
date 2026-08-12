@@ -1,0 +1,1 @@
+<template name="forumdisplay_threadlist_sortrating" version="120"><![CDATA[<option value="rating" {$sortsel['rating']}>{$lang->sort_by_rating}</option>]]></template>

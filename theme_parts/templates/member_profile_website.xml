@@ -1,0 +1,4 @@
+<template name="member_profile_website" version="1813"><![CDATA[<tr>
+	<td class="{$bgcolor}"><strong>{$lang->homepage}</strong></td>
+	<td class="{$bgcolor}"><a href="{$memprofile['website']}" target="_blank" rel="noopener">{$memprofile['website']}</a></td>
+</tr>]]></template>

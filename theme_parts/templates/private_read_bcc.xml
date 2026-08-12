@@ -1,0 +1,1 @@
+<template name="private_read_bcc" version="1400"><![CDATA[<br />{$lang->bcc} {$bcc_recipients}]]></template>

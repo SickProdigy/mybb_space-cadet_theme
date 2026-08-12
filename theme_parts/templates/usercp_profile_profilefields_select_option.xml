@@ -1,0 +1,1 @@
+<template name="usercp_profile_profilefields_select_option" version="1800"><![CDATA[<option value="{$val}"{$sel}>{$val}</option>]]></template>

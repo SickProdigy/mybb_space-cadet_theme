@@ -1,0 +1,3 @@
+<template name="usercp_profile_profilefields_select" version="1800"><![CDATA[<select name="profile_fields[$field]" size="{$profilefield['length']}">
+{$select}
+</select>]]></template>

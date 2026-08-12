@@ -1,0 +1,1 @@
+<template name="global_modqueue" version="1820"><![CDATA[<a href="{$mybb->settings['bburl']}/modcp.php?action=modqueue&type={$modqueue_type}">{$modqueue_message}</a>]]></template>

@@ -1,0 +1,1 @@
+<template name="video_liveleak_embed" version="1827"><![CDATA[<iframe width="500" height="300" src="https://www.liveleak.com/ll_embed?i={$id}" frameborder="0" allowfullscreen="true"></iframe>]]></template>

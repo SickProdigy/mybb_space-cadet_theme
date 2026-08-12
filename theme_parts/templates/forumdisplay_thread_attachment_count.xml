@@ -1,0 +1,1 @@
+<template name="forumdisplay_thread_attachment_count" version="1800"><![CDATA[<div class="float_right"><img src="{$theme['imgdir']}/paperclip.png" alt="" title="{$attachment_count}" /></div>]]></template>

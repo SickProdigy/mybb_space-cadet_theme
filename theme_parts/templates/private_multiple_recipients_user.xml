@@ -1,0 +1,1 @@
+<template name="private_multiple_recipients_user" version="1400"><![CDATA[<div class="popup_item_container"><a href="{$profilelink}" class="popup_item">{$username}</a></div>]]></template>

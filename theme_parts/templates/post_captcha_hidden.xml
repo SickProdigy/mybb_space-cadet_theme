@@ -1,0 +1,2 @@
+<template name="post_captcha_hidden" version="1605"><![CDATA[<input type="hidden" name="{$hash}" value="{$field['hash']}" />
+<input type="hidden" name="{$string}" value="{$field['string']}" />]]></template>

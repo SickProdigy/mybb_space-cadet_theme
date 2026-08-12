@@ -1,0 +1,1 @@
+<template name="misc_smilies_popup_row" version="1808"><![CDATA[<tr>{$smile_icons}</tr>]]></template>

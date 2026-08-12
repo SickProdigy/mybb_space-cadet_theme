@@ -1,0 +1,1 @@
+<template name="usercp_usergroups_memberof_usergroup_leaveother" version="1800"><![CDATA[<div style="text-align: center;"><span class="smalltext">{$lang->usergroup_cannot_leave}</span></div>]]></template>

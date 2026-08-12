@@ -1,0 +1,1 @@
+<template name="usercp_drafts_draft_forum" version="1800"><![CDATA[{$lang->forum}: <a href="{$draft['forumlink']}">{$draft['forumname']}</a>]]></template>

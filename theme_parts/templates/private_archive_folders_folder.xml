@@ -1,0 +1,1 @@
+<template name="private_archive_folders_folder" version="1800"><![CDATA[<option value="{$folder_id}">{$folder_name}</option>]]></template>

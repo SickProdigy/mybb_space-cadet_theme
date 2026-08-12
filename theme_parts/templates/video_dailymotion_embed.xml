@@ -1,0 +1,1 @@
+<template name="video_dailymotion_embed" version="1827"><![CDATA[<iframe frameborder="0" width="480" height="270" src="//www.dailymotion.com/embed/video/{$id}" allowfullscreen="true"></iframe>]]></template>

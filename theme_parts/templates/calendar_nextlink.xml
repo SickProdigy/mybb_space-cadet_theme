@@ -1,0 +1,1 @@
+<template name="calendar_nextlink" version="1813"><![CDATA[<a href="{$next_link}">{$next_month['name']} {$next_month['year']} &raquo;</a>]]></template>

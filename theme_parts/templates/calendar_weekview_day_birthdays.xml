@@ -1,0 +1,1 @@
+<template name="calendar_weekview_day_birthdays" version="1800"><![CDATA[<a href="{$calendar_link}">{$bday_count} {$birthday_lang}</a><br />]]></template>

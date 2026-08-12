@@ -1,0 +1,10 @@
+<template name="member_register_agreement_coppa" version="1400"><![CDATA[<tr>
+	<td class="tcat"><strong>{$lang->coppa_compliance}</strong></td>
+</tr>
+<tr>
+	<td class="trow1">
+		<p>{$lang->coppa_agreement_1}</p>
+		<p>{$lang->coppa_agreement_2}</p>
+		<p>{$lang->coppa_agreement_3}</p>
+	</td>
+</tr>]]></template>

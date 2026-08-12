@@ -1,0 +1,3 @@
+<template name="warnings_no_warnings" version="1400"><![CDATA[			<tr>
+				<td class="trow1" colspan="5" align="center">{$lang->no_warnings}</td>
+			</tr>]]></template>

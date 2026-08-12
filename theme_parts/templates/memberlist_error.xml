@@ -1,0 +1,3 @@
+<template name="memberlist_error" version="1800"><![CDATA[<tr>
+<td colspan="{$colspan}" align="center" class="trow1">{$lang->error_no_members}</td>
+</tr>]]></template>

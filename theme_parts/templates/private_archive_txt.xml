@@ -1,0 +1,4 @@
+<template name="private_archive_txt" version="120"><![CDATA[{$lang->private_messages_for}
+({$lang->exported_date})
+
+{$pmsdownload}]]></template>

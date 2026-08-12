@@ -1,0 +1,1 @@
+<template name="managegroup_removeusers" version="120"><![CDATA[<input type="submit" class="button" value="{$lang->remove_selected}" />]]></template>

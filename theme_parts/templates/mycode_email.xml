@@ -1,0 +1,1 @@
+<template name="mycode_email" version="1808"><![CDATA[<a href="mailto:{$email}" class="mycode_email">{$name}</a>]]></template>

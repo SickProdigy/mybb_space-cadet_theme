@@ -1,0 +1,6 @@
+<template name="member_profile_away" version="1801"><![CDATA[<fieldset>
+<legend><strong>{$lang->away_note}</strong></legend>
+<em>{$lang->away_reason} {$awayreason}</em><br />
+<span class="smalltext">{$lang->away_since} {$awaydate} &mdash; {$lang->away_returns} {$returndate}</span>
+</fieldset>
+<br />]]></template>

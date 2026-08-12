@@ -1,0 +1,1 @@
+<template name="post_prefixselect_prefix" version="1800"><![CDATA[<option value="{$prefix['pid']}"{$selected}>{$prefix['prefix']}</option>]]></template>

@@ -1,0 +1,1 @@
+<template name="moderation_delayedmoderation_date_day" version="1809"><![CDATA[<option value="{$day}"{$selected}>{$day}</option>]]></template>
