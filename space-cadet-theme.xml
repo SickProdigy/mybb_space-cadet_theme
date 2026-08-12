@@ -59,9 +59,9 @@ a:active {
 
 .wrapper {
 	box-sizing: border-box;
-	width: calc(100% - 32px);
+	width: 92%;
 	min-width: 0;
-	max-width: 1180px;
+	max-width: 1600px;
 }
 
 #logo {
