@@ -1,0 +1,3 @@
+<template name="forumdisplay_threads_sep" version="120"><![CDATA[<tr>
+<td class="trow_sep thread_sep_normal" colspan="{$colspan}">{$lang->normal_threads}</td>
+</tr>]]></template>

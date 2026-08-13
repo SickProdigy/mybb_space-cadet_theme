@@ -1,0 +1,4 @@
+<template name="forumdisplay_announcements" version="120"><![CDATA[<tr>
+<td class="trow_sep thread_sep_announcement" colspan="{$colspan}">{$lang->forum_announcements}</td>
+</tr>
+{$announcements}]]></template>

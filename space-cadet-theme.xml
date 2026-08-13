@@ -510,6 +510,30 @@ a:active {
 
 .forum_row:last-child td { border-bottom-color: transparent; }
 
+.forum_threadlist .trow_sep {
+	padding: 7px 10px;
+	font-weight: 700;
+}
+
+.forum_threadlist .thread_sep_announcement {
+	background: #a0a3f2;
+	border-bottom: 1px solid #7c7edc;
+	color: #20202a;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.forum_threadlist .thread_sep_sticky {
+	background: #30303b;
+	border-bottom: 1px solid #48485b;
+	color: #d5d6e8;
+}
+
+.forum_threadlist .thread_sep_normal {
+	background: #242427;
+	border-bottom: 1px solid #35353a;
+	color: #c7c7cc;
+}
+
 .forum_threadlist .inline_row td,
 .forum_threadlist .announcement_row td {
 	background: #181818;
@@ -1904,6 +1928,10 @@ blockquote,
 <td class="{$bgcolor} forum_counts" align="right" style="white-space: nowrap"><span>{$threads}{$unapproved['unapproved_threads']} {$lang->forumbit_threads}</span><span>{$posts}{$unapproved['unapproved_posts']} {$lang->forumbit_posts}</span></td>
 <td class="{$bgcolor} forum_lastpost" align="left" style="white-space: nowrap">{$lastpost}</td>
 </tr>]]></template>
+<template name="forumdisplay_announcements" version="120"><![CDATA[<tr>
+<td class="trow_sep thread_sep_announcement" colspan="{$colspan}">{$lang->forum_announcements}</td>
+</tr>
+{$announcements}]]></template>
 <template name="forumdisplay_announcements_announcement" version="1800"><![CDATA[<tr class="announcement_row">
 <td align="center" class="{$bgcolor} forumdisplay_announcement" width="2%"><span class="thread_status {$folder}">&nbsp;</span></td>
 <td align="center" class="{$bgcolor} forumdisplay_announcement" width="2%">&nbsp;</td>
@@ -1918,6 +1946,9 @@ blockquote,
 {$modann}
 </tr>]]></template>
 <template name="forumdisplay_inlinemoderation_col" version="1400"><![CDATA[<td class="tcat thread_mod_header" align="center" width="1"><input type="checkbox" name="allbox" onclick="inlineModeration.checkAll(this)" /></td>]]></template>
+<template name="forumdisplay_sticky_sep" version="120"><![CDATA[<tr>
+<td class="trow_sep thread_sep_sticky" colspan="{$colspan}">{$lang->sticky_threads}</td>
+</tr>]]></template>
 <template name="forumdisplay_thread" version="1823"><![CDATA[<tr class="inline_row">
 	<td align="center" class="{$bgcolor}{$thread_type_class} thread_status_cell" width="2%"><span class="thread_status {$folder}" title="{$folder_label}">&nbsp;</span></td>
 	<td align="center" class="{$bgcolor}{$thread_type_class} thread_icon_cell" width="2%">{$icon}</td>
@@ -2024,6 +2055,9 @@ blockquote,
 		// -->
 		</script>
 	</td>]]></template>
+<template name="forumdisplay_threads_sep" version="120"><![CDATA[<tr>
+<td class="trow_sep thread_sep_normal" colspan="{$colspan}">{$lang->normal_threads}</td>
+</tr>]]></template>
 <template name="header" version="1820"><![CDATA[<div id="container">
 		<a name="top" id="top"></a>
 		<div id="header">
