@@ -1458,7 +1458,7 @@ blockquote,
 /* Responsive member directory. */
 .memberlist_table { table-layout: fixed; }
 
-.memberlist_heading .thead {
+.memberlist_heading_content {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -1548,9 +1548,11 @@ blockquote,
 	.memberlist_heading,
 	.memberlist_heading > td { display: block; }
 
-	.memberlist_heading .thead {
-		display: block;
-		padding: 10px;
+	.memberlist_heading_content {
+		display: flex;
+		align-items: stretch;
+		flex-direction: column;
+		padding: 0;
 	}
 
 	.memberlist_title { margin-bottom: 9px; }
@@ -2769,6 +2771,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder memberlist_table">
 <tr class="memberlist_heading">
 <td class="thead" colspan="{$colspan}">
+	<div class="memberlist_heading_content">
 	<div class="memberlist_alpha" role="navigation" aria-label="Member name filter">
 		<a href="memberlist.php?username_match=begins&amp;username={$lang->a}" style="padding: 5px;">{$lang->a}</a>
 		<a href="memberlist.php?username_match=begins&amp;username={$lang->b}" style="padding: 5px;">{$lang->b}</a>
@@ -2797,7 +2800,9 @@ document.addEventListener("DOMContentLoaded", function() {
 		<a href="memberlist.php?username_match=begins&amp;username={$lang->y}" style="padding: 5px;">{$lang->y}</a>
 		<a href="memberlist.php?username_match=begins&amp;username={$lang->z}" style="padding: 5px;">{$lang->z}</a>
 	</div>
-	<div class="memberlist_title"><strong>{$lang->member_list}</strong></div></td>
+	<div class="memberlist_title"><strong>{$lang->member_list}</strong></div>
+	</div>
+</td>
 </tr>
 <tr class="memberlist_columns">
 <td class="tcat" width="1%"><span class="smalltext"><strong>{$lang->avatar}</strong></span></td>

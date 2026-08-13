@@ -1446,7 +1446,7 @@ blockquote,
 /* Responsive member directory. */
 .memberlist_table { table-layout: fixed; }
 
-.memberlist_heading .thead {
+.memberlist_heading_content {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -1536,9 +1536,11 @@ blockquote,
 	.memberlist_heading,
 	.memberlist_heading > td { display: block; }
 
-	.memberlist_heading .thead {
-		display: block;
-		padding: 10px;
+	.memberlist_heading_content {
+		display: flex;
+		align-items: stretch;
+		flex-direction: column;
+		padding: 0;
 	}
 
 	.memberlist_title { margin-bottom: 9px; }
