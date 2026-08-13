@@ -507,6 +507,7 @@ a:active {
 }
 
 .forum_row td {
+	background: #181818;
 	border-left-color: transparent;
 	border-right-color: transparent;
 	border-top-color: #101010;
