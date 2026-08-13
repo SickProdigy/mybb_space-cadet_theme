@@ -1,1 +1,1 @@
-<template name="nav_dropdown" version="1800"><![CDATA[ <button type="button" class="pagination_breadcrumb_link breadcrumb_pages" id="breadcrumb_multipage" aria-label="Show breadcrumb pages"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>{$multipage}]]></template>
+<template name="nav_dropdown" version="1800"><![CDATA[]]></template>

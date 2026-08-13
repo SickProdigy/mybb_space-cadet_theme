@@ -1511,32 +1511,6 @@ blockquote,
 	overflow: hidden;
 }
 
-.breadcrumb_pages {
-	position: relative;
-	z-index: 3;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	flex: 0 0 34px;
-	box-sizing: border-box;
-	width: 34px;
-	height: 29px;
-	margin: 0 -9px;
-	padding: 0 11px 0 12px;
-	background: #31313a;
-	border: 0;
-	clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%, 10px 50%);
-	color: #a0a3f2;
-	font-size: 9px;
-}
-
-.breadcrumb_pages:hover,
-.breadcrumb_pages:focus-visible {
-	background: #393941;
-	color: #fff;
-	outline: 0;
-}
-
 /* Help documents use consistent panels instead of alternating stock rows. */
 .help_section { margin-bottom: 16px; }
 
@@ -3555,7 +3529,7 @@ if(use_xmlhttprequest == "1")
 </nav>]]></template>
 <template name="nav_bit" version="120"><![CDATA[<a class="breadcrumb_item" href="{$navbit['url']}">{$navbit['name']}</a>{$sep}]]></template>
 <template name="nav_bit_active" version="120"><![CDATA[<span class="active breadcrumb_item breadcrumb_current">{$navbit['name']}</span>]]></template>
-<template name="nav_dropdown" version="1800"><![CDATA[ <button type="button" class="pagination_breadcrumb_link breadcrumb_pages" id="breadcrumb_multipage" aria-label="Show breadcrumb pages"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>{$multipage}]]></template>
+<template name="nav_dropdown" version="1800"><![CDATA[]]></template>
 <template name="nav_sep" version="1800"><![CDATA[<span class="breadcrumb_separator" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>]]></template>
 <template name="nav_sep_active" version="1800"><![CDATA[<span class="breadcrumb_separator" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>]]></template>
 <template name="portal" version="1800"><![CDATA[<html>
