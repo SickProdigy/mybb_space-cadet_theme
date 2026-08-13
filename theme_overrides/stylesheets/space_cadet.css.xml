@@ -1500,24 +1500,26 @@ blockquote,
 }
 
 .breadcrumb_pages {
+	position: relative;
+	z-index: 2;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
-	width: 28px;
+	width: 23px;
 	height: 29px;
-	margin-left: -9px;
-	padding: 0 3px 0 9px;
-	background: #242427;
+	margin: 0 4px 0 -32px;
+	padding: 0 8px 0 3px;
+	background: transparent;
 	border: 0;
-	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 9px 50%);
+	clip-path: none;
 	color: #a0a3f2;
 	font-size: 9px;
 }
 
 .breadcrumb_pages:hover,
 .breadcrumb_pages:focus-visible {
-	background: #393941;
+	background: transparent;
 	color: #fff;
 	outline: 0;
 }
