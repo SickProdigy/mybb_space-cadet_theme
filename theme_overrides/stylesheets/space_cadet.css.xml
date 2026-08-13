@@ -619,6 +619,7 @@ a:active {
 	text-overflow: ellipsis;
 }
 
+.latest_posts .activity_meta,
 .latest_posts time {
 	display: block;
 	margin-top: 3px;

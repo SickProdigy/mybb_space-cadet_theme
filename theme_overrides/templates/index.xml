@@ -47,9 +47,16 @@
 		</section>
 
 		<section class="sidebar_panel">
-			<h2 class="thead">Latest Posts</h2>
+			<h2 class="thead">Recent Activity</h2>
 			<div class="sidebar_content">
-				<ul class="latest_posts" id="latest_posts"><li>Loading latest posts&hellip;</li></ul>
+				<ul class="latest_posts" id="recent_activity"><li>Loading recent activity&hellip;</li></ul>
+			</div>
+		</section>
+
+		<section class="sidebar_panel">
+			<h2 class="thead">New Threads</h2>
+			<div class="sidebar_content">
+				<ul class="latest_posts" id="new_threads"><li>Loading new threads&hellip;</li></ul>
 			</div>
 		</section>
 	</aside>
@@ -57,8 +64,49 @@
 <br class="clear" />
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
-	var list = document.getElementById("latest_posts");
+	var list = document.getElementById("new_threads");
 	var feedUrl = "{$mybb->settings['bburl']}/syndication.php?limit=5";
+	var activityList = document.getElementById("recent_activity");
+	var portalUrl = "{$mybb->settings['bburl']}/portal.php";
+
+		fetch(portalUrl, { credentials: "same-origin" })
+			.then(function(response) {
+				if (!response.ok) throw new Error("Portal request failed");
+				return response.text();
+			})
+			.then(function(source) {
+				var page = new DOMParser().parseFromString(source, "text/html");
+				var items = Array.prototype.slice.call(page.querySelectorAll(".space_cadet_activity"), 0, 5);
+				if (!items.length) throw new Error("No recent activity");
+
+				activityList.textContent = "";
+				items.forEach(function(item) {
+					var thread = item.querySelector(".activity_thread");
+					var lastPost = item.querySelector(".activity_lastpost");
+					var author = item.querySelector(".activity_author");
+					var date = item.querySelector(".activity_date");
+					var row = document.createElement("li");
+					var anchor = document.createElement("a");
+					anchor.href = lastPost ? lastPost.href : (thread ? thread.href : portalUrl);
+					anchor.textContent = thread ? thread.textContent.trim() : "Forum activity";
+					row.appendChild(anchor);
+					if (author) {
+						var meta = document.createElement("span");
+						meta.className = "activity_meta";
+						meta.textContent = "Last post by " + author.textContent.trim();
+						row.appendChild(meta);
+					}
+					if (date) {
+						var time = document.createElement("time");
+						time.textContent = date.textContent.trim();
+						row.appendChild(time);
+					}
+					activityList.appendChild(row);
+				});
+			})
+			.catch(function() {
+				activityList.innerHTML = '<li><a href="' + portalUrl + '">View recent forum activity</a></li>';
+			});
 
 	fetch(feedUrl, { credentials: "same-origin" })
 		.then(function(response) {
@@ -89,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 		})
 		.catch(function() {
-			list.innerHTML = '<li><a href="' + feedUrl + '">View the latest forum posts</a></li>';
+			list.innerHTML = '<li><a href="' + feedUrl + '">View new forum threads</a></li>';
 		});
 });
 </script>
