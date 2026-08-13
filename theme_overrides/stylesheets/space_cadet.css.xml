@@ -1443,55 +1443,60 @@ blockquote,
 	border-bottom-color: transparent;
 }
 
-/* Breadcrumbs use compact buttons separated by unboxed chevrons. */
+/* Breadcrumbs form a compact connected ribbon with angled segment ends. */
 .breadcrumb_trail {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
-	gap: 5px;
+	row-gap: 5px;
 	min-width: 0;
 	margin: 0 0 10px;
 	font-size: 12px;
 }
 
 #content .breadcrumb_trail .breadcrumb_item {
+	position: relative;
 	display: inline-block;
 	box-sizing: border-box;
-	max-width: min(320px, 45vw);
-	padding: 5px 9px;
+	max-width: min(360px, 45vw);
+	margin-left: -9px;
+	padding: 7px 20px 7px 22px;
 	overflow: hidden;
-	background: #202023;
-	border: 1px solid #35353a;
-	border-radius: 3px;
-	color: #a0a3f2;
+	background: #242427;
+	clip-path: polygon(0 0, calc(100% - 13px) 0, 100% 50%, calc(100% - 13px) 100%, 0 100%, 13px 50%);
+	color: #c8c8cf;
 	font-size: 12px;
-	font-weight: 600;
+	font-weight: 700;
 	line-height: 1.25;
 	text-overflow: ellipsis;
+	text-shadow: 0 1px #000;
 	white-space: nowrap;
+}
+
+#content .breadcrumb_trail .breadcrumb_item:first-child {
+	margin-left: 0;
+	padding-left: 13px;
+	clip-path: polygon(0 0, calc(100% - 13px) 0, 100% 50%, calc(100% - 13px) 100%, 0 100%);
 }
 
 #content .breadcrumb_trail a.breadcrumb_item:hover,
 #content .breadcrumb_trail a.breadcrumb_item:focus-visible {
-	background: #30303a;
-	border-color: #7289da;
+	background: #393941;
 	color: #fff;
 	text-decoration: none;
 	outline: 0;
 }
 
 #content .breadcrumb_trail .breadcrumb_current {
-	background: #30303a;
-	border-color: #5f61b8;
+	background: #31313a;
 	color: #fff;
 }
 
 .breadcrumb_separator {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	color: #777a94;
-	font-size: 9px;
+	display: block;
+	width: 0;
+	height: 0;
+	overflow: hidden;
 }
 
 .breadcrumb_pages {
@@ -1499,21 +1504,20 @@ blockquote,
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
-	width: 25px;
-	height: 25px;
-	margin: 0 0 0 5px;
-	padding: 0;
-	background: #202023;
-	border: 1px solid #35353a;
-	border-radius: 3px;
+	width: 28px;
+	height: 29px;
+	margin-left: -9px;
+	padding: 0 3px 0 9px;
+	background: #242427;
+	border: 0;
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 9px 50%);
 	color: #a0a3f2;
 	font-size: 9px;
 }
 
 .breadcrumb_pages:hover,
 .breadcrumb_pages:focus-visible {
-	background: #30303a;
-	border-color: #7289da;
+	background: #393941;
 	color: #fff;
 	outline: 0;
 }
@@ -2170,11 +2174,12 @@ blockquote,
 }
 
 @media (max-width: 480px) {
-	.breadcrumb_trail { gap: 4px; }
+	.breadcrumb_trail { row-gap: 4px; }
 
 	#content .breadcrumb_trail .breadcrumb_item {
-		max-width: calc(100vw - 54px);
-		padding: 6px 8px;
+		max-width: calc(100vw - 36px);
+		padding-top: 7px;
+		padding-bottom: 7px;
 	}
 
 	.help_search_panel form { align-items: stretch; flex-direction: column; }
