@@ -1455,6 +1455,61 @@ blockquote,
 	border-bottom-color: transparent;
 }
 
+/* Help documents use consistent panels instead of alternating stock rows. */
+.help_section { margin-bottom: 16px; }
+
+.help_section + br { display: none; }
+
+.help_section_description {
+	padding: 9px 11px;
+	background: #242427;
+	border-bottom: 1px solid #35353a;
+	color: #c7c7cc;
+}
+
+.help_document_entry,
+.help_result_entry {
+	padding: 11px;
+	background: #181818 !important;
+	border-color: #101010 #292929 #292929 #101010;
+}
+
+.help_document_row:hover .help_document_entry,
+.help_result_row:hover .help_result_entry { background: #1f1f22 !important; }
+
+.help_document_entry > strong > a {
+	display: inline-block;
+	margin-bottom: 3px;
+	font-size: 14px;
+}
+
+.help_document_entry .smalltext {
+	color: #bdbdc4;
+	line-height: 1.45;
+}
+
+.help_document .scaleimages {
+	padding: 14px;
+	background: #181818;
+	line-height: 1.55;
+}
+
+.help_result_entry > table { margin-top: 5px; }
+
+.help_search_panel .trow1 { background: #181818; }
+
+.help_search_panel form {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 12px 20px;
+}
+
+.help_search_panel form > .float_left {
+	float: none;
+	padding: 0 !important;
+}
+
 /* Calendar colors stay within the Space Cadet palette. */
 .space_cadet_calendar { table-layout: fixed; }
 
@@ -2052,6 +2107,15 @@ blockquote,
 }
 
 @media (max-width: 480px) {
+	.help_search_panel form { align-items: stretch; flex-direction: column; }
+
+	.help_search_panel input.textbox {
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.help_search_panel .button { min-height: 38px; }
+
 	.wrapper { width: calc(100% - 16px); }
 
 	#logo ul.top_links {
@@ -3308,6 +3372,93 @@ if(use_xmlhttprequest == "1")
 	{$referral_bit}
 </tr>]]></template>
 <template name="memberlist_user_avatar" version="1800"><![CDATA[<img class="memberlist_avatar_image" src="{$useravatar['image']}" alt="" {$useravatar['width_height']} />]]></template>
+<template name="misc_help_helpdoc" version="1800"><![CDATA[<html>
+<head>
+<title>{$mybb->settings['bbname']} - {$lang->help_docs}</title>
+{$headerinclude}
+</head>
+<body>
+{$header}
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder tfixed help_document">
+<tr>
+<td class="thead"><strong>{$helpdoc['name']}</strong></td>
+</tr>
+<tr>
+<td class="trow1 scaleimages">{$helpdoc['document']}</td>
+</tr>
+</table>
+{$footer}
+</body>
+</html>]]></template>
+<template name="misc_help_search" version="1800"><![CDATA[<br />
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder help_search_panel">
+<tr>
+<td class="thead" colspan="3"><strong>{$lang->search}</strong></td>
+</tr>
+<tr>
+<td class="trow1">
+<form action="misc.php" method="post">
+<div class="float_left" style="padding-top: 5px;">
+<input type="text" name="keywords" value="{$lang->enter_keywords}" onfocus="if(this.value == '{$lang->enter_keywords}') { this.value = ''; }" onblur="if(this.value=='') { this.value='{$lang->enter_keywords}'; }" class="textbox" size="25" />
+</div>
+<div class="float_left" style="padding-left: 20px;">
+<span class="smalltext">
+<label><input name="name" checked="checked" value="1" type="checkbox"> {$lang->search_by_name}</label><br />
+<label><input name="document" checked="checked" value="1" type="checkbox"> {$lang->search_by_document}</label>
+</span>
+</div>
+<div class="float_left" style="padding-left: 20px; padding-top: 5px;">
+<input type="hidden" name="action" value="do_helpsearch" />
+<input type="submit" class="button" name="submit" value="{$lang->search_help_documents}" />
+</div>
+</form>
+</td>
+</tr>
+</table>]]></template>
+<template name="misc_help_section" version="1816"><![CDATA[<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder clear help_section">
+<thead>
+<tr>
+<td class="thead{$expthead}"><div class="expcolimage"><img src="{$theme['imgdir']}/{$expcolimage}" id="sid_{$section['sid']}_img" class="expander" alt="{$expaltext}" title="{$expaltext}" /></div><div><strong>{$section['name']}</strong></div></td>
+</tr>
+</thead>
+<tbody style="{$expdisplay}" id="sid_{$section['sid']}_e">
+<tr>
+<td class="tcat help_section_description"><span class="smalltext"><strong>{$section['description']}</strong></span></td>
+</tr>
+{$helpbits}
+</tbody>
+</table>
+<br />]]></template>
+<template name="misc_help_section_bit" version="1400"><![CDATA[<tr class="help_document_row">
+<td width="100%" class="{$altbg} help_document_entry"><strong><a href="misc.php?action=help&amp;hid={$helpdoc['hid']}">{$helpdoc['name']}</a></strong><br /><span class="smalltext">{$helpdoc['description']}</span></td>
+</tr>]]></template>
+<template name="misc_helpresults" version="1800"><![CDATA[<html>
+<head>
+<title>{$mybb->settings['bbname']} - {$lang->help_doc_results}</title>
+{$headerinclude}
+</head>
+<body>
+{$header}
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder help_results">
+<tr>
+<td class="thead"><strong>{$lang->help_doc_results}</strong></td>
+</tr>
+<tr>
+<td class="tcat" align="left"><span class="smalltext"><strong>{$lang->document}</strong></span></td>
+</tr>
+{$helpdoclist}
+</table>
+{$footer}
+</body>
+</html>]]></template>
+<template name="misc_helpresults_bit" version="1800"><![CDATA[<tr class="help_result_row">
+	<td class="{$bgcolor} help_result_entry">
+		<span class="smalltext">
+          <a href="misc.php?action=help&hid={$helpdoc['hid']}{$highlight}">{$helpdoc['name']}</a><br />
+		</span>
+		<table width="100%"><tr><td><span class="smalltext"><em>{$prev}</em></span></td></tr></table>
+	</td>
+</tr>]]></template>
 <template name="portal" version="1800"><![CDATA[<html>
 <head>
 <title>{$mybb->settings['bbname']}</title>

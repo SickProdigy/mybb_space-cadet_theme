@@ -1443,6 +1443,61 @@ blockquote,
 	border-bottom-color: transparent;
 }
 
+/* Help documents use consistent panels instead of alternating stock rows. */
+.help_section { margin-bottom: 16px; }
+
+.help_section + br { display: none; }
+
+.help_section_description {
+	padding: 9px 11px;
+	background: #242427;
+	border-bottom: 1px solid #35353a;
+	color: #c7c7cc;
+}
+
+.help_document_entry,
+.help_result_entry {
+	padding: 11px;
+	background: #181818 !important;
+	border-color: #101010 #292929 #292929 #101010;
+}
+
+.help_document_row:hover .help_document_entry,
+.help_result_row:hover .help_result_entry { background: #1f1f22 !important; }
+
+.help_document_entry > strong > a {
+	display: inline-block;
+	margin-bottom: 3px;
+	font-size: 14px;
+}
+
+.help_document_entry .smalltext {
+	color: #bdbdc4;
+	line-height: 1.45;
+}
+
+.help_document .scaleimages {
+	padding: 14px;
+	background: #181818;
+	line-height: 1.55;
+}
+
+.help_result_entry > table { margin-top: 5px; }
+
+.help_search_panel .trow1 { background: #181818; }
+
+.help_search_panel form {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 12px 20px;
+}
+
+.help_search_panel form > .float_left {
+	float: none;
+	padding: 0 !important;
+}
+
 /* Calendar colors stay within the Space Cadet palette. */
 .space_cadet_calendar { table-layout: fixed; }
 
@@ -2040,6 +2095,15 @@ blockquote,
 }
 
 @media (max-width: 480px) {
+	.help_search_panel form { align-items: stretch; flex-direction: column; }
+
+	.help_search_panel input.textbox {
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.help_search_panel .button { min-height: 38px; }
+
 	.wrapper { width: calc(100% - 16px); }
 
 	#logo ul.top_links {
