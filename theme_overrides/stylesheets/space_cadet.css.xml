@@ -1454,6 +1454,59 @@ blockquote,
 	.index_layout { grid-template-columns: minmax(0, 1fr); }
 	.index_sidebar { margin-top: 4px; }
 
+	#content { font-size: 15px; }
+
+	.forum_threadlist { table-layout: auto; }
+
+	.forum_threadlist .thread_icon_cell,
+	.forum_threadlist .thread_replies_header,
+	.forum_threadlist .thread_replies_cell,
+	.forum_threadlist .thread_views_header,
+	.forum_threadlist .thread_views_cell,
+	.forum_threadlist .thread_rating_header,
+	.forum_threadlist .thread_rating_cell,
+	.forum_threadlist .thread_lastpost_header,
+	.forum_threadlist .thread_lastpost_cell { display: none; }
+
+	.forum_threadlist .thread_status_cell {
+		width: 34px;
+		padding-right: 4px;
+		padding-left: 8px;
+	}
+
+	.forum_threadlist .thread_main_header,
+	.forum_threadlist .thread_main_cell {
+		width: auto;
+		padding: 10px 8px;
+	}
+
+	.forum_threadlist .thread_main_cell > div > span {
+		display: block;
+		font-size: 15px;
+		font-weight: 600;
+		line-height: 1.35;
+		overflow-wrap: anywhere;
+	}
+
+	.forum_threadlist .thread_main_cell .author,
+	.forum_threadlist .thread_main_cell .thread_start_datetime {
+		font-size: 12px;
+		font-weight: 400;
+	}
+
+	.forum_threadlist .thread_mod_header,
+	.forum_threadlist .thread_mod_cell {
+		width: 28px;
+		padding-right: 7px;
+		padding-left: 4px;
+	}
+
+	.forum_threadlist .thead .float_right {
+		float: none;
+		margin-bottom: 5px;
+		text-align: left;
+	}
+
 	.boardstats_footer {
 		align-items: flex-start;
 		flex-direction: column;
@@ -1532,6 +1585,13 @@ blockquote,
 }
 
 @media (max-width: 480px) {
+	#content { font-size: 16px; }
+
+	.post.classic .post_body {
+		font-size: 16px;
+		line-height: 1.55;
+	}
+
 	.post.classic .post_author div.author_statistics { display: none; }
 
 	.post.classic .post_controls { gap: 8px; }
