@@ -512,11 +512,19 @@ a:active {
 
 .forum_threadlist .inline_row td,
 .forum_threadlist .announcement_row td {
+	background: #181818;
 	border-left-color: transparent;
 	border-right-color: transparent;
 	border-top-color: #101010;
 	border-bottom-color: #242424;
+	transition: background-color 0.15s ease;
 }
+
+.forum_threadlist .inline_row:hover td { background: #1f1f22; }
+
+.forum_threadlist .inline_row td.trow_shaded,
+.forum_threadlist .inline_row td.trow_selected,
+.forum_threadlist tr.trow_selected td { background: #23232a; }
 
 .index_layout {
 	display: grid;
