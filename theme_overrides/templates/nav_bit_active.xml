@@ -1,0 +1,1 @@
+<template name="nav_bit_active" version="120"><![CDATA[<span class="active breadcrumb_item breadcrumb_current">{$navbit['name']}</span>]]></template>

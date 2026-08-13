@@ -1,0 +1,4 @@
+<template name="nav" version="120"><![CDATA[
+<nav class="navigation breadcrumb_trail" aria-label="Breadcrumb">
+{$nav}{$activesep}{$activebit}
+</nav>]]></template>

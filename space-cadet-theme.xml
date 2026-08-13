@@ -1455,6 +1455,81 @@ blockquote,
 	border-bottom-color: transparent;
 }
 
+/* Breadcrumbs use compact buttons separated by unboxed chevrons. */
+.breadcrumb_trail {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 5px;
+	min-width: 0;
+	margin: 0 0 10px;
+	font-size: 12px;
+}
+
+#content .breadcrumb_trail .breadcrumb_item {
+	display: inline-block;
+	box-sizing: border-box;
+	max-width: min(320px, 45vw);
+	padding: 5px 9px;
+	overflow: hidden;
+	background: #202023;
+	border: 1px solid #35353a;
+	border-radius: 3px;
+	color: #a0a3f2;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.25;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#content .breadcrumb_trail a.breadcrumb_item:hover,
+#content .breadcrumb_trail a.breadcrumb_item:focus-visible {
+	background: #30303a;
+	border-color: #7289da;
+	color: #fff;
+	text-decoration: none;
+	outline: 0;
+}
+
+#content .breadcrumb_trail .breadcrumb_current {
+	background: #30303a;
+	border-color: #5f61b8;
+	color: #fff;
+}
+
+.breadcrumb_separator {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: #777a94;
+	font-size: 9px;
+}
+
+.breadcrumb_pages {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	width: 25px;
+	height: 25px;
+	margin: 0 0 0 5px;
+	padding: 0;
+	background: #202023;
+	border: 1px solid #35353a;
+	border-radius: 3px;
+	color: #a0a3f2;
+	font-size: 9px;
+}
+
+.breadcrumb_pages:hover,
+.breadcrumb_pages:focus-visible {
+	background: #30303a;
+	border-color: #7289da;
+	color: #fff;
+	outline: 0;
+}
+
 /* Help documents use consistent panels instead of alternating stock rows. */
 .help_section { margin-bottom: 16px; }
 
@@ -2107,6 +2182,13 @@ blockquote,
 }
 
 @media (max-width: 480px) {
+	.breadcrumb_trail { gap: 4px; }
+
+	#content .breadcrumb_trail .breadcrumb_item {
+		max-width: calc(100vw - 54px);
+		padding: 6px 8px;
+	}
+
 	.help_search_panel form { align-items: stretch; flex-direction: column; }
 
 	.help_search_panel input.textbox {
@@ -3459,6 +3541,15 @@ if(use_xmlhttprequest == "1")
 		<table width="100%"><tr><td><span class="smalltext"><em>{$prev}</em></span></td></tr></table>
 	</td>
 </tr>]]></template>
+<template name="nav" version="120"><![CDATA[
+<nav class="navigation breadcrumb_trail" aria-label="Breadcrumb">
+{$nav}{$activesep}{$activebit}
+</nav>]]></template>
+<template name="nav_bit" version="120"><![CDATA[<a class="breadcrumb_item" href="{$navbit['url']}">{$navbit['name']}</a>{$sep}]]></template>
+<template name="nav_bit_active" version="120"><![CDATA[<span class="active breadcrumb_item breadcrumb_current">{$navbit['name']}</span>]]></template>
+<template name="nav_dropdown" version="1800"><![CDATA[ <button type="button" class="pagination_breadcrumb_link breadcrumb_pages" id="breadcrumb_multipage" aria-label="Show breadcrumb pages"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>{$multipage}]]></template>
+<template name="nav_sep" version="1800"><![CDATA[<span class="breadcrumb_separator" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>]]></template>
+<template name="nav_sep_active" version="1800"><![CDATA[<span class="breadcrumb_separator" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>]]></template>
 <template name="portal" version="1800"><![CDATA[<html>
 <head>
 <title>{$mybb->settings['bbname']}</title>

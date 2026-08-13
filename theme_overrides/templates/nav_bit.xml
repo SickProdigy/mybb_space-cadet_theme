@@ -1,0 +1,1 @@
+<template name="nav_bit" version="120"><![CDATA[<a class="breadcrumb_item" href="{$navbit['url']}">{$navbit['name']}</a>{$sep}]]></template>
