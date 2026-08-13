@@ -1455,6 +1455,45 @@ blockquote,
 	border-bottom-color: transparent;
 }
 
+/* Calendar colors stay within the Space Cadet palette. */
+.space_cadet_calendar { table-layout: fixed; }
+
+.space_cadet_calendar .tcat {
+	background: #202023;
+	border-bottom-color: #35353a;
+	color: #d4d4dc;
+}
+
+.space_cadet_calendar .calendar_daybit_external {
+	background: #151517;
+	color: #777985;
+}
+
+.space_cadet_calendar .trow1,
+.space_cadet_calendar .trow2 {
+	background: #1a1a1d;
+	border-color: #101010 #303036 #303036 #101010;
+}
+
+.space_cadet_calendar .calendar_daybit_current {
+	background: #a0a3f2;
+	border-color: #7c7edc;
+	color: #20202a;
+}
+
+.space_cadet_calendar .calendar_daybit_current a:link,
+.space_cadet_calendar .calendar_daybit_current a:visited,
+.space_cadet_calendar .calendar_daybit_current a:hover,
+.space_cadet_calendar .calendar_daybit_current a:active { color: #303268; }
+
+.space_cadet_calendar .calendar_daybit_today {
+	background: #7c7edc;
+	border-color: #5f61b8;
+	color: #fff;
+}
+
+.space_cadet_calendar .calendar_daybit_today a { color: #fff; }
+
 /* Responsive member directory. */
 .memberlist_table { table-layout: fixed; }
 
@@ -2118,6 +2157,83 @@ blockquote,
 }]]></stylesheet>
 </stylesheets>
 <templates>
+<template name="calendar" version="1813"><![CDATA[<html>
+<head>
+	<title>{$mybb->settings['bbname']} - {$lang->calendar}</title>
+	{$headerinclude}
+</head>
+<body>
+	{$header}
+	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder space_cadet_calendar">
+		<thead>
+			<tr>
+				<td class="thead" colspan="8">
+					<div class="float_right">
+						{$prev_month_link}{$sep}{$next_month_link}
+					</div>
+					<div><strong>{$monthnames[$month]} {$year}</strong></div>
+				</td>
+			</tr>
+			<tr>
+				<td class="tcat">&nbsp;</td>
+			{$weekday_headers}
+			</tr>
+		</thead>
+		<tbody>
+		{$calendar_rows}
+		</tbody>
+	</table>
+<br />
+<form action="calendar.php" method="post">
+	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+		<tr>
+			<td class="trow1">
+				<table width="100%" cellspacing="0" cellpadding="0" border="0">
+					<tr>
+						<td valign="top">{$addevent}</td>
+						<td align="right">
+						<span class="smalltext"><strong>{$lang->jump_month}</strong></span>
+						<select name="month">
+							<option value="{$month}">{$monthnames[$month]}</option>
+							<option value="{$month}">----------</option>
+							<option value="1">{$lang->alt_month_1}</option>
+							<option value="2">{$lang->alt_month_2}</option>
+							<option value="3">{$lang->alt_month_3}</option>
+							<option value="4">{$lang->alt_month_4}</option>
+							<option value="5">{$lang->alt_month_5}</option>
+							<option value="6">{$lang->alt_month_6}</option>
+							<option value="7">{$lang->alt_month_7}</option>
+							<option value="8">{$lang->alt_month_8}</option>
+							<option value="9">{$lang->alt_month_9}</option>
+							<option value="10">{$lang->alt_month_10}</option>
+							<option value="11">{$lang->alt_month_11}</option>
+							<option value="12">{$lang->alt_month_12}</option>
+						</select>
+						<select name="year">
+							<option value="{$year}">{$year}</option>
+							<option value="{$year}">----------</option>
+							{$yearsel}
+						</select>
+						{$gobutton}
+						<br />
+						{$calendar_jump}
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		</table>
+	</form>
+{$footer}
+</body>
+</html>]]></template>
+<template name="calendar_weekrow_currentday" version="1823"><![CDATA[				<td class="calendar_daybit_current" style="vertical-align: top; height: 100px;">
+					<div class="float_right smalltext"><a href="{$day_link}">{$day}</a></div>
+					<div class="clear">
+					{$day_birthdays}
+					{$day_events}
+					</div>
+				</td>]]></template>
 <template name="footer" version="1820"><![CDATA[	</div>
 </div>
 <div id="footer" class="wrapper site_footer">

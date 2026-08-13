@@ -1443,6 +1443,45 @@ blockquote,
 	border-bottom-color: transparent;
 }
 
+/* Calendar colors stay within the Space Cadet palette. */
+.space_cadet_calendar { table-layout: fixed; }
+
+.space_cadet_calendar .tcat {
+	background: #202023;
+	border-bottom-color: #35353a;
+	color: #d4d4dc;
+}
+
+.space_cadet_calendar .calendar_daybit_external {
+	background: #151517;
+	color: #777985;
+}
+
+.space_cadet_calendar .trow1,
+.space_cadet_calendar .trow2 {
+	background: #1a1a1d;
+	border-color: #101010 #303036 #303036 #101010;
+}
+
+.space_cadet_calendar .calendar_daybit_current {
+	background: #a0a3f2;
+	border-color: #7c7edc;
+	color: #20202a;
+}
+
+.space_cadet_calendar .calendar_daybit_current a:link,
+.space_cadet_calendar .calendar_daybit_current a:visited,
+.space_cadet_calendar .calendar_daybit_current a:hover,
+.space_cadet_calendar .calendar_daybit_current a:active { color: #303268; }
+
+.space_cadet_calendar .calendar_daybit_today {
+	background: #7c7edc;
+	border-color: #5f61b8;
+	color: #fff;
+}
+
+.space_cadet_calendar .calendar_daybit_today a { color: #fff; }
+
 /* Responsive member directory. */
 .memberlist_table { table-layout: fixed; }
 
