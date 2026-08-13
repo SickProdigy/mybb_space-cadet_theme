@@ -1468,6 +1468,48 @@ blockquote,
 
 	#content { font-size: 15px; }
 
+	.portal_layout,
+	.portal_layout > tbody,
+	.portal_layout > tbody > tr,
+	.portal_layout > tbody > tr > td {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.portal_layout .portal_spacer { display: none; }
+
+	.portal_layout .portal_sidebar,
+	.portal_layout .portal_main {
+		min-width: 0;
+		padding: 0;
+	}
+
+	.portal_layout .portal_main { margin-top: 12px; }
+
+	.portal_sidebar input.textbox:not(.portal_search) {
+		display: block;
+		width: 100%;
+		margin: 4px 0 0;
+	}
+
+	.portal_sidebar input.textbox.portal_search {
+		min-width: 0;
+		width: auto;
+		flex: 1 1 auto;
+	}
+
+	.portal_sidebar form[action*="search.php"] {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
+
+	.portal_main .scaleimages,
+	.portal_main .scaleimages p { overflow-wrap: anywhere; }
+
+	.portal_main img { max-width: 100%; }
+
 	.forum_threadlist { table-layout: auto; }
 
 	.forum_threadlist .thread_icon_cell,
@@ -1598,6 +1640,35 @@ blockquote,
 
 @media (max-width: 480px) {
 	#content { font-size: 16px; }
+
+	.portal_layout .thead,
+	.portal_layout .tcat,
+	.portal_layout .trow1,
+	.portal_layout .trow2 { padding: 10px; }
+
+	.portal_main .tfixed > tbody > tr:first-child {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.portal_main .tfixed > tbody > tr:first-child > td {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.portal_main .tfixed > tbody > tr:first-child > td:first-child { text-align: left !important; }
+
+	.portal_main .tfixed > tbody > tr:first-child > td:first-child img {
+		width: auto !important;
+		height: auto !important;
+		max-width: 96px;
+		max-height: 96px;
+	}
+
+	.portal_main .trow2[align="right"] { text-align: left; }
 
 	.post.classic .post_body {
 		font-size: 16px;
@@ -2381,6 +2452,34 @@ document.addEventListener("DOMContentLoaded", function() {
 <strong>{$lang->email}</strong> <a href="mailto:{$memprofile['email']}">{$memprofile['email']}</a>
 </td>
 </tr>]]></template>
+<template name="portal" version="1800"><![CDATA[<html>
+<head>
+<title>{$mybb->settings['bbname']}</title>
+<link rel="alternate" type="application/rss+xml" title="{$lang->latest_announcements} (RSS 2.0)" href="{$mybb->settings['bburl']}/syndication.php?portal=1" />
+<link rel="alternate" type="application/atom+xml" title="{$lang->latest_announcements} (Atom 1.0)" href="{$mybb->settings['bburl']}/syndication.php?portal=1&type=atom1.0" />
+{$headerinclude}
+</head>
+<body>
+{$header}
+<table width="100%" cellspacing="0" cellpadding="{$theme['tablespace']}" border="0" align="center" class="portal_layout">
+<tr><td valign="top" width="200" class="portal_sidebar">
+{$welcome}
+{$pms}
+{$search}
+{$stats}
+{$whosonline}
+{$latestthreads}
+</td>
+<td class="portal_spacer">&nbsp;</td>
+<td valign="top" class="portal_main">
+{$announcements}
+{$multipage}
+</td>
+</tr>
+</table>
+{$footer}
+</body>
+</html>]]></template>
 <template name="postbit" version="1813"><![CDATA[{$ignore_bit}{$deleted_bit}
 <a name="pid{$post['pid']}" id="pid{$post['pid']}"></a>
 <div class="post classic {$unapproved_shade}" style="{$post_visibility}" id="post_{$post['pid']}">
