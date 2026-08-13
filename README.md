@@ -88,7 +88,7 @@ Confirm the generated XML parses and imports without warnings. Test guest/member
 The optional repeating background textures under `images/space-cadet/backgrounds/` are sourced from Transparent Textures and used under the Creative Commons Attribution 3.0 license:
 
 - `black-felt.png` by E. van Zummeren
-- `45-degree-fabric-dark.png` by Atle Mo
+- `scbg.png` by Atle Mo
 - `asfalt-dark.png` by Atle Mo
 - `tactile-noise-dark.png` by Atle Mo
 - `dark-geometric.png` by Mike Warner

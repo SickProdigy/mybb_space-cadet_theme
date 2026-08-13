@@ -19,7 +19,7 @@
 html,
 body {
 	background-color: #171b1d;
-	background-image: url(images/space-cadet/backgrounds/45-degree-fabric-dark.png);
+	background-image: url(images/space-cadet/backgrounds/scbg.png);
 	background-repeat: repeat;
 }
 
