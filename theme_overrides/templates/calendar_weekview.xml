@@ -5,16 +5,28 @@
 </head>
 <body>
 	{$header}
-<div class="calendar_week_layout">
-	<section class="tborder space_cadet_weekview">
-		<header class="thead calendar_week_header">
-			<div class="calendar_week_navigation">{$prev_week_link}{$sep}{$next_week_link}</div>
-			<strong>{$lang->weekly_overview} ({$friendly_week_from} - {$friendly_week_to})</strong>
-		</header>
-		<div class="calendar_week_months">{$weekday_bits}</div>
-	</section>
-	<aside class="calendar_week_sidebar" aria-label="Month overview">{$mini_calendars}</aside>
-</div>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="100%">
+	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder space_cadet_weekview">
+		<thead>
+			<tr>
+				<td class="thead" colspan="2">
+					<div class="float_right">
+						{$prev_week_link}{$sep}{$next_week_link}
+					</div>
+					<div><strong>{$lang->weekly_overview} ({$friendly_week_from} - {$friendly_week_to})</strong></div>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			{$weekday_bits}
+		</tbody>
+	</table>
+</td>
+<td style="padding-left: 10px; vertical-align: top;">{$mini_calendars}</td>
+</tr>
+</table>
 	<br />
 	<form action="calendar.php" method="post">
 		<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
