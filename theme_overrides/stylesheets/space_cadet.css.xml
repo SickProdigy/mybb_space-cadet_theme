@@ -1454,6 +1454,11 @@ blockquote,
 #footer a:active { color: #ccc; }
 
 @media (max-width: 760px) {
+	#logo {
+		background-size: cover;
+		background-position: center;
+	}
+
 	.wrapper { width: calc(100% - 20px); }
 	#logo { min-height: 0; }
 
