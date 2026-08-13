@@ -19,6 +19,11 @@
 html,
 body { background: #171b1d; }
 
+html {
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+
 body,
 #container,
 input,
@@ -1644,7 +1649,39 @@ blockquote,
 }
 
 @media (max-width: 480px) {
-	#content { font-size: 16px; }
+	.wrapper { width: calc(100% - 16px); }
+
+	#logo ul.top_links {
+		gap: 2px 4px;
+		padding: 4px;
+	}
+
+	#header ul.menu li a {
+		padding: 7px 6px;
+		font-size: 13px;
+	}
+
+	.header_banner_content {
+		min-height: 100px;
+		padding-top: 12px;
+	}
+
+	.header_guest_account,
+	.header_account { margin-bottom: -14px; }
+
+	#content {
+		padding: 12px 0 20px;
+		font-size: 15px;
+	}
+
+	.index_forums > .tborder { margin-bottom: 12px; }
+
+	.index_forums > br.clear { display: none; }
+
+	.thead { padding: 8px; }
+
+	.trow1,
+	.trow2 { padding: 8px; }
 
 	.portal_layout .thead,
 	.portal_layout .tcat,
