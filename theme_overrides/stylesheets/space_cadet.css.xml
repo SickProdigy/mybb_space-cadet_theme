@@ -511,9 +511,10 @@ a:active {
 }
 
 .forum_threadlist .thread_sep_sticky {
-	background: #30303b;
-	border-bottom: 1px solid #48485b;
-	color: #d5d6e8;
+	background: #7c7edc;
+	border-bottom: 1px solid #5f61b8;
+	color: #fff;
+	text-shadow: 0 1px rgba(32, 32, 42, 0.45);
 }
 
 .forum_threadlist .thread_sep_normal {
