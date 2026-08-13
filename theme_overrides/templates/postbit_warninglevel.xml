@@ -1,0 +1,1 @@
+<template name="postbit_warninglevel" version="1400"><![CDATA[<div class="author_stat author_stat_warning"><span class="author_stat_label">{$lang->postbit_warning_level}</span><span class="author_stat_value"><a href="{$warning_link}">{$warning_level}</a></span></div>]]></template>

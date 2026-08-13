@@ -1,0 +1,4 @@
+<template name="postbit_author_user" version="1800"><![CDATA[<div class="author_stat"><span class="author_stat_label">{$lang->postbit_posts}</span><span class="author_stat_value">{$post['postnum']}</span></div>
+<div class="author_stat"><span class="author_stat_label">{$lang->postbit_threads}</span><span class="author_stat_value">{$post['threadnum']}</span></div>
+<div class="author_stat"><span class="author_stat_label">{$lang->postbit_joined}</span><span class="author_stat_value">{$post['userregdate']}</span></div>
+{$post['replink']}{$post['profilefield']}{$post['warninglevel']}]]></template>

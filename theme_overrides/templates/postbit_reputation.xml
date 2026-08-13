@@ -1,0 +1,1 @@
+<template name="postbit_reputation" version="1400"><![CDATA[<div class="author_stat"><span class="author_stat_label">{$lang->postbit_reputation}</span><span class="author_stat_value">{$post['userreputation']}</span></div>]]></template>

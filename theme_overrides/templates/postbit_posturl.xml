@@ -1,0 +1,4 @@
+<template name="postbit_posturl" version="1801"><![CDATA[<div class="post_number float_right">
+<a href="{$post['postlink']}#pid{$post['pid']}" title="{$post['subject_title']}"><span aria-hidden="true">#</span>{$post_number}</a>
+{$post['inlinecheck']}
+</div>]]></template>

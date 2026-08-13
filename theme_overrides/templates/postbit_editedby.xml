@@ -1,0 +1,1 @@
+<template name="postbit_editedby" version="1800"><![CDATA[<span class="edited_post"><i class="fa-solid fa-pen fa-fw" aria-hidden="true"></i> {$post['editnote']} {$post['editedprofilelink']}.{$editreason}</span>]]></template>
