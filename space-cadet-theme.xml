@@ -1556,6 +1556,25 @@ blockquote,
 	color: #ccc;
 }
 
+.space_cadet_weekview .calendar_week_item {
+	position: relative;
+	margin-bottom: 5px;
+	padding-left: 13px;
+}
+
+.space_cadet_weekview .calendar_week_item:last-child { margin-bottom: 0; }
+
+.space_cadet_weekview .calendar_week_item::before {
+	content: "";
+	position: absolute;
+	top: 0.55em;
+	left: 2px;
+	width: 5px;
+	height: 5px;
+	background: #a0a3f2;
+	border-radius: 50%;
+}
+
 .space_cadet_mini_calendar .trow1,
 .space_cadet_mini_calendar .trow2 {
 	background: #181818;
@@ -2474,6 +2493,8 @@ blockquote,
 			<tr>
 				<td class="calendar_weekday_content">{$day_birthdays}{$day_events}</td>
 			</tr>]]></template>
+<template name="calendar_weekview_day_birthdays" version="1800"><![CDATA[<div class="calendar_week_item"><a href="{$calendar_link}">{$bday_count} {$birthday_lang}</a></div>]]></template>
+<template name="calendar_weekview_day_event" version="1400"><![CDATA[<div class="calendar_week_item"><a href="{$event['eventlink']}" class="{$event_class}" title="{$event['fullname']}">{$event['fullname']}</a>{$event_time}</div>]]></template>
 <template name="calendar_weekview_month" version="1400"><![CDATA[{$days}]]></template>
 <template name="footer" version="1820"><![CDATA[	</div>
 </div>

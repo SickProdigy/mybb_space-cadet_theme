@@ -1,0 +1,1 @@
+<template name="calendar_weekview_day_event" version="1400"><![CDATA[<div class="calendar_week_item"><a href="{$event['eventlink']}" class="{$event_class}" title="{$event['fullname']}">{$event['fullname']}</a>{$event_time}</div>]]></template>
