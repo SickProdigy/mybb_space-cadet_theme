@@ -1446,6 +1446,16 @@ blockquote,
 /* Calendar colors stay within the Space Cadet palette. */
 .space_cadet_calendar { table-layout: fixed; }
 
+.space_cadet_calendar .calendar_week_column { width: 34px; }
+
+.space_cadet_calendar .calendar_week_header { padding: 0; }
+
+.space_cadet_calendar tbody > tr > .tcat {
+	box-sizing: border-box;
+	width: 34px;
+	padding: 6px 3px;
+}
+
 .space_cadet_calendar .tcat {
 	background: #202023;
 	border-bottom-color: #35353a;

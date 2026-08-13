@@ -1458,6 +1458,16 @@ blockquote,
 /* Calendar colors stay within the Space Cadet palette. */
 .space_cadet_calendar { table-layout: fixed; }
 
+.space_cadet_calendar .calendar_week_column { width: 34px; }
+
+.space_cadet_calendar .calendar_week_header { padding: 0; }
+
+.space_cadet_calendar tbody > tr > .tcat {
+	box-sizing: border-box;
+	width: 34px;
+	padding: 6px 3px;
+}
+
 .space_cadet_calendar .tcat {
 	background: #202023;
 	border-bottom-color: #35353a;
@@ -2194,6 +2204,10 @@ blockquote,
 <body>
 	{$header}
 	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder space_cadet_calendar">
+		<colgroup>
+			<col class="calendar_week_column" />
+			<col class="calendar_day_column" span="7" />
+		</colgroup>
 		<thead>
 			<tr>
 				<td class="thead" colspan="8">
@@ -2204,7 +2218,7 @@ blockquote,
 				</td>
 			</tr>
 			<tr>
-				<td class="tcat">&nbsp;</td>
+				<td class="tcat calendar_week_header">&nbsp;</td>
 			{$weekday_headers}
 			</tr>
 		</thead>

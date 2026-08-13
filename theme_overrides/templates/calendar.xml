@@ -6,6 +6,10 @@
 <body>
 	{$header}
 	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder space_cadet_calendar">
+		<colgroup>
+			<col class="calendar_week_column" />
+			<col class="calendar_day_column" span="7" />
+		</colgroup>
 		<thead>
 			<tr>
 				<td class="thead" colspan="8">
@@ -16,7 +20,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="tcat">&nbsp;</td>
+				<td class="tcat calendar_week_header">&nbsp;</td>
 			{$weekday_headers}
 			</tr>
 		</thead>
