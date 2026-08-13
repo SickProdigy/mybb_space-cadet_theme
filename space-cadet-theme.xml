@@ -1513,25 +1513,26 @@ blockquote,
 
 .breadcrumb_pages {
 	position: relative;
-	z-index: 2;
+	z-index: 3;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	flex: 0 0 34px;
 	box-sizing: border-box;
-	width: 23px;
+	width: 34px;
 	height: 29px;
-	margin: 0 4px 0 -32px;
-	padding: 0 8px 0 3px;
-	background: transparent;
+	margin: 0 -9px;
+	padding: 0 11px 0 12px;
+	background: #31313a;
 	border: 0;
-	clip-path: none;
+	clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%, 10px 50%);
 	color: #a0a3f2;
 	font-size: 9px;
 }
 
 .breadcrumb_pages:hover,
 .breadcrumb_pages:focus-visible {
-	background: transparent;
+	background: #393941;
 	color: #fff;
 	outline: 0;
 }
