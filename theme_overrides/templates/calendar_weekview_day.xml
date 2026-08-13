@@ -1,5 +1,5 @@
 <template name="calendar_weekview_day" version="1400"><![CDATA[			<tr>
-				<td class="calendar_weekday_heading">{$weekday_name} {$weekday_month} {$weekday_day}, {$weekday_year}</td>
+				<td class="calendar_weekday_heading">{$weekday_name} {$monthnames[$weekday_month]} {$weekday_day}, {$weekday_year}</td>
 			</tr>
 			<tr>
 				<td class="calendar_weekday_content">{$day_birthdays}{$day_events}</td>
