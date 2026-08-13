@@ -1683,6 +1683,24 @@ blockquote,
 	.trow1,
 	.trow2 { padding: 8px; }
 
+	.forum_row > td:first-child {
+		width: 42px;
+		padding-right: 4px;
+		padding-left: 6px;
+	}
+
+	.forum_row > td:nth-child(2) {
+		padding-right: 4px;
+		padding-left: 4px;
+	}
+
+	.forum_row .forum_lastpost {
+		width: 38%;
+		padding-right: 6px;
+		padding-left: 4px;
+		white-space: normal !important;
+	}
+
 	.portal_layout .thead,
 	.portal_layout .tcat,
 	.portal_layout .trow1,
