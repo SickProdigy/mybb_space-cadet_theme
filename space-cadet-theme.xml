@@ -1543,6 +1543,9 @@ blockquote,
 	font-size: 14px;
 	font-weight: 700;
 	text-align: center;
+	text-decoration: underline;
+	text-decoration-color: #a0a3f2;
+	text-underline-offset: 3px;
 }
 
 .space_cadet_weekview .calendar_weekday_content {
