@@ -83,6 +83,24 @@ Project metadata lives in `theme.json`:
 
 Confirm the generated XML parses and imports without warnings. Test guest/member sessions, forum and thread pages, profiles, private messages, moderation controls, header dropdowns, and post actions. Check desktop, tablet, and phone widths, including menus near viewport edges. Re-import into a clean MyBB 1.8.40 test installation before publishing a release.
 
+## Texture Credits
+
+The optional repeating background textures under `images/space-cadet/backgrounds/` are sourced from Transparent Textures and used under the Creative Commons Attribution 3.0 license:
+
+- `black-felt.png` by E. van Zummeren
+- `45-degree-fabric-dark.png` by Atle Mo
+- `asfalt-dark.png` by Atle Mo
+- `tactile-noise-dark.png` by Atle Mo
+- `dark-geometric.png` by Mike Warner
+- `dark-matter.png` by Atle Mo
+- `graphy-dark.png` by We Are Pixel8
+- `shattered-dark.png` by Luuk van Baars
+- `diagmonds.png` by INS
+- `hexellence.png` by Kim Ruddock
+
+Source: https://www.transparenttextures.com/
+License: https://creativecommons.org/licenses/by/3.0/
+
 ## License
 
 The baseline derives from MyBB. Retain applicable MyBB copyright and license notices. Document the license for new Space Cadet code and assets before the first public release.

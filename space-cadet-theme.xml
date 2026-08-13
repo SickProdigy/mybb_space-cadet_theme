@@ -29,7 +29,11 @@
 }
 
 html,
-body { background: #171b1d; }
+body {
+	background-color: #171b1d;
+	background-image: url(images/space-cadet/backgrounds/45-degree-fabric-dark.png);
+	background-repeat: repeat;
+}
 
 html {
 	-webkit-text-size-adjust: 100%;
