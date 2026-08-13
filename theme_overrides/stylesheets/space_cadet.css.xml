@@ -1523,23 +1523,22 @@ blockquote,
 
 /* Weekly and mini calendar palette. */
 .space_cadet_weekview .calendar_weekday_heading {
-	padding: 7px 10px;
+	padding: 10px;
 	background: #30303a;
 	border-top: 1px solid #444455;
 	border-bottom: 1px solid #1a1a20;
-	color: #d9d9ef;
-	font-weight: 700;
-}
-
-.space_cadet_weekview .trow1,
-.space_cadet_weekview .trow2 {
-	background: #181818;
-	border-color: #101010 #292929 #292929 #101010;
-}
-
-.space_cadet_weekview .trow2 {
-	width: 44px;
 	color: #a0a3f2;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+}
+
+.space_cadet_weekview .calendar_weekday_content {
+	min-height: 48px;
+	padding: 10px;
+	background: #181818;
+	border-bottom: 1px solid #292929;
+	color: #ccc;
 }
 
 .space_cadet_mini_calendar .trow1,
@@ -1643,6 +1642,34 @@ blockquote,
 #footer a:active { color: #ccc; }
 
 @media (max-width: 760px) {
+	.calendar_weekview_layout,
+	.calendar_weekview_layout > tbody,
+	.calendar_weekview_layout > tbody > tr {
+		display: block;
+		width: 100%;
+	}
+
+	.calendar_weekview_layout > tbody > tr {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.calendar_weekview_main,
+	.calendar_weekview_sidebar {
+		display: block;
+		box-sizing: border-box;
+		width: 100% !important;
+	}
+
+	.calendar_weekview_sidebar {
+		order: -1;
+		padding: 0 0 10px !important;
+	}
+
+	.calendar_weekview_sidebar .space_cadet_mini_calendar {
+		width: 100% !important;
+	}
+
 	.calendar_scroll {
 		width: 100%;
 		overflow-x: auto;

@@ -1,7 +1,6 @@
 <template name="calendar_weekview_day" version="1400"><![CDATA[			<tr>
-				<td class="calendar_weekday_heading" colspan="2">{$weekday_name}</td>
+				<td class="calendar_weekday_heading">{$weekday_name} {$weekday_month} {$weekday_day}, {$weekday_year}</td>
 			</tr>
 			<tr>
-				<td class="trow2{$day_shaded}" style="text-align: center; padding: 8px;"><span class="largetext">{$weekday_day}</span></td>
-				<td class="trow1" width="100%">{$day_birthdays}{$day_events}</td>
+				<td class="calendar_weekday_content">{$day_birthdays}{$day_events}</td>
 			</tr>]]></template>

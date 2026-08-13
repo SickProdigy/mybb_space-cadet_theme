@@ -1535,23 +1535,22 @@ blockquote,
 
 /* Weekly and mini calendar palette. */
 .space_cadet_weekview .calendar_weekday_heading {
-	padding: 7px 10px;
+	padding: 10px;
 	background: #30303a;
 	border-top: 1px solid #444455;
 	border-bottom: 1px solid #1a1a20;
-	color: #d9d9ef;
-	font-weight: 700;
-}
-
-.space_cadet_weekview .trow1,
-.space_cadet_weekview .trow2 {
-	background: #181818;
-	border-color: #101010 #292929 #292929 #101010;
-}
-
-.space_cadet_weekview .trow2 {
-	width: 44px;
 	color: #a0a3f2;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+}
+
+.space_cadet_weekview .calendar_weekday_content {
+	min-height: 48px;
+	padding: 10px;
+	background: #181818;
+	border-bottom: 1px solid #292929;
+	color: #ccc;
 }
 
 .space_cadet_mini_calendar .trow1,
@@ -1655,6 +1654,34 @@ blockquote,
 #footer a:active { color: #ccc; }
 
 @media (max-width: 760px) {
+	.calendar_weekview_layout,
+	.calendar_weekview_layout > tbody,
+	.calendar_weekview_layout > tbody > tr {
+		display: block;
+		width: 100%;
+	}
+
+	.calendar_weekview_layout > tbody > tr {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.calendar_weekview_main,
+	.calendar_weekview_sidebar {
+		display: block;
+		box-sizing: border-box;
+		width: 100% !important;
+	}
+
+	.calendar_weekview_sidebar {
+		order: -1;
+		padding: 0 0 10px !important;
+	}
+
+	.calendar_weekview_sidebar .space_cadet_mini_calendar {
+		width: 100% !important;
+	}
+
 	.calendar_scroll {
 		width: 100%;
 		overflow-x: auto;
@@ -2372,9 +2399,9 @@ blockquote,
 </head>
 <body>
 	{$header}
-<table border="0" cellspacing="0" cellpadding="0">
+<table border="0" cellspacing="0" cellpadding="0" class="calendar_weekview_layout">
 <tr>
-<td width="100%">
+<td width="100%" class="calendar_weekview_main">
 	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder space_cadet_weekview">
 		<thead>
 			<tr>
@@ -2391,7 +2418,7 @@ blockquote,
 		</tbody>
 	</table>
 </td>
-<td style="padding-left: 10px; vertical-align: top;">{$mini_calendars}</td>
+<td class="calendar_weekview_sidebar" style="padding-left: 10px; vertical-align: top;">{$mini_calendars}</td>
 </tr>
 </table>
 	<br />
@@ -2439,12 +2466,12 @@ blockquote,
 </body>
 </html>]]></template>
 <template name="calendar_weekview_day" version="1400"><![CDATA[			<tr>
-				<td class="calendar_weekday_heading" colspan="2">{$weekday_name}</td>
+				<td class="calendar_weekday_heading">{$weekday_name} {$weekday_month} {$weekday_day}, {$weekday_year}</td>
 			</tr>
 			<tr>
-				<td class="trow2{$day_shaded}" style="text-align: center; padding: 8px;"><span class="largetext">{$weekday_day}</span></td>
-				<td class="trow1" width="100%">{$day_birthdays}{$day_events}</td>
+				<td class="calendar_weekday_content">{$day_birthdays}{$day_events}</td>
 			</tr>]]></template>
+<template name="calendar_weekview_month" version="1400"><![CDATA[{$days}]]></template>
 <template name="footer" version="1820"><![CDATA[	</div>
 </div>
 <div id="footer" class="wrapper site_footer">
