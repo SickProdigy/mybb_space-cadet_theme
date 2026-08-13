@@ -1465,8 +1465,8 @@ blockquote,
 		width: 100%;
 	}
 
-	.portal_layout .portal_sidebar,
-	.portal_layout .portal_spacer { display: none; }
+	.portal_layout .portal_spacer,
+	.portal_layout .portal_sidebar_extras { display: none; }
 
 	.portal_layout .portal_sidebar,
 	.portal_layout .portal_main {
@@ -1474,7 +1474,7 @@ blockquote,
 		padding: 0;
 	}
 
-	.portal_layout .portal_main { margin-top: 0; }
+	.portal_layout .portal_main { margin-top: 4px; }
 
 	.portal_main .scaleimages,
 	.portal_main .scaleimages p { overflow-wrap: anywhere; }

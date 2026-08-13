@@ -1477,8 +1477,8 @@ blockquote,
 		width: 100%;
 	}
 
-	.portal_layout .portal_sidebar,
-	.portal_layout .portal_spacer { display: none; }
+	.portal_layout .portal_spacer,
+	.portal_layout .portal_sidebar_extras { display: none; }
 
 	.portal_layout .portal_sidebar,
 	.portal_layout .portal_main {
@@ -1486,7 +1486,7 @@ blockquote,
 		padding: 0;
 	}
 
-	.portal_layout .portal_main { margin-top: 0; }
+	.portal_layout .portal_main { margin-top: 4px; }
 
 	.portal_main .scaleimages,
 	.portal_main .scaleimages p { overflow-wrap: anywhere; }
@@ -2446,12 +2446,14 @@ document.addEventListener("DOMContentLoaded", function() {
 {$header}
 <table width="100%" cellspacing="0" cellpadding="{$theme['tablespace']}" border="0" align="center" class="portal_layout">
 <tr><td valign="top" width="200" class="portal_sidebar">
-{$welcome}
+<div class="portal_welcome_panel">{$welcome}</div>
+<div class="portal_sidebar_extras">
 {$pms}
 {$search}
 {$stats}
 {$whosonline}
 {$latestthreads}
+</div>
 </td>
 <td class="portal_spacer">&nbsp;</td>
 <td valign="top" class="portal_main">
