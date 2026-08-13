@@ -1617,6 +1617,36 @@ blockquote,
 #footer a:active { color: #ccc; }
 
 @media (max-width: 760px) {
+	.calendar_scroll {
+		width: 100%;
+		overflow-x: auto;
+		overflow-y: hidden;
+		-webkit-overflow-scrolling: touch;
+		border-right: 1px solid #292929;
+		scrollbar-color: #7289da #181818;
+		scrollbar-width: thin;
+	}
+
+	.calendar_scroll .space_cadet_calendar {
+		width: 700px;
+		min-width: 700px;
+	}
+
+	.space_cadet_calendar .calendar_week_header,
+	.space_cadet_calendar tbody > tr > .tcat {
+		position: sticky;
+		left: 0;
+		z-index: 2;
+		box-shadow: 1px 0 #35353a;
+	}
+
+	.space_cadet_calendar .calendar_week_header { z-index: 3; }
+
+	.space_cadet_calendar td { height: 82px !important; }
+
+	.space_cadet_calendar .thead,
+	.space_cadet_calendar .tcat { height: auto !important; }
+
 	.memberlist_table,
 	.memberlist_table > tbody {
 		display: block;
@@ -2203,6 +2233,7 @@ blockquote,
 </head>
 <body>
 	{$header}
+	<div class="calendar_scroll" role="region" aria-label="Monthly calendar" tabindex="0">
 	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder space_cadet_calendar">
 		<colgroup>
 			<col class="calendar_week_column" />
@@ -2226,6 +2257,7 @@ blockquote,
 		{$calendar_rows}
 		</tbody>
 	</table>
+	</div>
 <br />
 <form action="calendar.php" method="post">
 	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">

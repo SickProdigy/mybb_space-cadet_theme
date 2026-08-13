@@ -5,6 +5,7 @@
 </head>
 <body>
 	{$header}
+	<div class="calendar_scroll" role="region" aria-label="Monthly calendar" tabindex="0">
 	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder space_cadet_calendar">
 		<colgroup>
 			<col class="calendar_week_column" />
@@ -28,6 +29,7 @@
 		{$calendar_rows}
 		</tbody>
 	</table>
+	</div>
 <br />
 <form action="calendar.php" method="post">
 	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
