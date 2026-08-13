@@ -1984,7 +1984,8 @@ blockquote,
 <template name="header_welcomeblock_member_user" version="1809"><![CDATA[<li><a href="{$mybb->settings['bburl']}/usercp.php" class="usercp"><i class="fa-solid fa-user-gear fa-fw" aria-hidden="true"></i> {$lang->welcome_usercp}</a></li>]]></template>
 <template name="headerinclude" version="1827"><![CDATA[<link rel="alternate" type="application/rss+xml" title="{$lang->latest_threads} (RSS 2.0)" href="{$mybb->settings['bburl']}/syndication.php" />
 <link rel="alternate" type="application/atom+xml" title="{$lang->latest_threads} (Atom 1.0)" href="{$mybb->settings['bburl']}/syndication.php?type=atom1.0" />
-<meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
+<meta http-equiv="Content-Type" content="text/html; charset={}" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <link rel="stylesheet" href="{$mybb->asset_url}/images/space-cadet/fontawesome/css/fontawesome.min.css" />
 <link rel="stylesheet" href="{$mybb->asset_url}/images/space-cadet/fontawesome/css/solid.min.css" />
