@@ -1536,9 +1536,9 @@ blockquote,
 /* Weekly and mini calendar palette. */
 .space_cadet_weekview .calendar_weekday_heading {
 	padding: 7px 10px;
-	background: #30303a;
-	border-top: 1px solid #444455;
-	border-bottom: 1px solid #1a1a20;
+	background: #181818;
+	border-top: 1px solid #292929;
+	border-bottom: 0;
 	color: #a0a3f2;
 	font-size: 14px;
 	font-weight: 700;
