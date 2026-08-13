@@ -1493,6 +1493,26 @@ blockquote,
 	.index_layout { grid-template-columns: minmax(0, 1fr); }
 	.index_sidebar { margin-top: 4px; }
 
+	.forum_counts { display: none; }
+
+	.forum_row > td:first-child {
+		width: 42px;
+		padding-right: 4px;
+		padding-left: 6px;
+	}
+
+	.forum_row > td:nth-child(2) {
+		padding-right: 4px;
+		padding-left: 4px;
+	}
+
+	.forum_row .forum_lastpost {
+		width: 38%;
+		padding-right: 6px;
+		padding-left: 4px;
+		white-space: normal !important;
+	}
+
 	#content { font-size: 15px; }
 
 	.portal_layout,
@@ -1683,23 +1703,6 @@ blockquote,
 	.trow1,
 	.trow2 { padding: 8px; }
 
-	.forum_row > td:first-child {
-		width: 42px;
-		padding-right: 4px;
-		padding-left: 6px;
-	}
-
-	.forum_row > td:nth-child(2) {
-		padding-right: 4px;
-		padding-left: 4px;
-	}
-
-	.forum_row .forum_lastpost {
-		width: 38%;
-		padding-right: 6px;
-		padding-left: 4px;
-		white-space: normal !important;
-	}
 
 	.portal_layout .thead,
 	.portal_layout .tcat,
@@ -1757,7 +1760,6 @@ blockquote,
 
 	.post.classic .postbit_buttons > a:only-child { grid-column: 1 / -1; }
 
-	.forum_counts { display: none; }
 }
 
 @media (max-width: 340px) {
