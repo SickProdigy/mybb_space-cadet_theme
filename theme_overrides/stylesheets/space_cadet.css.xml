@@ -1521,6 +1521,44 @@ blockquote,
 
 .space_cadet_calendar .calendar_daybit_today a { color: #fff; }
 
+/* Weekly and mini calendar palette. */
+.space_cadet_weekview .calendar_weekday_heading {
+	padding: 7px 10px;
+	background: #30303a;
+	border-top: 1px solid #444455;
+	border-bottom: 1px solid #1a1a20;
+	color: #d9d9ef;
+	font-weight: 700;
+}
+
+.space_cadet_weekview .trow1,
+.space_cadet_weekview .trow2 {
+	background: #181818;
+	border-color: #101010 #292929 #292929 #101010;
+}
+
+.space_cadet_weekview .trow2 {
+	width: 44px;
+	color: #a0a3f2;
+}
+
+.space_cadet_mini_calendar .trow1,
+.space_cadet_mini_calendar .trow2 {
+	background: #181818;
+	border-color: #101010 #292929 #292929 #101010;
+}
+
+.space_cadet_mini_calendar .trow_sep {
+	background: #a0a3f2;
+	border-color: #7c7edc;
+	color: #20202a;
+}
+
+.space_cadet_mini_calendar .trow_sep a:link,
+.space_cadet_mini_calendar .trow_sep a:visited,
+.space_cadet_mini_calendar .trow_sep a:hover,
+.space_cadet_mini_calendar .trow_sep a:active { color: #303268; }
+
 /* Responsive member directory. */
 .memberlist_table { table-layout: fixed; }
 

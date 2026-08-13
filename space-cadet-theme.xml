@@ -1533,6 +1533,44 @@ blockquote,
 
 .space_cadet_calendar .calendar_daybit_today a { color: #fff; }
 
+/* Weekly and mini calendar palette. */
+.space_cadet_weekview .calendar_weekday_heading {
+	padding: 7px 10px;
+	background: #30303a;
+	border-top: 1px solid #444455;
+	border-bottom: 1px solid #1a1a20;
+	color: #d9d9ef;
+	font-weight: 700;
+}
+
+.space_cadet_weekview .trow1,
+.space_cadet_weekview .trow2 {
+	background: #181818;
+	border-color: #101010 #292929 #292929 #101010;
+}
+
+.space_cadet_weekview .trow2 {
+	width: 44px;
+	color: #a0a3f2;
+}
+
+.space_cadet_mini_calendar .trow1,
+.space_cadet_mini_calendar .trow2 {
+	background: #181818;
+	border-color: #101010 #292929 #292929 #101010;
+}
+
+.space_cadet_mini_calendar .trow_sep {
+	background: #a0a3f2;
+	border-color: #7c7edc;
+	color: #20202a;
+}
+
+.space_cadet_mini_calendar .trow_sep a:link,
+.space_cadet_mini_calendar .trow_sep a:visited,
+.space_cadet_mini_calendar .trow_sep a:hover,
+.space_cadet_mini_calendar .trow_sep a:active { color: #303268; }
+
 /* Responsive member directory. */
 .memberlist_table { table-layout: fixed; }
 
@@ -2303,6 +2341,22 @@ blockquote,
 </body>
 </html>]]></template>
 <template name="calendar_eventbit" version="1402"><![CDATA[<div style="margin-bottom: 4px;" class="smalltext calendar_event_item {$event_class}"><a href="{$event['eventlink']}" title="{$event['fullname']}">{$event['name']}</a></div>]]></template>
+<template name="calendar_mini" version="1400"><![CDATA[<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder space_cadet_mini_calendar" style="width: 180px;">
+	<thead>
+		<tr>
+			<td class="thead" colspan="8">
+				<strong><a href="{$month_link}">{$monthnames[$month]} {$year}</a></strong>
+			</td>
+		</tr>
+		<tr>
+			<td class="tcat">&nbsp;</td>
+		{$weekday_headers}
+		</tr>
+	</thead>
+	<tbody>
+	{$calendar_rows}
+	</tbody>
+</table>]]></template>
 <template name="calendar_weekrow_currentday" version="1823"><![CDATA[				<td class="calendar_daybit_current" style="vertical-align: top; height: 100px;">
 					<div class="float_right smalltext"><a href="{$day_link}">{$day}</a></div>
 					<div class="calendar_today_label">Today's Date</div>
@@ -2311,6 +2365,86 @@ blockquote,
 					{$day_events}
 					</div>
 				</td>]]></template>
+<template name="calendar_weekview" version="1813"><![CDATA[<html>
+<head>
+	<title>{$mybb->settings['bbname']} - {$lang->calendar}</title>
+	{$headerinclude}
+</head>
+<body>
+	{$header}
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="100%">
+	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder space_cadet_weekview">
+		<thead>
+			<tr>
+				<td class="thead" colspan="2">
+					<div class="float_right">
+						{$prev_week_link}{$sep}{$next_week_link}
+					</div>
+					<div><strong>{$lang->weekly_overview} ({$friendly_week_from} - {$friendly_week_to})</strong></div>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			{$weekday_bits}
+		</tbody>
+	</table>
+</td>
+<td style="padding-left: 10px; vertical-align: top;">{$mini_calendars}</td>
+</tr>
+</table>
+	<br />
+	<form action="calendar.php" method="post">
+		<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+			<tr>
+				<td class="trow1">
+					<table width="100%" cellspacing="0" cellpadding="0" border="0">
+						<tr>
+						<td valign="top">{$addevent}</td>
+							<td align="right">
+							<span class="smalltext"><strong>{$lang->jump_month}</strong></span>
+							<select name="month">
+								<option value="{$week_from[1]}">{$monthnames[$week_from_one]}</option>
+								<option value="{$week_from[1]}">----------</option>
+								<option value="1">{$lang->alt_month_1}</option>
+								<option value="2">{$lang->alt_month_2}</option>
+								<option value="3">{$lang->alt_month_3}</option>
+								<option value="4">{$lang->alt_month_4}</option>
+								<option value="5">{$lang->alt_month_5}</option>
+								<option value="6">{$lang->alt_month_6}</option>
+								<option value="7">{$lang->alt_month_7}</option>
+								<option value="8">{$lang->alt_month_8}</option>
+								<option value="9">{$lang->alt_month_9}</option>
+								<option value="10">{$lang->alt_month_10}</option>
+								<option value="11">{$lang->alt_month_11}</option>
+								<option value="12">{$lang->alt_month_12}</option>
+							</select>
+							<select name="year">
+								<option value="{$week_from[2]}">{$week_from[2]}</option>
+								<option value="{$week_from[2]}">----------</option>
+								{$yearsel}
+							</select>
+							{$gobutton}
+							<br />
+							{$calendar_jump}
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</form>
+{$footer}
+</body>
+</html>]]></template>
+<template name="calendar_weekview_day" version="1400"><![CDATA[			<tr>
+				<td class="calendar_weekday_heading" colspan="2">{$weekday_name}</td>
+			</tr>
+			<tr>
+				<td class="trow2{$day_shaded}" style="text-align: center; padding: 8px;"><span class="largetext">{$weekday_day}</span></td>
+				<td class="trow1" width="100%">{$day_birthdays}{$day_events}</td>
+			</tr>]]></template>
 <template name="footer" version="1820"><![CDATA[	</div>
 </div>
 <div id="footer" class="wrapper site_footer">
