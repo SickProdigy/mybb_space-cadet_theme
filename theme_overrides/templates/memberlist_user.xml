@@ -1,0 +1,14 @@
+<template name="memberlist_user" version="1800"><![CDATA[<tr class="memberlist_user">
+	<td class="{$alt_bg} memberlist_avatar" align="center">{$user['avatar']}</td>
+	<td class="{$alt_bg} memberlist_identity">{$user['profilelink']}<br />
+<span class="smalltext">
+	{$user['usertitle']}<br />
+	{$usergroup['groupimage']}
+	{$user['userstars']}
+</span></td>
+	<td class="{$alt_bg} memberlist_stat" data-label="{$lang->joined}" align="center">{$user['regdate']}</td>
+	<td class="{$alt_bg} memberlist_stat" data-label="{$lang->lastvisit}" align="center">{$user['lastvisit']}</td>
+	<td class="{$alt_bg} memberlist_stat" data-label="{$lang->posts}" align="center">{$user['postnum']}</td>
+	<td class="{$alt_bg} memberlist_stat" data-label="{$lang->threads}" align="center">{$user['threadnum']}</td>
+	{$referral_bit}
+</tr>]]></template>
