@@ -2178,26 +2178,24 @@ blockquote,
 
 	.search_results_threads_table .search_result_mobile_label { display: inline; }
 
-	.search_results_threads_table .search_result_mobile_forum {
-		display: block;
-		margin-top: 4px;
-		color: #c0c0c5;
-	}
+	.search_results_threads_table .search_result_mobile_forum { display: none; }
 
 	.search_results_threads_table .search_result_mobile_forum strong { color: #85858d; }
 
 	.search_results_threads_table .search_result_mobile_footer {
 		align-items: center;
-		justify-content: center;
-		text-align: center;
+		justify-content: flex-end;
+		margin-top: 4px;
+		padding-top: 0;
+		text-align: right;
 	}
 
-	.search_results_threads_table .search_result_mobile_footer > span:last-child { text-align: center; }
+	.search_results_threads_table .search_result_mobile_footer > span:last-child { text-align: right; }
 
 	.search_result_mobile_lastposter {
 		display: block;
 		margin-top: 3px;
-		text-align: center;
+		text-align: right;
 	}
 
 	.search_results_table .search_result_row > td:last-child {
@@ -3246,7 +3244,7 @@ blockquote,
 		box-sizing: border-box;
 		width: 100%;
 		margin: 0;
-		padding: 10px;
+		padding: 8px 10px;
 		background: #18181a;
 		border: 0;
 		border-bottom: 2px solid #554a68;
@@ -3259,7 +3257,7 @@ blockquote,
 		width: auto !important;
 		min-width: 0;
 		white-space: normal !important;
-		padding: 4px;
+		padding: 2px 4px;
 		background: transparent !important;
 		border: 0 !important;
 	}
@@ -3269,7 +3267,7 @@ blockquote,
 	.usercp_latest_thread_identity { grid-column: 2; grid-row: 1; overflow-wrap: anywhere; }
 	.usercp_latest_thread_replies { grid-column: 3; grid-row: 1; }
 	.usercp_latest_thread_views { grid-column: 4; grid-row: 1; }
-	.usercp_latest_thread_lastpost { grid-column: 2 / -1; grid-row: 2; justify-self: end; margin-top: 8px; text-align: right; }
+	.usercp_latest_thread_lastpost { grid-column: 2 / -1; grid-row: 2; justify-self: end; margin-top: 2px; text-align: right; }
 
 	.usercp_latest_thread:last-child { border-bottom: 0; }
 
