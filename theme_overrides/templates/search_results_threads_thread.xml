@@ -8,9 +8,9 @@
 			<div class="author smalltext">{$thread['profilelink']}</div>
 		</div>
 	</td>
-	<td class="{$bgcolor} search_result_meta" data-label="{$lang->forum}">{$thread['forumlink']}</td>
-	<td align="center" class="{$bgcolor} search_result_meta" data-label="{$lang->replies}"><a href="{$mybb->settings['bburl']}/misc.php?action=whoposted&tid={$thread['tid']}" onclick="MyBB.whoPosted({$thread['tid']}); return false;">{$thread['replies']}</a></td>
-	<td align="center" class="{$bgcolor} search_result_meta" data-label="{$lang->views}">{$thread['views']}</td>
+	<td class="{$bgcolor} search_result_meta search_result_forum" data-label="{$lang->forum}">{$thread['forumlink']}</td>
+	<td align="center" class="{$bgcolor} search_result_meta search_result_replies" data-label="{$lang->replies}"><a href="{$mybb->settings['bburl']}/misc.php?action=whoposted&tid={$thread['tid']}" onclick="MyBB.whoPosted({$thread['tid']}); return false;">{$thread['replies']}</a></td>
+	<td align="center" class="{$bgcolor} search_result_meta search_result_views" data-label="{$lang->views}">{$thread['views']}</td>
 	<td class="{$bgcolor} search_result_meta search_result_date" data-label="{$lang->lastpost}" style="white-space: nowrap">
 		<span class="smalltext">
 			{$lastpostdate}<br />

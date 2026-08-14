@@ -1885,7 +1885,7 @@ blockquote,
 	.search_results_table .search_result_row {
 		position: relative;
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-columns: minmax(0, 1fr);
 		gap: 0 14px;
 		padding: 10px 42px 10px 10px;
 		background: #18181a;
@@ -1903,7 +1903,11 @@ blockquote,
 	}
 
 	.search_results_table .search_result_status,
-	.search_results_table .search_result_icon { display: none; }
+	.search_results_table .search_result_icon { display: none !important; }
+
+	.search_results_table .search_result_forum,
+	.search_results_table .search_result_replies,
+	.search_results_table .search_result_views { display: none !important; }
 
 	.search_results_table .search_result_subject {
 		grid-column: 1 / -1;
@@ -1912,17 +1916,18 @@ blockquote,
 	}
 
 	.search_results_table .search_result_meta {
-		display: flex;
-		align-items: baseline;
-		justify-content: space-between;
-		gap: 8px;
+		display: block;
+		grid-column: 1 / -1;
 		border-top: 1px solid #29292f;
 	}
+
 
 	.search_results_table .search_result_meta::before {
 		content: attr(data-label);
 		color: #85858d;
 		font-size: 11px;
+		display: block;
+		margin-bottom: 3px;
 		font-weight: bold;
 	}
 
