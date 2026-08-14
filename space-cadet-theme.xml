@@ -2888,6 +2888,87 @@ blockquote,
 	}
 }
 
+@media (max-width: 760px) {
+	.pm_toolbar {
+		box-sizing: border-box;
+		width: 100%;
+		line-height: 1.8;
+	}
+
+	.pm_list_heading {
+		display: flex;
+		align-items: stretch;
+		flex-direction: column;
+		gap: 9px;
+	}
+
+	.pm_list_heading > strong { order: 1; }
+
+	.pm_search {
+		order: 2;
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		float: none;
+		gap: 6px;
+		width: 100%;
+	}
+
+	.pm_search input.textbox {
+		flex: 1 1 180px;
+		box-sizing: border-box;
+		min-width: 0;
+	}
+
+	.pm_list_columns { display: none; }
+
+	.pm_message_row {
+		display: grid;
+		grid-template-columns: 28px minmax(0, 1fr) auto;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.pm_message_row > td {
+		display: block;
+		box-sizing: border-box;
+		width: auto !important;
+		white-space: normal !important;
+	}
+
+	.pm_message_row > td:nth-child(1) { grid-column: 1; grid-row: 1 / span 3; }
+	.pm_message_row > td:nth-child(2) { display: none; }
+	.pm_message_row > td:nth-child(3) { grid-column: 2; grid-row: 1; }
+	.pm_message_row > td:nth-child(4) { grid-column: 2; grid-row: 2; }
+	.pm_message_row > td:nth-child(5) { grid-column: 2; grid-row: 3; text-align: left; }
+	.pm_message_row > td:nth-child(6) { grid-column: 3; grid-row: 1 / span 3; }
+
+	.pm_message_party::before,
+	.pm_message_date::before {
+		content: attr(data-label) ": ";
+		color: #999;
+		font-weight: 700;
+	}
+
+	.pm_bulk_actions {
+		box-sizing: border-box;
+		width: 100%;
+		white-space: normal;
+		line-height: 2.6;
+	}
+
+	.pm_bulk_actions select { max-width: 100%; }
+
+	.pm_folder_jump {
+		display: flex;
+		justify-content: flex-end;
+		float: none;
+		width: 100%;
+	}
+
+	.pm_folder_jump select { max-width: 100%; }
+}
+
 ]]></stylesheet>
 <stylesheet name="usercp.css" attachedto="usercp.php|private.php" version="1816" disporder="2"><![CDATA[.usercp_nav_item {
 	display: block;
@@ -4389,6 +4470,72 @@ if(use_xmlhttprequest == "1")
 <template name="postbit_profilefield" version="1800"><![CDATA[<div class="author_stat author_stat_profile"><span class="author_stat_label">{$post['fieldname']}:</span><span class="author_stat_value">{$post['fieldvalue']}</span></div>]]></template>
 <template name="postbit_reputation" version="1400"><![CDATA[<div class="author_stat"><span class="author_stat_label">{$lang->postbit_reputation}</span><span class="author_stat_value">{$post['userreputation']}</span></div>]]></template>
 <template name="postbit_warninglevel" version="1400"><![CDATA[<div class="author_stat author_stat_warning"><span class="author_stat_label">{$lang->postbit_warning_level}</span><span class="author_stat_value"><a href="{$warning_link}">{$warning_level}</a></span></div>]]></template>
+<template name="private" version="1820"><![CDATA[<html>
+<head>
+<title>{$mybb->settings['bbname']} - {$lang->private_messaging}</title>
+{$headerinclude}
+</head>
+<body>
+{$header}
+<table width="100%" border="0" align="center" class="usercp_layout private_layout">
+<tr>
+{$usercpnav}
+<td valign="top" class="usercp_content private_content">
+<fieldset class="pm_toolbar">
+  {$pmspacebar}<span class="smalltext"><a href="private.php">{$lang->inbox}</a>{$composelink} | <a  href="private.php?action=folders">{$lang->manage_folders}</a>{$emptyexportlink}</span>
+</fieldset>
+<br />
+{$limitwarning}
+<form action="private.php" method="post" name="pmForm" class="pm_form">
+<input type="hidden" name="my_post_key" value="{$mybb->post_code}" />
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder pm_list_table">
+<tr>
+<td class="thead pm_list_heading" colspan="6">
+	<div class="float_right pm_search">
+	<input type="text" name="keywords" value="{$lang->enter_keywords}" onfocus="if(this.value == '{$lang->enter_keywords}') { this.value = ''; }" onblur="if(this.value=='') { this.value='{$lang->enter_keywords}'; }" class="textbox" size="25" />
+	<input type="submit" class="button" name="quick_search" value="{$lang->search_pms}" />
+	(<a href="private.php?action=advanced_search">{$lang->advanced_search}</a>)</div>
+	<strong>{$foldername}</strong></td>
+</tr>
+<tr class="pm_list_columns">
+<td class="tcat" align="center" colspan="3"><span class="smalltext"><strong><a href="private.php?fid={$fid}&amp;sortby=subject&amp;order=asc">{$lang->message_title}</a> {$orderarrow['subject']}</strong></span></td>
+<td class="tcat" align="center" width="30%" style="white-space: nowrap"><span class="smalltext"><strong><a href="private.php?fid={$fid}&amp;sortby=username&amp;order=asc">{$sender}</a> {$orderarrow['username']}</strong></span></td>
+<td class="tcat" align="right"  width="20%" style="white-space: nowrap"><span class="smalltext"><strong><a href="private.php?fid={$fid}&amp;sortby=dateline&amp;order=desc">{$lang->date_sent}</a> {$orderarrow['dateline']}</strong></span></td>
+<td class="tcat" align="center" width="1%" style="white-space: nowrap"><span class="smalltext"><input name="allbox" title="{$lang->check_all}" type="checkbox" class="checkbox checkall" value="{$lang->check_all}" /></span></td>
+</tr>
+{$messagelist}
+<tr>
+<td class="tfoot pm_bulk_actions" align="right" colspan="6">
+<input type="submit" class="button" name="moveto" value="{$lang->move_to}" /> {$folderoplist} {$lang->or}
+<input type="submit" class="button" name="delete" value="{$lang->delete}" /> {$lang->selected_messages}
+</td>
+</tr>
+</table>
+<br />
+<div class="float_right pm_folder_jump">
+<span class="smalltext">
+<strong>{$lang->jump_folder} {$folderjump}
+<input type="submit" class="button" name="hop" value="{$lang->go}" />
+</strong>
+</span>
+</div>
+<input type="hidden" name="action" value="do_stuff" />
+</form>
+<div class="float_left">{$multipage}</div>
+</td>
+</tr>
+</table>
+{$footer}
+</body>
+</html>]]></template>
+<template name="private_messagebit" version="1827"><![CDATA[<tr class="pm_message_row">
+	<td class="{$bgcolor}" align="center" width="2%"><img src="{$theme['imgdir']}/{$msgstatus}.png" alt="{$msgalt}" title="{$msgalt}" /></td>
+	<td class="{$bgcolor}" align="center" width="2%">{$icon}</td>
+	<td class="{$bgcolor}" width="35%"><a class="{$msgstatus}" href="private.php?action=read&amp;pmid={$message['pmid']}">{$message['subject']}</a>{$denyreceipt}</td>
+	<td class="{$bgcolor} pm_message_party" data-label="{$sender}" align="center">{$tofromusername}</td>
+	<td class="{$bgcolor} pm_message_date" data-label="{$lang->date_sent}" align="right" style="white-space: nowrap"><span class="smalltext">{$senddate}</span></td>
+	<td class="{$bgcolor}" align="center" width="2%"><input type="checkbox" class="checkbox" name="check[{$message['pmid']}]" value="1" /></td>
+</tr>]]></template>
 <template name="search" version="1823"><![CDATA[<html>
 <head>
 <title>{$mybb->settings['bbname']} - {$lang->search}</title>
