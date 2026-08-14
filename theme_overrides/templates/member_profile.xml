@@ -7,7 +7,7 @@
 <body>
 {$header}
 <div class="profile_actions">{$buddy_options}{$ignore_options}{$report_options}</div>
-<fieldset>
+<fieldset class="profile_header_card">
 	<table width="100%" cellspacing="0" cellpadding="0" border="0">
 		<tr>
 			<td width="75%">

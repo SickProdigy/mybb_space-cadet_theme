@@ -1391,6 +1391,17 @@ blockquote,
 	text-align: right;
 }
 
+.profile_header_card {
+	background:
+		radial-gradient(circle at 88% 40%, rgba(111, 78, 181, 0.2), transparent 36%),
+		linear-gradient(135deg, #101012 0%, #18181a 58%, #15131d 100%);
+	border-color: #3a3944;
+	border-radius: 4px;
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.035),
+		0 8px 22px rgba(0, 0, 0, 0.24);
+}
+
 .profile_tabs { margin-top: 16px; }
 
 .profile_tablist {
@@ -3145,7 +3156,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <body>
 {$header}
 <div class="profile_actions">{$buddy_options}{$ignore_options}{$report_options}</div>
-<fieldset>
+<fieldset class="profile_header_card">
 	<table width="100%" cellspacing="0" cellpadding="0" border="0">
 		<tr>
 			<td width="75%">
