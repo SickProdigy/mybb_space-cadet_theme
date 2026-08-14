@@ -4648,7 +4648,7 @@ if(use_xmlhttprequest == "1")
 <td class="thead" colspan="{$colspan}"><strong>{$lang->account_summary}</strong></td>
 </tr>
 <tr class="usercp_summary_identity">
-{}
+{$avatar}
 <td class="trow2">
 <span class="largetext">{$username}</span><br />
 <strong>{$lang->postnum}</strong> <a href="search.php?action=finduser&amp;uid={$mybb->user['uid']}">{$mybb->user['posts']}</a> {$lang->posts_day}<br />
