@@ -14,6 +14,7 @@
 	<td class="{$bgcolor}{$thread_type_class} thread_lastpost_cell" data-label="{$lang->lastpost}" style="white-space: nowrap; text-align: right;">
 		<span class="lastpost smalltext">{$lastpostdate}<br />
 		<a href="{$thread['lastpostlink']}">{$lang->lastpost}</a>: {$lastposterlink}</span>
+		<span class="thread_mobile_lastpost"><span>{$lastpostdate}</span><span>{$lastposterlink}</span></span>
 	</td>
 {$modbit}
 </tr>]]></template>

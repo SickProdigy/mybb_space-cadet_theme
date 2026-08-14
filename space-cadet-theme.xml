@@ -1882,7 +1882,9 @@ blockquote,
 .search_results_footer form .button { min-height: 34px; }
 
 .search_result_mobile_stats,
-.search_result_mobile_footer { display: none; }
+.search_result_mobile_footer,
+.thread_mobile_lastpost,
+.thread_mobile_rating { display: none; }
 
 @media (max-width: 760px) {
 	.search_results_table,
@@ -2256,7 +2258,7 @@ blockquote,
 	.forum_threadlist .inline_row {
 		display: grid;
 		grid-template-columns: 38px minmax(0, 1fr) minmax(92px, 28%) 34px;
-		grid-template-rows: repeat(4, minmax(26px, auto));
+		grid-template-rows: repeat(3, 20px) auto;
 		box-sizing: border-box;
 		width: 100%;
 	}
@@ -2312,7 +2314,7 @@ blockquote,
 		box-sizing: border-box;
 		grid-column: 3;
 		width: auto;
-		padding: 5px 6px;
+		padding: 1px 6px;
 		border: 0;
 		color: #d0d0d5;
 		font-size: 11px;
@@ -2324,7 +2326,11 @@ blockquote,
 	.forum_threadlist .inline_row > .thread_replies_cell { grid-row: 1; }
 	.forum_threadlist .inline_row > .thread_views_cell { grid-row: 2; }
 	.forum_threadlist .inline_row > .thread_rating_cell { grid-row: 3; }
-	.forum_threadlist .inline_row > .thread_lastpost_cell { grid-row: 4; }
+	.forum_threadlist .inline_row > .thread_lastpost_cell {
+		grid-column: 2 / 4;
+		grid-row: 4;
+		padding: 8px;
+	}
 
 	.forum_threadlist .inline_row > .thread_replies_cell::before,
 	.forum_threadlist .inline_row > .thread_views_cell::before,
@@ -2339,16 +2345,26 @@ blockquote,
 
 	.forum_threadlist .inline_row > .thread_rating_cell .star_rating { display: none; }
 
-	.forum_threadlist .inline_row > .thread_rating_cell::after { content: attr(data-rating); }
+	.forum_threadlist .inline_row > .thread_rating_cell .thread_mobile_rating { display: inline; }
 
-	.forum_threadlist .inline_row > .thread_lastpost_cell .lastpost {
+
+	.forum_threadlist .inline_row > .thread_lastpost_cell .lastpost { display: none; }
+
+	.forum_threadlist .thread_mobile_lastpost {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 12px;
 		flex: 1 1 auto;
 		text-align: right;
 	}
 
 	.forum_threadlist .inline_row > .thread_status_cell { grid-column: 1; grid-row: 1 / -1; }
-	.forum_threadlist .inline_row > .thread_main_cell { grid-column: 2; grid-row: 1 / -1; }
-	.forum_threadlist .inline_row > .thread_mod_cell { grid-column: 4; grid-row: 1 / -1; }
+	.forum_threadlist .inline_row > .thread_main_cell { grid-column: 2; grid-row: 1 / 4; }
+	.forum_threadlist .inline_row > .thread_mod_cell { grid-column: 4; grid-row: 1 / 4; }
+	.forum_threadlist .inline_row > .thread_status_cell,
+	.forum_threadlist .inline_row > .thread_main_cell,
+	.forum_threadlist .inline_row > .thread_mod_cell { border: 0; }
 
 	.forum_threadlist .thread_status_cell {
 		width: 34px;
@@ -3010,17 +3026,22 @@ blockquote,
 	<td class="{$bgcolor}{$thread_type_class} thread_lastpost_cell" data-label="{$lang->lastpost}" style="white-space: nowrap; text-align: right;">
 		<span class="lastpost smalltext">{$lastpostdate}<br />
 		<a href="{$thread['lastpostlink']}">{$lang->lastpost}</a>: {$lastposterlink}</span>
+		<span class="thread_mobile_lastpost"><span>{$lastpostdate}</span><span>{$lastposterlink}</span></span>
 	</td>
 {$modbit}
 </tr>]]></template>
 <template name="forumdisplay_thread_modbit" version="1800"><![CDATA[<td class="{$bgcolor}{$thread_type_class} thread_mod_cell" align="center" style="white-space: nowrap"><input type="checkbox" class="checkbox" name="inlinemod_{$multitid}" id="inlinemod_{$multitid}" value="1" {$inlinecheck}  /></td>]]></template>
-<template name="forumdisplay_thread_rating" version="1600"><![CDATA[<td align="center" class="{$bgcolor}{$thread_type_class} thread_rating_cell" data-label="{$lang->rating}" data-rating="{$ratingvotesav}" id="rating_table_{$thread['tid']}">
+<template name="forumdisplay_thread_rating" version="1600"><![CDATA[<td align="center" class="{$bgcolor}{$thread_type_class} thread_rating_cell" data-label="{$lang->rating}" id="rating_table_{$thread['tid']}">
 		<ul class="star_rating{$not_rated}" id="rating_thread_{$thread['tid']}">
 			<li style="width: {$thread['width']}%" class="current_rating" id="current_rating_{$thread['tid']}">{$ratingvotesav}</li>
 		</ul>
+		<span class="thread_mobile_rating" id="thread_mobile_rating_{$thread['tid']}"></span>
 		<script type="text/javascript">
 		<!--
 			Rating.build_forumdisplay({$thread['tid']}, { width: '{$thread['width']}', extra_class: '{$not_rated}', current_average: '{$ratingvotesav}' });
+			var mobileRating = document.getElementById("thread_mobile_rating_{$thread['tid']}");
+			var ratingWidth = parseFloat("{$thread['width']}");
+			mobileRating.textContent = isFinite(ratingWidth) ? (Math.round(ratingWidth / 2) / 10) + "/5" : "N/A";
 		// -->
 		</script>
 	</td>]]></template>

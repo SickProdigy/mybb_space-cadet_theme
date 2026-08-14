@@ -1,10 +1,14 @@
-<template name="forumdisplay_thread_rating" version="1600"><![CDATA[<td align="center" class="{$bgcolor}{$thread_type_class} thread_rating_cell" data-label="{$lang->rating}" data-rating="{$ratingvotesav}" id="rating_table_{$thread['tid']}">
+<template name="forumdisplay_thread_rating" version="1600"><![CDATA[<td align="center" class="{$bgcolor}{$thread_type_class} thread_rating_cell" data-label="{$lang->rating}" id="rating_table_{$thread['tid']}">
 		<ul class="star_rating{$not_rated}" id="rating_thread_{$thread['tid']}">
 			<li style="width: {$thread['width']}%" class="current_rating" id="current_rating_{$thread['tid']}">{$ratingvotesav}</li>
 		</ul>
+		<span class="thread_mobile_rating" id="thread_mobile_rating_{$thread['tid']}"></span>
 		<script type="text/javascript">
 		<!--
 			Rating.build_forumdisplay({$thread['tid']}, { width: '{$thread['width']}', extra_class: '{$not_rated}', current_average: '{$ratingvotesav}' });
+			var mobileRating = document.getElementById("thread_mobile_rating_{$thread['tid']}");
+			var ratingWidth = parseFloat("{$thread['width']}");
+			mobileRating.textContent = isFinite(ratingWidth) ? (Math.round(ratingWidth / 2) / 10) + "/5" : "N/A";
 		// -->
 		</script>
 	</td>]]></template>
