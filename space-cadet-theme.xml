@@ -1874,6 +1874,12 @@ blockquote,
 
 .search_form .select2-container { max-width: 100%; }
 
+.search_form select[name="forums[]"] option:checked {
+	background: #a0a3f2 linear-gradient(0deg, #a0a3f2, #a0a3f2);
+	box-shadow: 0 0 0 100px #a0a3f2 inset;
+	color: #101014;
+}
+
 .search_form .select2-container .select2-choice {
 	background: #181818;
 	border-color: #44444a;
