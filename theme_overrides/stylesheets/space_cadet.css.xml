@@ -2086,6 +2086,8 @@ blockquote,
 
 .search_result_mobile_stats,
 .search_result_mobile_footer,
+.search_result_mobile_forum,
+.search_result_mobile_label,
 .thread_mobile_lastpost,
 .thread_mobile_rating { display: none; }
 
@@ -2169,7 +2171,31 @@ blockquote,
 	}
 
 	.search_results_table .search_result_mobile_footer > span:last-child { text-align: right; }
-	.search_results_threads_table .search_result_subject .author { display: none; }
+	.search_results_threads_table .search_result_subject .author { margin-top: 1px; }
+
+	.search_results_threads_table .search_result_mobile_label { display: inline; }
+
+	.search_results_threads_table .search_result_mobile_forum {
+		display: block;
+		margin-top: 4px;
+		color: #c0c0c5;
+	}
+
+	.search_results_threads_table .search_result_mobile_forum strong { color: #85858d; }
+
+	.search_results_threads_table .search_result_mobile_footer {
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.search_results_threads_table .search_result_mobile_footer > span:last-child { text-align: center; }
+
+	.search_result_mobile_lastposter {
+		display: block;
+		margin-top: 3px;
+		text-align: center;
+	}
 
 	.search_results_table .search_result_row > td:last-child {
 		position: absolute;
@@ -3215,12 +3241,13 @@ blockquote,
 		grid-template-columns: 24px minmax(0, 1fr) auto auto;
 		gap: 0 12px;
 		box-sizing: border-box;
-		width: calc(100% - 16px);
-		margin: 8px;
+		width: 100%;
+		margin: 0;
 		padding: 10px;
 		background: #18181a;
-		border: 1px solid #554a68;
-		border-radius: 3px;
+		border: 0;
+		border-bottom: 2px solid #554a68;
+		border-radius: 0;
 	}
 
 	.usercp_latest_thread > td {
@@ -3241,11 +3268,83 @@ blockquote,
 	.usercp_latest_thread_views { grid-column: 4; grid-row: 1; }
 	.usercp_latest_thread_lastpost { grid-column: 2 / -1; grid-row: 2; margin-top: 8px; }
 
+	.usercp_latest_thread:last-child { border-bottom: 0; }
+
 	.usercp_latest_thread_replies::before,
 	.usercp_latest_thread_views::before {
 		content: attr(data-label) ": ";
 		color: #999;
 		font-weight: 700;
+	}
+}
+
+@media (max-width: 760px) {
+	.usercp_signature_table,
+	.usercp_signature_table > tbody {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_signature_table > tbody > tr:first-child,
+	.usercp_signature_table > tbody > tr:first-child > td {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_signature_editor_row,
+	.usercp_signature_settings_row {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_signature_editor_row > td,
+	.usercp_signature_settings_row > td {
+		display: block;
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+	}
+
+	.usercp_signature_note { display: contents !important; }
+
+	.usercp_signature_note > span {
+		order: 1;
+		padding: 10px;
+	}
+
+	.usercp_signature_editor { order: 2; }
+
+	.usercp_signature_note > div {
+		order: 3;
+		box-sizing: border-box;
+		width: 100% !important;
+		margin: 10px 0 0 !important;
+	}
+
+	.usercp_signature_note > div > table {
+		width: 100% !important;
+		max-width: 260px;
+		margin: 0 auto;
+	}
+
+	.usercp_signature_editor textarea,
+	.usercp_signature_editor .sceditor-container,
+	.usercp_signature_editor .sceditor-container iframe,
+	.usercp_signature_editor .sceditor-container textarea {
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+
+	.usercp_signature_actions {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 7px;
 	}
 }
 
