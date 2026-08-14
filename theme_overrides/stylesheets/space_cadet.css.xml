@@ -3479,5 +3479,11 @@ blockquote,
 		width: 100% !important;
 		max-width: 100%;
 	}
+
+	.modcp_content input.textbox,
+	.modcp_content select {
+		box-sizing: border-box;
+		max-width: 100%;
+	}
 }
 ]]></stylesheet>
