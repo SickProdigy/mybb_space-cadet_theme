@@ -2253,11 +2253,11 @@ blockquote,
 	.forum_threadlist .threadlist_columns > td,
 	.forum_threadlist .inline_row > td { display: none; }
 
-	.forum_threadlist .thread_main_header,
-	.forum_threadlist .thread_mod_header,
-	.forum_threadlist .thread_status_cell,
-	.forum_threadlist .thread_main_cell,
-	.forum_threadlist .thread_mod_cell {
+	.forum_threadlist .threadlist_columns > .thread_main_header,
+	.forum_threadlist .threadlist_columns > .thread_mod_header,
+	.forum_threadlist .inline_row > .thread_status_cell,
+	.forum_threadlist .inline_row > .thread_main_cell,
+	.forum_threadlist .inline_row > .thread_mod_cell {
 		display: block;
 		box-sizing: border-box;
 	}
