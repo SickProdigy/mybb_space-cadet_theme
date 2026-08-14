@@ -2825,6 +2825,31 @@ blockquote,
 	.search_form .select2-container { width: 100% !important; }
 }
 
+@media (max-width: 760px) {
+	.usercp_layout,
+	.usercp_layout > tbody,
+	.usercp_layout > tbody > tr {
+		display: flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_content {
+		order: 1;
+		box-sizing: border-box;
+		width: 100%;
+		min-width: 0;
+	}
+
+	.usercp_navigation {
+		order: 2;
+		box-sizing: border-box;
+		width: 100% !important;
+		padding-top: 14px;
+	}
+}
+
 ]]></stylesheet>
 <stylesheet name="usercp.css" attachedto="usercp.php|private.php" version="1816" disporder="2"><![CDATA[.usercp_nav_item {
 	display: block;
@@ -4569,5 +4594,54 @@ if(use_xmlhttprequest == "1")
 	</td>
 	{$inline_mod_checkbox}
 </tr>]]></template>
+<template name="usercp" version="1600"><![CDATA[<html>
+<head>
+<title>{$lang->user_cp}</title>
+{$headerinclude}
+</head>
+<body>
+{$header}
+<table width="100%" border="0" align="center" class="usercp_layout">
+<tr>
+{$usercpnav}
+<td valign="top" class="usercp_content">
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+<tr>
+<td class="thead" colspan="{$colspan}"><strong>{$lang->account_summary}</strong></td>
+</tr>
+<tr>
+{$avatar}
+<td class="trow2">
+<span class="largetext">{$username}</span><br />
+<strong>{$lang->postnum}</strong> <a href="search.php?action=finduser&amp;uid={$mybb->user['uid']}">{$mybb->user['posts']}</a> {$lang->posts_day}<br />
+{$reputation}
+<strong>{$lang->email}</strong> {$mybb->user['email']}<br />
+<strong>{$lang->registration_date}</strong> {$regdate}<br />
+<strong>{$lang->primary_usergroup}</strong> {$usergroup}<br />
+{$referral_info}
+</td>
+</tr>
+</table>
+{$latest_subscribed}
+{$latest_threads}
+{$latest_warnings}
+{$user_notepad}
+</td>
+</tr>
+</table>
+{$footer}
+</body>
+</html>]]></template>
+<template name="usercp_nav" version="1809"><![CDATA[<td width="{$lang->ucp_nav_width}" valign="top" class="usercp_navigation">
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+<tbody>
+	<tr>
+		<td class="thead"><strong>{$lang->ucp_nav_menu}</strong></td>
+	</tr>
+	{$ucp_nav_home}
+</tbody>
+{$usercpmenu}
+</table>
+</td>]]></template>
 </templates>
 </theme>

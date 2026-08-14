@@ -2813,4 +2813,29 @@ blockquote,
 	.search_form .select2-container { width: 100% !important; }
 }
 
+@media (max-width: 760px) {
+	.usercp_layout,
+	.usercp_layout > tbody,
+	.usercp_layout > tbody > tr {
+		display: flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_content {
+		order: 1;
+		box-sizing: border-box;
+		width: 100%;
+		min-width: 0;
+	}
+
+	.usercp_navigation {
+		order: 2;
+		box-sizing: border-box;
+		width: 100% !important;
+		padding-top: 14px;
+	}
+}
+
 ]]></stylesheet>
