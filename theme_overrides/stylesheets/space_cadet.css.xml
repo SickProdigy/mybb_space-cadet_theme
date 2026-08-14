@@ -3391,6 +3391,17 @@ blockquote,
 	}
 }
 
+/* Moderator CP table normalization */
+.modcp_content .trow1,
+.modcp_content .trow2 { background: #181818; }
+
+.modcp_content .tborder td.tcat,
+.modcp_content .tborder td.trow1,
+.modcp_content .tborder td.trow2 {
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+
 /* Registration and Moderator CP responsive layouts */
 @media (max-width: 760px) {
 	.register_table,
