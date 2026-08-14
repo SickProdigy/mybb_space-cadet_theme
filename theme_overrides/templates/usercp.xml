@@ -22,9 +22,9 @@
 <strong>{$lang->email}</strong> {$mybb->user['email']}<br />
 <strong>{$lang->registration_date}</strong> {$regdate}<br />
 <strong>{$lang->primary_usergroup}</strong> {$usergroup}<br />
-{$referral_info}
 </td>
 </tr>
+{$referral_info}
 </table>
 {$latest_subscribed}
 {$latest_threads}

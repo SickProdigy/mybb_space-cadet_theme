@@ -1,4 +1,5 @@
-<template name="usercp_referrals" version="1600"><![CDATA[<strong>{$lang->members_referred}</strong> {$mybb->user['referrals']}<br />
+<template name="usercp_referrals" version="1600"><![CDATA[<tr>
+<td class="trow2 usercp_referral_row" colspan="{$colspan}"><strong>{$lang->members_referred}</strong> {$mybb->user['referrals']}<br />
 <div class="usercp_referral_callout">
 	<span>Invite new members with your personal referral link:</span>
 	<div class="usercp_referral_actions">
@@ -31,4 +32,6 @@ function copyUsercpReferral(button)
 	copied();
 }
 </script>
-</div>]]></template>
+</div>
+</td>
+</tr>]]></template>
