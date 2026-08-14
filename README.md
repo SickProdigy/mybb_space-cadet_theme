@@ -36,7 +36,7 @@ Space Cadet requires MyBB 1.8.40. Use the generated `space-cadet-theme.xml` for 
 3. Select `space-cadet-theme.xml`, give the theme a name if desired, and import it. Leave **Ignore Version Compatibility** disabled when installing on MyBB 1.8.40.
 4. Set Space Cadet as the default theme or select it for the test account under **User CP → Edit Options**.
 5. Confirm the imported theme inherits unchanged components from **MyBB Master Style**. Do not detach or copy all master templates into Space Cadet.
-6. Hard-refresh the browser and clear any proxy/CDN cache, then test the index, thread, profile, private-message, and moderation pages on desktop and mobile.
+6. Hard-refresh the browser and clear any proxy/CDN cache, then test the index, forum and thread listings, search results, member list and profiles, calendar views, private messages, and moderation pages on desktop and mobile.
 
 For upgrades, replace `images/space-cadet/` with the release assets and import the new generated XML. Test upgrades on a non-production forum first; importing may create a separate theme instead of overwriting an existing customized installation.
 
@@ -81,7 +81,7 @@ Project metadata lives in `theme.json`:
 
 ## Testing
 
-Confirm the generated XML parses and imports without warnings. Test guest/member sessions, forum and thread pages, profiles, private messages, moderation controls, header dropdowns, and post actions. Check desktop, tablet, and phone widths, including menus near viewport edges. Re-import into a clean MyBB 1.8.40 test installation before publishing a release.
+Confirm the generated XML parses and imports without warnings. Test guest/member sessions, forum and thread listings, search and help results, member lists and profiles, monthly and weekly calendars, private messages, moderation controls, header dropdowns, and post actions. Check desktop, narrow desktop browser windows, tablet, and phone widths, including menus and controls near viewport edges. Re-import into a clean MyBB 1.8.40 test installation before publishing a release.
 
 ## Texture Credits
 
