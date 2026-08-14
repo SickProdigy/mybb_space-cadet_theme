@@ -2207,14 +2207,14 @@ blockquote,
 	.search_results_threads_table .search_result_subject {
 		position: relative;
 		display: block;
-		padding-right: 170px;
+		padding-right: 235px;
 	}
 
 	.search_results_threads_table .search_result_mobile_identity { min-width: 0; }
 
 	.search_results_threads_table .search_result_mobile_side {
 		position: absolute;
-		top: 0;
+		top: 4px;
 		right: 0;
 		display: flex;
 		flex-direction: column;
@@ -2238,6 +2238,13 @@ blockquote,
 	}
 
 	.search_results_threads_table .search_result_mobile_footer > span:last-child { text-align: right; }
+
+	.search_results_threads_table .search_result_mobile_footer > span { white-space: nowrap; }
+
+	.search_results_threads_table .search_result_mobile_lastposter {
+		display: inline;
+		margin: 0 0 0 4px;
+	}
 
 	.search_result_mobile_lastposter {
 		display: block;
