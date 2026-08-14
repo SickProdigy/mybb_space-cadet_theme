@@ -1,6 +1,6 @@
 <template name="headerinclude" version="1827"><![CDATA[<link rel="alternate" type="application/rss+xml" title="{$lang->latest_threads} (RSS 2.0)" href="{$mybb->settings['bburl']}/syndication.php" />
 <link rel="alternate" type="application/atom+xml" title="{$lang->latest_threads} (Atom 1.0)" href="{$mybb->settings['bburl']}/syndication.php?type=atom1.0" />
-<meta http-equiv="Content-Type" content="text/html; charset={}" />
+<meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <link rel="stylesheet" href="{$mybb->asset_url}/images/space-cadet/fontawesome/css/fontawesome.min.css" />

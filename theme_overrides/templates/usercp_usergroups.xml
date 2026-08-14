@@ -1,0 +1,20 @@
+<template name="usercp_usergroups" version="120"><![CDATA[<html>
+<head>
+<title>{$mybb->settings['bbname']} - {$lang->group_memberships}</title>
+{$headerinclude}
+</head>
+<body>
+{$header}
+<table width="100%" border="0" align="center" class="usercp_layout usercp_groups_layout">
+<tr>
+{$usercpnav}
+<td valign="top" class="usercp_content usercp_groups_content">
+{$leadinggroups}
+{$joinablegroups}
+{$membergroups}
+</td>
+</tr>
+</table>
+{$footer}
+</body>
+</html>]]></template>
