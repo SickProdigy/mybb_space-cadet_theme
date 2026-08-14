@@ -1839,7 +1839,7 @@ blockquote,
 }
 
 .select2-drop.memberlist_username_dropdown .select2-search input {
-	background-color: #111 !important;
+	background: #111 !important;
 	border-color: #44444a !important;
 	color: #eee !important;
 }
