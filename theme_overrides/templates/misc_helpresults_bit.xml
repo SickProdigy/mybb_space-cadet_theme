@@ -1,8 +1,8 @@
 <template name="misc_helpresults_bit" version="1800"><![CDATA[<tr class="help_result_row">
 	<td class="{$bgcolor} help_result_entry">
-		<span class="smalltext">
-          <a href="misc.php?action=help&hid={$helpdoc['hid']}{$highlight}">{$helpdoc['name']}</a><br />
+		<span class="smalltext help_result_title">
+          <a href="misc.php?action=help&hid={$helpdoc['hid']}{$highlight}">{$helpdoc['name']}</a>
 		</span>
-		<table width="100%"><tr><td><span class="smalltext"><em>{$prev}</em></span></td></tr></table>
+		<div class="smalltext help_result_excerpt">{$prev}</div>
 	</td>
 </tr>]]></template>

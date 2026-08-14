@@ -1561,7 +1561,47 @@ blockquote,
 	line-height: 1.55;
 }
 
-.help_result_entry > table { margin-top: 5px; }
+.help_results_heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 8px 14px;
+}
+
+.help_search_again {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 5px 8px;
+	background: #202023;
+	border: 1px solid #3b3b44;
+	border-radius: 3px;
+	color: #d2d2d8 !important;
+	font-size: 11px;
+	font-weight: 700;
+}
+
+.help_search_again:hover,
+.help_search_again:focus-visible {
+	background: #292934;
+	border-color: #667bc4;
+	color: #fff !important;
+}
+
+.help_result_title {
+	display: inline-block;
+	margin-bottom: 8px;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+.help_result_excerpt {
+	color: #c4c4ca;
+	font-style: normal;
+	line-height: 1.55;
+	overflow-wrap: anywhere;
+}
 
 .help_search_panel .trow1 { background: #181818; }
 
@@ -2494,6 +2534,15 @@ blockquote,
 	}
 
 	.help_search_panel form { align-items: stretch; flex-direction: column; }
+
+	.help_results_heading { align-items: stretch; flex-direction: column; }
+
+	.help_search_again {
+		justify-content: center;
+		box-sizing: border-box;
+		width: 100%;
+		min-height: 36px;
+	}
 
 	.help_search_panel input.textbox {
 		box-sizing: border-box;
@@ -3782,7 +3831,7 @@ if(use_xmlhttprequest == "1")
 </body>
 </html>]]></template>
 <template name="misc_help_search" version="1800"><![CDATA[<br />
-<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder help_search_panel">
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder help_search_panel" id="help_search">
 <tr>
 <td class="thead" colspan="3"><strong>{$lang->search}</strong></td>
 </tr>
@@ -3832,7 +3881,7 @@ if(use_xmlhttprequest == "1")
 {$header}
 <table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder help_results">
 <tr>
-<td class="thead"><strong>{$lang->help_doc_results}</strong></td>
+<td class="thead"><div class="help_results_heading"><strong>{$lang->help_doc_results}</strong><a href="misc.php?action=help#help_search" class="help_search_again"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Search Again</a></div></td>
 </tr>
 <tr>
 <td class="tcat" align="left"><span class="smalltext"><strong>{$lang->document}</strong></span></td>
@@ -3844,10 +3893,10 @@ if(use_xmlhttprequest == "1")
 </html>]]></template>
 <template name="misc_helpresults_bit" version="1800"><![CDATA[<tr class="help_result_row">
 	<td class="{$bgcolor} help_result_entry">
-		<span class="smalltext">
-          <a href="misc.php?action=help&hid={$helpdoc['hid']}{$highlight}">{$helpdoc['name']}</a><br />
+		<span class="smalltext help_result_title">
+          <a href="misc.php?action=help&hid={$helpdoc['hid']}{$highlight}">{$helpdoc['name']}</a>
 		</span>
-		<table width="100%"><tr><td><span class="smalltext"><em>{$prev}</em></span></td></tr></table>
+		<div class="smalltext help_result_excerpt">{$prev}</div>
 	</td>
 </tr>]]></template>
 <template name="nav" version="120"><![CDATA[
