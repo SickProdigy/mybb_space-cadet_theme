@@ -2205,24 +2205,21 @@ blockquote,
 	.search_results_threads_table .search_result_mobile_forum strong { color: #85858d; }
 
 	.search_results_threads_table .search_result_subject {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 2px 8px;
+		position: relative;
+		display: block;
+		padding-right: 170px;
 	}
 
-	.search_results_threads_table .search_result_mobile_identity {
-		grid-column: 1;
-		grid-row: 1;
-		min-width: 0;
-	}
+	.search_results_threads_table .search_result_mobile_identity { min-width: 0; }
 
 	.search_results_threads_table .search_result_mobile_side {
+		position: absolute;
+		top: 0;
+		right: 0;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
 		gap: 3px;
-		grid-column: 2;
-		grid-row: 1;
 		min-width: max-content;
 		text-align: right;
 	}
