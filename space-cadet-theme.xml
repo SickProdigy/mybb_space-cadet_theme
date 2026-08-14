@@ -1797,7 +1797,7 @@ blockquote,
 #footer a:hover,
 #footer a:active { color: #ccc; }
 
-@media/* Search results: unified panel, quieter rows, and integrated controls. */
+/* Search results: unified panel, quieter rows, and integrated controls. */
 .search_results_pagination {
 	margin: 0 0 8px;
 	border-collapse: collapse;
@@ -1881,7 +1881,7 @@ blockquote,
 .search_results_footer form select,
 .search_results_footer form .button { min-height: 34px; }
 
- (max-width: 760px) {
+@media (max-width: 760px) {
 	.search_results_table,
 	.search_results_table > tbody { display: block; }
 
