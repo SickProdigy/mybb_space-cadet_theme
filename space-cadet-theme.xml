@@ -1916,6 +1916,35 @@ blockquote,
 	color: #fff !important;
 }
 
+.usercp_referral_callout {
+	margin-top: 8px;
+	padding: 10px 12px;
+	background: #15151a;
+	border: 1px solid #383842;
+	border-radius: 4px;
+	color: #bbb;
+}
+
+.usercp_referral_actions {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 6px;
+}
+
+.usercp_referral_url {
+	flex: 1 1 260px;
+	min-width: 0;
+	font-weight: 700;
+	overflow-wrap: anywhere;
+}
+
+.usercp_referral_copy {
+	flex: 0 0 auto;
+	min-height: 36px;
+}
+
 .footer_credit_separator {
 	margin: 0 3px;
 	color: #666;
@@ -4643,5 +4672,39 @@ if(use_xmlhttprequest == "1")
 {$usercpmenu}
 </table>
 </td>]]></template>
+<template name="usercp_referrals" version="1600"><![CDATA[<strong>{$lang->members_referred}</strong> {$mybb->user['referrals']}<br />
+<div class="usercp_referral_callout">
+	<span>Invite new members with your personal referral link:</span>
+	<div class="usercp_referral_actions">
+	<a id="usercp_referral_url" class="usercp_referral_url" href="{$mybb->settings['bburl']}/member.php?action=register&amp;referrer={$mybb->user['uid']}">{$mybb->settings['bburl']}/member.php?action=register&amp;referrer={$mybb->user['uid']}</a>
+	<button type="button" class="button usercp_referral_copy" onclick="copyUsercpReferral(this);">Copy link</button>
+	</div>
+<script type="text/javascript">
+function copyUsercpReferral(button)
+{
+	var referralUrl = document.getElementById("usercp_referral_url").href;
+	var copied = function() {
+		button.textContent = "Copied";
+		window.setTimeout(function() { button.textContent = "Copy link"; }, 1600);
+	};
+
+	if(navigator.clipboard && window.isSecureContext)
+	{
+		navigator.clipboard.writeText(referralUrl).then(copied);
+		return;
+	}
+
+	var field = document.createElement("textarea");
+	field.value = referralUrl;
+	field.style.position = "fixed";
+	field.style.opacity = "0";
+	document.body.appendChild(field);
+	field.select();
+	document.execCommand("copy");
+	document.body.removeChild(field);
+	copied();
+}
+</script>
+</div>]]></template>
 </templates>
 </theme>
