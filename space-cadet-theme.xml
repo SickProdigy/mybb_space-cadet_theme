@@ -3403,6 +3403,84 @@ blockquote,
 	}
 }
 
+/* Registration and Moderator CP responsive layouts */
+@media (max-width: 760px) {
+	.register_table,
+	.register_table > tbody,
+	.register_table > tbody > tr {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.register_table > tbody > tr > .register_column {
+		display: block;
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+	}
+
+	.register_column > fieldset,
+	.register_column > table {
+		box-sizing: border-box;
+		width: 100%;
+		min-width: 0;
+	}
+
+	.register_form input.textbox,
+	.register_form textarea,
+	.register_form select {
+		box-sizing: border-box;
+		max-width: 100%;
+	}
+
+	.register_form .button { min-height: 38px; }
+
+	.modcp_layout,
+	.modcp_layout > tbody {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.modcp_layout > tbody > tr {
+		display: flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.modcp_content {
+		order: 1;
+		display: block;
+		box-sizing: border-box;
+		width: 100% !important;
+		min-width: 0;
+	}
+
+	.modcp_nav_column {
+		order: 2;
+		display: block;
+		box-sizing: border-box;
+		width: 100% !important;
+		margin-top: 12px;
+	}
+
+	.modcp_nav_column > table,
+	.modcp_content > table,
+	.modcp_content > form,
+	.modcp_content > form > table {
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.modcp_content textarea {
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+	}
+}
 ]]></stylesheet>
 <stylesheet name="usercp.css" attachedto="usercp.php|private.php" version="1816" disporder="2"><![CDATA[.usercp_nav_item {
 	display: block;
@@ -4481,6 +4559,136 @@ document.addEventListener("DOMContentLoaded", function() {
 <strong>{$lang->email}</strong> <a href="mailto:{$memprofile['email']}">{$memprofile['email']}</a>
 </td>
 </tr>]]></template>
+<template name="member_register" version="1823"><![CDATA[<html>
+<head>
+<title>{$mybb->settings['bbname']} - {$lang->registration}</title>
+{$headerinclude}
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/validate/jquery.validate.min.js?ver=1821"></script>
+</head>
+<body>
+{$header}
+<form action="member.php" method="post" id="registration_form" class="register_form"><input type="text" style="visibility: hidden;" value="" name="regcheck1" /><input type="text" style="visibility: hidden;" value="true" name="regcheck2" />
+{$regerrors}
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder register_table">
+<tr>
+<td class="thead" colspan="2"><strong>{$lang->registration}</strong></td>
+</tr>
+<tr>
+<td width="50%" class="trow1 register_column" valign="top">
+<fieldset class="trow2">
+<legend><strong>{$lang->account_details}</strong></legend>
+<table cellspacing="0" cellpadding="{$theme['tablespace']}" width="100%">
+<tr>
+<td colspan="2"><span class="smalltext"><label for="username">{$lang->username}</label></span></td>
+</tr>
+<tr>
+<td colspan="2"><input type="text" class="textbox" name="username" id="username" style="width: 100%" value="{$username}" /></td>
+</tr>
+{$passboxes}
+<tr>
+<td width="50%" valign="top"><span class="smalltext"><label for="email">{$lang->email}</label></span></td>
+<td width="50%" valign="top"><span class="smalltext"><label for="email2">{$lang->confirm_email}</label></span></td>
+</tr>
+<tr>
+<td width="50%" valign="top"><input type="text" class="textbox" name="email" id="email" style="width: 100%" maxlength="50" value="{$email}" /></td>
+<td width="50%" valign="top"><input type="text" class="textbox" name="email2" id="email2" style="width: 100%" maxlength="50" value="{$email2}" /></td>
+</tr>
+<tr>
+	<td colspan="2" style="display: none;" id="email_status">&nbsp;</td>
+</tr>
+{$hiddencaptcha}
+</table>
+</fieldset>
+{$requiredfields}
+{$customfields}
+{$referrer}
+{$regimage}
+{$questionbox}
+</td>
+<td width="50%" class="trow1 register_column" valign="top">
+<fieldset class="trow2">
+<legend><strong>{$lang->account_prefs}</strong></legend>
+<table cellspacing="0" cellpadding="{$theme['tablespace']}" width="100%">
+<tr>
+<td valign="top" width="1"><input type="checkbox" class="checkbox" name="allownotices" id="allownotices" value="1" {$allownoticescheck} /></td>
+<td valign="top"><span class="smalltext"><label for="allownotices">{$lang->allow_notices}</label></span></td>
+</tr>
+<tr>
+<td valign="top" width="1"><input type="checkbox" class="checkbox" name="hideemail" id="hideemail" value="1" {$hideemailcheck} /></td>
+<td valign="top"><span class="smalltext"><label for="hideemail">{$lang->hide_email}</label></span></td>
+</tr>
+<tr>
+<td valign="top" width="1"><input type="checkbox" class="checkbox" name="receivepms" id="receivepms" value="1" {$receivepmscheck} /></td>
+<td valign="top"><span class="smalltext"><label for="receivepms">{$lang->receive_pms}</label></span></td>
+</tr>
+<tr>
+<td valign="top" width="1"><input type="checkbox" class="checkbox" name="pmnotice" id="pmnotice" value="1"{$pmnoticecheck} /></td>
+<td valign="top"><span class="smalltext"><label for="pmnotice">{$lang->pm_notice}</label></span></td>
+</tr>
+<tr>
+<td valign="top" width="1"><input type="checkbox" class="checkbox" name="pmnotify" id="pmnotify" value="1" {$pmnotifycheck} /></td>
+<td valign="top"><span class="smalltext"><label for="pmnotify">{$lang->email_notify_newpm}</label></span></td>
+</tr>
+<tr>
+<td valign="top" width="1"><input type="checkbox" class="checkbox" name="invisible" id="invisible" value="1" {$invisiblecheck} /></td>
+<td valign="top"><span class="smalltext"><label for="invisible">{$lang->invisible_mode}</label></span></td>
+</tr>
+<tr>
+<td colspan="2"><span class="smalltext"><label for="subscriptionmethod">{$lang->subscription_method}</label></span></td>
+</tr>
+<tr>
+<td colspan="2">
+	<select name="subscriptionmethod" id="subscriptionmethod">
+		<option value="0" {$no_auto_subscribe_selected}>{$lang->no_auto_subscribe}</option>
+		<option value="1" {$no_subscribe_selected}>{$lang->no_subscribe}</option>
+		<option value="2" {$instant_email_subscribe_selected}>{$lang->instant_email_subscribe}</option>
+		<option value="3" {$instant_pm_subscribe_selected}>{$lang->instant_pm_subscribe}</option>
+	</select>
+</td>
+</tr>
+</table>
+</fieldset>
+<br />
+<fieldset class="trow2">
+<legend><strong><label for="timezone">{$lang->time_offset}</label></strong></legend>
+<table cellspacing="0" cellpadding="{$theme['tablespace']}" width="100%">
+<tr>
+<td><span class="smalltext">{$lang->time_offset_desc}</span></td>
+</tr>
+<tr>
+<td>{$tzselect}</td>
+</tr>
+<tr>
+<td><span class="smalltext">{$lang->dst_correction}</span></td>
+</tr>
+<tr>
+<td>
+	<select name="dstcorrection">
+		<option value="2" {$dst_auto_selected}>{$lang->dst_correction_auto}</option>
+		<option value="1" {$dst_enabled_selected}>{$lang->dst_correction_enabled}</option>
+		<option value="0" {$dst_disabled_selected}>{$lang->dst_correction_disabled}</option>
+	</select>
+</td>
+</tr>
+</table>
+</fieldset>
+{$boardlanguage}
+</td>
+</tr>
+</table>
+<br />
+<div align="center">
+<input type="hidden" name="regtime" value="{$time}" />
+<input type="hidden" name="step" value="registration" />
+<input type="hidden" name="action" value="do_register" />
+<input type="submit" class="button" name="regsubmit" value="{$lang->submit_registration}" />
+</div>
+</form>
+{$validator_javascript}
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/regvalidator.js?ver=1823"></script>
+{$footer}
+</body>
+</html>]]></template>
 <template name="memberlist" version="1823"><![CDATA[<html>
 <head>
 <title>{$mybb->settings['bbname']} - {$lang->member_list}</title>
@@ -4739,6 +4947,65 @@ if(use_xmlhttprequest == "1")
 		<div class="smalltext help_result_excerpt">{$prev}</div>
 	</td>
 </tr>]]></template>
+<template name="modcp" version="1805"><![CDATA[<html>
+<head>
+<title>{$mybb->settings['bbname']} - {$lang->modcp}</title>
+{$headerinclude}
+</head>
+<body>
+{$header}
+<table width="100%" border="0" align="center" class="modcp_layout">
+<tr>
+{$modcp_nav}
+<td valign="top" class="modcp_content">
+{$awaitingmoderation}
+{$latestfivemodactions}
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+<tr>
+<td class="thead" align="center" colspan="4"><strong>{$lang->bans_ending_soon}</strong></td>
+</tr>
+<tr>
+<td class="tcat" width="25%"><span class="smalltext"><strong>{$lang->username}</strong></span></td>
+<td class="tcat" align="center" width="30%"><span class="smalltext"><strong>{$lang->reason}</strong></span></td>
+<td class="tcat" align="center" width="25%"><span class="smalltext"><strong>{$lang->ban_length}</strong></span></td>
+<td class="tcat" align="center" width="20%"><span class="smalltext"><strong>{$lang->ban_bannedby}</strong></span></td>
+</tr>
+{$bannedusers}
+</table>
+<br />
+<form action="modcp.php" method="post">
+<input type="hidden" name="my_post_key" value="{$mybb->post_code}" />
+<input type="hidden" name="action" value="do_modnotes" />
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+<tr>
+<td class="thead" align="center" colspan="1"><strong>{$lang->moderator_notes}</strong></td>
+</tr>
+<tr>
+<td class="tcat"><span class="smalltext"><strong>{$lang->notes_public_all}</strong></span></td>
+</tr>
+<tr>
+<td class="trow1"><textarea name="modnotes" style="width: 99%; height: 200px;" rows="5" cols="45">{$modnotes}</textarea></td>
+</tr>
+</table>
+<br />
+<div align="center"><input type="submit" class="button" name="notessubmit" value="{$lang->save_notes}" /></div>
+</form>
+</td>
+</tr>
+</table>
+{$footer}
+</body>
+</html>]]></template>
+<template name="modcp_nav" version="1800"><![CDATA[<td width="{$lang->nav_width}" valign="top" class="modcp_nav_column">
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+	<tr>
+		<td class="thead"><strong>{$lang->nav_menu}</strong></td>
+	</tr>
+	<tr><td class="trow1 smalltext"><a href="modcp.php" class="modcp_nav_item modcp_nav_home">{$lang->mcp_nav_home}</a></td></tr>
+	{$modcp_nav_forums_posts}
+	{$modcp_nav_users}
+</table>
+</td>]]></template>
 <template name="nav" version="120"><![CDATA[
 <nav class="navigation breadcrumb_trail" aria-label="Breadcrumb">
 {$nav}{$activesep}{$activebit}

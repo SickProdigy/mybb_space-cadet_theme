@@ -3391,4 +3391,82 @@ blockquote,
 	}
 }
 
+/* Registration and Moderator CP responsive layouts */
+@media (max-width: 760px) {
+	.register_table,
+	.register_table > tbody,
+	.register_table > tbody > tr {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.register_table > tbody > tr > .register_column {
+		display: block;
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+	}
+
+	.register_column > fieldset,
+	.register_column > table {
+		box-sizing: border-box;
+		width: 100%;
+		min-width: 0;
+	}
+
+	.register_form input.textbox,
+	.register_form textarea,
+	.register_form select {
+		box-sizing: border-box;
+		max-width: 100%;
+	}
+
+	.register_form .button { min-height: 38px; }
+
+	.modcp_layout,
+	.modcp_layout > tbody {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.modcp_layout > tbody > tr {
+		display: flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.modcp_content {
+		order: 1;
+		display: block;
+		box-sizing: border-box;
+		width: 100% !important;
+		min-width: 0;
+	}
+
+	.modcp_nav_column {
+		order: 2;
+		display: block;
+		box-sizing: border-box;
+		width: 100% !important;
+		margin-top: 12px;
+	}
+
+	.modcp_nav_column > table,
+	.modcp_content > table,
+	.modcp_content > form,
+	.modcp_content > form > table {
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.modcp_content textarea {
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+	}
+}
 ]]></stylesheet>
