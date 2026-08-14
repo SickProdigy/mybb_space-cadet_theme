@@ -4,7 +4,7 @@
 	<td class="{$bgcolor} search_result_subject">
 		<div class="search_result_mobile_stats"><span><strong>{$lang->replies}</strong> {$thread['replies']}</span><span><strong>{$lang->views}</strong> {$thread['views']}</span></div>
 		{$attachment_count}
-		<div>
+		<div class="search_result_mobile_identity">
 			<span>{$prefix} {$gotounread}{$thread['threadprefix']}<a href="{$thread_link}{$highlight}" class="{$inline_edit_class} {$new_class}" id="tid_{$inline_edit_tid}">{$thread['subject']}</a>{$thread['multipage']}</span>
 			<div class="author smalltext"><span class="search_result_mobile_label"><strong>{$lang->author}:</strong> </span>{$thread['profilelink']}</div>
 			<div class="search_result_mobile_forum"><strong>{$lang->forum}:</strong> {$thread['forumlink']}</div>
