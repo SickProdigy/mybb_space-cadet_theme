@@ -2255,12 +2255,13 @@ blockquote,
 	.forum_threadlist .threadlist_columns,
 	.forum_threadlist .inline_row {
 		display: grid;
-		grid-template-columns: 38px minmax(0, 1fr) 34px;
+		grid-template-columns: 38px minmax(0, 1fr) minmax(92px, 28%) 34px;
+		grid-template-rows: repeat(4, minmax(26px, auto));
 		box-sizing: border-box;
 		width: 100%;
 	}
 
-	.forum_threadlist .threadlist_columns { grid-template-columns: minmax(0, 1fr) 34px; }
+	.forum_threadlist .threadlist_columns { grid-template-columns: minmax(0, 1fr) 34px; grid-template-rows: auto; }
 
 	.forum_threadlist .threadlist_columns > td,
 	.forum_threadlist .inline_row > td { display: none; }
@@ -2299,6 +2300,49 @@ blockquote,
 	.forum_threadlist .thread_rating_cell,
 	.forum_threadlist .thread_lastpost_header,
 	.forum_threadlist .thread_lastpost_cell { display: none; }
+
+	.forum_threadlist .inline_row > .thread_replies_cell,
+	.forum_threadlist .inline_row > .thread_views_cell,
+	.forum_threadlist .inline_row > .thread_rating_cell,
+	.forum_threadlist .inline_row > .thread_lastpost_cell {
+		display: block;
+		box-sizing: border-box;
+		grid-column: 3;
+		width: auto;
+		padding: 5px 6px;
+		border: 0;
+		border-left: 1px solid #30303a;
+		color: #d0d0d5;
+		font-size: 11px;
+		line-height: 1.3;
+		text-align: right;
+		white-space: normal !important;
+	}
+
+	.forum_threadlist .inline_row > .thread_replies_cell { grid-row: 1; }
+	.forum_threadlist .inline_row > .thread_views_cell { grid-row: 2; }
+	.forum_threadlist .inline_row > .thread_rating_cell { grid-row: 3; }
+	.forum_threadlist .inline_row > .thread_lastpost_cell { grid-row: 4; }
+
+	.forum_threadlist .inline_row > .thread_replies_cell::before,
+	.forum_threadlist .inline_row > .thread_views_cell::before,
+	.forum_threadlist .inline_row > .thread_rating_cell::before,
+	.forum_threadlist .inline_row > .thread_lastpost_cell::before {
+		content: attr(data-label);
+		display: block;
+		margin-bottom: 2px;
+		color: #85858d;
+		font-weight: 700;
+	}
+
+	.forum_threadlist .inline_row > .thread_rating_cell .star_rating {
+		margin-right: 0;
+		margin-left: auto;
+	}
+
+	.forum_threadlist .inline_row > .thread_status_cell { grid-column: 1; grid-row: 1 / -1; }
+	.forum_threadlist .inline_row > .thread_main_cell { grid-column: 2; grid-row: 1 / -1; }
+	.forum_threadlist .inline_row > .thread_mod_cell { grid-column: 4; grid-row: 1 / -1; }
 
 	.forum_threadlist .thread_status_cell {
 		width: 34px;
@@ -2954,17 +2998,17 @@ blockquote,
 			<div><span class="author smalltext">{$thread['profilelink']}{$lang->comma}</span><span class="thread_start_datetime smalltext">{$thread['start_datetime']}</span></div>
 		</div>
 	</td>
-	<td align="center" class="{$bgcolor}{$thread_type_class} thread_replies_cell"><a href="{$mybb->settings['bburl']}/misc.php?action=whoposted&tid={$thread['tid']}" onclick="MyBB.whoPosted({$thread['tid']}); return false;">{$thread['replies']}</a>{$unapproved_posts}</td>
-	<td align="center" class="{$bgcolor}{$thread_type_class} thread_views_cell">{$thread['views']}</td>
+	<td align="center" class="{$bgcolor}{$thread_type_class} thread_replies_cell" data-label="{$lang->replies}"><a href="{$mybb->settings['bburl']}/misc.php?action=whoposted&tid={$thread['tid']}" onclick="MyBB.whoPosted({$thread['tid']}); return false;">{$thread['replies']}</a>{$unapproved_posts}</td>
+	<td align="center" class="{$bgcolor}{$thread_type_class} thread_views_cell" data-label="{$lang->views}">{$thread['views']}</td>
 	{$rating}
-	<td class="{$bgcolor}{$thread_type_class} thread_lastpost_cell" style="white-space: nowrap; text-align: right;">
+	<td class="{$bgcolor}{$thread_type_class} thread_lastpost_cell" data-label="{$lang->lastpost}" style="white-space: nowrap; text-align: right;">
 		<span class="lastpost smalltext">{$lastpostdate}<br />
 		<a href="{$thread['lastpostlink']}">{$lang->lastpost}</a>: {$lastposterlink}</span>
 	</td>
 {$modbit}
 </tr>]]></template>
 <template name="forumdisplay_thread_modbit" version="1800"><![CDATA[<td class="{$bgcolor}{$thread_type_class} thread_mod_cell" align="center" style="white-space: nowrap"><input type="checkbox" class="checkbox" name="inlinemod_{$multitid}" id="inlinemod_{$multitid}" value="1" {$inlinecheck}  /></td>]]></template>
-<template name="forumdisplay_thread_rating" version="1600"><![CDATA[<td align="center" class="{$bgcolor}{$thread_type_class} thread_rating_cell" id="rating_table_{$thread['tid']}">
+<template name="forumdisplay_thread_rating" version="1600"><![CDATA[<td align="center" class="{$bgcolor}{$thread_type_class} thread_rating_cell" data-label="{$lang->rating}" id="rating_table_{$thread['tid']}">
 		<ul class="star_rating{$not_rated}" id="rating_thread_{$thread['tid']}">
 			<li style="width: {$thread['width']}%" class="current_rating" id="current_rating_{$thread['tid']}">{$ratingvotesav}</li>
 		</ul>

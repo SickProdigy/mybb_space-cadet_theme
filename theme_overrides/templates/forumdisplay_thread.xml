@@ -8,10 +8,10 @@
 			<div><span class="author smalltext">{$thread['profilelink']}{$lang->comma}</span><span class="thread_start_datetime smalltext">{$thread['start_datetime']}</span></div>
 		</div>
 	</td>
-	<td align="center" class="{$bgcolor}{$thread_type_class} thread_replies_cell"><a href="{$mybb->settings['bburl']}/misc.php?action=whoposted&tid={$thread['tid']}" onclick="MyBB.whoPosted({$thread['tid']}); return false;">{$thread['replies']}</a>{$unapproved_posts}</td>
-	<td align="center" class="{$bgcolor}{$thread_type_class} thread_views_cell">{$thread['views']}</td>
+	<td align="center" class="{$bgcolor}{$thread_type_class} thread_replies_cell" data-label="{$lang->replies}"><a href="{$mybb->settings['bburl']}/misc.php?action=whoposted&tid={$thread['tid']}" onclick="MyBB.whoPosted({$thread['tid']}); return false;">{$thread['replies']}</a>{$unapproved_posts}</td>
+	<td align="center" class="{$bgcolor}{$thread_type_class} thread_views_cell" data-label="{$lang->views}">{$thread['views']}</td>
 	{$rating}
-	<td class="{$bgcolor}{$thread_type_class} thread_lastpost_cell" style="white-space: nowrap; text-align: right;">
+	<td class="{$bgcolor}{$thread_type_class} thread_lastpost_cell" data-label="{$lang->lastpost}" style="white-space: nowrap; text-align: right;">
 		<span class="lastpost smalltext">{$lastpostdate}<br />
 		<a href="{$thread['lastpostlink']}">{$lang->lastpost}</a>: {$lastposterlink}</span>
 	</td>
