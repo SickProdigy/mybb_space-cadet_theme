@@ -1872,6 +1872,50 @@ blockquote,
 	color: #fff !important;
 }
 
+.search_form .select2-container { max-width: 100%; }
+
+.search_form .select2-container .select2-choice {
+	background: #181818;
+	border-color: #44444a;
+	box-shadow: none;
+	color: #ddd;
+}
+
+.search_form .select2-container .select2-choice .select2-arrow {
+	background: #242428;
+	border-left-color: #44444a;
+}
+
+.search_form .select2-container .select2-default { color: #999; }
+
+.select2-drop.search_username_dropdown {
+	background: #181818 !important;
+	border-color: #44444a !important;
+	color: #ddd !important;
+}
+
+.select2-drop.search_username_dropdown .select2-search input {
+	background: #111 !important;
+	border-color: #44444a !important;
+	color: #eee !important;
+}
+
+.select2-drop.search_username_dropdown .select2-results {
+	background: #181818 !important;
+	color: #ddd !important;
+}
+
+.select2-drop.search_username_dropdown .select2-results .select2-no-results,
+.select2-drop.search_username_dropdown .select2-results .select2-searching {
+	background: #202023 !important;
+	color: #bbb !important;
+}
+
+.select2-drop.search_username_dropdown .select2-results .select2-highlighted {
+	background: #303268 !important;
+	color: #fff !important;
+}
+
 .footer_credit_separator {
 	margin: 0 3px;
 	color: #666;
@@ -2727,6 +2771,58 @@ blockquote,
 		flex-basis: 100%;
 		margin-top: 4px;
 	}
+}
+
+@media (max-width: 760px) {
+	.search_form_table,
+	.search_form_table > tbody {
+		display: flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.search_form_table > tbody > tr { display: contents; }
+
+	.search_form_table > tbody > tr > td {
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+		order: 20;
+		overflow-wrap: anywhere;
+	}
+
+	.search_form_table > tbody > tr:nth-child(1) > td { order: 1; }
+	.search_form_table > tbody > tr:nth-child(2) > td:nth-child(1) { order: 2; }
+	.search_form_table > tbody > tr:nth-child(3) > td:nth-child(1) { order: 3; }
+	.search_form_table > tbody > tr:nth-child(2) > td:nth-child(2) { order: 4; }
+	.search_form_table > tbody > tr:nth-child(3) > td:nth-child(2) { order: 5; }
+	.search_form_table > tbody > tr:nth-child(4) > td:nth-child(1) { order: 6; }
+	.search_form_table > tbody > tr:nth-child(5) > td:nth-child(1) { order: 7; }
+	.search_form_table > tbody > tr:nth-child(4) > td:nth-child(2) { order: 8; }
+	.search_form_table > tbody > tr:nth-child(5) > td:nth-child(2) { order: 9; }
+	.search_form_table > tbody > tr:nth-child(6) > td { order: 10; }
+	.search_form_table > tbody > tr:nth-child(7) > td { order: 11; }
+	.search_form_table > tbody > tr:nth-child(8) > td { order: 12; }
+	.search_form_table > tbody > tr:nth-child(9) > td { order: 13; }
+
+	.search_form_table table,
+	.search_form_table table tbody,
+	.search_form_table table tr,
+	.search_form_table table td {
+		box-sizing: border-box;
+		max-width: 100%;
+	}
+
+	.search_form_table input.textbox,
+	.search_form_table select,
+	.search_form .select2-container {
+		box-sizing: border-box;
+		max-width: 100%;
+	}
+
+	.search_form_table input[name="keywords"],
+	.search_form .select2-container { width: 100% !important; }
 }
 
 ]]></stylesheet>
@@ -4230,6 +4326,129 @@ if(use_xmlhttprequest == "1")
 <template name="postbit_profilefield" version="1800"><![CDATA[<div class="author_stat author_stat_profile"><span class="author_stat_label">{$post['fieldname']}:</span><span class="author_stat_value">{$post['fieldvalue']}</span></div>]]></template>
 <template name="postbit_reputation" version="1400"><![CDATA[<div class="author_stat"><span class="author_stat_label">{$lang->postbit_reputation}</span><span class="author_stat_value">{$post['userreputation']}</span></div>]]></template>
 <template name="postbit_warninglevel" version="1400"><![CDATA[<div class="author_stat author_stat_warning"><span class="author_stat_label">{$lang->postbit_warning_level}</span><span class="author_stat_value"><a href="{$warning_link}">{$warning_level}</a></span></div>]]></template>
+<template name="search" version="1823"><![CDATA[<html>
+<head>
+<title>{$mybb->settings['bbname']} - {$lang->search}</title>
+{$headerinclude}
+</head>
+<body>
+{$header}
+<form action="search.php" class="search_form">
+<input type="hidden" name="action" value="do_search" />
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder search_form_table">
+<tr>
+<td colspan="2" class="thead"><strong>{$lang->search}</strong></td>
+</tr>
+<tr>
+<td class="tcat" width="50%"><strong>{$lang->search_keyword}</strong></td>
+<td class="tcat" width="50%"><strong>{$lang->search_username}</strong></td>
+</tr>
+<tr>
+<td class="trow1">
+<table><tr>
+<td valign="top"><input type="text" class="textbox" name="keywords" size="35" maxlength="250" /></td>
+</tr>
+<tr>
+<td>
+<span class="smalltext"><input type="radio" class="radio" name="postthread" value="1" checked="checked" />{$lang->search_entire_post}<br /><input type="radio" class="radio" name="postthread" value="2" />{$lang->search_titles_only}</span></td>
+</tr></table>
+</td>
+<td class="trow1">
+<input type="text" class="textbox" id="author" name="author" size="35" maxlength="{$mybb->settings['maxnamelength']}" /><br /><span class="smalltext"><input type="checkbox" class="checkbox" name="matchusername" value="1" checked="checked" /> {$lang->match_username}</span>
+</td>
+</tr>
+<tr>
+<td class="tcat"><strong>{$lang->search_forums}</strong></td>
+<td class="tcat"><strong>{$lang->search_options}</strong></td>
+</tr>
+<tr>
+<td class="trow1 no_bottom_border" rowspan="{$rowspan}">{$srchlist}</td>
+<td class="trow1">
+<select name="findthreadst">
+<option value="1">{$lang->threads_at_least}</option>
+<option value="2">{$lang->threads_at_most}</option>
+</select> <input type="text" class="textbox" name="numreplies" size="2" maxlength="4" />&nbsp;{$lang->replies2}<br />
+<br />
+<select name="postdate">
+<option value="0">{$lang->find_anydate}</option>
+<option value="1">{$lang->find_yesterday}</option>
+<option value="7">{$lang->find_lastweek}</option>
+<option value="14">{$lang->find_2weeks}</option>
+<option value="30">{$lang->find_month}</option>
+<option value="90">{$lang->find_3months}</option>
+<option value="180">{$lang->find_6months}</option>
+<option value="365">{$lang->find_year}</option>
+</select>&nbsp;&nbsp; <input type="radio" class="radio" name="pddir" value="1" checked="checked" />{$lang->and_newer}  <input type="radio" class="radio" name="pddir" value="0" />{$lang->and_older}<br />
+<br />
+{$prefixselect}
+</td>
+</tr>
+<tr>
+<td class="tcat"><strong>{$lang->sorting_options}</strong></td>
+</tr>
+<tr>
+<td class="trow1">
+<select name="sortby">
+<option value="lastpost">{$lang->sort_lastpost}</option>
+<option value="starter">{$lang->sort_author}</option>
+<option value="forum">{$lang->sort_forum}</option>
+<option value="views">{$lang->sort_views}</option>
+<option value="replies">{$lang->sort_replies}</option>
+</select> {$lang->sort_in} <input type="radio" class="radio" name="sortordr" value="asc" />{$lang->sort_asc} <input type="radio" class="radio" name="sortordr" value="desc" checked="checked" />{$lang->sort_desc} {$lang->sort_order}
+</td>
+</tr>
+<tr>
+<td class="tcat"><strong>{$lang->display_options}</strong></td>
+</tr>
+<tr>
+<td class="trow1">{$lang->show_results_as} <input type="radio" class="radio" name="showresults" value="threads" checked="checked" />{$lang->show_results_threads} <input type="radio" class="radio" name="showresults" value="posts" />{$lang->show_results_posts}</td>
+</tr>
+{$moderator_options}
+</table>
+<div align="center"><br /><input type="submit" class="button" name="submit" value="{$lang->search}" /></div>
+</form>
+{$footer}
+<link rel="stylesheet" href="{$mybb->asset_url}/jscripts/select2/select2.css?ver=1807">
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/select2/select2.min.js?ver=1806"></script>
+<script type="text/javascript">
+<!--
+if(use_xmlhttprequest == "1")
+{
+	MyBB.select2();
+	$("#author").select2({
+		placeholder: "{$lang->search_user}",
+		minimumInputLength: 2,
+		multiple: false,
+		allowClear: true,
+		dropdownCssClass: "search_username_dropdown",
+		ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+			url: "xmlhttp.php?action=get_users",
+			dataType: 'json',
+			data: function (term, page) {
+				return {
+					query: term, // search term
+				};
+			},
+			results: function (data, page) { // parse the results into the format expected by Select2.
+				// since we are using custom formatting functions we do not need to alter remote JSON data
+				return {results: data};
+			}
+		},
+		initSelection: function(element, callback) {
+			var value = $(element).val();
+			if (value !== "") {
+				callback({
+					id: value,
+					text: value
+				});
+			}
+		},
+	});
+}
+// -->
+</script>
+</body>
+</html>]]></template>
 <template name="search_results_posts" version="1600"><![CDATA[<html>
 <head>
 <title>{$mybb->settings['bbname']} - {$lang->search_results}</title>
