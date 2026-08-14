@@ -1,0 +1,1 @@
+<template name="usercp_currentavatar" version="1807"><![CDATA[<td class="trow1 usercp_summary_avatar" valign="top" align="center" width="1"><div class="usercp_container"><img src="{$useravatar['image']}" alt="{$avatar_username}" title="{$avatar_username}" {$useravatar['width_height']} /></div></td>]]></template>

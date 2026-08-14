@@ -3176,6 +3176,82 @@ blockquote,
 	.usercp_options_actions .button { min-height: 38px; }
 }
 
+@media (max-width: 760px) {
+	.usercp_summary_identity {
+		display: grid;
+		grid-template-columns: minmax(88px, 120px) minmax(0, 1fr);
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_summary_identity > td {
+		display: block;
+		box-sizing: border-box;
+		width: auto !important;
+		min-width: 0;
+	}
+
+	.usercp_summary_avatar .usercp_container img {
+		display: block;
+		width: auto !important;
+		max-width: 100% !important;
+		height: auto !important;
+	}
+
+	.usercp_latest_threads,
+	.usercp_latest_threads > tbody {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_latest_threads > tbody > tr:first-child { display: block; }
+
+	.usercp_latest_threads_heading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 6px 12px;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_latest_threads_heading > strong { order: 1; }
+	.usercp_latest_threads_heading > .float_right { order: 2; float: none; }
+
+	.usercp_latest_threads_columns { display: none; }
+
+	.usercp_latest_thread {
+		display: grid;
+		grid-template-columns: 28px minmax(0, 1fr) auto;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_latest_thread > td {
+		display: block;
+		box-sizing: border-box;
+		width: auto !important;
+		min-width: 0;
+		white-space: normal !important;
+	}
+
+	.usercp_latest_thread > td:nth-child(1) { grid-column: 1; grid-row: 1 / span 3; }
+	.usercp_latest_thread > td:nth-child(2) { display: none; }
+	.usercp_latest_thread_identity { grid-column: 2; grid-row: 1 / span 2; overflow-wrap: anywhere; }
+	.usercp_latest_thread_replies { grid-column: 3; grid-row: 1; }
+	.usercp_latest_thread_views { grid-column: 3; grid-row: 2; }
+	.usercp_latest_thread_lastpost { grid-column: 2 / -1; grid-row: 3; }
+
+	.usercp_latest_thread_replies::before,
+	.usercp_latest_thread_views::before {
+		content: attr(data-label) ": ";
+		color: #999;
+		font-weight: 700;
+	}
+}
+
 ]]></stylesheet>
 <stylesheet name="usercp.css" attachedto="usercp.php|private.php" version="1816" disporder="2"><![CDATA[.usercp_nav_item {
 	display: block;
@@ -5842,6 +5918,7 @@ if(use_xmlhttprequest == "1")
 {$footer}
 </body>
 </html>]]></template>
+<template name="usercp_currentavatar" version="1807"><![CDATA[<td class="trow1 usercp_summary_avatar" valign="top" align="center" width="1"><div class="usercp_container"><img src="{$useravatar['image']}" alt="{$avatar_username}" title="{$avatar_username}" {$useravatar['width_height']} /></div></td>]]></template>
 <template name="usercp_drafts" version="1804"><![CDATA[<html>
 <head>
 <title>{$mybb->settings['bbname']} - {$lang->drafts}</title>
@@ -6218,6 +6295,29 @@ if(use_xmlhttprequest == "1")
 {$footer}
 </body>
 </html>]]></template>
+<template name="usercp_latest_threads" version="1600"><![CDATA[<br />
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder usercp_latest_threads">
+<tr>
+<td class="thead usercp_latest_threads_heading" colspan="6"><div class="float_right"><a href="search.php?action=finduserthreads&amp;uid={$mybb->user['uid']}"><strong>{$lang->find_all_threads}</strong></a></div><strong>{$lang->latest_threads}</strong></td>
+</tr>
+<tr class="usercp_latest_threads_columns">
+<td class="tcat" colspan="3"><span class="smalltext"><strong>{$lang->thread} / {$lang->author}</strong></span></td>
+<td class="tcat" align="center" width="75"><span class="smalltext"><strong>{$lang->replies}</strong></span></td>
+<td class="tcat" align="center" width="75"><span class="smalltext"><strong>{$lang->views}</strong></span></td>
+<td class="tcat" align="center" width="200"><span class="smalltext"><strong>{$lang->lastpost}</strong></span></td>
+</tr>
+{$latest_threads_threads}
+</table>]]></template>
+<template name="usercp_latest_threads_threads" version="1813"><![CDATA[<tr class="usercp_latest_thread">
+<td align="center" class="{$bgcolor}" width="2%"><span class="thread_status {$folder}" title="{$folder_label}">&nbsp;</span></td>
+<td align="center" class="{$bgcolor}" width="2%">{$icon}</td>
+<td class="{$bgcolor} usercp_latest_thread_identity">{$gotounread}{$thread['displayprefix']}<a href="{$thread['threadlink']}" class="{$new_class}">{$thread['subject']}</a><br /><span class="smalltext">{$thread['author']}</span></td>
+<td align="center" class="{$bgcolor} usercp_latest_thread_replies" data-label="{$lang->replies}"><a href="{$mybb->settings['bburl']}/misc.php?action=whoposted&tid={$thread['tid']}" onclick="MyBB.whoPosted({$thread['tid']}); return false;">{$thread['replies']}</a></td>
+<td align="center" class="{$bgcolor} usercp_latest_thread_views" data-label="{$lang->views}">{$thread['views']}</td>
+<td class="{$bgcolor} usercp_latest_thread_lastpost" style="white-space: nowrap"><span class="smalltext">{$lastpostdate}
+<br /><a href="{$thread['lastpostlink']}">{$lang->lastpost}</a>: {$lastposterlink}</span>
+</td>
+</tr>]]></template>
 <template name="usercp_nav" version="1809"><![CDATA[<td width="{$lang->ucp_nav_width}" valign="top" class="usercp_navigation">
 <table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
 <tbody>

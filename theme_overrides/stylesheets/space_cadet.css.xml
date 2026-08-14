@@ -3164,4 +3164,80 @@ blockquote,
 	.usercp_options_actions .button { min-height: 38px; }
 }
 
+@media (max-width: 760px) {
+	.usercp_summary_identity {
+		display: grid;
+		grid-template-columns: minmax(88px, 120px) minmax(0, 1fr);
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_summary_identity > td {
+		display: block;
+		box-sizing: border-box;
+		width: auto !important;
+		min-width: 0;
+	}
+
+	.usercp_summary_avatar .usercp_container img {
+		display: block;
+		width: auto !important;
+		max-width: 100% !important;
+		height: auto !important;
+	}
+
+	.usercp_latest_threads,
+	.usercp_latest_threads > tbody {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_latest_threads > tbody > tr:first-child { display: block; }
+
+	.usercp_latest_threads_heading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 6px 12px;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_latest_threads_heading > strong { order: 1; }
+	.usercp_latest_threads_heading > .float_right { order: 2; float: none; }
+
+	.usercp_latest_threads_columns { display: none; }
+
+	.usercp_latest_thread {
+		display: grid;
+		grid-template-columns: 28px minmax(0, 1fr) auto;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_latest_thread > td {
+		display: block;
+		box-sizing: border-box;
+		width: auto !important;
+		min-width: 0;
+		white-space: normal !important;
+	}
+
+	.usercp_latest_thread > td:nth-child(1) { grid-column: 1; grid-row: 1 / span 3; }
+	.usercp_latest_thread > td:nth-child(2) { display: none; }
+	.usercp_latest_thread_identity { grid-column: 2; grid-row: 1 / span 2; overflow-wrap: anywhere; }
+	.usercp_latest_thread_replies { grid-column: 3; grid-row: 1; }
+	.usercp_latest_thread_views { grid-column: 3; grid-row: 2; }
+	.usercp_latest_thread_lastpost { grid-column: 2 / -1; grid-row: 3; }
+
+	.usercp_latest_thread_replies::before,
+	.usercp_latest_thread_views::before {
+		content: attr(data-label) ": ";
+		color: #999;
+		font-weight: 700;
+	}
+}
+
 ]]></stylesheet>
