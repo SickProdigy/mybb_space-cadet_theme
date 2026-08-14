@@ -1830,6 +1830,43 @@ blockquote,
 .memberlist_search_panel input.textbox,
 .memberlist_search_panel select { box-sizing: border-box; }
 
+.memberlist_quick_search .select2-container .select2-choice {
+	background: #181818;
+	border-color: #44444a;
+	box-shadow: none;
+	color: #ddd;
+}
+
+.memberlist_quick_search .select2-container .select2-choice .select2-arrow {
+	background: #242428;
+	border-left-color: #44444a;
+}
+
+.memberlist_quick_search .select2-container .select2-default { color: #999; }
+
+.memberlist_username_dropdown {
+	background: #181818;
+	border-color: #44444a;
+	color: #ddd;
+}
+
+.memberlist_username_dropdown .select2-search input {
+	background-color: #111;
+	border-color: #44444a;
+	color: #eee;
+}
+
+.memberlist_username_dropdown .select2-results .select2-no-results,
+.memberlist_username_dropdown .select2-results .select2-searching {
+	background: #202023;
+	color: #bbb;
+}
+
+.memberlist_username_dropdown .select2-results .select2-highlighted {
+	background: #303268;
+	color: #fff;
+}
+
 .footer_credit_separator {
 	margin: 0 3px;
 	color: #666;
@@ -3878,6 +3915,7 @@ if(use_xmlhttprequest == "1")
 		minimumInputLength: 2,
 		multiple: false,
 		allowClear: true,
+		dropdownCssClass: "memberlist_username_dropdown",
 		ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
 			url: "xmlhttp.php?action=get_users",
 			dataType: 'json',
