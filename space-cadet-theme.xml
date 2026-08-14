@@ -1844,27 +1844,32 @@ blockquote,
 
 .memberlist_quick_search .select2-container .select2-default { color: #999; }
 
-.memberlist_username_dropdown {
-	background: #181818;
-	border-color: #44444a;
-	color: #ddd;
+.select2-drop.memberlist_username_dropdown {
+	background: #181818 !important;
+	border-color: #44444a !important;
+	color: #ddd !important;
 }
 
-.memberlist_username_dropdown .select2-search input {
-	background-color: #111;
-	border-color: #44444a;
-	color: #eee;
+.select2-drop.memberlist_username_dropdown .select2-search input {
+	background-color: #111 !important;
+	border-color: #44444a !important;
+	color: #eee !important;
 }
 
-.memberlist_username_dropdown .select2-results .select2-no-results,
-.memberlist_username_dropdown .select2-results .select2-searching {
-	background: #202023;
-	color: #bbb;
+.select2-drop.memberlist_username_dropdown .select2-results {
+	background: #181818 !important;
+	color: #ddd !important;
 }
 
-.memberlist_username_dropdown .select2-results .select2-highlighted {
-	background: #303268;
-	color: #fff;
+.select2-drop.memberlist_username_dropdown .select2-results .select2-no-results,
+.select2-drop.memberlist_username_dropdown .select2-results .select2-searching {
+	background: #202023 !important;
+	color: #bbb !important;
+}
+
+.select2-drop.memberlist_username_dropdown .select2-results .select2-highlighted {
+	background: #303268 !important;
+	color: #fff !important;
 }
 
 .footer_credit_separator {
