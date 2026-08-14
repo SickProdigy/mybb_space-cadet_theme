@@ -1890,9 +1890,13 @@ blockquote,
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
 		gap: 0 14px;
+		box-sizing: border-box;
+		width: calc(100% - 16px);
+		margin: 8px;
 		padding: 10px 42px 10px 10px;
 		background: #18181a;
-		border-bottom: 1px solid #30303a;
+		border: 1px solid #554a68;
+		border-radius: 3px;
 	}
 
 	.search_results_table .search_result_row > td {
@@ -1944,8 +1948,7 @@ blockquote,
 		justify-content: space-between;
 		gap: 16px;
 		margin-top: 12px;
-		padding-top: 10px;
-		border-top: 1px solid #29292f;
+		padding-top: 4px;
 	}
 
 	.search_results_table .search_result_mobile_footer > span:last-child { text-align: right; }
