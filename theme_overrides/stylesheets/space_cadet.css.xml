@@ -2354,6 +2354,8 @@ blockquote,
 	.forum_threadlist .inline_row > .thread_main_cell,
 	.forum_threadlist .inline_row > .thread_mod_cell { border: 0; }
 
+	.forum_threadlist .inline_row + .inline_row { border-top: 1px solid #484052; }
+
 	.forum_threadlist .thread_status_cell {
 		width: 34px;
 		padding-right: 4px;
