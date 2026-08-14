@@ -1,0 +1,17 @@
+<template name="search_results_posts_post" version="1813"><![CDATA[<tr class="inline_row search_result_row">
+	<td align="center" class="{$bgcolor} search_result_status" width="2%"><span class="thread_status {$folder}" title="{$folder_label}">&nbsp;</span></td>
+	<td align="center" class="{$bgcolor} search_result_icon" width="2%">{$icon}</td>
+	<td class="{$bgcolor} search_result_subject">
+		<span class="smalltext">
+			{$lang->post_thread} <a href="{$thread_url}{$highlight}">{$post['thread_subject']}</a><br />
+			{$lang->post_subject} <a href="{$post_url}{$highlight}#pid{$post['pid']}">{$post['subject']}</a>
+		</span><br />
+		<table width="100%"><tr><td><span class="smalltext"><em>{$prev}</em></span></td></tr></table>
+	</td>
+	<td align="center" class="{$bgcolor} search_result_meta" data-label="{$lang->author}">{$post['profilelink']}</td>
+	<td class="{$bgcolor} search_result_meta" data-label="{$lang->forum}" >{$post['forumlink']}</td>
+	<td align="center" class="{$bgcolor} search_result_meta" data-label="{$lang->replies}"><a href="{$mybb->settings['bburl']}/misc.php?action=whoposted&tid={$post['tid']}" onclick="MyBB.whoPosted({$post['tid']}); return false;">{$post['thread_replies']}</a></td>
+	<td align="center" class="{$bgcolor} search_result_meta" data-label="{$lang->views}">{$post['thread_views']}</td>
+	<td class="{$bgcolor} search_result_meta search_result_date" data-label="{$lang->posted}" style="white-space: nowrap; text-align: center;"><span class="smalltext">{$posted}</span></td>
+	{$inline_mod_checkbox}
+</tr>]]></template>

@@ -1785,7 +1785,175 @@ blockquote,
 #footer a:hover,
 #footer a:active { color: #ccc; }
 
-@media (max-width: 760px) {
+@media/* Search results: unified panel, quieter rows, and integrated controls. */
+.search_results_pagination {
+	margin: 0 0 8px;
+	border-collapse: collapse;
+}
+
+.search_results_table {
+	border-collapse: separate;
+	border-spacing: 0;
+	background: #111;
+	border-color: #30303a;
+	border-radius: 4px;
+	box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2);
+	overflow: hidden;
+}
+
+.search_results_table .thead {
+	padding: 11px 12px;
+	border-bottom: 1px solid #34343d;
+}
+
+.search_results_table .search_results_columns .tcat {
+	padding: 9px 10px;
+	background: #202023;
+	border: 0;
+	border-bottom: 1px solid #34343d;
+	color: #aaaab2;
+}
+
+.search_results_table .search_results_columns a { color: #d3d3d8; }
+
+.search_results_table .search_result_row > td {
+	padding: 11px 10px;
+	background: #18181a;
+	border: 0;
+	border-bottom: 1px solid #2b2b31;
+	vertical-align: middle;
+}
+
+.search_results_table .search_result_row:last-child > td { border-bottom: 0; }
+
+.search_results_table .search_result_row:hover > td { background: #1d1d21; }
+
+.search_results_table .search_result_status,
+.search_results_table .search_result_icon,
+.search_results_table .search_result_row > td:last-child {
+	background: #141416;
+}
+
+.search_results_table .search_result_subject {
+	min-width: 240px;
+	line-height: 1.5;
+}
+
+.search_results_table .search_result_subject > table td {
+	padding: 5px 0 0;
+	border: 0;
+}
+
+.search_results_table .search_result_meta { color: #c0c0c5; }
+
+.search_results_footer {
+	margin-top: 8px;
+	border-collapse: collapse;
+}
+
+.search_results_footer td { padding: 0; }
+
+.search_results_footer form {
+	display: inline-flex;
+	align-items: center;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin: 0;
+	padding: 8px;
+	background: #18181a;
+	border: 1px solid #30303a;
+	border-radius: 4px;
+}
+
+.search_results_footer form select,
+.search_results_footer form .button { min-height: 34px; }
+
+ (max-width: 760px) {
+	.search_results_table,
+	.search_results_table > tbody { display: block; }
+
+	.search_results_table .search_results_columns { display: none; }
+
+	.search_results_table > tbody > tr:first-child,
+	.search_results_table > tbody > tr:first-child > .thead {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.search_results_table .search_result_row {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0 14px;
+		padding: 10px 42px 10px 10px;
+		background: #18181a;
+		border-bottom: 1px solid #30303a;
+	}
+
+	.search_results_table .search_result_row > td {
+		display: block;
+		box-sizing: border-box;
+		width: auto;
+		padding: 7px 4px;
+		background: transparent;
+		border: 0;
+		text-align: left;
+	}
+
+	.search_results_table .search_result_status,
+	.search_results_table .search_result_icon { display: none; }
+
+	.search_results_table .search_result_subject {
+		grid-column: 1 / -1;
+		min-width: 0;
+		padding-bottom: 10px;
+	}
+
+	.search_results_table .search_result_meta {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 8px;
+		border-top: 1px solid #29292f;
+	}
+
+	.search_results_table .search_result_meta::before {
+		content: attr(data-label);
+		color: #85858d;
+		font-size: 11px;
+		font-weight: bold;
+	}
+
+	.search_results_table .search_result_date {
+		grid-column: 1 / -1;
+		white-space: normal !important;
+	}
+
+	.search_results_table .search_result_row > td:last-child {
+		position: absolute;
+		top: 12px;
+		right: 12px;
+		padding: 0;
+	}
+
+	.search_results_footer,
+	.search_results_footer tbody,
+	.search_results_footer tr,
+	.search_results_footer td { display: block; width: 100%; }
+
+	.search_results_footer form {
+		box-sizing: border-box;
+		justify-content: flex-start;
+		width: 100%;
+	}
+
+	.search_results_footer form select {
+		flex: 1 1 180px;
+		min-width: 0;
+	}
+
 	.calendar_weekview_layout,
 	.calendar_weekview_layout > tbody,
 	.calendar_weekview_layout > tbody > tr {
