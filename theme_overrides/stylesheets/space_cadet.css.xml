@@ -1869,6 +1869,9 @@ blockquote,
 .search_results_footer form select,
 .search_results_footer form .button { min-height: 34px; }
 
+.search_result_mobile_stats,
+.search_result_mobile_footer { display: none; }
+
 @media (max-width: 760px) {
 	.search_results_table,
 	.search_results_table > tbody { display: block; }
@@ -1915,26 +1918,38 @@ blockquote,
 		padding-bottom: 10px;
 	}
 
-	.search_results_table .search_result_meta {
+	.search_results_table .search_result_meta { display: none !important; }
+
+	.search_results_table .search_result_mobile_stats {
+		display: flex;
+		float: right;
+		gap: 12px;
+		margin: 0 28px 8px 14px;
+		color: #d0d0d5;
+		text-align: right;
+	}
+
+	.search_results_table .search_result_mobile_stats strong,
+	.search_results_table .search_result_mobile_footer strong {
 		display: block;
-		grid-column: 1 / -1;
+		margin-bottom: 2px;
+		color: #85858d;
+		font-size: 11px;
+	}
+
+	.search_results_table .search_result_mobile_footer {
+		clear: both;
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 16px;
+		margin-top: 12px;
+		padding-top: 10px;
 		border-top: 1px solid #29292f;
 	}
 
-
-	.search_results_table .search_result_meta::before {
-		content: attr(data-label);
-		color: #85858d;
-		font-size: 11px;
-		display: block;
-		margin-bottom: 3px;
-		font-weight: bold;
-	}
-
-	.search_results_table .search_result_date {
-		grid-column: 1 / -1;
-		white-space: normal !important;
-	}
+	.search_results_table .search_result_mobile_footer > span:last-child { text-align: right; }
+	.search_results_threads_table .search_result_subject .author { display: none; }
 
 	.search_results_table .search_result_row > td:last-child {
 		position: absolute;

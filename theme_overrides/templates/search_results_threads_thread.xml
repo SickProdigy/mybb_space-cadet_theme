@@ -2,11 +2,13 @@
 	<td align="center" class="{$bgcolor} search_result_status" width="2%"><span class="thread_status {$folder}" title="{$folder_label}">&nbsp;</span></td>
 	<td align="center" class="{$bgcolor} search_result_icon" width="2%">{$icon}</td>
 	<td class="{$bgcolor} search_result_subject">
+		<div class="search_result_mobile_stats"><span><strong>{$lang->replies}</strong> {$thread['replies']}</span><span><strong>{$lang->views}</strong> {$thread['views']}</span></div>
 		{$attachment_count}
 		<div>
 			<span>{$prefix} {$gotounread}{$thread['threadprefix']}<a href="{$thread_link}{$highlight}" class="{$inline_edit_class} {$new_class}" id="tid_{$inline_edit_tid}">{$thread['subject']}</a>{$thread['multipage']}</span>
 			<div class="author smalltext">{$thread['profilelink']}</div>
 		</div>
+		<div class="search_result_mobile_footer"><span><strong>{$lang->author}</strong> {$thread['profilelink']}</span><span><strong>{$lang->lastpost}</strong> <span class="smalltext">{$lastpostdate}</span></span></div>
 	</td>
 	<td class="{$bgcolor} search_result_meta search_result_forum" data-label="{$lang->forum}">{$thread['forumlink']}</td>
 	<td align="center" class="{$bgcolor} search_result_meta search_result_replies" data-label="{$lang->replies}"><a href="{$mybb->settings['bburl']}/misc.php?action=whoposted&tid={$thread['tid']}" onclick="MyBB.whoPosted({$thread['tid']}); return false;">{$thread['replies']}</a></td>

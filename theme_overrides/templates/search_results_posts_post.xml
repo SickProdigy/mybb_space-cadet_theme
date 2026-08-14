@@ -2,11 +2,13 @@
 	<td align="center" class="{$bgcolor} search_result_status" width="2%"><span class="thread_status {$folder}" title="{$folder_label}">&nbsp;</span></td>
 	<td align="center" class="{$bgcolor} search_result_icon" width="2%">{$icon}</td>
 	<td class="{$bgcolor} search_result_subject">
+		<div class="search_result_mobile_stats"><span><strong>{$lang->replies}</strong> {$post['thread_replies']}</span><span><strong>{$lang->views}</strong> {$post['thread_views']}</span></div>
 		<span class="smalltext">
 			{$lang->post_thread} <a href="{$thread_url}{$highlight}">{$post['thread_subject']}</a><br />
 			{$lang->post_subject} <a href="{$post_url}{$highlight}#pid{$post['pid']}">{$post['subject']}</a>
 		</span><br />
 		<table width="100%"><tr><td><span class="smalltext"><em>{$prev}</em></span></td></tr></table>
+		<div class="search_result_mobile_footer"><span><strong>{$lang->author}</strong> {$post['profilelink']}</span><span><strong>{$lang->posted}</strong> <span class="smalltext">{$posted}</span></span></div>
 	</td>
 	<td align="center" class="{$bgcolor} search_result_meta search_result_author" data-label="{$lang->author}">{$post['profilelink']}</td>
 	<td class="{$bgcolor} search_result_meta search_result_forum" data-label="{$lang->forum}" >{$post['forumlink']}</td>
