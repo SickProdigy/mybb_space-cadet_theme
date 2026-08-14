@@ -3114,4 +3114,43 @@ blockquote,
 	.usercp_profile_actions .button { min-height: 38px; }
 }
 
+@media (max-width: 760px) {
+	.usercp_options_table,
+	.usercp_options_table > tbody,
+	.usercp_options_table > tbody > tr {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_options_table > tbody > tr > td,
+	.usercp_options_column {
+		display: block;
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+	}
+
+	.usercp_options_column > fieldset {
+		box-sizing: border-box;
+		width: 100%;
+		min-width: 0;
+	}
+
+	.usercp_options_column table {
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.usercp_options_form input.textbox,
+	.usercp_options_form textarea,
+	.usercp_options_form select {
+		box-sizing: border-box;
+		max-width: 100%;
+	}
+
+	.usercp_options_actions .button { min-height: 38px; }
+}
+
 ]]></stylesheet>
