@@ -3073,4 +3073,45 @@ blockquote,
 	}
 }
 
+@media (max-width: 760px) {
+	.usercp_profile_table,
+	.usercp_profile_table > tbody,
+	.usercp_profile_table > tbody > tr {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.usercp_profile_table > tbody > tr > td,
+	.usercp_profile_column {
+		display: block;
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+	}
+
+	.usercp_profile_column > fieldset {
+		box-sizing: border-box;
+		width: 100%;
+		min-width: 0;
+	}
+
+	.usercp_profile_column table {
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.usercp_profile_form input.textbox,
+	.usercp_profile_form textarea,
+	.usercp_profile_form select {
+		box-sizing: border-box;
+		max-width: 100%;
+	}
+
+	.usercp_profile_form textarea { width: 100% !important; }
+
+	.usercp_profile_actions .button { min-height: 38px; }
+}
+
 ]]></stylesheet>
