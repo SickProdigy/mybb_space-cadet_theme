@@ -2514,6 +2514,49 @@ blockquote,
 }
 
 @media (max-width: 480px) {
+	.calendar_controls_form .trow1 > table,
+	.calendar_controls_form .trow1 > table > tbody,
+	.calendar_controls_form .trow1 > table > tbody > tr {
+		display: block;
+		width: 100%;
+	}
+
+	.calendar_controls_form .trow1 > table > tbody > tr > td {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.calendar_controls_form .trow1 > table > tbody > tr > td:first-child {
+		margin-bottom: 12px;
+		line-height: 1.5;
+	}
+
+	.calendar_controls_form .trow1 > table > tbody > tr > td:last-child {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 6px;
+		text-align: left !important;
+	}
+
+	.calendar_controls_form .trow1 > table > tbody > tr > td:last-child > span {
+		flex-basis: 100%;
+		margin-bottom: 2px;
+	}
+
+	.calendar_controls_form select {
+		flex: 1 1 110px;
+		min-width: 0;
+	}
+
+	.calendar_controls_form br { display: none; }
+
+	.calendar_controls_form .trow1 > table > tbody > tr > td:last-child > a {
+		flex-basis: 100%;
+		margin-top: 4px;
+	}
+
 	.breadcrumb_trail { row-gap: 4px; }
 
 	#content .breadcrumb_trail .breadcrumb_item {
