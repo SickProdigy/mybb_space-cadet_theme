@@ -2108,8 +2108,7 @@ blockquote,
 		box-sizing: border-box;
 		margin-top: 10px;
 		background: #181818;
-		border: 1px solid #292929;
-		border-left: 3px solid #7289da;
+		border: 1px solid #33333a;
 		border-radius: 3px;
 		overflow: hidden;
 	}
@@ -2146,7 +2145,6 @@ blockquote,
 		justify-content: space-between;
 		gap: 12px;
 		padding: 7px 10px !important;
-		border-top: 1px solid #292929 !important;
 		text-align: right;
 	}
 
