@@ -1935,8 +1935,8 @@ blockquote,
 
 	.search_results_table .search_result_mobile_stats strong,
 	.search_results_table .search_result_mobile_footer strong {
-		display: block;
-		margin-bottom: 2px;
+		display: inline;
+		margin: 0;
 		color: #85858d;
 		font-size: 11px;
 	}
@@ -2293,13 +2293,15 @@ blockquote,
 	.forum_threadlist .inline_row > .thread_views_cell,
 	.forum_threadlist .inline_row > .thread_rating_cell,
 	.forum_threadlist .inline_row > .thread_lastpost_cell {
-		display: block;
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 6px;
 		box-sizing: border-box;
 		grid-column: 3;
 		width: auto;
 		padding: 5px 6px;
 		border: 0;
-		border-left: 1px solid #30303a;
 		color: #d0d0d5;
 		font-size: 11px;
 		line-height: 1.3;
@@ -2316,16 +2318,20 @@ blockquote,
 	.forum_threadlist .inline_row > .thread_views_cell::before,
 	.forum_threadlist .inline_row > .thread_rating_cell::before,
 	.forum_threadlist .inline_row > .thread_lastpost_cell::before {
-		content: attr(data-label);
-		display: block;
-		margin-bottom: 2px;
+		content: attr(data-label) ":";
+		display: inline;
+		margin: 0;
 		color: #85858d;
 		font-weight: 700;
 	}
 
-	.forum_threadlist .inline_row > .thread_rating_cell .star_rating {
-		margin-right: 0;
-		margin-left: auto;
+	.forum_threadlist .inline_row > .thread_rating_cell .star_rating { display: none; }
+
+	.forum_threadlist .inline_row > .thread_rating_cell::after { content: attr(data-rating); }
+
+	.forum_threadlist .inline_row > .thread_lastpost_cell .lastpost {
+		flex: 1 1 auto;
+		text-align: right;
 	}
 
 	.forum_threadlist .inline_row > .thread_status_cell { grid-column: 1; grid-row: 1 / -1; }

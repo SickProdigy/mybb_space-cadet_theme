@@ -1947,8 +1947,8 @@ blockquote,
 
 	.search_results_table .search_result_mobile_stats strong,
 	.search_results_table .search_result_mobile_footer strong {
-		display: block;
-		margin-bottom: 2px;
+		display: inline;
+		margin: 0;
 		color: #85858d;
 		font-size: 11px;
 	}
@@ -2305,13 +2305,15 @@ blockquote,
 	.forum_threadlist .inline_row > .thread_views_cell,
 	.forum_threadlist .inline_row > .thread_rating_cell,
 	.forum_threadlist .inline_row > .thread_lastpost_cell {
-		display: block;
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 6px;
 		box-sizing: border-box;
 		grid-column: 3;
 		width: auto;
 		padding: 5px 6px;
 		border: 0;
-		border-left: 1px solid #30303a;
 		color: #d0d0d5;
 		font-size: 11px;
 		line-height: 1.3;
@@ -2328,16 +2330,20 @@ blockquote,
 	.forum_threadlist .inline_row > .thread_views_cell::before,
 	.forum_threadlist .inline_row > .thread_rating_cell::before,
 	.forum_threadlist .inline_row > .thread_lastpost_cell::before {
-		content: attr(data-label);
-		display: block;
-		margin-bottom: 2px;
+		content: attr(data-label) ":";
+		display: inline;
+		margin: 0;
 		color: #85858d;
 		font-weight: 700;
 	}
 
-	.forum_threadlist .inline_row > .thread_rating_cell .star_rating {
-		margin-right: 0;
-		margin-left: auto;
+	.forum_threadlist .inline_row > .thread_rating_cell .star_rating { display: none; }
+
+	.forum_threadlist .inline_row > .thread_rating_cell::after { content: attr(data-rating); }
+
+	.forum_threadlist .inline_row > .thread_lastpost_cell .lastpost {
+		flex: 1 1 auto;
+		text-align: right;
 	}
 
 	.forum_threadlist .inline_row > .thread_status_cell { grid-column: 1; grid-row: 1 / -1; }
@@ -3008,7 +3014,7 @@ blockquote,
 {$modbit}
 </tr>]]></template>
 <template name="forumdisplay_thread_modbit" version="1800"><![CDATA[<td class="{$bgcolor}{$thread_type_class} thread_mod_cell" align="center" style="white-space: nowrap"><input type="checkbox" class="checkbox" name="inlinemod_{$multitid}" id="inlinemod_{$multitid}" value="1" {$inlinecheck}  /></td>]]></template>
-<template name="forumdisplay_thread_rating" version="1600"><![CDATA[<td align="center" class="{$bgcolor}{$thread_type_class} thread_rating_cell" data-label="{$lang->rating}" id="rating_table_{$thread['tid']}">
+<template name="forumdisplay_thread_rating" version="1600"><![CDATA[<td align="center" class="{$bgcolor}{$thread_type_class} thread_rating_cell" data-label="{$lang->rating}" data-rating="{$ratingvotesav}" id="rating_table_{$thread['tid']}">
 		<ul class="star_rating{$not_rated}" id="rating_thread_{$thread['tid']}">
 			<li style="width: {$thread['width']}%" class="current_rating" id="current_rating_{$thread['tid']}">{$ratingvotesav}</li>
 		</ul>
