@@ -1606,6 +1606,9 @@ blockquote,
 }
 
 /* Calendar colors stay within the Space Cadet palette. */
+.calendar_controls_top { margin-bottom: 12px; }
+
+.calendar_controls_top form { margin: 0; }
 .space_cadet_calendar { table-layout: fixed; }
 
 .space_cadet_calendar .calendar_week_column { width: 34px; }

@@ -1618,6 +1618,9 @@ blockquote,
 }
 
 /* Calendar colors stay within the Space Cadet palette. */
+.calendar_controls_top { margin-bottom: 12px; }
+
+.calendar_controls_top form { margin: 0; }
 .space_cadet_calendar { table-layout: fixed; }
 
 .space_cadet_calendar .calendar_week_column { width: 34px; }
@@ -2817,6 +2820,48 @@ blockquote,
 </head>
 <body>
 	{$header}
+	<div class="calendar_controls_top">
+<form action="calendar.php" method="post">
+	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+		<tr>
+			<td class="trow1">
+				<table width="100%" cellspacing="0" cellpadding="0" border="0">
+					<tr>
+						<td valign="top">{$addevent}</td>
+						<td align="right">
+						<span class="smalltext"><strong>{$lang->jump_month}</strong></span>
+						<select name="month">
+							<option value="{$month}">{$monthnames[$month]}</option>
+							<option value="{$month}">----------</option>
+							<option value="1">{$lang->alt_month_1}</option>
+							<option value="2">{$lang->alt_month_2}</option>
+							<option value="3">{$lang->alt_month_3}</option>
+							<option value="4">{$lang->alt_month_4}</option>
+							<option value="5">{$lang->alt_month_5}</option>
+							<option value="6">{$lang->alt_month_6}</option>
+							<option value="7">{$lang->alt_month_7}</option>
+							<option value="8">{$lang->alt_month_8}</option>
+							<option value="9">{$lang->alt_month_9}</option>
+							<option value="10">{$lang->alt_month_10}</option>
+							<option value="11">{$lang->alt_month_11}</option>
+							<option value="12">{$lang->alt_month_12}</option>
+						</select>
+						<select name="year">
+							<option value="{$year}">{$year}</option>
+							<option value="{$year}">----------</option>
+							{$yearsel}
+						</select>
+						{$gobutton}
+						<br />
+						{$calendar_jump}
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		</table>
+	</form>
+	</div>
 	<div class="calendar_scroll" role="region" aria-label="Monthly calendar" tabindex="0">
 	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder space_cadet_calendar">
 		<colgroup>
@@ -2918,6 +2963,48 @@ blockquote,
 </head>
 <body>
 	{$header}
+<div class="calendar_controls_top">
+<form action="calendar.php" method="post">
+	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+		<tr>
+			<td class="trow1">
+				<table width="100%" cellspacing="0" cellpadding="0" border="0">
+					<tr>
+					<td valign="top">{$addevent}</td>
+						<td align="right">
+						<span class="smalltext"><strong>{$lang->jump_month}</strong></span>
+						<select name="month">
+							<option value="{$week_from[1]}">{$monthnames[$week_from_one]}</option>
+							<option value="{$week_from[1]}">----------</option>
+							<option value="1">{$lang->alt_month_1}</option>
+							<option value="2">{$lang->alt_month_2}</option>
+							<option value="3">{$lang->alt_month_3}</option>
+							<option value="4">{$lang->alt_month_4}</option>
+							<option value="5">{$lang->alt_month_5}</option>
+							<option value="6">{$lang->alt_month_6}</option>
+							<option value="7">{$lang->alt_month_7}</option>
+							<option value="8">{$lang->alt_month_8}</option>
+							<option value="9">{$lang->alt_month_9}</option>
+							<option value="10">{$lang->alt_month_10}</option>
+							<option value="11">{$lang->alt_month_11}</option>
+							<option value="12">{$lang->alt_month_12}</option>
+						</select>
+						<select name="year">
+							<option value="{$week_from[2]}">{$week_from[2]}</option>
+							<option value="{$week_from[2]}">----------</option>
+							{$yearsel}
+						</select>
+						{$gobutton}
+						<br />
+						{$calendar_jump}
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</form>
+</div>
 <table border="0" cellspacing="0" cellpadding="0" class="calendar_weekview_layout">
 <tr>
 <td width="100%" class="calendar_weekview_main">
