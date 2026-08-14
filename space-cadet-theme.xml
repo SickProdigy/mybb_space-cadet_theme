@@ -2214,8 +2214,8 @@ blockquote,
 
 	.search_results_threads_table .search_result_mobile_side {
 		position: absolute;
-		top: 4px;
 		right: 0;
+		bottom: 0;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
