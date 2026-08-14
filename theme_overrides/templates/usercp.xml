@@ -13,8 +13,8 @@
 <tr>
 <td class="thead" colspan="{$colspan}"><strong>{$lang->account_summary}</strong></td>
 </tr>
-<tr>
-{$avatar}
+<tr class="usercp_summary_identity">
+{}
 <td class="trow2">
 <span class="largetext">{$username}</span><br />
 <strong>{$lang->postnum}</strong> <a href="search.php?action=finduser&amp;uid={$mybb->user['uid']}">{$mybb->user['posts']}</a> {$lang->posts_day}<br />
@@ -22,6 +22,7 @@
 <strong>{$lang->email}</strong> {$mybb->user['email']}<br />
 <strong>{$lang->registration_date}</strong> {$regdate}<br />
 <strong>{$lang->primary_usergroup}</strong> {$usergroup}<br />
+<strong>{$lang->members_referred}</strong> {$mybb->user['referrals']}<br />
 </td>
 </tr>
 {$referral_info}

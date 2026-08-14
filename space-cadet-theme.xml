@@ -1916,6 +1916,15 @@ blockquote,
 	color: #fff !important;
 }
 
+.usercp_summary_identity > td { border-bottom: 0 !important; }
+
+.usercp_referral_row {
+	padding-top: 0 !important;
+	border-top: 0 !important;
+}
+
+.usercp_referral_row .usercp_referral_callout { margin-top: 0; }
+
 .usercp_referral_callout {
 	margin-top: 8px;
 	padding: 10px 12px;
@@ -4638,8 +4647,8 @@ if(use_xmlhttprequest == "1")
 <tr>
 <td class="thead" colspan="{$colspan}"><strong>{$lang->account_summary}</strong></td>
 </tr>
-<tr>
-{$avatar}
+<tr class="usercp_summary_identity">
+{}
 <td class="trow2">
 <span class="largetext">{$username}</span><br />
 <strong>{$lang->postnum}</strong> <a href="search.php?action=finduser&amp;uid={$mybb->user['uid']}">{$mybb->user['posts']}</a> {$lang->posts_day}<br />
@@ -4647,6 +4656,7 @@ if(use_xmlhttprequest == "1")
 <strong>{$lang->email}</strong> {$mybb->user['email']}<br />
 <strong>{$lang->registration_date}</strong> {$regdate}<br />
 <strong>{$lang->primary_usergroup}</strong> {$usergroup}<br />
+<strong>{$lang->members_referred}</strong> {$mybb->user['referrals']}<br />
 </td>
 </tr>
 {$referral_info}
@@ -4673,7 +4683,7 @@ if(use_xmlhttprequest == "1")
 </table>
 </td>]]></template>
 <template name="usercp_referrals" version="1600"><![CDATA[<tr>
-<td class="trow2 usercp_referral_row" colspan="{$colspan}"><strong>{$lang->members_referred}</strong> {$mybb->user['referrals']}<br />
+<td class="trow2 usercp_referral_row" colspan="{$colspan}">
 <div class="usercp_referral_callout">
 	<span>Invite new members with your personal referral link:</span>
 	<div class="usercp_referral_actions">

@@ -1904,6 +1904,15 @@ blockquote,
 	color: #fff !important;
 }
 
+.usercp_summary_identity > td { border-bottom: 0 !important; }
+
+.usercp_referral_row {
+	padding-top: 0 !important;
+	border-top: 0 !important;
+}
+
+.usercp_referral_row .usercp_referral_callout { margin-top: 0; }
+
 .usercp_referral_callout {
 	margin-top: 8px;
 	padding: 10px 12px;
