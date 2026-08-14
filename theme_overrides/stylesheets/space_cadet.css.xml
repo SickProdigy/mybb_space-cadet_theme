@@ -2091,6 +2091,7 @@ blockquote,
 
 .search_result_mobile_stats,
 .search_result_mobile_footer,
+.search_result_mobile_side,
 .search_result_mobile_forum,
 .search_result_mobile_label,
 .thread_mobile_lastpost,
@@ -2199,20 +2200,27 @@ blockquote,
 
 	.search_results_threads_table .search_result_mobile_identity {
 		grid-column: 1;
-		grid-row: 1 / span 2;
+		grid-row: 1;
 		min-width: 0;
 	}
 
-	.search_results_threads_table .search_result_mobile_stats {
+	.search_results_threads_table .search_result_mobile_side {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 3px;
 		grid-column: 2;
 		grid-row: 1;
+		min-width: max-content;
+		text-align: right;
+	}
+
+	.search_results_threads_table .search_result_mobile_stats {
 		float: none;
 		margin: 0;
 	}
 
 	.search_results_threads_table .search_result_mobile_footer {
-		grid-column: 2;
-		grid-row: 2;
 		align-items: center;
 		justify-content: flex-end;
 		margin-top: 0;
@@ -3297,7 +3305,7 @@ blockquote,
 	.usercp_latest_thread_identity { grid-column: 2; grid-row: 1; overflow-wrap: anywhere; }
 	.usercp_latest_thread_replies { grid-column: 3; grid-row: 1; }
 	.usercp_latest_thread_views { grid-column: 4; grid-row: 1; }
-	.usercp_latest_thread_lastpost { grid-column: 2 / -1; grid-row: 2; justify-self: end; margin-top: 0; text-align: right; }
+	.usercp_latest_thread_lastpost { grid-column: 3 / -1; grid-row: 1; align-self: start; justify-self: end; margin-top: 22px; text-align: right; }
 
 	.usercp_latest_thread:last-child { border-bottom: 0; }
 
