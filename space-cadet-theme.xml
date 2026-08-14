@@ -2122,13 +2122,16 @@ blockquote,
 		grid-template-columns: minmax(0, 1fr);
 		gap: 0 14px;
 		box-sizing: border-box;
-		width: calc(100% - 16px);
-		margin: 8px;
+		width: 100%;
+		margin: 0;
 		padding: 10px 42px 10px 10px;
 		background: #18181a;
-		border: 1px solid #554a68;
-		border-radius: 3px;
+		border: 0;
+		border-bottom: 2px solid #554a68;
+		border-radius: 0;
 	}
+
+	.search_results_table .search_result_row:last-child { border-bottom: 0; }
 
 	.search_results_table .search_result_row > td {
 		display: block;
@@ -3278,7 +3281,7 @@ blockquote,
 	.usercp_latest_thread_identity { grid-column: 2; grid-row: 1; overflow-wrap: anywhere; }
 	.usercp_latest_thread_replies { grid-column: 3; grid-row: 1; }
 	.usercp_latest_thread_views { grid-column: 4; grid-row: 1; }
-	.usercp_latest_thread_lastpost { grid-column: 2 / -1; grid-row: 2; margin-top: 8px; }
+	.usercp_latest_thread_lastpost { grid-column: 2 / -1; grid-row: 2; justify-self: end; margin-top: 8px; text-align: right; }
 
 	.usercp_latest_thread:last-child { border-bottom: 0; }
 
