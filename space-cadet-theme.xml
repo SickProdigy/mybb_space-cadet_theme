@@ -1954,6 +1954,54 @@ blockquote,
 	min-height: 36px;
 }
 
+.pm_compose_form .select2-container { max-width: 100%; }
+
+.pm_compose_form .select2-container-multi .select2-choices {
+	background: #181818;
+	border-color: #44444a;
+	box-shadow: none;
+}
+
+.pm_compose_form .select2-container-multi .select2-choices .select2-search-field input {
+	background: transparent !important;
+	color: #ddd;
+}
+
+.pm_compose_form .select2-container-multi .select2-search-choice {
+	background: #242428;
+	border-color: #44444a;
+	box-shadow: none;
+	color: #ddd;
+}
+
+.select2-drop.pm_recipient_dropdown {
+	background: #181818 !important;
+	border-color: #44444a !important;
+	color: #ddd !important;
+}
+
+.select2-drop.pm_recipient_dropdown .select2-search input {
+	background: #111 !important;
+	border-color: #44444a !important;
+	color: #eee !important;
+}
+
+.select2-drop.pm_recipient_dropdown .select2-results {
+	background: #181818 !important;
+	color: #ddd !important;
+}
+
+.select2-drop.pm_recipient_dropdown .select2-results .select2-no-results,
+.select2-drop.pm_recipient_dropdown .select2-results .select2-searching {
+	background: #202023 !important;
+	color: #bbb !important;
+}
+
+.select2-drop.pm_recipient_dropdown .select2-results .select2-highlighted {
+	background: #303268 !important;
+	color: #fff !important;
+}
+
 .footer_credit_separator {
 	margin: 0 3px;
 	color: #666;
@@ -2967,6 +3015,74 @@ blockquote,
 	}
 
 	.pm_folder_jump select { max-width: 100%; }
+}
+
+@media (max-width: 760px) {
+	.pm_compose_table,
+	.pm_compose_table > tbody {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.pm_compose_table > tbody > tr {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.pm_compose_table > tbody > tr > td {
+		display: block;
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+	}
+
+	.pm_compose_table textarea,
+	.pm_compose_table input.textbox,
+	.pm_compose_form .select2-container {
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+	}
+
+	.pm_compose_message_label { display: contents !important; }
+
+	.pm_compose_message_label > strong {
+		order: 1;
+		padding: 10px;
+	}
+
+	.pm_compose_editor { order: 2; }
+
+	.pm_compose_message_label > div {
+		order: 3;
+		box-sizing: border-box;
+		width: 100% !important;
+		margin: 10px 0 0 !important;
+	}
+
+	.pm_compose_message_label > div > table {
+		width: 100% !important;
+		max-width: 260px;
+		margin: 0 auto;
+	}
+
+	.pm_compose_editor .sceditor-container,
+	.pm_compose_editor .sceditor-container iframe,
+	.pm_compose_editor .sceditor-container textarea {
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+
+	.pm_compose_actions {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 7px;
+	}
 }
 
 ]]></stylesheet>
@@ -4536,6 +4652,225 @@ if(use_xmlhttprequest == "1")
 	<td class="{$bgcolor} pm_message_date" data-label="{$lang->date_sent}" align="right" style="white-space: nowrap"><span class="smalltext">{$senddate}</span></td>
 	<td class="{$bgcolor}" align="center" width="2%"><input type="checkbox" class="checkbox" name="check[{$message['pmid']}]" value="1" /></td>
 </tr>]]></template>
+<template name="private_send" version="1827"><![CDATA[<html>
+<head>
+<title>{$lang->compose_pm}</title>
+{$headerinclude}
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/usercp.js?ver=1827"></script>
+</head>
+<body>
+{$header}
+<form action="private.php" method="post" name="input" class="pm_compose_form">
+<input type="hidden" name="my_post_key" value="{$mybb->post_code}" />
+<table width="100%" border="0" align="center" class="usercp_layout private_layout">
+<tr>
+{$usercpnav}
+<td valign="top" class="usercp_content private_content">
+{$preview}
+{$send_errors}
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder pm_compose_table">
+<tr>
+<td class="thead" colspan="2"><strong>{$lang->compose_pm}</strong></td>
+</tr>
+<tr>
+<td class="trow1" valign="top" width="200"><strong>{$lang->compose_to}</strong>
+	<script type="text/javascript">
+	<!--
+		document.write('(<a href="javascript:void(0)" onclick="showBcc(); return false;" title="{$lang->compose_bcc_show_title}">{$lang->compose_bcc_show}<\/a>)');
+	// -->
+	</script>
+	<br /><span class="smalltext">{$lang->separate_names}{$buddy_select_to}</span></td>
+<td class="trow1" valign="top"><textarea name="to" id="to" rows="2" cols="38" tabindex="1" style="width: 450px;">{$to}</textarea>{$max_recipients}</td>
+</tr>
+<tr id="bcc_area">
+<td class="trow2" valign="top"><strong>{$lang->compose_bcc}</strong>{$buddy_select_bcc}</td>
+<td class="trow2"><textarea name="bcc" id="bcc" rows="2" cols="38" tabindex="1" style="width: 450px;">{$bcc}</textarea></td>
+</tr>
+<tr>
+<td class="trow1"><strong>{$lang->compose_subject}</strong></td>
+<td class="trow1"><input type="text" class="textbox" name="subject" size="40" maxlength="85" value="{$subject}" tabindex="3" /></td>
+</tr>
+{$posticons}
+<tr class="pm_compose_message_row">
+<td class="trow2 pm_compose_message_label" valign="top"><strong>{$lang->compose_message}</strong>{$smilieinserter}</td>
+<td class="trow2 pm_compose_editor">
+<textarea name="message" id="message" rows="20" cols="70" tabindex="4">{$message}</textarea>
+{$codebuttons}
+</td>
+</tr>
+<tr>
+<td class="trow1" valign="top"><strong>{$lang->compose_options}</strong></td>
+<td class="trow1"><span class="smalltext">
+<label><input type="checkbox" class="checkbox" name="options[signature]" value="1" tabindex="5" {$optionschecked['signature']} />{$lang->options_sig}</label><br />
+<label><input type="checkbox" class="checkbox" name="options[disablesmilies]" value="1" tabindex="6" {$optionschecked['disablesmilies']} />{$lang->options_disable_smilies}</label><br />
+<label><input type="checkbox" class="checkbox" name="options[savecopy]" value="1" tabindex="7" {$optionschecked['savecopy']} />{$lang->options_save_copy}</label>
+{$private_send_tracking}
+</span></td>
+</tr>
+</table>
+<br />
+<input type="hidden" name="action" value="do_send" />
+<input type="hidden" name="pmid" value="{$pmid}" />
+<input type="hidden" name="do" value="{$do}" />
+<div class="pm_compose_actions" style="text-align: center;">
+<input type="submit" class="button" name="submit" value="{$lang->send_message}" tabindex="9" accesskey="s" />
+<input type="submit" class="button" name="saveasdraft" value="{$lang->save_draft}" tabindex="10" />
+<input type="submit" class="button" name="preview" value="{$lang->preview}" tabindex="11" />
+</div>
+</td>
+</tr>
+</table>
+</form>
+{$footer}
+<script type="text/javascript">
+<!--
+	if($("#bcc_area").length > 0 && $("#bcc").val() == "")
+	{
+		$("#bcc_area").css("display", "none");
+	}
+
+	function showBcc()
+	{
+		if($("#bcc_area").css("display") == 'none')
+		{
+			$("#bcc_area").css("display", "");
+		}
+		else
+		{
+			$("#bcc_area").css("display", "none");
+		}
+	}
+// -->
+</script>
+{$autocompletejs}
+</body>
+</html>]]></template>
+<template name="private_send_autocomplete" version="1823"><![CDATA[<link rel="stylesheet" href="{$mybb->asset_url}/jscripts/select2/select2.css?ver=1807">
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/select2/select2.min.js?ver=1806"></script>
+<script type="text/javascript">
+<!--
+if(use_xmlhttprequest == "1")
+{
+	MyBB.select2();
+	$("#to").select2({
+		placeholder: "{$lang->search_user}",
+		minimumInputLength: 2,
+		maximumSelectionSize: function() {
+			if ({$mybb->usergroup['maxpmrecipients']} == 0) {
+				return 0;
+			}
+			return Math.max(1, {$mybb->usergroup['maxpmrecipients']} - $("#bcc").select2('data').length);
+		},
+		multiple: true,
+		dropdownCssClass: "pm_recipient_dropdown",
+		ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+			url: "xmlhttp.php?action=get_users",
+			dataType: 'json',
+			data: function (term, page) {
+				return {
+					query: term, // search term
+				};
+			},
+			results: function (data, page) { // parse the results into the format expected by Select2.
+				// since we are using custom formatting functions we do not need to alter remote JSON data
+				return {results: data};
+			}
+		},
+		initSelection: function(element, callback) {
+			var query = $(element).val().replace(', ', ',');
+			if (query !== "") {
+				var newqueries = [];
+				exp_queries = query.split(",");
+				$.each(exp_queries, function(index, value ){
+					if(value.replace(/\s/g, '') != "")
+					{
+						var newquery = {
+							id: value.replace(/,\s?/g, ", "),
+							text: value.replace(/,\s?/g, ", ")
+						};
+						newqueries.push(newquery);
+					}
+				});
+				callback(newqueries);
+			}
+		}
+	})
+	.on("change", function(e) {
+		if ({$mybb->usergroup['maxpmrecipients']} == 0)
+		{
+			return;
+		}
+		if (e.val.length >= {$mybb->usergroup['maxpmrecipients']})
+		{
+			$("#bcc").select2("enable", false);
+		}
+		else
+		{
+			$("#bcc").select2("enable", true);
+		}
+	});
+
+	$("#bcc").select2({
+		placeholder: "{$lang->search_user}",
+		minimumInputLength: 2,
+		maximumSelectionSize: function() {
+			if ({$mybb->usergroup['maxpmrecipients']} == 0)
+			{
+				return 0;
+			}
+			return Math.max(1, {$mybb->usergroup['maxpmrecipients']} - $("#to").select2('data').length);
+		},
+		multiple: true,
+		dropdownCssClass: "pm_recipient_dropdown",
+		ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+			url: "xmlhttp.php?action=get_users",
+			dataType: 'json',
+			data: function (term, page) {
+				return {
+					query: term, // search term
+				};
+			},
+			results: function (data, page) { // parse the results into the format expected by Select2.
+				// since we are using custom formatting functions we do not need to alter remote JSON data
+				return {results: data};
+			}
+		},
+		initSelection: function(element, callback) {
+			var query = $(element).val();
+			if (query !== "") {
+				var newqueries = [];
+				exp_queries = query.split(",");
+				$.each(exp_queries, function(index, value ){
+					if(value.replace(/\s/g, '') != "")
+					{
+						var newquery = {
+							id: value.replace(/,\s?/g, ", "),
+							text: value.replace(/,\s?/g, ", ")
+						};
+						newqueries.push(newquery);
+					}
+				});
+				callback(newqueries);
+			}
+		}
+	})
+	.on("change", function(e) {
+		if ({$mybb->usergroup['maxpmrecipients']} == 0)
+		{
+			return;
+		}
+		if (e.val.length >= {$mybb->usergroup['maxpmrecipients']})
+		{
+			$("#to").select2("enable", false);
+		}
+		else
+		{
+			$("#to").select2("enable", true);
+		}
+	});
+}
+// -->
+</script>]]></template>
 <template name="search" version="1823"><![CDATA[<html>
 <head>
 <title>{$mybb->settings['bbname']} - {$lang->search}</title>
