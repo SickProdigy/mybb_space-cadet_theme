@@ -103,4 +103,8 @@ License: https://creativecommons.org/licenses/by/3.0/
 
 ## License
 
-The baseline derives from MyBB. Retain applicable MyBB copyright and license notices. Document the license for new Space Cadet code and assets before the first public release.
+Copyright 2026 SickProdigy.
+
+The original Space Cadet theme code and assets are licensed under the GNU General Public License, version 3, with an additional attribution-preservation term permitted by section 7(b). Redistributions and modified versions must preserve the specified Space Cadet attribution in the theme footer, or in another prominent location in the theme interface if the work has no footer. A separate commercial license permitting removal of that attribution is available from SickProdigy. See [LICENSE](LICENSE) for the complete terms.
+
+The MyBB-derived baseline and bundled third-party components remain under their respective licenses. Retain all applicable MyBB, Font Awesome, Droid Sans, and texture copyright, license, and attribution notices.

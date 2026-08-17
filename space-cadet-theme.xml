@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Space Cadet release 0.8.0 -->
 <theme name="Space Cadet" version="1840">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -1377,6 +1378,7 @@ blockquote,
 .site_footer #copyright {
 	display: block;
 	float: none;
+	font-size: 11px;
 	line-height: 1.35;
 }
 
@@ -3939,9 +3941,9 @@ blockquote,
 </div>
 <div id="footer" class="wrapper site_footer">
 	<span id="copyright">
-		Powered By <a href="https://mybb.com" target="_blank" rel="noopener">MyBB</a>
+		<a href="https://mybb.com" target="_blank" rel="noopener">Powered By MyBB</a>
 		<span class="footer_credit_separator" aria-hidden="true">&middot;</span>
-		&copy; 2026 <a href="https://sickgaming.net" target="_blank" rel="noopener">SickGaming.net</a>
+		<a href="https://sickgaming.net" target="_blank" rel="noopener">Space Cadet theme &copy; 2026 SickProdigy</a>
 	</span>
 	<debugstuff>
 </div>
