@@ -43,6 +43,7 @@ def main() -> None:
     templates = load_parts("templates", "template")
     output = [
         '<?xml version="1.0" encoding="UTF-8"?>',
+        f'<!-- {config["name"]} release {config["theme_version"]} -->',
         f'<theme name="{config["name"]}" version="{config["mybb_version"]}">',
         read(OVERRIDES / "properties.xml"),
         "<stylesheets>", *stylesheets, "</stylesheets>",
