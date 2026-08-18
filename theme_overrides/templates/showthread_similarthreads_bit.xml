@@ -1,0 +1,16 @@
+<template name="showthread_similarthreads_bit" version="1813"><![CDATA[<tr class="inline_row related_thread_row">
+	<td align="center" class="{$trow} thread_status_cell related_thread_icon" width="2%">{$icon}</td>
+	<td class="{$trow} thread_main_cell related_thread_subject">
+		<div>
+			<span>{$similar_thread['threadprefix']}<a href="{$similar_thread['threadlink']}">{$similar_thread['subject']}</a></span>
+			<div><span class="author smalltext">{$similar_thread['profilelink']}</span></div>
+		</div>
+	</td>
+	<td align="center" class="{$trow} thread_replies_cell related_thread_replies" data-label="{$lang->replies}"><a href="{$mybb->settings['bburl']}/misc.php?action=whoposted&tid={$similar_thread['tid']}" onclick="MyBB.whoPosted({$similar_thread['tid']}); return false;">{$similar_thread['replies']}</a></td>
+	<td align="center" class="{$trow} thread_views_cell related_thread_views" data-label="{$lang->views}">{$similar_thread['views']}</td>
+	<td class="{$trow} thread_lastpost_cell related_thread_lastpost" data-label="{$lang->lastpost}" style="white-space: nowrap">
+		<span class="lastpost smalltext">{$lastpostdate}<br />
+		<a href="{$similar_thread['lastpostlink']}">{$lang->lastpost}</a>: {$lastposterlink}</span>
+		<span class="thread_mobile_lastpost"><span>{$lastpostdate}</span><span>{$lastposterlink}</span></span>
+	</td>
+	</tr>]]></template>

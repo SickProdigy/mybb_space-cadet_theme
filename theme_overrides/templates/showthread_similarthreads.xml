@@ -1,0 +1,13 @@
+<template name="showthread_similarthreads" version="120"><![CDATA[<br />
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder forum_threadlist related_threads_table">
+<tr class="threadlist_title_row related_threads_title">
+<td class="thead" align="center" colspan="5"><strong>{$lang->similar_threads}</strong></td>
+</tr>
+<tr class="threadlist_columns related_threads_columns">
+<td class="tcat thread_main_header" align="center" colspan="2"><span class="smalltext"><strong>{$lang->thread} / {$lang->author}</strong></span></td>
+<td class="tcat thread_replies_header" align="center"><span class="smalltext"><strong>{$lang->replies}</strong></span></td>
+<td class="tcat thread_views_header" align="center"><span class="smalltext"><strong>{$lang->views}</strong></span></td>
+<td class="tcat thread_lastpost_header" align="center"><span class="smalltext"><strong>{$lang->lastpost}</strong></span></td>
+</tr>
+{$similarthreadbits}
+</table>]]></template>

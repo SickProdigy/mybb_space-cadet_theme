@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 0.8.0 -->
+<!-- Space Cadet release 0.8.1 -->
 <theme name="Space Cadet" version="1840">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -2548,7 +2548,7 @@ blockquote,
 	.forum_threadlist .inline_row {
 		display: grid;
 		grid-template-columns: 38px minmax(0, 1fr) minmax(92px, 28%) 34px;
-		grid-template-rows: repeat(3, 20px) auto;
+		grid-template-rows: repeat(3, minmax(20px, auto)) auto;
 		box-sizing: border-box;
 		width: 100%;
 	}
@@ -2617,7 +2617,7 @@ blockquote,
 	.forum_threadlist .inline_row > .thread_views_cell { grid-row: 2; }
 	.forum_threadlist .inline_row > .thread_rating_cell { grid-row: 3; }
 	.forum_threadlist .inline_row > .thread_lastpost_cell {
-		grid-column: 2 / 4;
+		grid-column: 2 / -1;
 		grid-row: 4;
 		padding: 8px;
 	}
@@ -3506,6 +3506,99 @@ blockquote,
 		max-width: 100%;
 	}
 }
+
+@media (max-width: 760px) {
+	.related_threads_table .related_thread_row {
+		grid-template-columns: 38px minmax(0, 1fr) minmax(92px, 28%);
+		grid-template-rows: repeat(3, minmax(20px, auto)) auto;
+	}
+
+	.related_threads_table .related_thread_subject { grid-row: 1 / 4; }
+	.related_threads_table .related_thread_replies { grid-row: 1; }
+	.related_threads_table .related_thread_views { grid-row: 2; }
+
+	.related_threads_table .related_thread_lastpost {
+		grid-column: 2 / 4;
+		grid-row: 4;
+	}
+
+	.related_threads_table .related_threads_columns {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.related_threads_table .related_thread_row { background: #181818; }
+
+	.related_threads_table .related_thread_row > td { background: transparent; }
+
+	.related_threads_table .related_thread_row:hover { background: #1f1f22; }
+}
+@media (max-width: 760px) {
+	.index_forums > .tborder {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.index_forums .thead > div:not(.expcolimage),
+	.index_forums .thead .smalltext,
+	.index_forums .forum_row > td:nth-child(2),
+	.index_forums .forum_row > td:nth-child(2) .smalltext {
+		min-width: 0;
+		max-width: 100%;
+		white-space: normal;
+		overflow-wrap: anywhere;
+	}
+
+	.index_forums .forum_row > td:nth-child(2) { overflow: hidden; }
+
+	.index_forums .forum_row > td:nth-child(2) img,
+	.index_forums .forum_row > td:nth-child(2) video,
+	.index_forums .forum_row > td:nth-child(2) iframe,
+	.index_forums .forum_row > td:nth-child(2) object {
+		box-sizing: border-box;
+		width: auto !important;
+		height: auto !important;
+		max-width: 100% !important;
+	}
+
+	.index_forums .forum_row > td:nth-child(2) table {
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+}
+
+@media (max-width: 760px) {
+	.index_forums .forum_row {
+		display: grid;
+		grid-template-columns: 46px minmax(0, 1fr) minmax(125px, 30%);
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.index_forums .forum_row > td {
+		display: block;
+		box-sizing: border-box;
+		width: auto !important;
+	}
+
+	.index_forums .forum_row > td:first-child {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	.index_forums .forum_row > td:nth-child(2) {
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	.index_forums .forum_row .forum_counts { display: none; }
+
+	.index_forums .forum_row .forum_lastpost {
+		grid-column: 3;
+		grid-row: 1;
+		min-width: 0;
+	}
+}
+
 ]]></stylesheet>
 <stylesheet name="usercp.css" attachedto="usercp.php|private.php" version="1816" disporder="2"><![CDATA[.usercp_nav_item {
 	display: block;
@@ -7280,6 +7373,35 @@ if(use_xmlhttprequest == "1")
 	</td>
 	{$inline_mod_checkbox}
 </tr>]]></template>
+<template name="showthread_similarthreads" version="120"><![CDATA[<br />
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder forum_threadlist related_threads_table">
+<tr class="threadlist_title_row related_threads_title">
+<td class="thead" align="center" colspan="5"><strong>{$lang->similar_threads}</strong></td>
+</tr>
+<tr class="threadlist_columns related_threads_columns">
+<td class="tcat thread_main_header" align="center" colspan="2"><span class="smalltext"><strong>{$lang->thread} / {$lang->author}</strong></span></td>
+<td class="tcat thread_replies_header" align="center"><span class="smalltext"><strong>{$lang->replies}</strong></span></td>
+<td class="tcat thread_views_header" align="center"><span class="smalltext"><strong>{$lang->views}</strong></span></td>
+<td class="tcat thread_lastpost_header" align="center"><span class="smalltext"><strong>{$lang->lastpost}</strong></span></td>
+</tr>
+{$similarthreadbits}
+</table>]]></template>
+<template name="showthread_similarthreads_bit" version="1813"><![CDATA[<tr class="inline_row related_thread_row">
+	<td align="center" class="{$trow} thread_status_cell related_thread_icon" width="2%">{$icon}</td>
+	<td class="{$trow} thread_main_cell related_thread_subject">
+		<div>
+			<span>{$similar_thread['threadprefix']}<a href="{$similar_thread['threadlink']}">{$similar_thread['subject']}</a></span>
+			<div><span class="author smalltext">{$similar_thread['profilelink']}</span></div>
+		</div>
+	</td>
+	<td align="center" class="{$trow} thread_replies_cell related_thread_replies" data-label="{$lang->replies}"><a href="{$mybb->settings['bburl']}/misc.php?action=whoposted&tid={$similar_thread['tid']}" onclick="MyBB.whoPosted({$similar_thread['tid']}); return false;">{$similar_thread['replies']}</a></td>
+	<td align="center" class="{$trow} thread_views_cell related_thread_views" data-label="{$lang->views}">{$similar_thread['views']}</td>
+	<td class="{$trow} thread_lastpost_cell related_thread_lastpost" data-label="{$lang->lastpost}" style="white-space: nowrap">
+		<span class="lastpost smalltext">{$lastpostdate}<br />
+		<a href="{$similar_thread['lastpostlink']}">{$lang->lastpost}</a>: {$lastposterlink}</span>
+		<span class="thread_mobile_lastpost"><span>{$lastpostdate}</span><span>{$lastposterlink}</span></span>
+	</td>
+	</tr>]]></template>
 <template name="usercp" version="1600"><![CDATA[<html>
 <head>
 <title>{$lang->user_cp}</title>
