@@ -730,6 +730,19 @@ select.error {
 	box-shadow: 0 0 0 1px rgba(199, 85, 85, 0.2);
 }
 
+div.error ul,
+div.error li { color: #333; }
+
+div.error a:link,
+div.error a:visited {
+	color: #304b8a;
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+div.error a:hover,
+div.error a:active { color: #672a73; }
+
 input.valid,
 input.valid_field,
 textarea.valid,

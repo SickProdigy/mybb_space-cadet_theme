@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 0.8.2 -->
+<!-- Space Cadet release 0.8.3 -->
 <theme name="Space Cadet" version="1840">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -742,6 +742,19 @@ select.error {
 	border-color: #c75555;
 	box-shadow: 0 0 0 1px rgba(199, 85, 85, 0.2);
 }
+
+div.error ul,
+div.error li { color: #333; }
+
+div.error a:link,
+div.error a:visited {
+	color: #304b8a;
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+div.error a:hover,
+div.error a:active { color: #672a73; }
 
 input.valid,
 input.valid_field,
