@@ -3630,6 +3630,30 @@ blockquote,
 	}
 }
 
+.admin_activation_notice {
+	box-sizing: border-box;
+	margin-bottom: 15px;
+	padding: 6px 12px;
+	border: 1px solid #7c7edc;
+	border-radius: 3px;
+	background: #a0a3f2;
+	color: #20202a;
+	font-size: 11px;
+	line-height: 1.4;
+	text-align: center;
+	overflow-wrap: anywhere;
+}
+
+.admin_activation_notice a:link,
+.admin_activation_notice a:visited {
+	color: #30316e;
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+.admin_activation_notice a:hover,
+.admin_activation_notice a:active { color: #17183f; }
+
 .account_activation_notice {
 	display: none;
 	align-items: center;
