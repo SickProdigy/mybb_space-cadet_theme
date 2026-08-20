@@ -102,6 +102,13 @@ document.addEventListener("DOMContentLoaded", function() {
 						row.appendChild(time);
 					}
 					activityList.appendChild(row);
+					if (thread) {
+						var fullTitle = thread.getAttribute("title") || anchor.textContent;
+						if (fullTitle && anchor.scrollWidth > anchor.clientWidth) {
+							row.setAttribute("data-full-title", fullTitle);
+							anchor.setAttribute("aria-label", fullTitle);
+						}
+					}
 				});
 			})
 			.catch(function() {
