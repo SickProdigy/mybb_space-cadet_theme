@@ -44,5 +44,9 @@
 				{$modnotice}
 				{$pending_joinrequests}
 				{$awaitingusers}
+				<div class="account_activation_notice account_activation_group_{$mybb->user['usergroup']}" role="status">
+					<i class="fa-solid fa-envelope-circle-check fa-fw" aria-hidden="true"></i>
+					<span>Your account is awaiting activation. Check your email for the activation link or <a href="{$mybb->settings['bburl']}/member.php?action=resendactivation">resend your activation code</a>.</span>
+				</div>
 				<navigation>
 				<br />]]></template>

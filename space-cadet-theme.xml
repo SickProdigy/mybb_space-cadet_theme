@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 0.8.1 -->
+<!-- Space Cadet release 0.8.2 -->
 <theme name="Space Cadet" version="1840">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -3599,6 +3599,37 @@ blockquote,
 	}
 }
 
+.account_activation_notice {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	box-sizing: border-box;
+	margin-bottom: 15px;
+	padding: 10px 20px;
+	border: 1px solid #a0a3f2;
+	border-radius: 4px;
+	background: #e3eafc;
+	color: #20202a;
+	font-size: 12px;
+	line-height: 1.5;
+	text-align: center;
+	overflow-wrap: anywhere;
+}
+
+.account_activation_notice.account_activation_group_5 { display: flex; }
+
+.account_activation_notice i { color: #5f61b8; }
+
+.account_activation_notice a:link,
+.account_activation_notice a:visited {
+	color: #4b4d99;
+	font-weight: 700;
+}
+
+.account_activation_notice a:hover,
+.account_activation_notice a:active { color: #30316e; }
+
 ]]></stylesheet>
 <stylesheet name="usercp.css" attachedto="usercp.php|private.php" version="1816" disporder="2"><![CDATA[.usercp_nav_item {
 	display: block;
@@ -4256,6 +4287,10 @@ blockquote,
 				{$modnotice}
 				{$pending_joinrequests}
 				{$awaitingusers}
+				<div class="account_activation_notice account_activation_group_{$mybb->user['usergroup']}" role="status">
+					<i class="fa-solid fa-envelope-circle-check fa-fw" aria-hidden="true"></i>
+					<span>Your account is awaiting activation. Check your email for the activation link or <a href="{$mybb->settings['bburl']}/member.php?action=resendactivation">resend your activation code</a>.</span>
+				</div>
 				<navigation>
 				<br />]]></template>
 <template name="header_menu_calendar" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/calendar.php" class="calendar"><i class="fa-solid fa-calendar-days fa-fw" aria-hidden="true"></i> {$lang->toplinks_calendar}</a></li>]]></template>
