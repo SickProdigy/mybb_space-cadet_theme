@@ -3669,6 +3669,75 @@ blockquote,
 	}
 }
 
+/* Keep inherited MyBB light surfaces readable in the dark theme. */
+.pm_alert { color: #333; }
+
+.pm_alert a:link,
+.pm_alert a:visited,
+.trow_reputation_positive a:link,
+.trow_reputation_positive a:visited,
+.trow_reputation_negative a:link,
+.trow_reputation_negative a:visited {
+	color: #304b8a;
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+.pm_alert a:hover,
+.pm_alert a:active,
+.trow_reputation_positive a:hover,
+.trow_reputation_positive a:active,
+.trow_reputation_negative a:hover,
+.trow_reputation_negative a:active { color: #672a73; }
+
+.highlight { color: #222; }
+
+.trow_reputation_positive { color: #26352a; }
+.trow_reputation_negative { color: #3f2224; }
+
+.trow_reputation_positive .reputation_positive { color: #145c24; }
+.trow_reputation_negative .reputation_negative { color: #831c22; }
+
+/* Preserve moderation-state cues on Space Cadet dark table and post surfaces. */
+.trow_deleted {
+	background: #24202e;
+	color: #ddd;
+}
+
+.post.classic.unapproved_post {
+	border-color: #6f3a40;
+	background: #251719;
+}
+
+.post.classic.unapproved_post .post_author {
+	border-color: #6f3a40;
+	background: #201315;
+}
+
+.post.classic.unapproved_post .post_content { background: #2b1a1c; }
+
+.post.classic.unapproved_post .post_controls {
+	border-color: #6f3a40;
+	background: #1e1214;
+}
+
+.post.classic.deleted_post {
+	border-color: #554875;
+	background: #201b2c;
+}
+
+.post.classic.deleted_post .post_author {
+	border-color: #554875;
+	background: #191624;
+}
+
+.post.classic.deleted_post .post_content { background: #251f32; }
+
+.post.classic.deleted_post .post_controls {
+	border-color: #554875;
+	background: #181521;
+}
+
 .admin_activation_notice {
 	box-sizing: border-box;
 	margin-bottom: 15px;
