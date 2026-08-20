@@ -3686,30 +3686,39 @@ blockquote,
 .pm_alert { color: #333; }
 
 .pm_alert a:link,
-.pm_alert a:visited,
-.trow_reputation_positive a:link,
-.trow_reputation_positive a:visited,
-.trow_reputation_negative a:link,
-.trow_reputation_negative a:visited {
+.pm_alert a:visited {
 	color: #304b8a;
 	font-weight: 700;
 	text-decoration: underline;
 }
 
 .pm_alert a:hover,
-.pm_alert a:active,
-.trow_reputation_positive a:hover,
-.trow_reputation_positive a:active,
-.trow_reputation_negative a:hover,
-.trow_reputation_negative a:active { color: #672a73; }
+.pm_alert a:active { color: #672a73; }
 
 .highlight { color: #222; }
 
-.trow_reputation_positive { color: #26352a; }
-.trow_reputation_negative { color: #3f2224; }
+.trow_reputation_positive {
+	background: #1d3324;
+	color: #ddd;
+}
 
-.trow_reputation_positive .reputation_positive { color: #145c24; }
-.trow_reputation_negative .reputation_negative { color: #831c22; }
+.trow_reputation_negative {
+	background: #3a2326;
+	color: #ddd;
+}
+
+.trow_reputation_positive a:link,
+.trow_reputation_positive a:visited,
+.trow_reputation_negative a:link,
+.trow_reputation_negative a:visited { color: #8fa8ff; }
+
+.trow_reputation_positive a:hover,
+.trow_reputation_positive a:active,
+.trow_reputation_negative a:hover,
+.trow_reputation_negative a:active { color: #d6a0e0; }
+
+.trow_reputation_positive .reputation_positive { color: #72d68a; }
+.trow_reputation_negative .reputation_negative { color: #f08a91; }
 
 /* Preserve moderation-state cues on Space Cadet dark table and post surfaces. */
 .trow_deleted {
