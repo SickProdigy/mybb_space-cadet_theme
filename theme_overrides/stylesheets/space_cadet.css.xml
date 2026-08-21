@@ -800,18 +800,48 @@ select.error {
 	box-shadow: 0 0 0 1px rgba(199, 85, 85, 0.2);
 }
 
+div.error {
+	background: #30213a;
+	border-color: #76518a;
+	color: #eee5f2;
+}
+
+div.error p,
 div.error ul,
-div.error li { color: #333; }
+div.error li { color: #eee5f2; }
+
+div.error p em { color: #fff; }
 
 div.error a:link,
 div.error a:visited {
-	color: #304b8a;
+	color: #b9c6ff;
 	font-weight: 700;
 	text-decoration: underline;
 }
 
 div.error a:hover,
-div.error a:active { color: #672a73; }
+div.error a:active { color: #fff; }
+
+/* Keep warning forms readable and make the projected warning level distinct. */
+form[action="warnings.php"] > table.tborder > tbody > tr > .trow1 { background: #181818; }
+form[action="warnings.php"] > table.tborder > tbody > tr > .trow2 { background: #242126; }
+
+form[action="warnings.php"] dd.types > .tborder {
+	box-sizing: border-box;
+	height: 20px;
+	background: #101010;
+}
+
+form[action="warnings.php"] dd.types > .tborder > .trow1,
+form[action="warnings.php"] dd.types > .tborder > .trow2 {
+	box-sizing: border-box;
+	height: 16px;
+	padding: 0;
+	border: 0;
+}
+
+form[action="warnings.php"] dd.types > .tborder > .trow1 { background: #303268; }
+form[action="warnings.php"] dd.types > .tborder > .trow2 { background: #7289da; }
 
 input.valid,
 input.valid_field,
