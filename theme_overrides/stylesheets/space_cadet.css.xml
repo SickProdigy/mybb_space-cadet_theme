@@ -3712,7 +3712,15 @@ blockquote,
 .pm_alert a:hover,
 .pm_alert a:active { color: #672a73; }
 
-.highlight { color: #222; }
+.highlight {
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
+	padding: 1px 3px;
+	background: #493515;
+	border: 1px solid #8f6726;
+	border-radius: 2px;
+	color: #ffe7ad;
+}
 
 .trow_reputation_positive {
 	background: #1d3324;
