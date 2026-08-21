@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 0.8.8 -->
+<!-- Space Cadet release 0.8.9 -->
 <theme name="Space Cadet" version="1840">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -4928,6 +4928,7 @@ document.addEventListener("DOMContentLoaded", function() {
 {$footer}
 </body>
 </html>]]></template>
+<template name="member_profile_email" version="120"><![CDATA[]]></template>
 <template name="member_profile_modoptions_ipaddress" version="1812"><![CDATA[<tr>
 <td class="trow1">
 <strong>{$lang->registration_ip}</strong> {$memprofile['regip']}<br />
