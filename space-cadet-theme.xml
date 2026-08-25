@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 0.8.10 -->
+<!-- Space Cadet release 0.8.11 -->
 <theme name="Space Cadet" version="1840">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -3793,6 +3793,26 @@ blockquote,
 
 .post.classic.deleted_post .post_content { background: #251f32; }
 
+.soft_deleted_notice { display: none; }
+
+.post.classic.deleted_post .soft_deleted_notice {
+	display: block;
+	margin: 0 0 12px;
+	padding: 7px 10px;
+	border: 1px solid #76639e;
+	border-radius: 3px;
+	background: #302740;
+	color: #e5dcf4;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.post.classic.deleted_post .soft_deleted_notice .fa-solid {
+	margin-right: 5px;
+	color: #c3addf;
+}
+
 .post.classic.deleted_post .post_controls {
 	border-color: #554875;
 	background: #181521;
@@ -6626,6 +6646,7 @@ if(use_xmlhttprequest == "1")
 		<span class="post_date"><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> {$post['postdate']} <span class="post_edit" id="edited_by_{$post['pid']}">{$post['editedmsg']}</span></span>
 		{$post['subject_extra']}
 	</div>
+	<div class="soft_deleted_notice"><i class="fa-solid fa-trash-can" aria-hidden="true"></i> This post has been soft deleted.</div>
 	<div class="post_body scaleimages" id="pid_{$post['pid']}">
 		{$post['message']}
 	</div>
@@ -6676,6 +6697,7 @@ if(use_xmlhttprequest == "1")
 		<span class="post_date"><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> {$post['postdate']} <span class="post_edit" id="edited_by_{$post['pid']}">{$post['editedmsg']}</span></span>
 	{$post['subject_extra']}
 	</div>
+	<div class="soft_deleted_notice"><i class="fa-solid fa-trash-can" aria-hidden="true"></i> This post has been soft deleted.</div>
 	<div class="post_body scaleimages" id="pid_{$post['pid']}">
 		{$post['message']}
 	</div>

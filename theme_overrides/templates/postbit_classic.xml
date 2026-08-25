@@ -23,6 +23,7 @@
 		<span class="post_date"><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> {$post['postdate']} <span class="post_edit" id="edited_by_{$post['pid']}">{$post['editedmsg']}</span></span>
 	{$post['subject_extra']}
 	</div>
+	<div class="soft_deleted_notice"><i class="fa-solid fa-trash-can" aria-hidden="true"></i> This post has been soft deleted.</div>
 	<div class="post_body scaleimages" id="pid_{$post['pid']}">
 		{$post['message']}
 	</div>

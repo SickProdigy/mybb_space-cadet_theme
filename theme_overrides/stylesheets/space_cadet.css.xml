@@ -3780,6 +3780,26 @@ blockquote,
 
 .post.classic.deleted_post .post_content { background: #251f32; }
 
+.soft_deleted_notice { display: none; }
+
+.post.classic.deleted_post .soft_deleted_notice {
+	display: block;
+	margin: 0 0 12px;
+	padding: 7px 10px;
+	border: 1px solid #76639e;
+	border-radius: 3px;
+	background: #302740;
+	color: #e5dcf4;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.post.classic.deleted_post .soft_deleted_notice .fa-solid {
+	margin-right: 5px;
+	color: #c3addf;
+}
+
 .post.classic.deleted_post .post_controls {
 	border-color: #554875;
 	background: #181521;
