@@ -3677,10 +3677,10 @@ blockquote,
 	box-decoration-break: clone;
 	-webkit-box-decoration-break: clone;
 	padding: 1px 3px;
-	background: #493515;
-	border: 1px solid #8f6726;
+	background: #a0a3f2;
+	border: 1px solid #7c7edc;
 	border-radius: 2px;
-	color: #ffe7ad;
+	color: #20202a;
 }
 
 .trow_reputation_positive {
@@ -3723,6 +3723,26 @@ blockquote,
 }
 
 .post.classic.unapproved_post .post_content { background: #2b1a1c; }
+
+.unapproved_post_notice { display: none; }
+
+.post.classic.unapproved_post .unapproved_post_notice {
+	display: block;
+	margin: 0 0 12px;
+	padding: 7px 10px;
+	border: 1px solid #8a4a52;
+	border-radius: 3px;
+	background: #3a2225;
+	color: #f1d6d9;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.post.classic.unapproved_post .unapproved_post_notice .fa-solid {
+	margin-right: 5px;
+	color: #e69aa2;
+}
 
 .post.classic.unapproved_post .post_controls {
 	border-color: #6f3a40;

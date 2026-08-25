@@ -24,6 +24,7 @@
 	{$post['subject_extra']}
 	</div>
 	<div class="soft_deleted_notice"><i class="fa-solid fa-trash-can" aria-hidden="true"></i> This post has been soft deleted.</div>
+	<div class="unapproved_post_notice"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> This post is awaiting moderation approval.</div>
 	<div class="post_body scaleimages" id="pid_{$post['pid']}">
 		{$post['message']}
 	</div>
