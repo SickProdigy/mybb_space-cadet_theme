@@ -369,6 +369,92 @@ a:active {
 	box-shadow: 0 0 0 1px rgba(114, 137, 218, 0.25);
 }
 
+/* Keep the quick-login modal within one cohesive Space Cadet palette. */
+#quick_login {
+	width: 350px;
+	max-width: 100%;
+	background: #161619;
+	border: 1px solid #34343a;
+	border-radius: 4px;
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+	color: #d8d8df;
+}
+
+#quick_login .tborder {
+	background: #1c1c20;
+	border: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border-radius: 3px;
+	box-shadow: none;
+}
+
+#quick_login .thead {
+	padding: 9px 10px;
+	background: #17171a;
+	border: 0;
+	box-shadow: none;
+	color: #eeeef4;
+	text-shadow: none;
+}
+
+#quick_login .trow1,
+#quick_login .trow2 {
+	background: #1c1c20;
+	border: 0;
+	color: #d8d8df;
+}
+
+#quick_login .tborder > tbody > tr:nth-child(2) > td:first-child,
+#quick_login .tborder > tbody > tr:nth-child(3) > td:first-child {
+	box-sizing: border-box;
+	width: 28%;
+	padding-top: 14px;
+	padding-right: 8px;
+	text-align: right;
+	vertical-align: top;
+}
+
+#quick_login input.textbox {
+	width: 100%;
+	max-width: 190px;
+	background: #17171a;
+	border-color: #484850;
+	color: #eeeef4;
+}
+
+#quick_login input.textbox:hover {
+	background: #1d1d22;
+	border-color: #5b5b65;
+}
+
+#quick_login input.textbox:focus {
+	background: #1d1d22;
+	border-color: #7c7edc;
+	box-shadow: 0 0 0 2px rgba(124, 126, 220, 0.24);
+}
+
+#quick_login .lost_password:link,
+#quick_login .lost_password:visited { color: #aeb1ff; }
+
+#quick_login .lost_password:hover,
+#quick_login .lost_password:active { color: #d6d7ff; }
+
+#quick_login input[type="checkbox"] { accent-color: #7c7edc; }
+
+#quick_login input.button {
+	background: #303268;
+	border-color: #5f61b8;
+	color: #f5f5ff;
+}
+
+#quick_login input.button:hover,
+#quick_login input.button:focus {
+	background: #41438a;
+	border-color: #8d90ed;
+	color: #fff;
+}
+
 #content {
 	box-sizing: border-box;
 	padding: 18px 0 28px;
