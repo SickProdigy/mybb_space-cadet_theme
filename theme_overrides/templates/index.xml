@@ -101,14 +101,12 @@ document.addEventListener("DOMContentLoaded", function() {
 						time.textContent = date.textContent.trim();
 						row.appendChild(time);
 					}
-					activityList.appendChild(row);
 					if (thread) {
 						var fullTitle = thread.getAttribute("title") || anchor.textContent;
-						if (fullTitle && anchor.scrollWidth > anchor.clientWidth) {
-							row.setAttribute("data-full-title", fullTitle);
-							anchor.setAttribute("aria-label", fullTitle);
-						}
+						anchor.title = fullTitle;
+						anchor.setAttribute("aria-label", fullTitle);
 					}
+					activityList.appendChild(row);
 				});
 			})
 			.catch(function() {
@@ -134,6 +132,8 @@ document.addEventListener("DOMContentLoaded", function() {
 				var anchor = document.createElement("a");
 				anchor.href = link ? link.textContent : feedUrl;
 				anchor.textContent = title ? title.textContent : "Forum post";
+				anchor.title = anchor.textContent;
+				anchor.setAttribute("aria-label", anchor.textContent);
 				row.appendChild(anchor);
 				if (date) {
 					var time = document.createElement("time");

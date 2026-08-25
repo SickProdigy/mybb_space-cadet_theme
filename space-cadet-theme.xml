@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 0.8.11 -->
+<!-- Space Cadet release 0.8.12 -->
 <theme name="Space Cadet" version="1840">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -664,45 +664,6 @@ a:active {
 	padding-bottom: 0;
 	margin-bottom: 0;
 	border-bottom: 0;
-}
-
-#recent_activity li { position: relative; }
-
-@media (hover: hover) and (pointer: fine) {
-	#recent_activity li[data-full-title]::after {
-		content: attr(data-full-title);
-		position: absolute;
-		left: 0;
-		bottom: calc(100% + 6px);
-		z-index: 30;
-		box-sizing: border-box;
-		width: max-content;
-		max-width: 260px;
-		padding: 6px 8px;
-		border: 1px solid #414145;
-		border-radius: 3px;
-		background: #101012;
-		box-shadow: 0 5px 14px rgba(0, 0, 0, 0.45);
-		color: #eee;
-		font-size: 11px;
-		font-weight: 400;
-		line-height: 1.4;
-		text-align: left;
-		white-space: normal;
-		overflow-wrap: anywhere;
-		opacity: 0;
-		visibility: hidden;
-		pointer-events: none;
-		transform: translateY(3px);
-		transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
-	}
-
-	#recent_activity li[data-full-title]:hover::after,
-	#recent_activity li[data-full-title]:focus-within::after {
-		opacity: 1;
-		visibility: visible;
-		transform: translateY(0);
-	}
 }
 
 .latest_posts a {
@@ -4755,14 +4716,12 @@ document.addEventListener("DOMContentLoaded", function() {
 						time.textContent = date.textContent.trim();
 						row.appendChild(time);
 					}
-					activityList.appendChild(row);
 					if (thread) {
 						var fullTitle = thread.getAttribute("title") || anchor.textContent;
-						if (fullTitle && anchor.scrollWidth > anchor.clientWidth) {
-							row.setAttribute("data-full-title", fullTitle);
-							anchor.setAttribute("aria-label", fullTitle);
-						}
+						anchor.title = fullTitle;
+						anchor.setAttribute("aria-label", fullTitle);
 					}
+					activityList.appendChild(row);
 				});
 			})
 			.catch(function() {
@@ -4788,6 +4747,8 @@ document.addEventListener("DOMContentLoaded", function() {
 				var anchor = document.createElement("a");
 				anchor.href = link ? link.textContent : feedUrl;
 				anchor.textContent = title ? title.textContent : "Forum post";
+				anchor.title = anchor.textContent;
+				anchor.setAttribute("aria-label", anchor.textContent);
 				row.appendChild(anchor);
 				if (date) {
 					var time = document.createElement("time");
