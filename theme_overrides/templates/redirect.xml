@@ -1,0 +1,14 @@
+<template name="redirect" version="120"><![CDATA[<html>
+<head>
+<title>{$title}</title>
+<meta http-equiv="refresh" content="2;URL={$url}" />
+{$headerinclude}
+</head>
+<body class="space_cadet_redirect_page">
+<main class="space_cadet_redirect_panel">
+	<h1 class="space_cadet_redirect_title">{$title}</h1>
+	<div class="space_cadet_redirect_message">{$message}</div>
+	<div class="space_cadet_redirect_action"><a href="{$url}">{$lang->click_no_wait}</a></div>
+</main>
+</body>
+</html>]]></template>
