@@ -1,10 +1,12 @@
-<template name="forumdisplay_thread" version="1823"><![CDATA[<tr class="inline_row">
+<template name="forumdisplay_thread" version="1823"><![CDATA[<tr class="inline_row {$thread_type_class}">
 	<td align="center" class="{$bgcolor}{$thread_type_class} thread_status_cell" width="2%"><span class="thread_status {$folder}" title="{$folder_label}">&nbsp;</span></td>
 	<td align="center" class="{$bgcolor}{$thread_type_class} thread_icon_cell" width="2%">{$icon}</td>
 	<td class="{$bgcolor}{$thread_type_class} thread_main_cell">
 		{$attachment_count}
 		<div>
           <span>{$prefix} {$gotounread}{$thread['threadprefix']}<span class="{$inline_edit_class} {$new_class}" id="tid_{$inline_edit_tid}"><a href="{$thread['threadlink']}">{$thread['subject']}</a></span>{$thread['multipage']}</span>
+			<span class="soft_deleted_thread_notice"><i class="fa-solid fa-trash-can" aria-hidden="true"></i> Soft Deleted</span>
+			<span class="unapproved_thread_notice"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Awaiting Moderation</span>
 			<div><span class="author smalltext">{$thread['profilelink']}{$lang->comma}</span><span class="thread_start_datetime smalltext">{$thread['start_datetime']}</span></div>
 		</div>
 	</td>

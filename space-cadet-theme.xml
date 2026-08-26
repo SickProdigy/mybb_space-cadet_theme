@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 0.8.15 -->
+<!-- Space Cadet release 0.8.16 -->
 <theme name="Space Cadet" version="1840">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -589,7 +589,12 @@ a:active {
 	line-height: 1.45;
 }
 
-.forum_counts span { display: block; }
+.forum_counts > span {
+	display: block;
+	white-space: nowrap;
+}
+
+.forum_counts > span > span { display: inline; }
 
 .forum_lastpost {
 	box-sizing: border-box;
@@ -645,7 +650,18 @@ a:active {
 
 .forum_threadlist .inline_row:hover td { background: #1f1f22; }
 
-.forum_threadlist .inline_row td.trow_shaded,
+.forum_threadlist .inline_row td.trow_shaded {
+	background: #2b191c;
+	border-top-color: #4d292f;
+	border-bottom-color: #4d292f;
+}
+
+.forum_threadlist .inline_row td.trow_deleted {
+	background: #24202e;
+	border-top-color: #493d60;
+	border-bottom-color: #493d60;
+}
+
 .forum_threadlist .inline_row td.trow_selected,
 .forum_threadlist tr.trow_selected td { background: #23232a; }
 
@@ -2715,6 +2731,29 @@ blockquote,
 
 	.forum_threadlist .threadlist_columns { grid-template-columns: minmax(0, 1fr) 34px; grid-template-rows: auto; }
 
+	.forum_threadlist .inline_row { background: #181818; }
+
+	.forum_threadlist .inline_row:hover { background: #1f1f22; }
+
+	.forum_threadlist .inline_row.trow_shaded,
+	.forum_threadlist .inline_row:has(.thread_main_cell.trow_shaded) { background: #2b191c; }
+
+	.forum_threadlist .inline_row.trow_deleted,
+	.forum_threadlist .inline_row:has(.thread_main_cell.trow_deleted) { background: #24202e; }
+
+	.forum_threadlist .inline_row > td { background: transparent !important; }
+
+	.forum_threadlist .inline_row:has(.thread_main_cell.trow_shaded) > .thread_rating_cell,
+	.forum_threadlist .inline_row:has(.thread_main_cell.trow_deleted) > .thread_rating_cell { background: inherit !important; }
+
+	.forum_threadlist .inline_row.trow_shaded > td,
+	.forum_threadlist .inline_row > .thread_main_cell.trow_shaded ~ td,
+	.forum_threadlist .inline_row > td.trow_shaded { background: #2b191c !important; }
+
+	.forum_threadlist .inline_row.trow_deleted > td,
+	.forum_threadlist .inline_row > .thread_main_cell.trow_deleted ~ td,
+	.forum_threadlist .inline_row > td.trow_deleted { background: #24202e !important; }
+
 	.forum_threadlist .threadlist_columns > td,
 	.forum_threadlist .inline_row > td { display: none; }
 
@@ -2793,9 +2832,9 @@ blockquote,
 		font-weight: 700;
 	}
 
-	.forum_threadlist .inline_row > .thread_rating_cell .star_rating { display: none; }
+	.forum_threadlist .inline_row > .thread_rating_cell .star_rating { display: none !important; }
 
-	.forum_threadlist .inline_row > .thread_rating_cell .thread_mobile_rating { display: inline; }
+	.forum_threadlist .inline_row > .thread_rating_cell .thread_mobile_rating { display: inline !important; }
 
 
 	.forum_threadlist .inline_row > .thread_lastpost_cell .lastpost { display: none; }
@@ -2837,6 +2876,30 @@ blockquote,
 		line-height: 1.35;
 		overflow-wrap: anywhere;
 	}
+
+	.forum_threadlist .inline_row .trow_deleted .soft_deleted_thread_notice {
+		display: inline-flex;
+		margin-top: 3px;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		color: #c3addf;
+		font-size: 11px;
+		line-height: 1.3;
+	}
+
+	.forum_threadlist .inline_row .trow_shaded .unapproved_thread_notice {
+		display: inline-flex;
+		margin-top: 3px;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		color: #e69aa2;
+		font-size: 11px;
+		line-height: 1.3;
+	}
+
+
 
 	.forum_threadlist .thread_main_cell .author,
 	.forum_threadlist .thread_main_cell .thread_start_datetime {
@@ -3828,6 +3891,55 @@ blockquote,
 	color: #ddd;
 }
 
+.forum_threadlist .thread_main_cell .soft_deleted_thread_notice,
+.forum_threadlist .thread_main_cell .unapproved_thread_notice { display: none; }
+
+.forum_threadlist .trow_deleted .soft_deleted_thread_notice {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	margin-top: 4px;
+	padding: 2px 6px;
+	border: 1px solid #76639e;
+	border-radius: 3px;
+	background: #302740;
+	color: #e5dcf4;
+	font-size: 10px;
+	font-weight: 700;
+	line-height: 1.2;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.forum_threadlist .trow_deleted .soft_deleted_thread_notice .fa-solid {
+	color: #c3addf;
+	font-size: 9px;
+}
+
+.forum_threadlist .trow_shaded .unapproved_thread_notice {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	margin-top: 4px;
+	padding: 2px 6px;
+	border: 1px solid #8a4a52;
+	border-radius: 3px;
+	background: #3a2225;
+	color: #f1d6d9;
+	font-size: 10px;
+	font-weight: 700;
+	line-height: 1.2;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.forum_threadlist .trow_shaded .unapproved_thread_notice .fa-solid {
+	color: #e69aa2;
+	font-size: 9px;
+}
+
+.forum_threadlist .inline_row .trow_deleted .unapproved_thread_notice { display: none; }
+
 .post.classic.unapproved_post {
 	border-color: #6f3a40;
 	background: #251719;
@@ -4532,13 +4644,15 @@ blockquote,
 <template name="forumdisplay_sticky_sep" version="120"><![CDATA[<tr class="thread_separator_row">
 <td class="trow_sep thread_sep_sticky" colspan="{$colspan}">{$lang->sticky_threads}</td>
 </tr>]]></template>
-<template name="forumdisplay_thread" version="1823"><![CDATA[<tr class="inline_row">
+<template name="forumdisplay_thread" version="1823"><![CDATA[<tr class="inline_row {$thread_type_class}">
 	<td align="center" class="{$bgcolor}{$thread_type_class} thread_status_cell" width="2%"><span class="thread_status {$folder}" title="{$folder_label}">&nbsp;</span></td>
 	<td align="center" class="{$bgcolor}{$thread_type_class} thread_icon_cell" width="2%">{$icon}</td>
 	<td class="{$bgcolor}{$thread_type_class} thread_main_cell">
 		{$attachment_count}
 		<div>
           <span>{$prefix} {$gotounread}{$thread['threadprefix']}<span class="{$inline_edit_class} {$new_class}" id="tid_{$inline_edit_tid}"><a href="{$thread['threadlink']}">{$thread['subject']}</a></span>{$thread['multipage']}</span>
+			<span class="soft_deleted_thread_notice"><i class="fa-solid fa-trash-can" aria-hidden="true"></i> Soft Deleted</span>
+			<span class="unapproved_thread_notice"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Awaiting Moderation</span>
 			<div><span class="author smalltext">{$thread['profilelink']}{$lang->comma}</span><span class="thread_start_datetime smalltext">{$thread['start_datetime']}</span></div>
 		</div>
 	</td>
