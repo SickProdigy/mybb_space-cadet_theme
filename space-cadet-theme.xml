@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 0.8.14 -->
+<!-- Space Cadet release 0.8.15 -->
 <theme name="Space Cadet" version="1840">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -3760,17 +3760,34 @@ blockquote,
 }
 
 /* Keep inherited MyBB light surfaces readable in the dark theme. */
-.pm_alert { color: #333; }
+.pm_alert {
+	background: linear-gradient(90deg, #21143c, #3b2055);
+	border-color: #754aa3;
+	color: #f1e8ff;
+}
 
 .pm_alert a:link,
 .pm_alert a:visited {
-	color: #304b8a;
+	color: #cab7ff;
 	font-weight: 700;
 	text-decoration: underline;
 }
 
 .pm_alert a:hover,
-.pm_alert a:active { color: #672a73; }
+.pm_alert a:active { color: #fff; }
+
+#pm_notice .float_right a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.08);
+}
+
+#pm_notice .float_right a:hover,
+#pm_notice .float_right a:focus-visible { background: rgba(255, 255, 255, 0.16); }
 
 .highlight {
 	box-decoration-break: clone;
@@ -3885,14 +3902,91 @@ blockquote,
 	background: #181521;
 }
 
+.moderation_alert {
+	background: linear-gradient(90deg, #3b171f, #502033);
+	border-color: #a7475a;
+	color: #ffe2e7;
+}
+
+.moderation_alert a:link,
+.moderation_alert a:visited {
+	color: #ffb9c5;
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+.moderation_alert a:hover,
+.moderation_alert a:active { color: #fff; }
+
+.access_alert {
+	background: linear-gradient(90deg, #321319, #461820);
+	border-color: #963746;
+	color: #ffe4e7;
+}
+
+.access_alert a:link,
+.access_alert a:visited {
+	color: #ffc0c8;
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+.access_alert a:hover,
+.access_alert a:active { color: #fff; }
+
+.board_closed_alert {
+	background: linear-gradient(90deg, #42121f, #65213b, #42121f);
+	border-color: #c95270;
+	box-shadow: inset 0 0 0 1px rgba(255, 173, 195, 0.08), 0 0 12px rgba(153, 43, 76, 0.3);
+	color: #fff0f4;
+}
+
+.board_closed_alert strong {
+	letter-spacing: 0.02em;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+
+.remote_avatar_alert {
+	background: linear-gradient(90deg, #342713, #49351a);
+	border-color: #9b7135;
+	color: #ffedc5;
+}
+
+.remote_avatar_alert a:link,
+.remote_avatar_alert a:visited {
+	color: #ffd58a;
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+.remote_avatar_alert a:hover,
+.remote_avatar_alert a:active { color: #fff4dc; }
+
+.group_requests_alert {
+	background: linear-gradient(90deg, #202549, #312957);
+	border-color: #626db8;
+	color: #eceeff;
+}
+
+.group_requests_alert a:link,
+.group_requests_alert a:visited {
+	color: #c5ceff;
+	font-weight: 700;
+	text-decoration: underline;
+}
+
+.group_requests_alert a:hover,
+.group_requests_alert a:active { color: #fff; }
+
 .admin_activation_notice {
 	box-sizing: border-box;
 	margin-bottom: 15px;
 	padding: 6px 12px;
-	border: 1px solid #7c7edc;
+	border: 1px solid rgba(164, 142, 216, 0.82);
 	border-radius: 3px;
-	background: #a0a3f2;
-	color: #20202a;
+	background: linear-gradient(90deg, rgba(88, 67, 137, 0.82), rgba(77, 87, 148, 0.82));
+	color: #f1edff;
 	font-size: 11px;
 	line-height: 1.4;
 	text-align: center;
@@ -3901,13 +3995,13 @@ blockquote,
 
 .admin_activation_notice a:link,
 .admin_activation_notice a:visited {
-	color: #30316e;
+	color: #ded3ff;
 	font-weight: 700;
 	text-decoration: underline;
 }
 
 .admin_activation_notice a:hover,
-.admin_activation_notice a:active { color: #17183f; }
+.admin_activation_notice a:active { color: #fff; }
 
 .account_activation_notice {
 	display: none;
@@ -3917,10 +4011,10 @@ blockquote,
 	box-sizing: border-box;
 	margin-bottom: 15px;
 	padding: 10px 20px;
-	border: 1px solid #a0a3f2;
+	border: 1px solid #9a7dce;
 	border-radius: 4px;
-	background: #e3eafc;
-	color: #20202a;
+	background: linear-gradient(90deg, #d4c7f6, #c3c9f5);
+	color: #21182f;
 	font-size: 12px;
 	line-height: 1.5;
 	text-align: center;
@@ -3929,16 +4023,17 @@ blockquote,
 
 .account_activation_notice.account_activation_group_5 { display: flex; }
 
-.account_activation_notice i { color: #5f61b8; }
+.account_activation_notice i { color: #60408f; }
 
 .account_activation_notice a:link,
 .account_activation_notice a:visited {
-	color: #4b4d99;
+	color: #4b2f7b;
 	font-weight: 700;
+	text-decoration: underline;
 }
 
 .account_activation_notice a:hover,
-.account_activation_notice a:active { color: #30316e; }
+.account_activation_notice a:active { color: #24103f; }
 
 ]]></stylesheet>
 <stylesheet name="usercp.css" attachedto="usercp.php|private.php" version="1816" disporder="2"><![CDATA[.usercp_nav_item {
@@ -4552,6 +4647,17 @@ blockquote,
 <td class="trow_sep thread_sep_normal" colspan="{$colspan}">{$lang->normal_threads}</td>
 </tr>]]></template>
 <template name="global_awaiting_activation" version="1800"><![CDATA[<div class="admin_activation_notice" role="status">{$awaiting_message}</div>]]></template>
+<template name="global_bannedwarning" version="1400"><![CDATA[<div class="red_alert access_alert">
+<strong>{$lang->banned_warning}</strong>
+{$lang->banned_warning2}: {$reason}<br />
+{$lang->banned_warning3}: {$banlift}<br />
+</div>
+<br />]]></template>
+<template name="global_boardclosed_warning" version="1600"><![CDATA[<div class="red_alert board_closed_alert"><strong>{$lang->bbclosed_warning}</strong></div>]]></template>
+<template name="global_moderation_notice" version="1827"><![CDATA[<div class="red_alert moderation_alert">{$moderation_text}</div>]]></template>
+<template name="global_modqueue_notice" version="1820"><![CDATA[<div class="red_alert moderation_alert">{$moderation_queue}</div>]]></template>
+<template name="global_pending_joinrequests" version="1827"><![CDATA[<div class="red_alert group_requests_alert">{$lang->groupleader_notice} <a href="{$mybb->settings['bburl']}/usercp.php?action=usergroups">{$lang->pending_joinrequests}</a></div>]]></template>
+<template name="global_remote_avatar_notice" version="1809"><![CDATA[<div class="red_alert remote_avatar_alert"><a href="{$mybb->settings['bburl']}/usercp.php?action=avatar">{$lang->remote_avatar_disabled_default_avatar}</a></div>]]></template>
 <template name="header" version="1820"><![CDATA[<div id="container">
 		<a name="top" id="top"></a>
 		<div id="header">
