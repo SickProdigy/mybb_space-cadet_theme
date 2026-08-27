@@ -1,8 +1,9 @@
 <template name="forumbit_depth2_forum" version="1804"><![CDATA[<tr class="forum_row">
 <td class="{$bgcolor}" align="center" width="1"><span class="forum_status forum_{$lightbulb['folder']} ajax_mark_read" title="{$lightbulb['altonoff']}" id="mark_read_{$forum['fid']}"></span></td>
-<td class="{$bgcolor}">
+<td class="{$bgcolor} forum_identity">
 <strong><a href="{$forum_url}">{$forum['name']}</a></strong>{$forum_viewers_text}<div class="smalltext">{$forum['description']}{$modlist}{$subforums}</div>
 </td>
-<td class="{$bgcolor} forum_counts" align="right" style="white-space: nowrap"><span>{$threads}{$unapproved['unapproved_threads']} {$lang->forumbit_threads}</span><span>{$posts}{$unapproved['unapproved_posts']} {$lang->forumbit_posts}</span></td>
+<td class="{$bgcolor} forum_threads" align="center" style="white-space: nowrap">{$threads}{$unapproved['unapproved_threads']}</td>
+<td class="{$bgcolor} forum_posts" align="center" style="white-space: nowrap">{$posts}{$unapproved['unapproved_posts']}</td>
 <td class="{$bgcolor} forum_lastpost" align="left" style="white-space: nowrap">{$lastpost}</td>
 </tr>]]></template>
