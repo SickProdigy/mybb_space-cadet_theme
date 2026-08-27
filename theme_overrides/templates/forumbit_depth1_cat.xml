@@ -3,7 +3,7 @@
 <tr>
 <td class="thead{$expthead}" colspan="4">
 <div class="expcolimage"><img src="{$theme['imgdir']}/{$expcolimage}" id="cat_{$forum['fid']}_img" class="expander" alt="{$expaltext}" title="{$expaltext}" /></div>
-<div><strong><a href="{$forum_url}">{$forum['name']}</a></strong><br /><div class="smalltext">{$forum['description']}</div></div>
+<div><strong><a href="{$forum_url}">{$forum['name']}</a></strong></div>
 </td>
 </tr>
 </thead>

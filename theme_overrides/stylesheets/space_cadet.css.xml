@@ -736,6 +736,20 @@ a:active {
 	gap: 18px;
 }
 
+.forum_page_description {
+	box-sizing: border-box;
+	margin: 0 0 14px;
+	padding: 10px 12px;
+	border-left: 3px solid #66689f;
+	border-radius: 3px;
+	background: #18181c;
+	color: #aaaab2;
+	line-height: 1.5;
+	overflow-wrap: anywhere;
+}
+
+.forum_page_description:empty { display: none; }
+
 .index_forums,
 .index_sidebar { min-width: 0; }
 

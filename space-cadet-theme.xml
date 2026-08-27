@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 0.8.17 -->
+<!-- Space Cadet release 0.8.18 -->
 <theme name="Space Cadet" version="1840">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -748,6 +748,20 @@ a:active {
 	align-items: start;
 	gap: 18px;
 }
+
+.forum_page_description {
+	box-sizing: border-box;
+	margin: 0 0 14px;
+	padding: 10px 12px;
+	border-left: 3px solid #66689f;
+	border-radius: 3px;
+	background: #18181c;
+	color: #aaaab2;
+	line-height: 1.5;
+	overflow-wrap: anywhere;
+}
+
+.forum_page_description:empty { display: none; }
 
 .index_forums,
 .index_sidebar { min-width: 0; }
@@ -4675,7 +4689,7 @@ blockquote,
 <tr>
 <td class="thead{$expthead}" colspan="4">
 <div class="expcolimage"><img src="{$theme['imgdir']}/{$expcolimage}" id="cat_{$forum['fid']}_img" class="expander" alt="{$expaltext}" title="{$expaltext}" /></div>
-<div><strong><a href="{$forum_url}">{$forum['name']}</a></strong><br /><div class="smalltext">{$forum['description']}</div></div>
+<div><strong><a href="{$forum_url}">{$forum['name']}</a></strong></div>
 </td>
 </tr>
 </thead>
@@ -4700,6 +4714,34 @@ blockquote,
 <td class="{$bgcolor} forum_counts" align="right" style="white-space: nowrap"><span>{$threads}{$unapproved['unapproved_threads']} {$lang->forumbit_threads}</span><span>{$posts}{$unapproved['unapproved_posts']} {$lang->forumbit_posts}</span></td>
 <td class="{$bgcolor} forum_lastpost" align="left" style="white-space: nowrap">{$lastpost}</td>
 </tr>]]></template>
+<template name="forumdisplay" version="1821"><![CDATA[<html>
+<head>
+<title>{$mybb->settings['bbname']} - {$foruminfo['name']} </title>
+{$headerinclude}
+{$rssdiscovery}
+<script type="text/javascript">
+<!--
+	lang.no_new_posts = "{$lang->no_new_posts}";
+	lang.click_mark_read = "{$lang->click_mark_read}";
+	lang.inline_edit_description = "{$lang->inline_edit_description}";
+	lang.post_fetch_error = "{$lang->post_fetch_error}";
+// -->
+</script>
+<!-- jeditable (jquery) -->
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/jeditable/jeditable.min.js"></script>
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/inline_edit.js?ver=1821"></script>
+</head>
+<body>
+{$header}
+<div class="forum_page_description">{$foruminfo['description']}</div>
+{$moderatedby}
+{$usersbrowsing}
+{$rules}
+{$subforums}
+{$threadslist}
+{$footer}
+</body>
+</html>]]></template>
 <template name="forumdisplay_announcements" version="120"><![CDATA[<tr class="thread_separator_row">
 <td class="trow_sep thread_sep_announcement" colspan="{$colspan}">{$lang->forum_announcements}</td>
 </tr>
