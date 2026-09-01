@@ -4177,7 +4177,10 @@ blockquote,
 .unapproved_post_notice { display: none; }
 
 .post.classic.unapproved_post .unapproved_post_notice {
-	display: block;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
 	margin: 0 0 12px;
 	padding: 7px 10px;
 	border: 1px solid #8a4a52;
@@ -4189,9 +4192,61 @@ blockquote,
 	line-height: 1.4;
 }
 
-.post.classic.unapproved_post .unapproved_post_notice .fa-solid {
+.post.classic.unapproved_post .unapproved_post_notice > span:first-child .fa-solid {
 	margin-right: 5px;
 	color: #e69aa2;
+}
+
+.unapproved_post_actions {
+	display: flex;
+	flex: 0 0 auto;
+	gap: 6px;
+}
+
+.unapproved_post_action {
+	padding: 4px 9px;
+	border: 1px solid;
+	border-radius: 3px;
+	font: inherit;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.unapproved_post_action .fa-solid { margin-right: 4px; }
+
+.unapproved_post_approve {
+	border-color: #4f8b68;
+	background: #1f4a31;
+	color: #d8f5e3;
+}
+
+.unapproved_post_approve:hover,
+.unapproved_post_approve:focus-visible {
+	border-color: #72bc8f;
+	background: #28613f;
+	color: #fff;
+}
+
+.unapproved_post_deny {
+	border-color: #a15a63;
+	background: #54282d;
+	color: #f8dde0;
+}
+
+.unapproved_post_deny:hover,
+.unapproved_post_deny:focus-visible {
+	border-color: #d17b85;
+	background: #71353c;
+	color: #fff;
+}
+
+@media (max-width: 600px) {
+	.post.classic.unapproved_post .unapproved_post_notice {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.unapproved_post_actions { justify-content: flex-end; }
 }
 
 .post.classic.unapproved_post .post_controls {

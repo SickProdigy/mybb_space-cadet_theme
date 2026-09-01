@@ -1,0 +1,80 @@
+<template name="showthread_inlinemoderation" version="1838"><![CDATA[<script type="text/javascript" src="{$mybb->asset_url}/jscripts/inline_moderation.js?ver=1838"></script>
+<form action="moderation.php" method="post" style="margin-top: 0; margin-bottom: 0;" id="inlinemoderation_options">
+<input type="hidden" name="my_post_key" value="{$mybb->post_code}" />
+<input type="hidden" name="tid" value="{$tid}" />
+<input type="hidden" name="modtype" value="inlinepost" />
+<span class="smalltext"><strong>{$lang->inline_post_moderation}</strong></span>
+<select name="action" id="inlinemoderation_options_selector">
+	<option value="" style="display: none;" selected="selected">{$lang->select_a_tool}</option>
+{$standardposttools}
+{$customposttools}
+</select>
+<input type="submit" class="button" name="go" value="{$lang->go} ({$inlinecount})" id="inline_go" />&nbsp;
+<input type="button" class="button" onclick="inlineModeration.clearChecked();" value="{$lang->clear}" />
+</form>
+<script type="text/javascript">
+<!--
+	var go_text = "{$lang->inline_go}";
+	var all_text = "{$threadcount}";
+	var inlineType = "thread";
+	var inlineId = {$tid};
+	lang.select_tool = "{$lang->inline_no_tool_selected}";
+	lang.selected_nil = "{$lang->inline_no_post_selected}";
+// -->
+</script>
+<script>
+(function() {
+	'use strict';
+
+	var form = document.getElementById('inlinemoderation_options');
+	var selector = document.getElementById('inlinemoderation_options_selector');
+
+	if(!form || !selector || typeof inlineModeration === 'undefined') {
+		return;
+	}
+
+	function hasAction(action) {
+		return !!selector.querySelector('option[value="' + action + '"]');
+	}
+
+	function submitAction(postId, action, confirmation) {
+		var checkbox = document.getElementById('inlinemod_' + postId);
+
+		if(!checkbox || (confirmation && !window.confirm(confirmation))) {
+			return;
+		}
+
+		inlineModeration.clearChecked();
+		checkbox.click();
+		selector.value = action;
+		form.requestSubmit();
+	}
+
+	document.querySelectorAll('.post.unapproved_post .unapproved_post_actions').forEach(function(actions) {
+		var postId = actions.getAttribute('data-post-id');
+		var denyAction = hasAction('multisoftdeleteposts') ? 'multisoftdeleteposts' : (hasAction('multideleteposts') ? 'multideleteposts' : '');
+
+		if(!document.getElementById('inlinemod_' + postId)) {
+			return;
+		}
+
+		if(hasAction('multiapproveposts')) {
+			var approve = document.createElement('button');
+			approve.type = 'button';
+			approve.className = 'unapproved_post_action unapproved_post_approve';
+			approve.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i> Approve';
+			approve.addEventListener('click', function() { submitAction(postId, 'multiapproveposts', ''); });
+			actions.appendChild(approve);
+		}
+
+		if(denyAction) {
+			var deny = document.createElement('button');
+			deny.type = 'button';
+			deny.className = 'unapproved_post_action unapproved_post_deny';
+			deny.innerHTML = '<i class="fa-solid fa-xmark" aria-hidden="true"></i> Deny';
+			deny.addEventListener('click', function() { submitAction(postId, denyAction, 'Deny and remove this post?'); });
+			actions.appendChild(deny);
+		}
+	});
+}());
+</script><br />]]></template>
