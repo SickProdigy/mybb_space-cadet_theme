@@ -1098,6 +1098,53 @@ button:disabled,
 	opacity: 0.5;
 }
 
+div.sceditor-dropdown {
+	background: #1f2024;
+	border-color: #4b4d55;
+	box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+	color: #ddd;
+	font-family: "Droid Sans", Arial, Helvetica, sans-serif;
+	line-height: 1.35;
+}
+
+div.sceditor-dropdown label {
+	color: #f1f1f1;
+	line-height: 1.35;
+}
+
+div.sceditor-dropdown input,
+div.sceditor-dropdown textarea {
+	box-sizing: border-box;
+	width: 100%;
+	background: #141416;
+	border-color: #555862;
+	color: #eee;
+}
+
+div.sceditor-dropdown input:focus,
+div.sceditor-dropdown textarea:focus {
+	border-color: #8298e8;
+	box-shadow: 0 0 0 2px rgba(114, 137, 218, 0.22);
+}
+
+div.sceditor-dropdown .button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 32px;
+	background: #33446d;
+	border-color: #617ed0;
+	color: #fff;
+	line-height: 1.2;
+}
+
+div.sceditor-dropdown .button:hover,
+div.sceditor-dropdown .button:focus {
+	background: #566fc0;
+	border-color: #8298e8;
+	color: #fff;
+}
+
 a.button.new_thread_button:link,
 a.button.new_thread_button:visited,
 a.button.new_thread_button:hover,
@@ -1273,6 +1320,16 @@ blockquote,
 .codeblock {
 	background: #141414;
 	border-color: #262832;
+}
+
+.codeblock code {
+	box-sizing: border-box;
+	max-width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+	word-break: break-word;
 }
 
 /* Responsive postbit: author sidebar on desktop, compact author row on mobile. */
