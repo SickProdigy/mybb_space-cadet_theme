@@ -4164,6 +4164,144 @@ blockquote,
 .trow_reputation_positive .reputation_positive { color: #72d68a; }
 .trow_reputation_negative .reputation_negative { color: #f08a91; }
 
+/* Improve ModCP moderation queue controls on dark table surfaces. */
+.modqueue_subject a:link,
+.modqueue_subject a:visited {
+	font-weight: 700;
+	color: #e0d4ff;
+}
+
+.modqueue_subject a:hover,
+.modqueue_subject a:active { color: #fff; }
+
+.modqueue_item_cell {
+	padding: 8px;
+	border-top: 1px solid #383241;
+	background: #151516;
+}
+
+.modqueue_thread_row + .modqueue_thread_row .modqueue_item_cell { border-top-width: 4px; }
+
+.modqueue_author,
+.modqueue_date {
+	color: #c5c1ca;
+	font-size: 12px;
+}
+
+.modqueue_message {
+	max-height: none;
+	padding: 10px;
+	border: 1px solid #3f3849;
+	border-radius: 4px;
+	background: #1f1b27;
+	color: #ddd;
+	line-height: 1.5;
+}
+
+.modqueue_thread_message {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 12px 14px;
+}
+
+.modqueue_thread_summary {
+	min-width: 0;
+	padding-bottom: 9px;
+	border-bottom: 1px solid #342d3d;
+}
+
+.modqueue_item_meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 12px;
+	margin-top: 4px;
+	color: #b9afc5;
+	font-size: 12px;
+}
+
+.modqueue_controls {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	width: auto;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	text-align: right;
+}
+
+.modqueue_controls.float_right { float: none; }
+
+.modqueue_controls label {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	margin: 0;
+	padding: 5px 9px;
+	border: 1px solid #50465d;
+	border-radius: 3px;
+	background: #292432;
+	color: #ddd;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1.2;
+	cursor: pointer;
+}
+
+.modqueue_controls label:hover,
+.modqueue_controls label:focus-within {
+	border-color: #8f7eb3;
+	background: #332c41;
+	color: #fff;
+}
+
+.modqueue_controls input[type="radio"] {
+	margin: 0;
+	accent-color: #9f8ad4;
+}
+
+.modqueue_controls .label_radio_ignore:has(input:checked) {
+	border-color: #8f7eb3;
+	background: #332c41;
+	color: #f0eaff;
+}
+
+.modqueue_controls .label_radio_delete:has(input:checked) {
+	border-color: #d17b85;
+	background: #54282d;
+	color: #f8dde0;
+}
+
+.modqueue_controls .label_radio_approve:has(input:checked) {
+	border-color: #72bc8f;
+	background: #1f4a31;
+	color: #d8f5e3;
+}
+
+.modqueue_meta {
+	grid-column: 1 / -1;
+	margin-bottom: 0;
+	color: #b9afc5;
+	font-size: 12px;
+}
+
+.modqueue_thread_body {
+	grid-column: 1 / -1;
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+	.modqueue_thread_message { grid-template-columns: minmax(0, 1fr); }
+
+	.modqueue_controls {
+		justify-content: flex-start;
+		flex-wrap: wrap;
+	}
+
+	.modqueue_thread_summary { border-bottom: 0; }
+}
+
 /* Preserve moderation-state cues on Space Cadet dark table and post surfaces. */
 .trow_deleted {
 	background: #24202e;

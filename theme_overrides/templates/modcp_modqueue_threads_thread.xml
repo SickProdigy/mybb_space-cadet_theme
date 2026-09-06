@@ -1,0 +1,24 @@
+<template name="modcp_modqueue_threads_thread" version="1400"><![CDATA[			<tr class="modqueue_thread_row">
+				<td class="{$altbg} modqueue_item_cell" colspan="3">
+					<div class="modqueue_message modqueue_thread_message">
+						<div class="modqueue_thread_summary">
+							<div class="modqueue_subject"><a href="{$thread['threadlink']}">{$thread['subject']}</a></div>
+							<div class="modqueue_item_meta">
+								<span>{$profile_link}</span>
+								<span>{$threaddate}</span>
+							</div>
+						</div>
+						<div class="float_right modqueue_controls" role="group" aria-label="{$lang->threads_awaiting_moderation}">
+							<label class="label_radio_ignore"><input type="radio" class="radio radio_ignore" name="threads[{$thread['tid']}]" value="ignore" checked="checked" /> <span>{$lang->ignore}</span></label>
+							<label class="label_radio_delete"><input type="radio" class="radio radio_delete" name="threads[{$thread['tid']}]" value="delete" /> <span>{$lang->delete}</span></label>
+							<label class="label_radio_approve"><input type="radio" class="radio radio_approve" name="threads[{$thread['tid']}]" value="approve" /> <span>{$lang->approve}</span></label>
+						</div>
+						<div class="modqueue_meta">
+							{$forum}
+						</div>
+						<div class="modqueue_thread_body">
+							{$thread['postmessage']}
+						</div>
+					</div>
+				</td>
+			</tr>]]></template>
