@@ -2,6 +2,8 @@
 
 Space Cadet is a MyBB 1.8.40 child theme built from the open-source MyBB Master Style. The complete stock theme is retained as a versioned reference, while the importable release contains only intentional Space Cadet overrides.
 
+![Space Cadet forum index preview](screenshots/space-cadet-index.png)
+
 ## Repository Structure
 
 ```text
