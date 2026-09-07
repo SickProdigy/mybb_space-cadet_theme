@@ -9,13 +9,10 @@ on:
       release_tag:
         description: Existing tag to publish, for example v1.0.0
         required: true
-        type: string
 
 jobs:
   publish:
     runs-on: web
-    permissions:
-      contents: write
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -25,7 +22,7 @@ jobs:
       - name: Validate, package, and publish
         shell: bash
         env:
-          GITEA_TOKEN: ${{ secrets.GITEA_TOKEN || github.token }}
+          GITEA_TOKEN: ${{ secrets.GITEA_TOKEN }}
           GITEA_API_URL: ${{ github.api_url }}
           REPOSITORY: ${{ github.repository }}
           INPUT_RELEASE_TAG: ${{ github.event.inputs.release_tag }}
