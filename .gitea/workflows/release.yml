@@ -23,11 +23,16 @@ jobs:
         shell: bash
         env:
           GITEA_TOKEN: ${{ secrets.GITEA_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITEA_API_URL: ${{ github.api_url }}
           REPOSITORY: ${{ github.repository }}
           INPUT_RELEASE_TAG: ${{ github.event.inputs.release_tag }}
         run: |
           set -euo pipefail
+
+          if [ -z "$GITEA_TOKEN" ] && [ -n "$GITHUB_TOKEN" ]; then
+            GITEA_TOKEN="$GITHUB_TOKEN"
+          fi
 
           release_tag="$INPUT_RELEASE_TAG"
           if [ -z "$release_tag" ]; then
