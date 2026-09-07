@@ -9,10 +9,13 @@ on:
       release_tag:
         description: Existing tag to publish, for example v1.0.0
         required: true
+        type: string
 
 jobs:
   publish:
     runs-on: web
+    permissions:
+      contents: write
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -22,17 +25,12 @@ jobs:
       - name: Validate, package, and publish
         shell: bash
         env:
-          GITEA_TOKEN: ${{ secrets.GITEA_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITEA_TOKEN: ${{ secrets.GITEA_TOKEN || github.token }}
           GITEA_API_URL: ${{ github.api_url }}
           REPOSITORY: ${{ github.repository }}
           INPUT_RELEASE_TAG: ${{ github.event.inputs.release_tag }}
         run: |
           set -euo pipefail
-
-          if [ -z "$GITEA_TOKEN" ] && [ -n "$GITHUB_TOKEN" ]; then
-            GITEA_TOKEN="$GITHUB_TOKEN"
-          fi
 
           release_tag="$INPUT_RELEASE_TAG"
           if [ -z "$release_tag" ]; then
@@ -93,9 +91,9 @@ jobs:
             exit 1
           fi
 
-          release_body="Space Cadet $release_tag for MyBB 1.8.40.
-
-Package includes the importable theme XML, Space Cadet image/font assets, README, and license."
+          release_body="$(printf '%s\n\n%s\n' \
+            "Space Cadet $release_tag for MyBB 1.8.40." \
+            "Package includes the importable theme XML, Space Cadet image/font assets, README, and license.")"
 
           api_base="$GITEA_API_URL/repos/$REPOSITORY"
           release_json="$(curl -fsS -H "Authorization: token $GITEA_TOKEN" "$api_base/releases/tags/$release_tag" || true)"

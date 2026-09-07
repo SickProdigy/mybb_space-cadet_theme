@@ -70,11 +70,10 @@ jobs:
             exit 1
           fi
 
-          cat > release-notes.md <<EOF
-Space Cadet $RELEASE_TAG for MyBB 1.8.40.
-
-Package includes the importable theme XML, Space Cadet image/font assets, README, and license.
-EOF
+          printf '%s\n\n%s\n' \
+            "Space Cadet $RELEASE_TAG for MyBB 1.8.40." \
+            "Package includes the importable theme XML, Space Cadet image/font assets, README, and license." \
+            > release-notes.md
 
       - name: Create GitHub release or replace its archive
         env:
