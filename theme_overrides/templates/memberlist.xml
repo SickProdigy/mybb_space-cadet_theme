@@ -6,6 +6,7 @@
 <body>
 {$header}
 <form method="post" action="memberlist.php" class="memberlist_quick_search">
+<input type="hidden" name="username_match" value="contains" />
 <table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder memberlist_search_panel">
 <tr>
 <td class="thead" colspan="3">
@@ -22,8 +23,9 @@
 </tr>
 <tr>
 	<td class="trow1" width="33%" style="vertical-align: top;">
-		{$lang->exactly}<br />
+		{$lang->username_contains}<br />
 		<input type="text" class="textbox" name="username" id="username" style="width: 99%; margin-top: 4px;" value="{$search_username}" />
+		<label class="smalltext memberlist_exact_username"><input type="checkbox" class="checkbox" name="username_match" id="username_match_exact" value="exact" /> Exact username</label>
 	</td>
 	<td class="trow1" width="33%" style="vertical-align: top;">
 		{$lang->contains}<br />
@@ -106,47 +108,84 @@
 if(use_xmlhttprequest == "1")
 {
 	MyBB.select2();
-	$("#username").select2({
-		placeholder: "{$lang->search_user}",
-		minimumInputLength: 2,
-		multiple: false,
-		allowClear: true,
-		dropdownCssClass: "memberlist_username_dropdown",
-		ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
-			url: "xmlhttp.php?action=get_users",
-			dataType: 'json',
-			data: function (term, page) {
-				return {
-					query: term, // search term
-				};
+	var usernameField = $("#username");
+	var exactUsername = $("#username_match_exact");
+	var enableExactUsernameSearch = function(openDropdown) {
+		if(usernameField.data("select2"))
+		{
+			if(openDropdown)
+			{
+				usernameField.select2("open");
+			}
+			return;
+		}
+
+		usernameField.select2({
+			placeholder: "{$lang->search_user}",
+			minimumInputLength: 2,
+			multiple: false,
+			allowClear: true,
+			dropdownCssClass: "memberlist_username_dropdown",
+			ajax: {
+				url: "xmlhttp.php?action=get_users",
+				dataType: 'json',
+				data: function (term, page) {
+					return {
+						query: term
+					};
+				},
+				results: function (data, page) {
+					return {results: data};
+				}
 			},
-			results: function (data, page) { // parse the results into the format expected by Select2.
-				// since we are using custom formatting functions we do not need to alter remote JSON data
-				return {results: data};
+			initSelection: function(element, callback) {
+				var value = $(element).val();
+				if (value !== "") {
+					callback({
+						id: value,
+						text: value
+					});
+				}
+			},
+			createSearchChoice:function(term, data) {
+				if ( $(data).filter( function() {
+					return this.text.localeCompare(term)===0;
+				}).length===0) {
+					return {id:term, text:term};
+				}
 			}
-		},
-		initSelection: function(element, callback) {
-			var value = $(element).val();
-			if (value !== "") {
-				callback({
-					id: value,
-					text: value
-				});
-			}
-		},
-       // Allow the user entered text to be selected as well
-       createSearchChoice:function(term, data) {
-			if ( $(data).filter( function() {
-				return this.text.localeCompare(term)===0;
-			}).length===0) {
-				return {id:term, text:term};
-			}
-		},
+		});
+
+		if(openDropdown)
+		{
+			usernameField.select2("open");
+		}
+	};
+	var disableExactUsernameSearch = function() {
+		if(usernameField.data("select2"))
+		{
+			usernameField.select2("destroy");
+		}
+	};
+
+	exactUsername.on("change", function() {
+		if(this.checked)
+		{
+			enableExactUsernameSearch(true);
+		}
+		else
+		{
+			disableExactUsernameSearch();
+			usernameField.focus();
+		}
 	});
 
-  	$('[for=username]').on('click', function(){
-		$("#username").select2('open');
-		return false;
+	$('[for=username]').on('click', function(){
+		if(exactUsername.prop("checked"))
+		{
+			enableExactUsernameSearch(true);
+			return false;
+		}
 	});
 }
 // -->

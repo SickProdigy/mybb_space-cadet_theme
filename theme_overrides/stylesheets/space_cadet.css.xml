@@ -2184,6 +2184,11 @@ blockquote,
 .memberlist_search_panel input.textbox,
 .memberlist_search_panel select { box-sizing: border-box; }
 
+.memberlist_exact_username {
+	display: block;
+	margin-top: 6px;
+}
+
 .memberlist_quick_search .select2-container .select2-choice {
 	background: #181818;
 	border-color: #44444a;
