@@ -52,31 +52,71 @@
 				<ul class="latest_posts" id="recent_activity"><li>Loading recent activity&hellip;</li></ul>
 			</div>
 		</section>
-
-		<section class="sidebar_panel">
-			<h2 class="thead">New Threads</h2>
-			<div class="sidebar_content">
-				<ul class="latest_posts" id="new_threads"><li>Loading new threads&hellip;</li></ul>
-			</div>
-		</section>
 	</aside>
 </div>
 <br class="clear" />
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
-	var list = document.getElementById("new_threads");
-	var feedUrl = "{$mybb->settings['bburl']}/syndication.php?limit=5";
+	var feedUrl = "{$mybb->settings['bburl']}/syndication.php?limit=10";
 	var activityList = document.getElementById("recent_activity");
 	var portalUrl = "{$mybb->settings['bburl']}/portal.php";
 
-		fetch(portalUrl, { credentials: "same-origin" })
+	function renderFeedFallback() {
+		return fetch(feedUrl, { credentials: "same-origin" })
+			.then(function(response) {
+				if (!response.ok) throw new Error("Feed request failed");
+				return response.text();
+			})
+			.then(function(source) {
+				var feed = new DOMParser().parseFromString(source, "application/xml");
+				var items = Array.prototype.slice.call(feed.querySelectorAll("item"), 0, 10);
+				if (!items.length) throw new Error("No feed items");
+
+				activityList.textContent = "";
+				items.forEach(function(item) {
+					var title = item.querySelector("title");
+					var link = item.querySelector("link");
+					var date = item.querySelector("pubDate");
+					var creator = item.getElementsByTagNameNS("http://purl.org/dc/elements/1.1/", "creator")[0]
+						|| item.getElementsByTagName("dc:creator")[0];
+					var row = document.createElement("li");
+					var anchor = document.createElement("a");
+					var details = document.createElement("span");
+					details.className = "activity_details";
+					anchor.href = link ? link.textContent : feedUrl;
+					anchor.textContent = title ? title.textContent : "Forum post";
+					anchor.title = anchor.textContent;
+					anchor.setAttribute("aria-label", anchor.textContent);
+					row.appendChild(anchor);
+					if (creator) {
+						var creatorDocument = new DOMParser().parseFromString(creator.textContent, "text/html");
+						var creatorName = creatorDocument.body.textContent.trim();
+						if (creatorName) {
+							var creatorMeta = document.createElement("span");
+							creatorMeta.className = "activity_meta";
+							creatorMeta.textContent = "Started by " + creatorName;
+							details.appendChild(creatorMeta);
+						}
+					}
+					if (date) {
+						var time = document.createElement("time");
+						time.textContent = new Date(date.textContent).toLocaleString();
+						details.appendChild(time);
+					}
+					if (details.childNodes.length) row.appendChild(details);
+					activityList.appendChild(row);
+				});
+			});
+	}
+
+	fetch(portalUrl, { credentials: "same-origin" })
 			.then(function(response) {
 				if (!response.ok) throw new Error("Portal request failed");
 				return response.text();
 			})
 			.then(function(source) {
 				var page = new DOMParser().parseFromString(source, "text/html");
-				var items = Array.prototype.slice.call(page.querySelectorAll(".space_cadet_activity"), 0, 5);
+				var items = Array.prototype.slice.call(page.querySelectorAll(".space_cadet_activity"), 0, 10);
 				if (!items.length) throw new Error("No recent activity");
 
 				activityList.textContent = "";
@@ -87,64 +127,36 @@ document.addEventListener("DOMContentLoaded", function() {
 					var date = item.querySelector(".activity_date");
 					var row = document.createElement("li");
 					var anchor = document.createElement("a");
+					var details = document.createElement("span");
+					var fullTitle = thread
+						? (thread.getAttribute("title") || thread.textContent.trim())
+						: "Forum activity";
+					details.className = "activity_details";
 					anchor.href = lastPost ? lastPost.href : (thread ? thread.href : portalUrl);
-					anchor.textContent = thread ? thread.textContent.trim() : "Forum activity";
+					anchor.textContent = fullTitle;
+					anchor.title = fullTitle;
+					anchor.setAttribute("aria-label", fullTitle);
 					row.appendChild(anchor);
 					if (author) {
 						var meta = document.createElement("span");
 						meta.className = "activity_meta";
 						meta.textContent = "Last post by " + author.textContent.trim();
-						row.appendChild(meta);
+						details.appendChild(meta);
 					}
 					if (date) {
 						var time = document.createElement("time");
 						time.textContent = date.textContent.trim();
-						row.appendChild(time);
+						details.appendChild(time);
 					}
-					if (thread) {
-						var fullTitle = thread.getAttribute("title") || anchor.textContent;
-						anchor.title = fullTitle;
-						anchor.setAttribute("aria-label", fullTitle);
-					}
+					if (details.childNodes.length) row.appendChild(details);
 					activityList.appendChild(row);
 				});
 			})
-			.catch(function() {
-				activityList.innerHTML = '<li><a href="' + portalUrl + '">View recent forum activity</a></li>';
-			});
-
-	fetch(feedUrl, { credentials: "same-origin" })
-		.then(function(response) {
-			if (!response.ok) throw new Error("Feed request failed");
-			return response.text();
-		})
-		.then(function(source) {
-			var feed = new DOMParser().parseFromString(source, "application/xml");
-			var items = Array.prototype.slice.call(feed.querySelectorAll("item"), 0, 5);
-			if (!items.length) throw new Error("No feed items");
-
-			list.textContent = "";
-			items.forEach(function(item) {
-				var title = item.querySelector("title");
-				var link = item.querySelector("link");
-				var date = item.querySelector("pubDate");
-				var row = document.createElement("li");
-				var anchor = document.createElement("a");
-				anchor.href = link ? link.textContent : feedUrl;
-				anchor.textContent = title ? title.textContent : "Forum post";
-				anchor.title = anchor.textContent;
-				anchor.setAttribute("aria-label", anchor.textContent);
-				row.appendChild(anchor);
-				if (date) {
-					var time = document.createElement("time");
-					time.textContent = new Date(date.textContent).toLocaleString();
-					row.appendChild(time);
-				}
-				list.appendChild(row);
-			});
+		.catch(function() {
+			return renderFeedFallback();
 		})
 		.catch(function() {
-			list.innerHTML = '<li><a href="' + feedUrl + '">View new forum threads</a></li>';
+			activityList.innerHTML = '<li><a href="' + feedUrl + '">View forum activity</a></li>';
 		});
 });
 </script>

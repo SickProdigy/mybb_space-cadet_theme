@@ -887,12 +887,16 @@ a:active {
 	border-bottom: 0;
 }
 
-.latest_posts a {
-	display: block;
+.latest_posts > li > a {
 	font-weight: bold;
-	white-space: nowrap;
+	font-size: 12px;
+	line-height: 1.35;
+	white-space: normal;
+	overflow-wrap: anywhere;
 	overflow: hidden;
-	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
 }
 
 .latest_posts .activity_meta,
@@ -901,6 +905,26 @@ a:active {
 	margin-top: 3px;
 	color: #999;
 	font-size: 11px;
+}
+
+.latest_posts .activity_details {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 8px;
+	margin-top: 3px;
+}
+
+.latest_posts .activity_details .activity_meta,
+.latest_posts .activity_details time {
+	display: inline;
+	min-width: 0;
+	margin-top: 0;
+}
+
+.latest_posts .activity_details time {
+	flex: 0 0 auto;
+	text-align: right;
 }
 
 .trow1,
@@ -4333,10 +4357,14 @@ blockquote,
 	white-space: nowrap;
 }
 
-.forum_threadlist .trow_deleted .soft_deleted_thread_notice .fa-solid {
+.forum_threadlist .trow_deleted .soft_deleted_thread_notice::before {
+	content: "\f2ed";
 	color: #c3addf;
+	font: var(--fa-font-solid);
 	font-size: 9px;
 }
+
+.forum_threadlist .trow_deleted .soft_deleted_thread_notice::after { content: "Soft Deleted"; }
 
 .forum_threadlist .trow_shaded .unapproved_thread_notice {
 	display: inline-flex;
@@ -4355,10 +4383,14 @@ blockquote,
 	white-space: nowrap;
 }
 
-.forum_threadlist .trow_shaded .unapproved_thread_notice .fa-solid {
+.forum_threadlist .trow_shaded .unapproved_thread_notice::before {
+	content: "\f071";
 	color: #e69aa2;
+	font: var(--fa-font-solid);
 	font-size: 9px;
 }
+
+.forum_threadlist .trow_shaded .unapproved_thread_notice::after { content: "Awaiting Moderation"; }
 
 .forum_threadlist .inline_row .trow_deleted .unapproved_thread_notice { display: none; }
 
@@ -4392,10 +4424,19 @@ blockquote,
 	line-height: 1.4;
 }
 
-.post.classic.unapproved_post .unapproved_post_notice > span:first-child .fa-solid {
+.post.classic.unapproved_post .unapproved_post_message {
+	display: inline-flex;
+	align-items: center;
+}
+
+.post.classic.unapproved_post .unapproved_post_message::before {
+	content: "\f071";
 	margin-right: 5px;
 	color: #e69aa2;
+	font: var(--fa-font-solid);
 }
+
+.post.classic.unapproved_post .unapproved_post_message::after { content: "This post is awaiting moderation approval."; }
 
 .unapproved_post_actions {
 	display: flex;
@@ -4481,10 +4522,14 @@ blockquote,
 	line-height: 1.4;
 }
 
-.post.classic.deleted_post .soft_deleted_notice .fa-solid {
+.post.classic.deleted_post .soft_deleted_notice::before {
+	content: "\f2ed";
 	margin-right: 5px;
 	color: #c3addf;
+	font: var(--fa-font-solid);
 }
+
+.post.classic.deleted_post .soft_deleted_notice::after { content: "This post has been soft deleted."; }
 
 .post.classic.deleted_post .post_controls {
 	border-color: #554875;
@@ -4613,6 +4658,10 @@ blockquote,
 .account_activation_notice.account_activation_group_5 { display: flex; }
 
 .account_activation_notice i { color: #60408f; }
+
+.account_activation_message::before { content: "Your account is awaiting activation. Check your email for the activation link or "; }
+.account_activation_resend::after { content: "resend your activation code"; }
+.account_activation_period::after { content: "."; }
 
 .account_activation_notice a:link,
 .account_activation_notice a:visited {

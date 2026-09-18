@@ -5,8 +5,8 @@
 		{$attachment_count}
 		<div>
           <span>{$prefix} {$gotounread}{$thread['threadprefix']}<span class="{$inline_edit_class} {$new_class}" id="tid_{$inline_edit_tid}"><a href="{$thread['threadlink']}">{$thread['subject']}</a></span>{$thread['multipage']}</span>
-			<span class="soft_deleted_thread_notice"><i class="fa-solid fa-trash-can" aria-hidden="true"></i> Soft Deleted</span>
-			<span class="unapproved_thread_notice"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Awaiting Moderation</span>
+			<span class="soft_deleted_thread_notice"></span>
+			<span class="unapproved_thread_notice"></span>
 			<div><span class="author smalltext">{$thread['profilelink']}{$lang->comma}</span><span class="thread_start_datetime smalltext">{$thread['start_datetime']}</span></div>
 		</div>
 	</td>

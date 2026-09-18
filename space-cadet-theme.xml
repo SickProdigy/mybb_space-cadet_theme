@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 1.0.0 -->
+<!-- Space Cadet release 1.0.1 -->
 <theme name="Space Cadet" version="1840">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -900,12 +900,16 @@ a:active {
 	border-bottom: 0;
 }
 
-.latest_posts a {
-	display: block;
+.latest_posts > li > a {
 	font-weight: bold;
-	white-space: nowrap;
+	font-size: 12px;
+	line-height: 1.35;
+	white-space: normal;
+	overflow-wrap: anywhere;
 	overflow: hidden;
-	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
 }
 
 .latest_posts .activity_meta,
@@ -914,6 +918,26 @@ a:active {
 	margin-top: 3px;
 	color: #999;
 	font-size: 11px;
+}
+
+.latest_posts .activity_details {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 8px;
+	margin-top: 3px;
+}
+
+.latest_posts .activity_details .activity_meta,
+.latest_posts .activity_details time {
+	display: inline;
+	min-width: 0;
+	margin-top: 0;
+}
+
+.latest_posts .activity_details time {
+	flex: 0 0 auto;
+	text-align: right;
 }
 
 .trow1,
@@ -4346,10 +4370,14 @@ blockquote,
 	white-space: nowrap;
 }
 
-.forum_threadlist .trow_deleted .soft_deleted_thread_notice .fa-solid {
+.forum_threadlist .trow_deleted .soft_deleted_thread_notice::before {
+	content: "\f2ed";
 	color: #c3addf;
+	font: var(--fa-font-solid);
 	font-size: 9px;
 }
+
+.forum_threadlist .trow_deleted .soft_deleted_thread_notice::after { content: "Soft Deleted"; }
 
 .forum_threadlist .trow_shaded .unapproved_thread_notice {
 	display: inline-flex;
@@ -4368,10 +4396,14 @@ blockquote,
 	white-space: nowrap;
 }
 
-.forum_threadlist .trow_shaded .unapproved_thread_notice .fa-solid {
+.forum_threadlist .trow_shaded .unapproved_thread_notice::before {
+	content: "\f071";
 	color: #e69aa2;
+	font: var(--fa-font-solid);
 	font-size: 9px;
 }
+
+.forum_threadlist .trow_shaded .unapproved_thread_notice::after { content: "Awaiting Moderation"; }
 
 .forum_threadlist .inline_row .trow_deleted .unapproved_thread_notice { display: none; }
 
@@ -4405,10 +4437,19 @@ blockquote,
 	line-height: 1.4;
 }
 
-.post.classic.unapproved_post .unapproved_post_notice > span:first-child .fa-solid {
+.post.classic.unapproved_post .unapproved_post_message {
+	display: inline-flex;
+	align-items: center;
+}
+
+.post.classic.unapproved_post .unapproved_post_message::before {
+	content: "\f071";
 	margin-right: 5px;
 	color: #e69aa2;
+	font: var(--fa-font-solid);
 }
+
+.post.classic.unapproved_post .unapproved_post_message::after { content: "This post is awaiting moderation approval."; }
 
 .unapproved_post_actions {
 	display: flex;
@@ -4494,10 +4535,14 @@ blockquote,
 	line-height: 1.4;
 }
 
-.post.classic.deleted_post .soft_deleted_notice .fa-solid {
+.post.classic.deleted_post .soft_deleted_notice::before {
+	content: "\f2ed";
 	margin-right: 5px;
 	color: #c3addf;
+	font: var(--fa-font-solid);
 }
+
+.post.classic.deleted_post .soft_deleted_notice::after { content: "This post has been soft deleted."; }
 
 .post.classic.deleted_post .post_controls {
 	border-color: #554875;
@@ -4626,6 +4671,10 @@ blockquote,
 .account_activation_notice.account_activation_group_5 { display: flex; }
 
 .account_activation_notice i { color: #60408f; }
+
+.account_activation_message::before { content: "Your account is awaiting activation. Check your email for the activation link or "; }
+.account_activation_resend::after { content: "resend your activation code"; }
+.account_activation_period::after { content: "."; }
 
 .account_activation_notice a:link,
 .account_activation_notice a:visited {
@@ -5191,8 +5240,8 @@ blockquote,
 		{$attachment_count}
 		<div>
           <span>{$prefix} {$gotounread}{$thread['threadprefix']}<span class="{$inline_edit_class} {$new_class}" id="tid_{$inline_edit_tid}"><a href="{$thread['threadlink']}">{$thread['subject']}</a></span>{$thread['multipage']}</span>
-			<span class="soft_deleted_thread_notice"><i class="fa-solid fa-trash-can" aria-hidden="true"></i> Soft Deleted</span>
-			<span class="unapproved_thread_notice"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Awaiting Moderation</span>
+			<span class="soft_deleted_thread_notice"></span>
+			<span class="unapproved_thread_notice"></span>
 			<div><span class="author smalltext">{$thread['profilelink']}{$lang->comma}</span><span class="thread_start_datetime smalltext">{$thread['start_datetime']}</span></div>
 		</div>
 	</td>
@@ -5360,7 +5409,7 @@ blockquote,
 				{$awaitingusers}
 				<div class="account_activation_notice account_activation_group_{$mybb->user['usergroup']}" role="status">
 					<i class="fa-solid fa-envelope-circle-check fa-fw" aria-hidden="true"></i>
-					<span>Your account is awaiting activation. Check your email for the activation link or <a href="{$mybb->settings['bburl']}/member.php?action=resendactivation">resend your activation code</a>.</span>
+					<span class="account_activation_message"></span><a class="account_activation_resend" href="{$mybb->settings['bburl']}/member.php?action=resendactivation"></a><span class="account_activation_period"></span>
 				</div>
 				<navigation>
 				<br />]]></template>
@@ -5533,31 +5582,71 @@ blockquote,
 				<ul class="latest_posts" id="recent_activity"><li>Loading recent activity&hellip;</li></ul>
 			</div>
 		</section>
-
-		<section class="sidebar_panel">
-			<h2 class="thead">New Threads</h2>
-			<div class="sidebar_content">
-				<ul class="latest_posts" id="new_threads"><li>Loading new threads&hellip;</li></ul>
-			</div>
-		</section>
 	</aside>
 </div>
 <br class="clear" />
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
-	var list = document.getElementById("new_threads");
-	var feedUrl = "{$mybb->settings['bburl']}/syndication.php?limit=5";
+	var feedUrl = "{$mybb->settings['bburl']}/syndication.php?limit=10";
 	var activityList = document.getElementById("recent_activity");
 	var portalUrl = "{$mybb->settings['bburl']}/portal.php";
 
-		fetch(portalUrl, { credentials: "same-origin" })
+	function renderFeedFallback() {
+		return fetch(feedUrl, { credentials: "same-origin" })
+			.then(function(response) {
+				if (!response.ok) throw new Error("Feed request failed");
+				return response.text();
+			})
+			.then(function(source) {
+				var feed = new DOMParser().parseFromString(source, "application/xml");
+				var items = Array.prototype.slice.call(feed.querySelectorAll("item"), 0, 10);
+				if (!items.length) throw new Error("No feed items");
+
+				activityList.textContent = "";
+				items.forEach(function(item) {
+					var title = item.querySelector("title");
+					var link = item.querySelector("link");
+					var date = item.querySelector("pubDate");
+					var creator = item.getElementsByTagNameNS("http://purl.org/dc/elements/1.1/", "creator")[0]
+						|| item.getElementsByTagName("dc:creator")[0];
+					var row = document.createElement("li");
+					var anchor = document.createElement("a");
+					var details = document.createElement("span");
+					details.className = "activity_details";
+					anchor.href = link ? link.textContent : feedUrl;
+					anchor.textContent = title ? title.textContent : "Forum post";
+					anchor.title = anchor.textContent;
+					anchor.setAttribute("aria-label", anchor.textContent);
+					row.appendChild(anchor);
+					if (creator) {
+						var creatorDocument = new DOMParser().parseFromString(creator.textContent, "text/html");
+						var creatorName = creatorDocument.body.textContent.trim();
+						if (creatorName) {
+							var creatorMeta = document.createElement("span");
+							creatorMeta.className = "activity_meta";
+							creatorMeta.textContent = "Started by " + creatorName;
+							details.appendChild(creatorMeta);
+						}
+					}
+					if (date) {
+						var time = document.createElement("time");
+						time.textContent = new Date(date.textContent).toLocaleString();
+						details.appendChild(time);
+					}
+					if (details.childNodes.length) row.appendChild(details);
+					activityList.appendChild(row);
+				});
+			});
+	}
+
+	fetch(portalUrl, { credentials: "same-origin" })
 			.then(function(response) {
 				if (!response.ok) throw new Error("Portal request failed");
 				return response.text();
 			})
 			.then(function(source) {
 				var page = new DOMParser().parseFromString(source, "text/html");
-				var items = Array.prototype.slice.call(page.querySelectorAll(".space_cadet_activity"), 0, 5);
+				var items = Array.prototype.slice.call(page.querySelectorAll(".space_cadet_activity"), 0, 10);
 				if (!items.length) throw new Error("No recent activity");
 
 				activityList.textContent = "";
@@ -5568,64 +5657,36 @@ document.addEventListener("DOMContentLoaded", function() {
 					var date = item.querySelector(".activity_date");
 					var row = document.createElement("li");
 					var anchor = document.createElement("a");
+					var details = document.createElement("span");
+					var fullTitle = thread
+						? (thread.getAttribute("title") || thread.textContent.trim())
+						: "Forum activity";
+					details.className = "activity_details";
 					anchor.href = lastPost ? lastPost.href : (thread ? thread.href : portalUrl);
-					anchor.textContent = thread ? thread.textContent.trim() : "Forum activity";
+					anchor.textContent = fullTitle;
+					anchor.title = fullTitle;
+					anchor.setAttribute("aria-label", fullTitle);
 					row.appendChild(anchor);
 					if (author) {
 						var meta = document.createElement("span");
 						meta.className = "activity_meta";
 						meta.textContent = "Last post by " + author.textContent.trim();
-						row.appendChild(meta);
+						details.appendChild(meta);
 					}
 					if (date) {
 						var time = document.createElement("time");
 						time.textContent = date.textContent.trim();
-						row.appendChild(time);
+						details.appendChild(time);
 					}
-					if (thread) {
-						var fullTitle = thread.getAttribute("title") || anchor.textContent;
-						anchor.title = fullTitle;
-						anchor.setAttribute("aria-label", fullTitle);
-					}
+					if (details.childNodes.length) row.appendChild(details);
 					activityList.appendChild(row);
 				});
 			})
-			.catch(function() {
-				activityList.innerHTML = '<li><a href="' + portalUrl + '">View recent forum activity</a></li>';
-			});
-
-	fetch(feedUrl, { credentials: "same-origin" })
-		.then(function(response) {
-			if (!response.ok) throw new Error("Feed request failed");
-			return response.text();
-		})
-		.then(function(source) {
-			var feed = new DOMParser().parseFromString(source, "application/xml");
-			var items = Array.prototype.slice.call(feed.querySelectorAll("item"), 0, 5);
-			if (!items.length) throw new Error("No feed items");
-
-			list.textContent = "";
-			items.forEach(function(item) {
-				var title = item.querySelector("title");
-				var link = item.querySelector("link");
-				var date = item.querySelector("pubDate");
-				var row = document.createElement("li");
-				var anchor = document.createElement("a");
-				anchor.href = link ? link.textContent : feedUrl;
-				anchor.textContent = title ? title.textContent : "Forum post";
-				anchor.title = anchor.textContent;
-				anchor.setAttribute("aria-label", anchor.textContent);
-				row.appendChild(anchor);
-				if (date) {
-					var time = document.createElement("time");
-					time.textContent = new Date(date.textContent).toLocaleString();
-					row.appendChild(time);
-				}
-				list.appendChild(row);
-			});
+		.catch(function() {
+			return renderFeedFallback();
 		})
 		.catch(function() {
-			list.innerHTML = '<li><a href="' + feedUrl + '">View new forum threads</a></li>';
+			activityList.innerHTML = '<li><a href="' + feedUrl + '">View forum activity</a></li>';
 		});
 });
 </script>
@@ -7568,8 +7629,8 @@ if(use_xmlhttprequest == "1")
 		<span class="post_date"><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> {$post['postdate']} <span class="post_edit" id="edited_by_{$post['pid']}">{$post['editedmsg']}</span></span>
 		{$post['subject_extra']}
 	</div>
-	<div class="soft_deleted_notice"><i class="fa-solid fa-trash-can" aria-hidden="true"></i> This post has been soft deleted.</div>
-	<div class="unapproved_post_notice"><span><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> This post is awaiting moderation approval.</span><span class="unapproved_post_actions" data-post-id="{$post['pid']}"></span></div>
+	<div class="soft_deleted_notice"></div>
+	<div class="unapproved_post_notice"><span class="unapproved_post_message"></span><span class="unapproved_post_actions" data-post-id="{$post['pid']}"></span></div>
 	<div class="post_body scaleimages" id="pid_{$post['pid']}">
 		{$post['message']}
 	</div>
@@ -7620,8 +7681,8 @@ if(use_xmlhttprequest == "1")
 		<span class="post_date"><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> {$post['postdate']} <span class="post_edit" id="edited_by_{$post['pid']}">{$post['editedmsg']}</span></span>
 	{$post['subject_extra']}
 	</div>
-	<div class="soft_deleted_notice"><i class="fa-solid fa-trash-can" aria-hidden="true"></i> This post has been soft deleted.</div>
-	<div class="unapproved_post_notice"><span><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> This post is awaiting moderation approval.</span><span class="unapproved_post_actions" data-post-id="{$post['pid']}"></span></div>
+	<div class="soft_deleted_notice"></div>
+	<div class="unapproved_post_notice"><span class="unapproved_post_message"></span><span class="unapproved_post_actions" data-post-id="{$post['pid']}"></span></div>
 	<div class="post_body scaleimages" id="pid_{$post['pid']}">
 		{$post['message']}
 	</div>
