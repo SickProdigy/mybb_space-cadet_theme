@@ -1,0 +1,1 @@
+<template name="private_composelink" version="1800"><![CDATA[ | <a href="private.php?action=send">{$lang->compose_message2}</a>]]></template>

@@ -1,0 +1,1 @@
+<template name="showthread_printthread" version="1818"><![CDATA[<li class="printable"><a href="printthread.php?tid={$tid}">{$lang->view_printable}</a></li>]]></template>

@@ -1,0 +1,1 @@
+<template name="moderation_delayedmodaction_notes_new_forum" version="1808"><![CDATA[<strong>{$lang->new_forum}</strong> <a href="{$delayedmod['link']}">{$delayedmod['name']}</a><br />]]></template>

@@ -1,0 +1,1 @@
+<template name="multipage_page" version="1400"><![CDATA[<a href="{$page_url}" class="pagination_page">{$i}</a>]]></template>

@@ -1,0 +1,1 @@
+<template name="modcp_modqueue_attachment_link" version="1800"><![CDATA[{$navsep}<a href="modcp.php?action=modqueue&amp;type=attachments">{$lang->attachments}</a>]]></template>

@@ -1,0 +1,4 @@
+<template name="modcp_banuser_editusername" version="1400"><![CDATA[<tr>
+	<td class="trow1" width="25%"><strong>{$lang->ban_username}</strong></td>
+	<td class="trow1" width="75%">{$username}</td>
+</tr>]]></template>

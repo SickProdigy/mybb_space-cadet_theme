@@ -1,0 +1,4 @@
+<template name="postbit_attachments_thumbnails" version="1841"><![CDATA[<div class="post_attachments_gallery">
+	<div class="post_attachments_gallery_title">Attached images</div>
+	<div class="post_attachments_gallery_items">{$post['thumblist']}</div>
+</div>]]></template>

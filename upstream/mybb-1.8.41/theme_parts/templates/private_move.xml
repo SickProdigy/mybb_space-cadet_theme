@@ -1,0 +1,4 @@
+<template name="private_move" version="1816"><![CDATA[<input type="hidden" value="{$from_fid}" name="fromfid" />
+<select name="fid">
+{$folderoplist_folder}
+</select>]]></template>

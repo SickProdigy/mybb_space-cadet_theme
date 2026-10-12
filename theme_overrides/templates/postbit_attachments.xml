@@ -1,0 +1,53 @@
+<template name="postbit_attachments" version="1841"><![CDATA[<section class="post_attachments" id="post_attachments_{$post['pid']}" aria-labelledby="post_attachments_title_{$post['pid']}">
+	<h3 class="post_attachments_title" id="post_attachments_title_{$post['pid']}">{$lang->postbit_attachments}</h3>
+	<div class="post_attachments_images">{$post['attachedthumbs']}{$post['attachedimages']}</div>
+	<div class="post_attachments_downloads">{$post['attachmentlist']}</div>
+</section>
+<script>
+(function() {
+	var attachments = document.getElementById("post_attachments_{$post['pid']}");
+	var message = document.getElementById("pid_{$post['pid']}");
+
+	if(!attachments || !message) {
+		return;
+	}
+
+	var embedded = {};
+	var messageImages = message.querySelectorAll("img[src]");
+
+	for(var i = 0; i < messageImages.length; i++) {
+		var match = messageImages[i].src.match(/[?&]aid=(\d+)/);
+
+		if(match) {
+			embedded[match[1]] = true;
+		}
+	}
+
+	var attachmentImages = attachments.querySelectorAll("[data-attachment-aid]");
+
+	for(var j = 0; j < attachmentImages.length; j++) {
+		if(embedded[attachmentImages[j].getAttribute("data-attachment-aid")]) {
+			attachmentImages[j].hidden = true;
+		}
+	}
+
+	var galleries = attachments.querySelectorAll(".post_attachments_gallery");
+
+	for(var k = 0; k < galleries.length; k++) {
+		if(!galleries[k].querySelector("[data-attachment-aid]:not([hidden])")) {
+			galleries[k].hidden = true;
+		}
+	}
+
+	var imageSection = attachments.querySelector(".post_attachments_images");
+	var downloadSection = attachments.querySelector(".post_attachments_downloads");
+
+	if(!attachments.querySelector(".post_attachments_gallery:not([hidden])")) {
+		imageSection.hidden = true;
+	}
+
+	if(imageSection.hidden && !downloadSection.children.length && !downloadSection.textContent.trim()) {
+		attachments.hidden = true;
+	}
+})();
+</script>]]></template>

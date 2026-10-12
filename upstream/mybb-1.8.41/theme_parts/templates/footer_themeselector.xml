@@ -1,0 +1,5 @@
+<template name="footer_themeselector" version="1800"><![CDATA[<select name="{$name}" onchange="MyBB.changeTheme();">
+<optgroup label="{$lang->select_theme}">
+{$themeselect_option}
+</optgroup>
+</select>]]></template>

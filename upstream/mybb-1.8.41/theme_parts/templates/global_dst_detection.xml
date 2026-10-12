@@ -1,0 +1,1 @@
+<template name="global_dst_detection" version="1821"><![CDATA[<script type="text/javascript">if(MyBB) { $([document, window]).on("load", function() { MyBB.detectDSTChange('{$timezone}'); }); }</script>]]></template>

@@ -1,0 +1,1 @@
+<template name="forumbit_depth3_statusicon" version="1800"><![CDATA[<div title="{$lightbulb['altonoff']}" class="subforumicon subforum_{$lightbulb['folder']} ajax_mark_read" id="mark_read_{$forum['fid']}"></div>]]></template>

@@ -1,0 +1,3 @@
+<template name="private_tracking_nomessage" version="1400"><![CDATA[<tr>
+<td align="center" class="trow1" colspan="5">{$lang->no_readmessages}</td>
+</tr>]]></template>

@@ -1,0 +1,104 @@
+<template name="post_attachments" version="1841"><![CDATA[<br />
+			<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+<tr>
+	<td class="thead" colspan="3"><strong>{$lang->attachments}</strong></td>
+</tr>
+<tr>
+	<td class="tcat attachment_quota_cell" colspan="3">
+		<strong class="attachment_usage_ajax" hidden aria-hidden="true"></strong>
+		<div class="attachment_quota" id="attachment_quota" data-quota-kb="{$mybb->usergroup['attachquota']}" data-used-bytes="{$usage['ausage']}">
+			<div class="attachment_quota_summary">
+				<div>
+					<span class="attachment_quota_label">Attachment space available</span>
+					<strong class="attachment_quota_remaining">{$lang->attach_quota}</strong>
+					<span class="attachment_quota_total"></span>
+				</div>
+				<span class="attachment_quota_link">{$link_viewattachments}</span>
+			</div>
+			<div class="attachment_quota_track" role="progressbar" aria-label="Attachment space remaining" aria-valuemin="0" aria-valuemax="100">
+				<span class="attachment_quota_bar"></span>
+			</div>
+		</div>
+	</td>
+</tr>
+{$newattach}
+{$attachments}
+</table>
+<script>
+(function() {
+	var quota = document.getElementById("attachment_quota");
+
+	if(!quota) {
+		return;
+	}
+
+	var quotaKb = Number(quota.getAttribute("data-quota-kb")) || 0;
+	var initialUsedBytes = Number(quota.getAttribute("data-used-bytes")) || 0;
+	var remainingText = quota.querySelector(".attachment_quota_remaining");
+	var totalText = quota.querySelector(".attachment_quota_total");
+	var track = quota.querySelector(".attachment_quota_track");
+	var bar = quota.querySelector(".attachment_quota_bar");
+	var usageUpdate = quota.parentNode.querySelector(".attachment_usage_ajax");
+
+	function formatBytes(bytes) {
+		var units = ["bytes", "KB", "MB", "GB", "TB"];
+		var unit = 0;
+
+		while(bytes >= 1024 && unit < units.length - 1) {
+			bytes /= 1024;
+			unit++;
+		}
+
+		var precision = unit === 0 || bytes >= 100 ? 0 : (bytes >= 10 ? 1 : 2);
+		return bytes.toFixed(precision) + " " + units[unit];
+	}
+
+	function parseFriendlySize(value) {
+		var match = value.replace(/,/g, "").match(/([0-9.]+)\s*(bytes|[KMGTPEZY]B)\b/i);
+
+		if(!match) {
+			return null;
+		}
+
+		var units = {bytes: 0, kb: 1, mb: 2, gb: 3, tb: 4, pb: 5, eb: 6, zb: 7, yb: 8};
+		var power = units[match[2].toLowerCase()];
+		return Number(match[1]) * Math.pow(1024, power);
+	}
+
+	function renderQuota(usedBytes) {
+		if(quotaKb === 0) {
+			remainingText.textContent = "Unlimited attachment space";
+			totalText.textContent = "No total upload quota";
+			track.hidden = true;
+			return;
+		}
+
+		var totalBytes = quotaKb * 1024;
+		var remainingBytes = Math.max(0, totalBytes - usedBytes);
+		var remainingPercent = Math.max(0, Math.min(100, (remainingBytes / totalBytes) * 100));
+		var quotaState = remainingPercent < 20 ? "critical" : (remainingPercent < 50 ? "warning" : (remainingPercent < 75 ? "normal" : "healthy"));
+
+		quota.className = quota.className.replace(/\sattachment_quota_(healthy|normal|warning|critical)\b/g, "");
+		quota.classList.add("attachment_quota_" + quotaState);
+		quota.setAttribute("data-used-bytes", Math.round(usedBytes));
+
+		remainingText.textContent = formatBytes(remainingBytes) + " left to upload";
+		totalText.textContent = "of " + formatBytes(totalBytes) + " total";
+		bar.style.width = remainingPercent + "%";
+		track.setAttribute("aria-valuenow", Math.round(remainingPercent));
+		track.setAttribute("aria-valuetext", formatBytes(remainingBytes) + " remaining");
+	}
+
+	renderQuota(initialUsedBytes);
+
+	if(usageUpdate && window.MutationObserver) {
+		new MutationObserver(function() {
+			var updatedUsedBytes = parseFriendlySize(usageUpdate.textContent);
+
+			if(updatedUsedBytes !== null) {
+				renderQuota(updatedUsedBytes);
+			}
+		}).observe(usageUpdate, {childList: true, characterData: true, subtree: true});
+	}
+})();
+</script>]]></template>

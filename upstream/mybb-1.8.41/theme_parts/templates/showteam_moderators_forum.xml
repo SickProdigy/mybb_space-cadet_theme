@@ -1,0 +1,1 @@
+<template name="showteam_moderators_forum" version="1813"><![CDATA[<a href="{$forum_url}">{$forum['name']}</a><br />]]></template>

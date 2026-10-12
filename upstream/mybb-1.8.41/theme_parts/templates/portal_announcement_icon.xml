@@ -1,0 +1,1 @@
+<template name="portal_announcement_icon" version="1800"><![CDATA[<img src="{$icon['path']}" alt="{$icon['name']}" title="{$icon['name']}" />]]></template>

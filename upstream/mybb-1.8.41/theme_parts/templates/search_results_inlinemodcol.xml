@@ -1,0 +1,1 @@
+<template name="search_results_inlinemodcol" version="1809"><![CDATA[<td class="tcat" align="center" width="1"><input type="checkbox" name="allbox" onclick="inlineModeration.checkAll(this);" /></td>]]></template>

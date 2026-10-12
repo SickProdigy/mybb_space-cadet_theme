@@ -1,0 +1,4 @@
+<template name="modcp_modlogs_nologs" version="1800"><![CDATA[<tr>
+	<td class="trow1" align="center" colspan="5">{$lang->no_logs}</td>
+
+</tr>]]></template>

@@ -1,0 +1,1 @@
+<template name="forumdisplay_inlinemoderation_softdelete" version="1800"><![CDATA[<option value="multisoftdeletethreads">{$lang->soft_delete_threads}</option>]]></template>

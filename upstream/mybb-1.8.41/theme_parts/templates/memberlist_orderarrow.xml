@@ -1,0 +1,1 @@
+<template name="memberlist_orderarrow" version="1800"><![CDATA[<span class="smalltext">[<a href="{$sorturl}&amp;sort={$sort}&amp;order={$oppsortnext}">{$oppsort}</a>]</span>]]></template>

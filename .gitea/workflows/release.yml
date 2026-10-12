@@ -92,7 +92,7 @@ jobs:
           fi
 
           release_body="$(printf '%s\n\n%s\n' \
-            "Space Cadet $release_tag for MyBB 1.8.40." \
+            "Space Cadet $release_tag for MyBB 1.8.41." \
             "Package includes the importable theme XML, Space Cadet image/font assets, README, and license.")"
 
           api_base="$GITEA_API_URL/repos/$REPOSITORY"

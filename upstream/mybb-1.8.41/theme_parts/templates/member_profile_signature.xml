@@ -1,0 +1,9 @@
+<template name="member_profile_signature" version="1800"><![CDATA[<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder tfixed">
+<tr>
+<td class="thead"><strong>{$lang->users_signature}</strong></td>
+</tr>
+<tr>
+<td class="trow1 scaleimages">{$memprofile['signature']}</td>
+</tr>
+</table>
+<br />]]></template>

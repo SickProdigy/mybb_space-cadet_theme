@@ -1,0 +1,4 @@
+<template name="nav" version="120"><![CDATA[
+<div class="navigation">
+{$nav}{$activesep}{$activebit}
+</div>]]></template>

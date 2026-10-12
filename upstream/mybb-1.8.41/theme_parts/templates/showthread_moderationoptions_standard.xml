@@ -1,0 +1,10 @@
+<template name="showthread_moderationoptions_standard" version="1800"><![CDATA[<optgroup label="{$lang->standard_mod_tools}">
+{$threadnotes}
+{$openclosethread}
+{$softdeletethread}
+{$deletethread}
+{$adminpolloptions}
+{$stickunstickthread}
+{$managethread}
+{$approveunapprovethread}
+</optgroup>]]></template>

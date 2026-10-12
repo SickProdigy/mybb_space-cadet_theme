@@ -1,0 +1,1 @@
+<template name="forumdisplay_inlinemoderation_manage" version="1800"><![CDATA[<option value="multimovethreads">{$lang->move_threads}</option>]]></template>

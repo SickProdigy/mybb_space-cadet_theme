@@ -1,0 +1,7 @@
+<template name="showthread_inlinemoderation_standard" version="1800"><![CDATA[<optgroup label="{$lang->standard_mod_tools}">
+	{$inlinemodsoftdelete}
+	{$inlinemodrestore}
+	{$inlinemoddelete}
+	{$inlinemodmanage}
+	{$inlinemodapprove}
+</optgroup>]]></template>

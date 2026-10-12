@@ -1,0 +1,1 @@
+<template name="global_moderation_notice" version="1827"><![CDATA[<div class="red_alert">{$moderation_text}</div>]]></template>

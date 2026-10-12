@@ -1,0 +1,1 @@
+<template name="index_statspage" version="1817"><![CDATA[{$stats_page_separator}<a href="stats.php">{$lang->forumstats}</a>]]></template>

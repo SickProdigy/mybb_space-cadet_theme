@@ -1,0 +1,8 @@
+<template name="newreply_threadreview_post" version="1800"><![CDATA[<tr>
+<td class="tcat"><span class="smalltext"><strong>{$lang->posted_by} {$post['username']} - {$reviewpostdate}</strong></span></td>
+</tr>
+<tr>
+<td class="{$altbg} scaleimages">
+{$reviewmessage}
+</td>
+</tr>]]></template>

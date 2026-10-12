@@ -1,0 +1,1 @@
+<template name="showthread_usersbrowsing_user" version="1600"><![CDATA[{$comma}<a href="{$user['profilelink']}" title="{$lang->users_browsing_thread_reading} ({$user['reading']})">{$user['username']}</a>{$invisiblemark}]]></template>

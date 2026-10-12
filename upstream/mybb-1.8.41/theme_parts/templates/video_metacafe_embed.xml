@@ -1,0 +1,1 @@
+<template name="video_metacafe_embed" version="1827"><![CDATA[<iframe src="http://www.metacafe.com/embed/{$id}/" width="440" height="248" allowfullscreen="true" frameborder=0></iframe>]]></template>

@@ -1,0 +1,1 @@
+<template name="report_reason" version="1808"><![CDATA[<option value="{$reason['rid']}" data-extra="{$reason['extra']}">{$reason['title']}</option>]]></template>

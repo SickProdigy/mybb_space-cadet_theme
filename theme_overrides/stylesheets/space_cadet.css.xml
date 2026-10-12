@@ -1,4 +1,4 @@
-<stylesheet name="space_cadet.css" version="1840" disporder="8"><![CDATA[@font-face {
+<stylesheet name="space_cadet.css" version="1841" disporder="8"><![CDATA[@font-face {
 	font-family: "Droid Sans";
 	src: url(images/space-cadet/fonts/droid-sans/DroidSans-Regular.woff2) format("woff2"),
 		url(images/space-cadet/fonts/droid-sans/DroidSans-Regular.ttf) format("truetype");
@@ -4672,5 +4672,206 @@ blockquote,
 
 .account_activation_notice a:hover,
 .account_activation_notice a:active { color: #24103f; }
+
+/* Post attachments */
+.post_attachments {
+	margin-top: 28px;
+	background: #111;
+	border: 1px solid #30343a;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.post_attachments_title {
+	margin: 0;
+	padding: 10px 13px;
+	background: #171719;
+	border-bottom: 1px solid #30343a;
+	color: #eee;
+	font-size: 14px;
+}
+
+.post_attachments_images:empty,
+.post_attachments_downloads:empty { display: none; }
+
+.post_attachments_images + .post_attachments_downloads:not(:empty) {
+	border-top: 1px solid #292d32;
+}
+
+.post_attachments_downloads:not(:empty)::before {
+	display: block;
+	padding: 10px 13px 4px;
+	color: #aaa;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	content: "Downloadable files";
+}
+
+.post_attachments_gallery_title {
+	padding: 10px 13px 6px;
+	color: #aaa;
+	font-weight: 700;
+}
+
+.post_attachments_gallery:not([hidden]) ~ .post_attachments_gallery:not([hidden]) .post_attachments_gallery_title {
+	display: none;
+}
+
+.post_attachments[hidden],
+.post_attachments_gallery[hidden],
+.post_attachment_image[hidden],
+.post_attachments_images[hidden] { display: none; }
+
+.post_attachments_images[hidden] + .post_attachments_downloads:not(:empty) {
+	border-top: 0;
+}
+
+.post_attachments_gallery_items {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 12px;
+	padding: 0 13px 13px;
+}
+
+.post_attachments_gallery_items .attachment {
+	box-sizing: border-box;
+	max-width: 100%;
+	padding: 3px;
+	background: #0b0b0c;
+	border: 1px solid #444;
+}
+
+.post_attachment_file {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0 13px 10px;
+	padding: 10px;
+	background: #18181a;
+	border: 1px solid #292d32;
+	border-radius: 4px;
+}
+
+.post_attachment_file > img { flex: 0 0 auto; }
+
+.post_attachment_file_details {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 5px 9px;
+	min-width: 0;
+}
+
+.post_attachment_file_details a {
+	overflow-wrap: anywhere;
+	font-weight: 700;
+}
+
+.post_attachment_metadata {
+	color: #999;
+	font-size: 12px;
+}
+
+/* Attachment quota */
+.attachment_quota_cell {
+	padding: 0 !important;
+	background: #141416;
+}
+
+.attachment_quota {
+	padding: 12px 14px;
+	color: #ccc;
+}
+
+.attachment_quota_summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+}
+
+.attachment_quota_summary > div {
+	display: grid;
+	gap: 2px;
+}
+
+.attachment_quota_label {
+	color: #85858b;
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.attachment_quota_remaining {
+	color: #8fa4ea;
+	font-size: 18px;
+	line-height: 1.25;
+}
+
+.attachment_quota_total {
+	color: #85858b;
+	font-size: 11px;
+}
+
+.attachment_quota_link a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 28px;
+	box-sizing: border-box;
+	padding: 5px 9px;
+	background: #242427;
+	border: 1px solid #3a3a3e;
+	border-radius: 3px;
+	font-size: 11px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.attachment_quota_link a:hover {
+	background: #33446d;
+	border-color: #617ed0;
+	color: #fff;
+}
+
+.attachment_quota_track {
+	height: 6px;
+	margin-top: 10px;
+	background: #252529;
+	border-radius: 999px;
+	overflow: hidden;
+}
+
+.attachment_usage_ajax[hidden],
+.attachment_quota_track[hidden] { display: none; }
+
+.attachment_quota_bar {
+	display: block;
+	width: 0;
+	height: 100%;
+	background: linear-gradient(90deg, #586fb9, #7289da);
+	border-radius: inherit;
+	transition: width 180ms ease-out;
+}
+
+.attachment_quota_healthy .attachment_quota_remaining { color: #7fce8b; }
+.attachment_quota_healthy .attachment_quota_bar { background: linear-gradient(90deg, #4e9e65, #77c98a); }
+
+.attachment_quota_warning .attachment_quota_remaining { color: #e0b85b; }
+.attachment_quota_warning .attachment_quota_bar { background: linear-gradient(90deg, #b98632, #e0b85b); }
+
+.attachment_quota_critical .attachment_quota_remaining { color: #e07178; }
+.attachment_quota_critical .attachment_quota_bar { background: linear-gradient(90deg, #aa454c, #e07178); }
+
+@media (max-width: 600px) {
+	.attachment_quota_summary {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 9px;
+	}
+}
 
 ]]></stylesheet>

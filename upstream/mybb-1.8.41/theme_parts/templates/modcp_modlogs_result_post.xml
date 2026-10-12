@@ -1,0 +1,1 @@
+<template name="modcp_modlogs_result_post" version="1800"><![CDATA[<strong>{$lang->post}:</strong> <a href="{$logitem['post']}#pid{$logitem['pid']}">{$logitem['psubject']}</a>]]></template>

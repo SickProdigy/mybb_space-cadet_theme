@@ -1,0 +1,3 @@
+<template name="member_profile_customfields_field_multi" version="1800"><![CDATA[<ul style="margin: 0; padding-left: 15px;">
+{$customfield_val}
+</ul>]]></template>

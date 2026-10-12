@@ -1,0 +1,6 @@
+<template name="usercp_options_style" version="1800"><![CDATA[<tr>
+<td colspan="2"><span class="smalltext">{$lang->style}</span></td>
+</tr>
+<tr>
+<td colspan="2">{$stylelist}</td>
+</tr>]]></template>

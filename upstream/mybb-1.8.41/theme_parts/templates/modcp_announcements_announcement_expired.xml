@@ -1,0 +1,1 @@
+<template name="modcp_announcements_announcement_expired" version="1800"><![CDATA[<div class="subforumicon subforum_minioff" title="{$lang->expired_announcement}"></div>]]></template>

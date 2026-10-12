@@ -1,0 +1,6 @@
+<template name="moderation_threadnotes_delayedmodaction" version="1600"><![CDATA[<tr>
+<td class="{$trow}" align="center">{$delayedmod['profilelink']}</td>
+<td class="{$trow}" align="center">{$delayedmod['dateline']}</td>
+<td class="{$trow}" align="center">{$delayedmod['action']}</td>
+<td class="{$trow}">{$info}</td>
+</tr>]]></template>

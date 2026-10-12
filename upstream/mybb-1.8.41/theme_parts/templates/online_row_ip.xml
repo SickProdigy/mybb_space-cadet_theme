@@ -1,0 +1,1 @@
+<template name="online_row_ip" version="1800"><![CDATA[<br /><span class="smalltext">{$lang->ip} {$user['ip']} {$lookup}</span>]]></template>

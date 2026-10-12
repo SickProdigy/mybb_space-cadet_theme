@@ -1,0 +1,2 @@
+<template name="usercp_profile_profilefields_checkbox" version="1800"><![CDATA[<input type="checkbox" class="checkbox" name="profile_fields[$field][]" value="{$val}"{$checked} />
+<span class="smalltext">{$val}</span><br />]]></template>

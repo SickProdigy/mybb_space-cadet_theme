@@ -1,0 +1,1 @@
+<template name="calendar_dayview_birthdays_bday" version="1400"><![CDATA[{$comma}{$birthday['profilelink']}{$age}]]></template>

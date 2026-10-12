@@ -1,0 +1,2 @@
+<template name="usercp_profile_profilefields_radio" version="1800"><![CDATA[<input type="radio" class="radio" name="profile_fields[$field]" value="{$val}"{$checked} />
+<span class="smalltext">{$val}</span><br />]]></template>

@@ -1,0 +1,2 @@
+<template name="misc_smilies_popup_smilie" version="1800"><![CDATA[<td class="{$class}" align="center">{$smilie_image}</a></td>
+<td class="{$class}">{$smilie['find']}</td>]]></template>

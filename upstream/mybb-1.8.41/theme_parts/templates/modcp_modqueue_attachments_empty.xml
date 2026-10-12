@@ -1,0 +1,3 @@
+<template name="modcp_modqueue_attachments_empty" version="1400"><![CDATA[<tr>
+		<td class="trow1" align="center" colspan="6">{$lang->mod_queue_attachments_empty}</td>
+</tr>]]></template>

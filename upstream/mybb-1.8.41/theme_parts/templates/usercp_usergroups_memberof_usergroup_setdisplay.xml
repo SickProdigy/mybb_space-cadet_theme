@@ -1,0 +1,1 @@
+<template name="usercp_usergroups_memberof_usergroup_setdisplay" version="1800"><![CDATA[ (<a href="usercp.php?action=usergroups&amp;displaygroup={$usergroup['gid']}&amp;my_post_key={$mybb->post_code}">{$lang->set_as_display_group}</a>)]]></template>

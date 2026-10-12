@@ -1,0 +1,8 @@
+<template name="private_archive_txt_message" version="120"><![CDATA[{$lang->subject} {$message['subject']}
+{$tofrom} {$tofromusername}
+{$lang->sent} {$senddate}
+------------------------------------------------------------------------
+{$message['message']}
+------------------------------------------------------------------------
+
+]]></template>

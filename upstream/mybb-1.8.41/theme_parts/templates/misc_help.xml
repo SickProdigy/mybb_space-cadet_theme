@@ -1,0 +1,12 @@
+<template name="misc_help" version="1800"><![CDATA[<html>
+<head>
+<title>{$mybb->settings['bbname']} - {$lang->help_docs}</title>
+{$headerinclude}
+</head>
+<body>
+{$header}
+{$sections}
+{$search}
+{$footer}
+</body>
+</html>]]></template>

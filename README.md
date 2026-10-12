@@ -1,13 +1,13 @@
 # Space Cadet Theme for MyBB
 
-Space Cadet is a MyBB 1.8.40 child theme built from the open-source MyBB Master Style. The complete stock theme is retained as a versioned reference, while the importable release contains only intentional Space Cadet overrides.
+Space Cadet is a MyBB 1.8.41 child theme built from the open-source MyBB Master Style. The complete stock theme is retained as a versioned reference, while the importable release contains only intentional Space Cadet overrides.
 
 ![Space Cadet forum index preview](screenshots/space-cadet-index.png)
 
 ## Repository Structure
 
 ```text
-upstream/mybb-1.8.40/
+upstream/mybb-1.8.41/
 ├── mybb_theme.xml          # untouched official master theme
 └── theme_parts/
     ├── properties.xml
@@ -31,11 +31,11 @@ Treat everything under `upstream/` as read-only. Do not edit the generated `spac
 
 ## Installation
 
-Space Cadet requires MyBB 1.8.40. Use the generated `space-cadet-theme.xml` for the theme import; do not import the upstream XML or individual override fragments.
+Space Cadet requires MyBB 1.8.41. Use the generated `space-cadet-theme.xml` for the theme import; do not import the upstream XML or individual override fragments.
 
 1. Copy the repository's `images/space-cadet/` directory to `images/space-cadet/` under the MyBB forum root. Keep the included Font Awesome and Droid Sans files in their existing subdirectories.
 2. In MyBB Admin CP, open **Templates & Style → Themes → Import a Theme**.
-3. Select `space-cadet-theme.xml`, give the theme a name if desired, and import it. Leave **Ignore Version Compatibility** disabled when installing on MyBB 1.8.40.
+3. Select `space-cadet-theme.xml`, give the theme a name if desired, and import it. Leave **Ignore Version Compatibility** disabled when installing on MyBB 1.8.41.
 4. Set Space Cadet as the default theme or select it for the test account under **User CP → Edit Options**.
 5. Confirm the imported theme inherits unchanged components from **MyBB Master Style**. Do not detach or copy all master templates into Space Cadet.
 6. Hard-refresh the browser and clear any proxy/CDN cache, then test the index, forum and thread listings, search results, member list and profiles, calendar views, private messages, and moderation pages on desktop and mobile.
@@ -47,7 +47,7 @@ For upgrades, replace `images/space-cadet/` with the release assets and import t
 When changing a stock MyBB component, copy it from the upstream split into the matching override directory and edit the copy:
 
 ```text
-upstream/mybb-1.8.40/theme_parts/templates/header.xml
+upstream/mybb-1.8.41/theme_parts/templates/header.xml
 → theme_overrides/templates/header.xml
 ```
 
@@ -71,19 +71,19 @@ To refresh the split upstream reference from the official XML:
 python3 scripts/split_theme.py
 ```
 
-This command deletes and recreates only `upstream/mybb-1.8.40/theme_parts/`; it does not modify `theme_overrides/`.
+This command deletes and recreates only `upstream/mybb-1.8.41/theme_parts/`; it does not modify `theme_overrides/`.
 
 ## Versioning
 
 Project metadata lives in `theme.json`:
 
 - `theme_version` is the Space Cadet release version and follows semantic versioning.
-- `mybb_version` is MyBB's compatibility code. Keep it at `1840` while targeting MyBB 1.8.40.
+- `mybb_version` is MyBB's compatibility code. Keep it at `1841` while targeting MyBB 1.8.41.
 - `name` and `output` control the generated theme name and filename.
 
 ## Testing
 
-Confirm the generated XML parses and imports without warnings. Test guest/member sessions, forum and thread listings, search and help results, member lists and profiles, monthly and weekly calendars, private messages, moderation controls, header dropdowns, and post actions. Check desktop, narrow desktop browser windows, tablet, and phone widths, including menus and controls near viewport edges. Re-import into a clean MyBB 1.8.40 test installation before publishing a release.
+Confirm the generated XML parses and imports without warnings. Test guest/member sessions, forum and thread listings, search and help results, member lists and profiles, monthly and weekly calendars, private messages, moderation controls, header dropdowns, and post actions. Check desktop, narrow desktop browser windows, tablet, and phone widths, including menus and controls near viewport edges. Re-import into a clean MyBB 1.8.41 test installation before publishing a release.
 
 ## Texture Credits
 

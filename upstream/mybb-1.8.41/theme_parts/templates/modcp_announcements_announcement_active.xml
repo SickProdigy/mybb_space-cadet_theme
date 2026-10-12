@@ -1,0 +1,1 @@
+<template name="modcp_announcements_announcement_active" version="1800"><![CDATA[<div class="subforumicon subforum_minion" title="{$lang->active_announcement}"></div>]]></template>

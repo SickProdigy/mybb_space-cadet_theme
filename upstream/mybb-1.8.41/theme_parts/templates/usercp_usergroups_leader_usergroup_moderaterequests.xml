@@ -1,0 +1,1 @@
+<template name="usercp_usergroups_leader_usergroup_moderaterequests" version="1800"><![CDATA[ [<a href="managegroup.php?action=joinrequests&amp;gid={$usergroup['gid']}">{$lang->view_requests}</a>]]]></template>

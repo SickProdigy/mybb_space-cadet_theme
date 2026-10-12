@@ -1,0 +1,1 @@
+<template name="showthread_moderationoptions_restore" version="1804"><![CDATA[<option value="restorethread">{$lang->restore_thread}</option>]]></template>

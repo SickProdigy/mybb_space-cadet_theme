@@ -1,0 +1,4 @@
+<template name="calendar_mini_weekrow" version="1400"><![CDATA[			<tr>
+				<td class="tcat" align="center" width="1"><a href="{$week_link}">&raquo;</a></td>
+				{$day_bits}
+			</tr>]]></template>

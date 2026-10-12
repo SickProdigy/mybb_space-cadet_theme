@@ -1,0 +1,1 @@
+<template name="showthread_moderationoptions_custom_tool" version="1818"><![CDATA[<option class="option_mirage" value="{$tool['tid']}">{$tool['name']}</option>]]></template>

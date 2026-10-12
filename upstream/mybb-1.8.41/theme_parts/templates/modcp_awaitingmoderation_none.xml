@@ -1,0 +1,1 @@
+<template name="modcp_awaitingmoderation_none" version="1800"><![CDATA[<span style="text-align: center;">{$lang->lastpost_never}</span>]]></template>

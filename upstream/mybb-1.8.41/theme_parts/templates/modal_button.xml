@@ -1,0 +1,1 @@
+<template name="modal_button" version="1820"><![CDATA[<input type="submit" class="button" value="__title__"/>&nbsp;]]></template>

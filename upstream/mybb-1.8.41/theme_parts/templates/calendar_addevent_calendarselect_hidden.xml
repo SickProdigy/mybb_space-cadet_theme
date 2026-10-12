@@ -1,0 +1,1 @@
+<template name="calendar_addevent_calendarselect_hidden" version="1800"><![CDATA[<input type="hidden" name="calendar" value="{$calendar['cid']}" />]]></template>

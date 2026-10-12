@@ -1,0 +1,1 @@
+<template name="search_results_icon" version="1800"><![CDATA[<img src="{$posticon['path']}" alt="{$posticon['name']}" title="{$posticon['name']}" />]]></template>

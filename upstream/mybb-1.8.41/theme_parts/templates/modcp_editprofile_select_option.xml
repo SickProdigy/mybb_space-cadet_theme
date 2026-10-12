@@ -1,0 +1,1 @@
+<template name="modcp_editprofile_select_option" version="1600"><![CDATA[<option value="{$key}" {$selected}>{$value}</option>]]></template>

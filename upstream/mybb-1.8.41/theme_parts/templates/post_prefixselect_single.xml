@@ -1,0 +1,4 @@
+<template name="post_prefixselect_single" version="1800"><![CDATA[<select name="threadprefix">
+<option value="0"{$default_selected}>{$lang->no_prefix}</option>
+{$prefixselect_prefix}
+</select>]]></template>

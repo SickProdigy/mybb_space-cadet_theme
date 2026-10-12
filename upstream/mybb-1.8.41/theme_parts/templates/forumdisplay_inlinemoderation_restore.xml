@@ -1,0 +1,1 @@
+<template name="forumdisplay_inlinemoderation_restore" version="1800"><![CDATA[<option value="multirestorethreads">{$lang->restore_threads}</option>]]></template>

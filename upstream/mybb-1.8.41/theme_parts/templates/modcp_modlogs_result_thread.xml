@@ -1,0 +1,1 @@
+<template name="modcp_modlogs_result_thread" version="1800"><![CDATA[<strong>{$lang->thread}:</strong> <a href="{$logitem['thread']}" target="_blank">{$logitem['tsubject']}</a><br />]]></template>

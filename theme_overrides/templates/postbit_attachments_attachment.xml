@@ -1,0 +1,7 @@
+<template name="postbit_attachments_attachment" version="1841"><![CDATA[<div class="post_attachment_file">
+	{$attachment['icon']}
+	<div class="post_attachment_file_details">
+		<a href="attachment.php?aid={$attachment['aid']}" target="_blank" rel="noopener" title="{$attachdate}">{$attachment['filename']}</a>
+		<span class="post_attachment_metadata">{$lang->postbit_attachment_size} {$attachment['filesize']} <span aria-hidden="true">&middot;</span> {$lang->postbit_attachment_downloads} {$attachment['downloads']}</span>
+	</div>
+</div>]]></template>

@@ -1,0 +1,1 @@
+<template name="member_profile_modoptions_editprofile" version="1800"><![CDATA[<li><a href="{$mybb->settings['bburl']}/modcp.php?action=editprofile&amp;uid={$uid}">{$lang->edit_in_mcp}</a></li>]]></template>

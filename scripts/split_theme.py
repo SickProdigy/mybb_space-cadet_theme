@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh the split MyBB 1.8.40 upstream reference."""
+"""Refresh the split MyBB 1.8.41 upstream reference."""
 
 from __future__ import annotations
 
@@ -9,8 +9,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SOURCE = ROOT / "upstream" / "mybb-1.8.40" / "mybb_theme.xml"
-OUTPUT = ROOT / "upstream" / "mybb-1.8.40" / "theme_parts"
+SOURCE = ROOT / "upstream" / "mybb-1.8.41" / "mybb_theme.xml"
+OUTPUT = ROOT / "upstream" / "mybb-1.8.41" / "theme_parts"
 
 
 def one(source: str, tag: str) -> str:

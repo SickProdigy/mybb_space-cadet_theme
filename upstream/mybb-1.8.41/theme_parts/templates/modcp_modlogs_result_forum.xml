@@ -1,0 +1,1 @@
+<template name="modcp_modlogs_result_forum" version="1800"><![CDATA[<strong>{$lang->forum}:</strong> <a href="{$logitem['forum']}" target="_blank">{$logitem['fname']}</a><br />]]></template>

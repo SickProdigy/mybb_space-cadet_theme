@@ -1,0 +1,3 @@
+<template name="forumjump_special" version="1804"><![CDATA[<select name="{$name}">
+{$forumjumpbits}
+</select>]]></template>

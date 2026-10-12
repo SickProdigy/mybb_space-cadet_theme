@@ -1,0 +1,1 @@
+<template name="member_profile_groupimage" version="1817"><![CDATA[<img src="{$memperms['image']}" alt="{$usertitle}" title="{$usertitle}" /><br />]]></template>

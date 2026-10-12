@@ -1,0 +1,7 @@
+<template name="usercp_profile_profilefields" version="120"><![CDATA[<br />
+<fieldset class="trow2">
+<legend><strong>{$lang->additional_information}</strong></legend>
+<table cellspacing="0" cellpadding="{$theme['tablespace']}" width="100%">
+{$customfields}
+</table>
+</fieldset>]]></template>

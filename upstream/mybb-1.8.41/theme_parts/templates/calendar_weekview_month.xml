@@ -1,0 +1,4 @@
+<template name="calendar_weekview_month" version="1400"><![CDATA[			<tr>
+				<td class="tcat" colspan="2"><strong>{$weekday_month} {$weekday_year}</strong></td>
+			</tr>
+			{$days}]]></template>

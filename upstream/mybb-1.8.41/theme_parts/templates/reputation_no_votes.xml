@@ -1,0 +1,3 @@
+<template name="reputation_no_votes" version="120"><![CDATA[<tr>
+	<td class="trow1" style="text-align: center;">{$lang->no_reputation_votes}</td>
+</tr>]]></template>

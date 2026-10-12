@@ -1,0 +1,6 @@
+<template name="usercp_profile_customtitle_currentcustom" version="1800"><![CDATA[<tr>
+<td><span class="smalltext">{$lang->current_custom_usertitle}</span></td>
+</tr>
+<tr>
+<td><span class="smalltext"><strong>{$user['usertitle']}</strong></span></td>
+</tr>]]></template>

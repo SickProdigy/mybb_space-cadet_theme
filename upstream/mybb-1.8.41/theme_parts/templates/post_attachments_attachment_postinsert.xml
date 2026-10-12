@@ -1,0 +1,1 @@
+<template name="post_attachments_attachment_postinsert" version="1809"><![CDATA[<input type="button" class="button" name="insert" value="{$lang->insert_attachment_post}" onclick="$('#message').sceditor('instance').insertText('[attachment={$attachment['aid']}]'); return false;" />]]></template>

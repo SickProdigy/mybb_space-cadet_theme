@@ -1,0 +1,1 @@
+<template name="portal_announcement_avatar" version="1800"><![CDATA[<td class="trow1" style="text-align: center; vertical-align: top;" {$useravatar['width_height']}><img src="{$useravatar['image']}" alt="" {$useravatar['width_height']} /></td>]]></template>

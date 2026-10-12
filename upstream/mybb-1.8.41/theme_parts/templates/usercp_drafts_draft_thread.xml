@@ -1,0 +1,1 @@
+<template name="usercp_drafts_draft_thread" version="1800"><![CDATA[{$lang->thread}: <a href="{$draft['threadlink']}">{$draft['threadsubject']}</a>]]></template>

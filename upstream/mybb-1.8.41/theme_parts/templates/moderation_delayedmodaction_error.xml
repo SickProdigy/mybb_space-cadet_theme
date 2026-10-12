@@ -1,0 +1,1 @@
+<template name="moderation_delayedmodaction_error" version="1800"><![CDATA[<tr><td class="trow1" colspan="{$cols}">{$lang->no_delayed_mods}</td></tr>]]></template>

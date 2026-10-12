@@ -1,0 +1,4 @@
+<template name="member_referral_row" version="1822"><![CDATA[	<tr>
+		<td class="{$bg_color}">{$username}</td>
+		<td class="{$bg_color}" style="text-align: right;">{$regdate}</td>
+	</tr>]]></template>

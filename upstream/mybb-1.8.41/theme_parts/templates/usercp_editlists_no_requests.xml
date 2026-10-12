@@ -1,0 +1,5 @@
+<template name="usercp_editlists_no_requests" version="1800"><![CDATA[<tr>
+	<td class="{$bgcolor}" colspan="3">
+		{$lang->no_requests}
+	</td>
+</tr>]]></template>

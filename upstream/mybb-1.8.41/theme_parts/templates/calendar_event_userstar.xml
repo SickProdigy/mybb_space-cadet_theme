@@ -1,0 +1,1 @@
+<template name="calendar_event_userstar" version="1800"><![CDATA[<img src="{$event['starimage']}" border="0" alt="*" />]]></template>

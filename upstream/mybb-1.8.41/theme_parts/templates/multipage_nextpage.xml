@@ -1,0 +1,1 @@
+<template name="multipage_nextpage" version="1400"><![CDATA[<a href="{$page_url}" class="pagination_next">{$lang->next} &raquo;</a>]]></template>

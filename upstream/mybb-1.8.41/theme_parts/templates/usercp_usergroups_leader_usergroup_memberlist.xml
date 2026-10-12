@@ -1,0 +1,1 @@
+<template name="usercp_usergroups_leader_usergroup_memberlist" version="1800"><![CDATA[ [<a href="managegroup.php?gid={$usergroup['gid']}">{$lang->view_members}</a>]]]></template>

@@ -1,0 +1,1 @@
+<template name="usercp_editlists_no_ignored" version="1800"><![CDATA[<li>{$lang->ignore_list_empty}</li>]]></template>

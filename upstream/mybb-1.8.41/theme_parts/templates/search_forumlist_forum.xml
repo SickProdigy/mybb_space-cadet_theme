@@ -1,0 +1,1 @@
+<template name="search_forumlist_forum" version="1800"><![CDATA[<option value="{$forum['fid']}">{$depth} {$forum['name']}</option>]]></template>

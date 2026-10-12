@@ -1,0 +1,1 @@
+<template name="modcp_modqueue_link_forum" version="1800"><![CDATA[<strong>{$lang->meta_forum} <a href="{$forum_link}">{$forum_name}</a></strong><br />]]></template>

@@ -1,0 +1,1 @@
+<template name="usercp_usergroups_memberof_usergroup_leave" version="1800"><![CDATA[<div style="text-align: center;"><a href="usercp.php?action=usergroups&amp;leavegroup={$usergroup['gid']}&amp;my_post_key={$mybb->post_code}">{$lang->usergroup_leave}</a></div>]]></template>

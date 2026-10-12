@@ -1,0 +1,2 @@
+<template name="member_loggedin_notice" version="1800"><![CDATA[<fieldset class="align_right smalltext">{$lang->already_logged_in}</fieldset>
+<br />]]></template>

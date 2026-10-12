@@ -1,0 +1,10 @@
+<template name="member_profile_modoptions_manageuser" version="1820"><![CDATA[<tr>
+<td class="trow1">
+<ul>
+{$editprofile}
+{$banuser}
+{$manageban}
+{$purgespammer}
+</ul>
+</td>
+</tr>]]></template>

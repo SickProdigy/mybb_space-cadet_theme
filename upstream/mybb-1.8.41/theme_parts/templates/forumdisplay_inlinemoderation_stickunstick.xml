@@ -1,0 +1,2 @@
+<template name="forumdisplay_inlinemoderation_stickunstick" version="1800"><![CDATA[<option value="multistickthreads">{$lang->stick_threads}</option>
+<option value="multiunstickthreads">{$lang->unstick_threads}</option>]]></template>

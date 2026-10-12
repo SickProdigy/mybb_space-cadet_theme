@@ -1,0 +1,1 @@
+<template name="showthread_moderationoptions_threadnotes" version="1838"><![CDATA[<option value="threadnotes">{$lang->thread_notes}</option>]]></template>

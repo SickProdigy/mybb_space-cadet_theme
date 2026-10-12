@@ -1,0 +1,1 @@
+<template name="modcp_modqueue_post_link" version="1800"><![CDATA[{$navsep}<a href="modcp.php?action=modqueue&amp;type=posts">{$lang->posts}</a>]]></template>

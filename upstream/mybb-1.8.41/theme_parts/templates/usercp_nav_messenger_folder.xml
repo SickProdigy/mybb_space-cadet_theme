@@ -1,0 +1,1 @@
+<template name="usercp_nav_messenger_folder" version="1800"><![CDATA[<div><a href="private.php?fid={$folder_id}" class="usercp_nav_item {$class}">{$folder_name}</a></div>]]></template>

@@ -1,0 +1,6 @@
+<template name="warnings_view_user" version="1800"><![CDATA[		<tr>
+			<td class="tcat" colspan="2"><span class="smalltext"><strong>{$lang->details_username}</strong></span></td>
+		</tr>
+		<tr>
+			<td class="trow1" colspan="2">{$user_link}</td>
+		</tr>]]></template>

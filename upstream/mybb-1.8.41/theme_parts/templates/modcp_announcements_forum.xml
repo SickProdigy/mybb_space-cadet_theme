@@ -1,0 +1,4 @@
+<template name="modcp_announcements_forum" version="1400"><![CDATA[					<tr>
+						<td class="{$trow}"><div style="padding-left: {$padding}px;"><strong>{$forum['name']}</strong></div></td>
+						<td class="{$trow}" colspan="2" align="center"><a href="modcp.php?action=new_announcement&amp;fid={$forum['fid']}">{$lang->add_announcement}</a></td>
+					</tr>]]></template>

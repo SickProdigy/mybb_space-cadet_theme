@@ -1,0 +1,1 @@
+<template name="private_multiple_recipients_bcc" version="1400"><![CDATA[<div class="tcat"><strong>{$lang->bcc}</strong></div>]]></template>

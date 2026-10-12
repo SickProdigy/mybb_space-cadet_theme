@@ -1,0 +1,1 @@
+<template name="moderation_delayedmoderation_delete" version="1813"><![CDATA[<dt><input type="radio" name="type" value="deletethread" {$type_selected['deletethread']} id="type_deletethread" onclick="toggleType();" /> <label for="type_deletethread"><strong>{$lang->delete_thread}</strong></label></dt>]]></template>

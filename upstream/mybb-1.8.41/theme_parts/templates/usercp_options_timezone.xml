@@ -1,0 +1,3 @@
+<template name="usercp_options_timezone" version="1800"><![CDATA[<select name="{$name}" id="{$name}">
+{$timezone_option}
+</select>]]></template>

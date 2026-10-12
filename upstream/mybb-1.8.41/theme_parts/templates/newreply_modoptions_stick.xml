@@ -1,0 +1,1 @@
+<template name="newreply_modoptions_stick" version="1810"><![CDATA[<label><input type="checkbox" class="checkbox" name="modoptions[stickthread]" value="1"{$stickycheck} />&nbsp;{$lang->stick_thread}</label>]]></template>

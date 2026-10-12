@@ -1,0 +1,8 @@
+<template name="misc_buddypopup_user" version="1800"><![CDATA[	<tr>
+		<td class="tcat"{$colspan}><strong>{$lang->online}</strong></td>
+		{$buddys['online']}
+	</tr>
+	<tr>
+		<td class="tcat"{$colspan}><strong>{$lang->offline}</strong></td>
+		{$buddys['offline']}
+	</tr>]]></template>

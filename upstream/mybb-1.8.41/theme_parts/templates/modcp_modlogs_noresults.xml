@@ -1,0 +1,4 @@
+<template name="modcp_modlogs_noresults" version="1400"><![CDATA[<tr>
+	<td class="trow1" align="center" colspan="5">{$lang->error_no_results}</td>
+
+</tr>]]></template>

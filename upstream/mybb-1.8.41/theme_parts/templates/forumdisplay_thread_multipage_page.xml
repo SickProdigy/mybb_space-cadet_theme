@@ -1,0 +1,1 @@
+<template name="forumdisplay_thread_multipage_page" version="1400"><![CDATA[<a href="{$page_link}">{$i}</a> ]]></template>

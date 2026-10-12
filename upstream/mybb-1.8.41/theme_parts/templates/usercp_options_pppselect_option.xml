@@ -1,0 +1,1 @@
+<template name="usercp_options_pppselect_option" version="1800"><![CDATA[<option value="{$val}"{$selected}>{$ppp_option}</option>]]></template>
