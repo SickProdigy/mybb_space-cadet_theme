@@ -1638,6 +1638,13 @@ a.button.showthread_adjacent_button:focus {
 	font-size: 10px;
 }
 
+.showthread_new_reply {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	margin-left: auto;
+}
+
 @media (max-width: 760px) {
 	.showthread_topbar {
 		align-items: stretch;
@@ -1664,7 +1671,7 @@ a.button.showthread_adjacent_button:focus {
 		justify-content: flex-start;
 	}
 
-	.showthread_bottom_actions > .new_reply_button {
+	.showthread_new_reply {
 		align-self: flex-end;
 	}
 
@@ -10477,7 +10484,7 @@ if(use_xmlhttprequest == "1")
 			<a href="{$next_oldest_link}" class="button showthread_adjacent_button showthread_previous_thread"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span>Previous Thread</span></a>
 			<a href="{$next_newest_link}" class="button showthread_adjacent_button showthread_next_thread"><span>Next Thread</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
 		</nav>
-		{$newreply}
+		<div class="showthread_new_reply">{$newreply}</div>
 	</div>
 	<div class="float_left">
 		{$multipage}

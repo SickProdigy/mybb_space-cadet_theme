@@ -1625,6 +1625,13 @@ a.button.showthread_adjacent_button:focus {
 	font-size: 10px;
 }
 
+.showthread_new_reply {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	margin-left: auto;
+}
+
 @media (max-width: 760px) {
 	.showthread_topbar {
 		align-items: stretch;
@@ -1651,7 +1658,7 @@ a.button.showthread_adjacent_button:focus {
 		justify-content: flex-start;
 	}
 
-	.showthread_bottom_actions > .new_reply_button {
+	.showthread_new_reply {
 		align-self: flex-end;
 	}
 
