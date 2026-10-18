@@ -1608,8 +1608,8 @@ a.button.showthread_adjacent_button:active {
 	gap: 6px;
 	min-height: 32px;
 	margin: 2px;
-	background: #33446d;
-	border-color: #617ed0;
+	background: #25262b;
+	border-color: #44464e;
 	color: #fff;
 	font-weight: bold;
 	text-decoration: none;
@@ -1623,6 +1623,11 @@ a.button.showthread_adjacent_button:focus {
 
 .showthread_adjacent_button i {
 	font-size: 10px;
+}
+
+.showthread_adjacent_button span {
+	padding: 0;
+	background: none;
 }
 
 .showthread_new_reply {
@@ -1650,18 +1655,40 @@ a.button.showthread_adjacent_button:focus {
 	}
 
 	.showthread_bottom_actions {
-		align-items: stretch;
-		flex-direction: column;
+		align-items: center;
+		flex-wrap: nowrap;
+		gap: 6px;
 	}
 
 	.showthread_adjacent_threads {
+		flex: 0 1 auto;
+		flex-wrap: nowrap;
 		justify-content: flex-start;
+		min-width: 0;
+		gap: 4px;
+	}
+
+	a.button.showthread_adjacent_button:link,
+	a.button.showthread_adjacent_button:visited,
+	a.button.showthread_adjacent_button:hover,
+	a.button.showthread_adjacent_button:active {
+		min-height: 32px;
+		margin: 0;
+		padding: 6px 8px;
+		font-size: 11px;
+		white-space: nowrap;
 	}
 
 	.showthread_new_reply {
-		align-self: flex-end;
+		align-self: center;
+		flex: 0 0 auto;
 	}
 
+}
+
+@media (max-width: 390px) {
+	.showthread_bottom_actions { flex-wrap: wrap; }
+	.showthread_new_reply { margin-left: auto; }
 }
 
 .showthread_panel {
