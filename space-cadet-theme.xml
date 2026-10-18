@@ -1638,9 +1638,10 @@ a.button.showthread_adjacent_button:focus {
 	font-size: 10px;
 }
 
-.showthread_adjacent_button span {
+a.button.showthread_adjacent_button span {
 	padding: 0;
-	background: none;
+	background: none !important;
+	background-image: none !important;
 }
 
 .showthread_new_reply {
