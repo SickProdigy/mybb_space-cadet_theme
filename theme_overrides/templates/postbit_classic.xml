@@ -42,7 +42,7 @@
 		{$post['button_pm']}{$post['button_find']}{$post['button_rep']}
 	</div>
 	<div class="postbit_buttons post_management_buttons float_right">
-		{$post['button_edit']}{$post['button_quickdelete']}{$post['button_quickrestore']}{$post['button_quote']}{$post['button_multiquote']}<div class="portal_share postbit_share_wrap">
+		{$post['button_report']}{$post['button_warn']}{$post['button_purgespammer']}{$post['button_edit']}{$post['button_quickdelete']}{$post['button_quickrestore']}{$post['button_quote']}{$post['button_multiquote']}<div class="portal_share postbit_share_wrap">
 			<button class="postbit_share showthread_share_toggle" type="button" title="Share this post" aria-label="Share this post" aria-expanded="false" aria-haspopup="dialog" data-thread-url="{$post['postlink']}#pid{$post['pid']}"><span>Share</span></button>
 			<div class="portal_share_menu showthread_share_panel" role="dialog" aria-label="Share this post" hidden>
 				<strong class="showthread_share_title">Share this post</strong>
@@ -61,7 +61,7 @@
 					</div>
 				</div>
 			</div>
-		</div>{$post['button_report']}{$post['button_warn']}{$post['button_purgespammer']}{$post['button_reply_pm']}{$post['button_replyall_pm']}{$post['button_forward_pm']}{$post['button_delete_pm']}
+		</div>{$post['button_reply_pm']}{$post['button_replyall_pm']}{$post['button_forward_pm']}{$post['button_delete_pm']}
 	</div>
 </div>
 </div>]]></template>
