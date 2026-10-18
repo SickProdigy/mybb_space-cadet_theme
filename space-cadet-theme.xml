@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 1.0.3 -->
+<!-- Space Cadet release 1.0.4 -->
 <theme name="Space Cadet" version="1841">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -1599,10 +1599,43 @@ ul.showthread_top_tools li.showthread_share_tool {
 .showthread_bottom_actions {
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: space-between;
 	flex-wrap: wrap;
 	gap: 9px;
 	margin: 8px 0 10px;
+}
+
+.showthread_adjacent_threads {
+	display: inline-flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 7px;
+}
+
+a.button.showthread_adjacent_button:link,
+a.button.showthread_adjacent_button:visited,
+a.button.showthread_adjacent_button:hover,
+a.button.showthread_adjacent_button:active {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-height: 32px;
+	margin: 2px;
+	background: #33446d;
+	border-color: #617ed0;
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.button.showthread_adjacent_button:hover,
+a.button.showthread_adjacent_button:focus {
+	background: #566fc0;
+	border-color: #8298e8;
+}
+
+.showthread_adjacent_button i {
+	font-size: 10px;
 }
 
 @media (max-width: 760px) {
@@ -1620,6 +1653,19 @@ ul.showthread_top_tools li.showthread_share_tool {
 	.showthread_topbar .showthread_share_panel {
 		left: 0;
 		right: auto;
+	}
+
+	.showthread_bottom_actions {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.showthread_adjacent_threads {
+		justify-content: flex-start;
+	}
+
+	.showthread_bottom_actions > .new_reply_button {
+		align-self: flex-end;
 	}
 
 }
@@ -10423,13 +10469,14 @@ if(use_xmlhttprequest == "1")
 		<tr>
 			<td class="tfoot showthread_footer">
 				{$search_thread}
-				<div>
-					<strong>&laquo; <a href="{$next_oldest_link}">{$lang->next_oldest}</a> | <a href="{$next_newest_link}">{$lang->next_newest}</a> &raquo;</strong>
-				</div>
 			</td>
 		</tr>
 	</table>
 	<div class="showthread_bottom_actions">
+		<nav class="showthread_adjacent_threads" aria-label="Adjacent threads">
+			<a href="{$next_oldest_link}" class="button showthread_adjacent_button showthread_previous_thread"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span>Previous Thread</span></a>
+			<a href="{$next_newest_link}" class="button showthread_adjacent_button showthread_next_thread"><span>Next Thread</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+		</nav>
 		{$newreply}
 	</div>
 	<div class="float_left">

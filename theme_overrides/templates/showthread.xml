@@ -90,13 +90,14 @@
 		<tr>
 			<td class="tfoot showthread_footer">
 				{$search_thread}
-				<div>
-					<strong>&laquo; <a href="{$next_oldest_link}">{$lang->next_oldest}</a> | <a href="{$next_newest_link}">{$lang->next_newest}</a> &raquo;</strong>
-				</div>
 			</td>
 		</tr>
 	</table>
 	<div class="showthread_bottom_actions">
+		<nav class="showthread_adjacent_threads" aria-label="Adjacent threads">
+			<a href="{$next_oldest_link}" class="button showthread_adjacent_button showthread_previous_thread"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span>Previous Thread</span></a>
+			<a href="{$next_newest_link}" class="button showthread_adjacent_button showthread_next_thread"><span>Next Thread</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+		</nav>
 		{$newreply}
 	</div>
 	<div class="float_left">
