@@ -11,7 +11,7 @@
 						{$menu_memberlist}
 						{$menu_calendar}
 						<li><a href="{$mybb->settings['bburl']}/misc.php?action=help" class="help"><i class="fa-solid fa-circle-question fa-fw" aria-hidden="true"></i> {$lang->toplinks_help}</a></li>
-						<li><a href="javascript:void(0)" id="header_extras_menu"><i class="fa-solid fa-chevron-down fa-fw" aria-hidden="true"></i> Extras</a></li>
+						<li><a href="{$mybb->settings['bburl']}/misc.php?action=help" id="header_extras_menu"><i class="fa-solid fa-chevron-down fa-fw" aria-hidden="true"></i> Extras</a></li>
 					</ul>
 					<div id="header_extras_menu_popup" class="popup_menu header_extras_menu" style="display: none;">
 						<div class="popup_item_container"><a class="popup_item" href="{$mybb->settings['bburl']}/misc.php?action=help&amp;hid=14">Account Upgrades</a></div>

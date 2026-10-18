@@ -1,0 +1,5 @@
+<template name="postbit_attachments_attachment_unapproved" version="1402"><![CDATA[<div class="post_attachment_unapproved" role="status">
+	<i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+	<span><strong>Moderator approval needed</strong><small>{$postbit_unapproved_attachments}</small></span>
+	<a class="post_attachment_unapproved_action" href="{$mybb->settings['bburl']}/modcp.php?action=modqueue&amp;type=attachments">Review attachments</a>
+</div>]]></template>

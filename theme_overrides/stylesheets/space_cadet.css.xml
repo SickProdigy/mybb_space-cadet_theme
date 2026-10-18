@@ -95,10 +95,6 @@ a:active {
 	backdrop-filter: blur(3px);
 }
 
-.header_nav .wrapper {
-	position: relative;
-}
-
 #logo img {
 	display: block;
 	max-width: 420px;
@@ -136,6 +132,16 @@ a:active {
 
 #header ul.menu li a:hover { background-color: #262626; }
 
+#header ul.menu li a:focus-visible,
+.header_account_toggle:focus-visible,
+.header_messages_toggle:focus-visible,
+.header_guest_account a:focus-visible,
+.popup_menu.header_account_menu .popup_item:focus-visible,
+.popup_menu.header_extras_menu .popup_item:focus-visible {
+	outline: 2px solid #a8aaf4;
+	outline-offset: -2px;
+}
+
 #panel .upper {
 	background: #0e0e0e;
 	border-color: #262626 #101010;
@@ -163,10 +169,14 @@ a:active {
 	z-index: 100;
 	display: flex;
 	align-items: stretch;
+	max-width: 100%;
 }
 
 .header_account_member,
 .header_messages { position: relative; }
+
+.header_account_member { min-width: 0; }
+.header_messages { flex: 0 0 auto; }
 
 .header_guest_account {
 	position: absolute;
@@ -183,6 +193,7 @@ a:active {
 
 .header_account_toggle {
 	display: flex;
+	min-width: 0;
 	align-items: center;
 	height: 100%;
 	box-sizing: border-box;
@@ -193,6 +204,12 @@ a:active {
 	color: #fff;
 	-webkit-backdrop-filter: blur(3px);
 	backdrop-filter: blur(3px);
+}
+
+.header_account_username {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .header_account_toggle:link,
@@ -2106,6 +2123,10 @@ div.error a:visited {
 div.error a:hover,
 div.error a:active { color: #fff; }
 
+/* Warning details describe one record, so their value rows use one surface. */
+.warning_details_table .trow1,
+.warning_details_table .trow2 { background: #181818; }
+
 /* Keep warning forms readable and make the projected warning level distinct. */
 form[action="warnings.php"] > table.tborder > tbody > tr > .trow1 { background: #181818; }
 form[action="warnings.php"] > table.tborder > tbody > tr > .trow2 { background: #242126; }
@@ -3022,6 +3043,31 @@ blockquote,
 
 /* Help documents use consistent panels instead of alternating stock rows. */
 .help_section { margin-bottom: 16px; }
+
+.help_section_heading,
+.index_forum_heading {
+	position: relative;
+	background: #151515;
+	border-left: 3px solid #7289da;
+}
+
+.help_section_heading::after,
+.index_forum_heading::after {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: -3px;
+	height: 2px;
+	background: linear-gradient(90deg, #7289da 0, #b56ac4 52%, transparent 100%);
+	content: "";
+	pointer-events: none;
+}
+
+.help_section_heading > div,
+.index_forum_heading > div {
+	position: relative;
+	z-index: 1;
+}
 
 .help_section + br { display: none; }
 
@@ -5990,6 +6036,76 @@ blockquote,
 	content: "Downloadable files";
 }
 
+.post_attachments_downloads:not(:has(.post_attachment_file)):has(.post_attachment_unapproved)::before {
+	content: "Approval status";
+	color: #e0b85b;
+}
+
+.post_attachment_unapproved {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	margin: 8px 0 0;
+	padding: 10px 12px;
+	background: rgba(224, 184, 91, 0.08);
+	border: 1px solid rgba(224, 184, 91, 0.42);
+	border-left: 3px solid #e0b85b;
+	border-radius: 3px;
+	color: #e0b85b;
+	line-height: 1.4;
+}
+
+.post_attachment_unapproved > i {
+	margin-top: 2px;
+	color: #e0b85b;
+}
+
+.post_attachment_unapproved > span {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.post_attachment_unapproved small {
+	color: #d2c49e;
+	font-size: 11px;
+}
+
+.post_attachment_unapproved_action:link,
+.post_attachment_unapproved_action:visited {
+	align-self: center;
+	flex: 0 0 auto;
+	margin-left: auto;
+	padding: 6px 9px;
+	background: rgba(224, 184, 91, 0.12);
+	border: 1px solid rgba(224, 184, 91, 0.48);
+	border-radius: 3px;
+	color: #f0ce7d;
+	font-size: 11px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.post_attachment_unapproved_action:hover,
+.post_attachment_unapproved_action:focus-visible {
+	background: rgba(224, 184, 91, 0.22);
+	border-color: #e0b85b;
+	color: #fff0c3;
+}
+
+ (max-width: 480px) {
+	.post_attachment_unapproved { flex-wrap: wrap; }
+
+	.post_attachment_unapproved_action:link,
+	.post_attachment_unapproved_action:visited {
+		justify-content: center;
+		box-sizing: border-box;
+		width: 100%;
+		margin-left: 0;
+		text-align: center;
+	}
+}
+
 .post_attachments_gallery_title {
 	padding: 10px 13px 6px;
 	color: #aaa;
@@ -6152,6 +6268,144 @@ blockquote,
 		align-items: flex-start;
 		flex-direction: column;
 		gap: 9px;
+	}
+}
+
+
+/* Keep Quick Reply compact on desktop and readable as a vertical form on narrow screens. */
+#quick_reply_form,
+.quick_reply_table {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+}
+
+.quick_reply_editor,
+.quick_reply_editor_wrap {
+	box-sizing: border-box;
+	max-width: 100%;
+	min-width: 0;
+}
+
+.quick_reply_editor_wrap { width: 95%; }
+
+.quick_reply_textarea {
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+	margin: 0;
+	padding: 4px;
+	resize: vertical;
+}
+
+.quick_reply_multiquote {
+	box-sizing: border-box;
+	width: 95%;
+	margin-top: 3px;
+	padding: 4px;
+}
+
+.quick_reply_guidance {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+
+.quick_reply_option_list { margin-top: 12px; }
+
+@media (max-width: 760px) {
+	.quick_reply_table,
+	.quick_reply_table > thead,
+	.quick_reply_table > thead > tr,
+	.quick_reply_table > thead > tr > td,
+	#quickreply_e:not([style*="display: none"]):not([style*="display:none"]),
+	#quickreply_e:not([style*="display: none"]):not([style*="display:none"]) > tr {
+		display: block !important;
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+		min-width: 0;
+	}
+
+	#quickreply_e > tr > td {
+		display: block;
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+		min-width: 0;
+	}
+
+	.quick_reply_content,
+	.quick_reply_content > td { display: block; }
+
+	.quick_reply_content > td {
+		box-sizing: border-box;
+		width: 100% !important;
+	}
+
+	.quick_reply_options {
+		border-bottom: 1px solid #33333a;
+		line-height: 1.5;
+	}
+
+	.quick_reply_option_list {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-rows: repeat(2, auto);
+		grid-auto-flow: column;
+		gap: 8px 14px;
+		margin-top: 12px;
+	}
+
+	.quick_reply_option_list > br { display: none; }
+
+	.quick_reply_guidance .smalltext {
+		display: block;
+		line-height: 1.55;
+	}
+
+	.quick_reply_options label {
+		display: inline-flex;
+		align-items: center;
+		max-width: 100%;
+		margin-top: 4px;
+		white-space: nowrap;
+	}
+
+	.quick_reply_option_list label { margin-top: 0; }
+
+	.quick_reply_editor_wrap,
+	.quick_reply_multiquote { width: 100%; }
+
+	.quick_reply_textarea {
+		min-height: 160px;
+		padding: 8px;
+	}
+
+	.quick_reply_actions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 6px;
+	}
+
+	.quick_reply_actions .button {
+		flex: 1 1 120px;
+		justify-content: center;
+		max-width: 210px;
+		margin: 0;
+	}
+}
+
+
+@media (max-width: 360px) {
+	.quick_reply_option_list {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: none;
+		grid-auto-flow: row;
 	}
 }
 

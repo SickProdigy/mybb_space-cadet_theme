@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.0.5 - 2026-10-18
+
+- Corrected the Extras dropdown alignment when the centered layout reaches its maximum width.
+- Kept long usernames from pushing the header account and message controls beyond narrow viewports.
+- Added visible keyboard focus styles to header navigation and dropdown links, and gave Extras a functional non-JavaScript fallback.
+- Made Recent Activity use friendly thread links for newly created threads while retaining direct last-post links for replies.
+- Made Warning Details use uniform value-row colors consistent with the theme's record tables.
+- Reworked Quick Reply into a compact responsive form with organized options, full-width editing, and balanced actions on narrow screens.
+- Extended the restrained blue-to-purple section accent across Help categories and forum-index category headings.
+- Restyled unapproved attachments as yellow moderator-approval cautions instead of plain downloadable-file text.
+- Linked attachment cautions to MyBB's native moderator attachment queue for permission-checked review.
+
 ## 1.0.4 - 2026-10-18
 
 - Replaced the understated adjacent-thread text with dedicated Previous Thread and Next Thread buttons below the thread.

@@ -123,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				items.forEach(function(item) {
 					var thread = item.querySelector(".activity_thread");
 					var lastPost = item.querySelector(".activity_lastpost");
+					var replies = parseInt(item.getAttribute("data-replies"), 10) || 0;
 					var author = item.querySelector(".activity_author");
 					var date = item.querySelector(".activity_date");
 					var row = document.createElement("li");
@@ -132,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
 						? (thread.getAttribute("title") || thread.textContent.trim())
 						: "Forum activity";
 					details.className = "activity_details";
-					anchor.href = lastPost ? lastPost.href : (thread ? thread.href : portalUrl);
+					anchor.href = replies > 0 && lastPost ? lastPost.href : (thread ? thread.href : portalUrl);
 					anchor.textContent = fullTitle;
 					anchor.title = fullTitle;
 					anchor.setAttribute("aria-label", fullTitle);
@@ -140,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					if (author) {
 						var meta = document.createElement("span");
 						meta.className = "activity_meta";
-						meta.textContent = "Last post by " + author.textContent.trim();
+						meta.textContent = (replies > 0 ? "Last post by " : "Started by ") + author.textContent.trim();
 						details.appendChild(meta);
 					}
 					if (date) {

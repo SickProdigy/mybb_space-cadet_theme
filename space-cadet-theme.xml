@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 1.0.4 -->
+<!-- Space Cadet release 1.0.5 -->
 <theme name="Space Cadet" version="1841">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -108,10 +108,6 @@ a:active {
 	backdrop-filter: blur(3px);
 }
 
-.header_nav .wrapper {
-	position: relative;
-}
-
 #logo img {
 	display: block;
 	max-width: 420px;
@@ -149,6 +145,16 @@ a:active {
 
 #header ul.menu li a:hover { background-color: #262626; }
 
+#header ul.menu li a:focus-visible,
+.header_account_toggle:focus-visible,
+.header_messages_toggle:focus-visible,
+.header_guest_account a:focus-visible,
+.popup_menu.header_account_menu .popup_item:focus-visible,
+.popup_menu.header_extras_menu .popup_item:focus-visible {
+	outline: 2px solid #a8aaf4;
+	outline-offset: -2px;
+}
+
 #panel .upper {
 	background: #0e0e0e;
 	border-color: #262626 #101010;
@@ -176,10 +182,14 @@ a:active {
 	z-index: 100;
 	display: flex;
 	align-items: stretch;
+	max-width: 100%;
 }
 
 .header_account_member,
 .header_messages { position: relative; }
+
+.header_account_member { min-width: 0; }
+.header_messages { flex: 0 0 auto; }
 
 .header_guest_account {
 	position: absolute;
@@ -196,6 +206,7 @@ a:active {
 
 .header_account_toggle {
 	display: flex;
+	min-width: 0;
 	align-items: center;
 	height: 100%;
 	box-sizing: border-box;
@@ -206,6 +217,12 @@ a:active {
 	color: #fff;
 	-webkit-backdrop-filter: blur(3px);
 	backdrop-filter: blur(3px);
+}
+
+.header_account_username {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .header_account_toggle:link,
@@ -2119,6 +2136,10 @@ div.error a:visited {
 div.error a:hover,
 div.error a:active { color: #fff; }
 
+/* Warning details describe one record, so their value rows use one surface. */
+.warning_details_table .trow1,
+.warning_details_table .trow2 { background: #181818; }
+
 /* Keep warning forms readable and make the projected warning level distinct. */
 form[action="warnings.php"] > table.tborder > tbody > tr > .trow1 { background: #181818; }
 form[action="warnings.php"] > table.tborder > tbody > tr > .trow2 { background: #242126; }
@@ -3035,6 +3056,31 @@ blockquote,
 
 /* Help documents use consistent panels instead of alternating stock rows. */
 .help_section { margin-bottom: 16px; }
+
+.help_section_heading,
+.index_forum_heading {
+	position: relative;
+	background: #151515;
+	border-left: 3px solid #7289da;
+}
+
+.help_section_heading::after,
+.index_forum_heading::after {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: -3px;
+	height: 2px;
+	background: linear-gradient(90deg, #7289da 0, #b56ac4 52%, transparent 100%);
+	content: "";
+	pointer-events: none;
+}
+
+.help_section_heading > div,
+.index_forum_heading > div {
+	position: relative;
+	z-index: 1;
+}
 
 .help_section + br { display: none; }
 
@@ -6003,6 +6049,76 @@ blockquote,
 	content: "Downloadable files";
 }
 
+.post_attachments_downloads:not(:has(.post_attachment_file)):has(.post_attachment_unapproved)::before {
+	content: "Approval status";
+	color: #e0b85b;
+}
+
+.post_attachment_unapproved {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	margin: 8px 0 0;
+	padding: 10px 12px;
+	background: rgba(224, 184, 91, 0.08);
+	border: 1px solid rgba(224, 184, 91, 0.42);
+	border-left: 3px solid #e0b85b;
+	border-radius: 3px;
+	color: #e0b85b;
+	line-height: 1.4;
+}
+
+.post_attachment_unapproved > i {
+	margin-top: 2px;
+	color: #e0b85b;
+}
+
+.post_attachment_unapproved > span {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.post_attachment_unapproved small {
+	color: #d2c49e;
+	font-size: 11px;
+}
+
+.post_attachment_unapproved_action:link,
+.post_attachment_unapproved_action:visited {
+	align-self: center;
+	flex: 0 0 auto;
+	margin-left: auto;
+	padding: 6px 9px;
+	background: rgba(224, 184, 91, 0.12);
+	border: 1px solid rgba(224, 184, 91, 0.48);
+	border-radius: 3px;
+	color: #f0ce7d;
+	font-size: 11px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.post_attachment_unapproved_action:hover,
+.post_attachment_unapproved_action:focus-visible {
+	background: rgba(224, 184, 91, 0.22);
+	border-color: #e0b85b;
+	color: #fff0c3;
+}
+
+ (max-width: 480px) {
+	.post_attachment_unapproved { flex-wrap: wrap; }
+
+	.post_attachment_unapproved_action:link,
+	.post_attachment_unapproved_action:visited {
+		justify-content: center;
+		box-sizing: border-box;
+		width: 100%;
+		margin-left: 0;
+		text-align: center;
+	}
+}
+
 .post_attachments_gallery_title {
 	padding: 10px 13px 6px;
 	color: #aaa;
@@ -6165,6 +6281,144 @@ blockquote,
 		align-items: flex-start;
 		flex-direction: column;
 		gap: 9px;
+	}
+}
+
+
+/* Keep Quick Reply compact on desktop and readable as a vertical form on narrow screens. */
+#quick_reply_form,
+.quick_reply_table {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+}
+
+.quick_reply_editor,
+.quick_reply_editor_wrap {
+	box-sizing: border-box;
+	max-width: 100%;
+	min-width: 0;
+}
+
+.quick_reply_editor_wrap { width: 95%; }
+
+.quick_reply_textarea {
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+	margin: 0;
+	padding: 4px;
+	resize: vertical;
+}
+
+.quick_reply_multiquote {
+	box-sizing: border-box;
+	width: 95%;
+	margin-top: 3px;
+	padding: 4px;
+}
+
+.quick_reply_guidance {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+
+.quick_reply_option_list { margin-top: 12px; }
+
+@media (max-width: 760px) {
+	.quick_reply_table,
+	.quick_reply_table > thead,
+	.quick_reply_table > thead > tr,
+	.quick_reply_table > thead > tr > td,
+	#quickreply_e:not([style*="display: none"]):not([style*="display:none"]),
+	#quickreply_e:not([style*="display: none"]):not([style*="display:none"]) > tr {
+		display: block !important;
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+		min-width: 0;
+	}
+
+	#quickreply_e > tr > td {
+		display: block;
+		box-sizing: border-box;
+		width: 100% !important;
+		max-width: 100%;
+		min-width: 0;
+	}
+
+	.quick_reply_content,
+	.quick_reply_content > td { display: block; }
+
+	.quick_reply_content > td {
+		box-sizing: border-box;
+		width: 100% !important;
+	}
+
+	.quick_reply_options {
+		border-bottom: 1px solid #33333a;
+		line-height: 1.5;
+	}
+
+	.quick_reply_option_list {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-rows: repeat(2, auto);
+		grid-auto-flow: column;
+		gap: 8px 14px;
+		margin-top: 12px;
+	}
+
+	.quick_reply_option_list > br { display: none; }
+
+	.quick_reply_guidance .smalltext {
+		display: block;
+		line-height: 1.55;
+	}
+
+	.quick_reply_options label {
+		display: inline-flex;
+		align-items: center;
+		max-width: 100%;
+		margin-top: 4px;
+		white-space: nowrap;
+	}
+
+	.quick_reply_option_list label { margin-top: 0; }
+
+	.quick_reply_editor_wrap,
+	.quick_reply_multiquote { width: 100%; }
+
+	.quick_reply_textarea {
+		min-height: 160px;
+		padding: 8px;
+	}
+
+	.quick_reply_actions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 6px;
+	}
+
+	.quick_reply_actions .button {
+		flex: 1 1 120px;
+		justify-content: center;
+		max-width: 210px;
+		margin: 0;
+	}
+}
+
+
+@media (max-width: 360px) {
+	.quick_reply_option_list {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: none;
+		grid-auto-flow: row;
 	}
 }
 
@@ -6617,7 +6871,7 @@ blockquote,
 <template name="forumbit_depth1_cat" version="1800"><![CDATA[<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
 <thead>
 <tr>
-<td class="thead{$expthead}" colspan="5">
+<td class="thead{$expthead} index_forum_heading" colspan="5">
 <div class="expcolimage"><img src="{$theme['imgdir']}/{$expcolimage}" id="cat_{$forum['fid']}_img" class="expander" alt="{$expaltext}" title="{$expaltext}" /></div>
 <div><strong><a href="{$forum_url}">{$forum['name']}</a></strong></div>
 </td>
@@ -6865,7 +7119,7 @@ blockquote,
 						{$menu_memberlist}
 						{$menu_calendar}
 						<li><a href="{$mybb->settings['bburl']}/misc.php?action=help" class="help"><i class="fa-solid fa-circle-question fa-fw" aria-hidden="true"></i> {$lang->toplinks_help}</a></li>
-						<li><a href="javascript:void(0)" id="header_extras_menu"><i class="fa-solid fa-chevron-down fa-fw" aria-hidden="true"></i> Extras</a></li>
+						<li><a href="{$mybb->settings['bburl']}/misc.php?action=help" id="header_extras_menu"><i class="fa-solid fa-chevron-down fa-fw" aria-hidden="true"></i> Extras</a></li>
 					</ul>
 					<div id="header_extras_menu_popup" class="popup_menu header_extras_menu" style="display: none;">
 						<div class="popup_item_container"><a class="popup_item" href="{$mybb->settings['bburl']}/misc.php?action=help&amp;hid=14">Account Upgrades</a></div>
@@ -6930,7 +7184,7 @@ blockquote,
 				</script>]]></template>
 <template name="header_welcomeblock_member" version="1821"><![CDATA[<div class="header_account">
 		<div class="header_account_member">
-			<a href="{$mybb->settings['bburl']}/usercp.php" id="header_account_menu" class="header_account_toggle"><i class="fa-solid fa-circle-user fa-fw" aria-hidden="true"></i> {$mybb->user['username']} <i class="fa-solid fa-chevron-down header_account_chevron" aria-hidden="true"></i></a>
+			<a href="{$mybb->settings['bburl']}/usercp.php" id="header_account_menu" class="header_account_toggle"><i class="fa-solid fa-circle-user fa-fw" aria-hidden="true"></i> <span class="header_account_username">{$mybb->user['username']}</span> <i class="fa-solid fa-chevron-down header_account_chevron" aria-hidden="true"></i></a>
 			<ul id="header_account_menu_popup" class="popup_menu header_account_menu" style="display: none;">
 				<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php">User Panel</a></li>
 				<li><a class="popup_item" href="{$mybb->settings['bburl']}/usercp.php?action=profile">Edit Profile</a></li>
@@ -7144,6 +7398,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				items.forEach(function(item) {
 					var thread = item.querySelector(".activity_thread");
 					var lastPost = item.querySelector(".activity_lastpost");
+					var replies = parseInt(item.getAttribute("data-replies"), 10) || 0;
 					var author = item.querySelector(".activity_author");
 					var date = item.querySelector(".activity_date");
 					var row = document.createElement("li");
@@ -7153,7 +7408,7 @@ document.addEventListener("DOMContentLoaded", function() {
 						? (thread.getAttribute("title") || thread.textContent.trim())
 						: "Forum activity";
 					details.className = "activity_details";
-					anchor.href = lastPost ? lastPost.href : (thread ? thread.href : portalUrl);
+					anchor.href = replies > 0 && lastPost ? lastPost.href : (thread ? thread.href : portalUrl);
 					anchor.textContent = fullTitle;
 					anchor.title = fullTitle;
 					anchor.setAttribute("aria-label", fullTitle);
@@ -7161,7 +7416,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					if (author) {
 						var meta = document.createElement("span");
 						meta.className = "activity_meta";
-						meta.textContent = "Last post by " + author.textContent.trim();
+						meta.textContent = (replies > 0 ? "Last post by " : "Started by ") + author.textContent.trim();
 						details.appendChild(meta);
 					}
 					if (date) {
@@ -7728,7 +7983,7 @@ if(use_xmlhttprequest == "1")
 <template name="misc_help_section" version="1816"><![CDATA[<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder clear help_section">
 <thead>
 <tr>
-<td class="thead{$expthead}"><div class="expcolimage"><img src="{$theme['imgdir']}/{$expcolimage}" id="sid_{$section['sid']}_img" class="expander" alt="{$expaltext}" title="{$expaltext}" /></div><div><strong>{$section['name']}</strong></div></td>
+<td class="thead{$expthead} help_section_heading"><div class="expcolimage"><img src="{$theme['imgdir']}/{$expcolimage}" id="sid_{$section['sid']}_img" class="expander" alt="{$expaltext}" title="{$expaltext}" /></div><div><strong>{$section['name']}</strong></div></td>
 </tr>
 </thead>
 <tbody style="{$expdisplay}" id="sid_{$section['sid']}_e">
@@ -9219,7 +9474,7 @@ if(use_xmlhttprequest == "1")
 {$threadlist}
 </table>
 <br />]]></template>
-<template name="portal_latestthreads_thread" version="1812"><![CDATA[<tr class="space_cadet_activity">
+<template name="portal_latestthreads_thread" version="1812"><![CDATA[<tr class="space_cadet_activity" data-replies="{$thread['replies']}">
 <td class="{$altbg}">
 <strong class="portal_activity_title"><a class="activity_thread" href="{$mybb->settings['bburl']}/{$thread['threadlink']}" title="{$thread['fullsubject']}">{$thread['fullsubject']}</a></strong>
 <span class="smalltext portal_activity_forum">{$lang->forum} <a href="{$thread['forumlink']}">{$thread['forumname']}</a></span>
@@ -9515,6 +9770,11 @@ if(use_xmlhttprequest == "1")
 		<a href="attachment.php?aid={$attachment['aid']}" target="_blank" rel="noopener" title="{$attachdate}">{$attachment['filename']}</a>
 		<span class="post_attachment_metadata">{$lang->postbit_attachment_size} {$attachment['filesize']} <span aria-hidden="true">&middot;</span> {$lang->postbit_attachment_downloads} {$attachment['downloads']}</span>
 	</div>
+</div>]]></template>
+<template name="postbit_attachments_attachment_unapproved" version="1402"><![CDATA[<div class="post_attachment_unapproved" role="status">
+	<i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+	<span><strong>Moderator approval needed</strong><small>{$postbit_unapproved_attachments}</small></span>
+	<a class="post_attachment_unapproved_action" href="{$mybb->settings['bburl']}/modcp.php?action=modqueue&amp;type=attachments">Review attachments</a>
 </div>]]></template>
 <template name="postbit_attachments_images" version="1841"><![CDATA[<div class="post_attachments_gallery">
 	<div class="post_attachments_gallery_title">Attached images</div>
@@ -11025,6 +11285,60 @@ if(use_xmlhttprequest == "1")
 }());
 </script><br />]]></template>
 <template name="showthread_printthread" version="1818"><![CDATA[<li class="printable"><a href="printthread.php?tid={$tid}" title="{$lang->view_printable}"><i class="fa-solid fa-print" aria-hidden="true"></i><span>{$lang->view_printable}</span></a></li>]]></template>
+<template name="showthread_quickreply" version="1816"><![CDATA[
+<div id="quickreply_spinner" class="showthread_spinner" style="display: none"><img src="{$theme['imgdir']}/spinner.gif" /></div>
+<br />
+{$moderation_notice}
+<form method="post" action="newreply.php?tid={$tid}&amp;processed=1" name="quick_reply_form" id="quick_reply_form">
+	<input type="hidden" name="my_post_key" value="{$mybb->post_code}" />
+	<input type="hidden" name="subject" value="RE: {$reply_subject}" />
+	<input type="hidden" name="action" value="do_newreply" />
+	<input type="hidden" name="posthash" value="{$posthash}" id="posthash" />
+	<input type="hidden" name="quoted_ids" value="" id="quoted_ids" />
+	<input type="hidden" name="lastpid" id="lastpid" value="{$last_pid}" />
+	<input type="hidden" name="from_page" value="{$page}" />
+	<input type="hidden" name="tid" value="{$tid}" />
+	<input type="hidden" name="method" value="quickreply" />
+
+	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder quick_reply_table">
+		<thead>
+			<tr>
+				<td class="thead{$collapsedthead['quickreply']}" colspan="2">
+					<div class="expcolimage"><img src="{$theme['imgdir']}/collapse{$collapsedimg['quickreply']}.png" id="quickreply_img" class="expander" alt="{$expaltext}" title="{$expaltext}" /></div>
+					<div><strong>{$lang->quick_reply}</strong></div>
+				</td>
+			</tr>
+		</thead>
+		<tbody style="{$collapsed['quickreply_e']}" id="quickreply_e">
+			<tr class="quick_reply_content">
+				<td class="{$trow} quick_reply_options" valign="top" width="22%">
+					<div class="quick_reply_guidance">
+						<strong>{$lang->message}</strong>
+						<span class="smalltext">{$lang->message_note}</span>
+					</div>
+					<div class="quick_reply_option_list smalltext">
+						{$option_signature}
+						<label><input type="checkbox" class="checkbox" name="postoptions[disablesmilies]" value="1" />&nbsp;<strong>{$lang->disable_smilies}</strong></label>{$closeoption}
+					</div>
+				</td>
+				<td class="{$trow} quick_reply_editor">
+					<div class="quick_reply_editor_wrap">
+						<textarea class="quick_reply_textarea" rows="8" cols="80" name="message" id="message" tabindex="1"></textarea>
+					</div>
+					<div class="editor_control_bar quick_reply_multiquote" style="display: none;" id="quickreply_multiquote">
+						<span class="smalltext">
+							{$lang->quickreply_multiquote_selected} <a href="./newreply.php?tid={$tid}&amp;load_all_quotes=1" onclick="return Thread.loadMultiQuoted();">{$lang->quickreply_multiquote_now}</a> {$lang->or} <a href="javascript:void(0)" onclick="Thread.clearMultiQuoted(); return false;">{$lang->quickreply_multiquote_deselect}</a>.
+						</span>
+					</div>
+				</td>
+			</tr>
+			{$captcha}
+			<tr>
+				<td colspan="2" align="center" class="tfoot quick_reply_actions"><input type="submit" class="button" value="{$lang->post_reply}" tabindex="2" accesskey="s" id="quick_reply_submit" /> <input type="submit" class="button" name="previewpost" value="{$lang->preview_post}" tabindex="3" /></td>
+			</tr>
+		</tbody>
+	</table>
+</form>]]></template>
 <template name="showthread_similarthreads" version="120"><![CDATA[<br />
 <table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder forum_threadlist related_threads_table">
 <tr class="threadlist_title_row related_threads_title">
@@ -12285,6 +12599,51 @@ function copyUsercpReferral(button)
 </tr>
 </table>
 </form>
+{$footer}
+</body>
+</html>]]></template>
+<template name="warnings_view" version="1812"><![CDATA[<html>
+<head>
+	<title>{$mybb->settings['bbname']} - {$lang->warning_log}</title>
+	{$headerinclude}
+</head>
+<body>
+	{$header}
+
+	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder warning_details_table">
+		<tr>
+			<td class="thead" colspan="2">
+				<div class="float_right">{$status}</div>
+				<div><strong>{$lang->warning_details}</strong></div>
+			</td>
+		</tr>
+		{$warning_info}
+		<tr>
+			<td class="tcat" width="50%"><span class="smalltext"><strong>{$lang->warning}</strong></span></td>
+			<td class="tcat" width="50%"><span class="smalltext"><strong>{$lang->date_issued}</strong></span></td>
+		</tr>
+		<tr>
+			<td class="trow2">{$warning_type} {$points}</td>
+			<td class="trow2">{$date_issued}</td>
+		</tr>
+		<tr>
+			<td class="tcat" width="50%"><span class="smalltext"><strong>{$lang->issued_by}</strong></span></td>
+			<td class="tcat" width="50%"><span class="smalltext"><strong>{$lang->expiry_date}</strong></span></td>
+		</tr>
+		<tr>
+			<td class="trow1">{$issuedby}</td>
+			<td class="trow1">{$expires} {$revoked_date}</td>
+		</tr>
+		<tr>
+			<td class="tcat" colspan="2"><span class="smalltext"><strong>{$lang->details_warning_note}</strong></span></td>
+		</tr>
+		<tr>
+			<td class="trow2" colspan="2">{$notes}</td>
+		</tr>
+	</table>
+
+	{$revoke}
+
 {$footer}
 </body>
 </html>]]></template>

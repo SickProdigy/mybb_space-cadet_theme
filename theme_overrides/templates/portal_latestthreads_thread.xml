@@ -1,4 +1,4 @@
-<template name="portal_latestthreads_thread" version="1812"><![CDATA[<tr class="space_cadet_activity">
+<template name="portal_latestthreads_thread" version="1812"><![CDATA[<tr class="space_cadet_activity" data-replies="{$thread['replies']}">
 <td class="{$altbg}">
 <strong class="portal_activity_title"><a class="activity_thread" href="{$mybb->settings['bburl']}/{$thread['threadlink']}" title="{$thread['fullsubject']}">{$thread['fullsubject']}</a></strong>
 <span class="smalltext portal_activity_forum">{$lang->forum} <a href="{$thread['forumlink']}">{$thread['forumname']}</a></span>
