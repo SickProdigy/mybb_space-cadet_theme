@@ -39,8 +39,16 @@
 
 	function submitAction(postId, action, confirmation) {
 		var checkbox = document.getElementById('inlinemod_' + postId);
+		var selected = Array.prototype.slice.call(document.querySelectorAll('input[name^="inlinemod_"]:checked'));
+		var hasOtherSelection = selected.some(function(item) { return item !== checkbox; });
 
-		if(!checkbox || (confirmation && !window.confirm(confirmation))) {
+		if(!checkbox) {
+			return;
+		}
+		if(hasOtherSelection && !window.confirm('This shortcut acts only on this post and will clear your current inline selection. Continue?')) {
+			return;
+		}
+		if(confirmation && !window.confirm(confirmation)) {
 			return;
 		}
 
@@ -49,6 +57,45 @@
 		selector.value = action;
 		form.requestSubmit();
 	}
+
+	function actionIcon(action) {
+		if(/approve/.test(action) && !/unapprove/.test(action)) return 'fa-check';
+		if(/unapprove/.test(action)) return 'fa-eye-slash';
+		if(/delete|remove/.test(action)) return 'fa-trash-can';
+		if(/restore/.test(action)) return 'fa-trash-arrow-up';
+		if(/move/.test(action)) return 'fa-arrow-right-arrow-left';
+		if(/split/.test(action)) return 'fa-code-branch';
+		if(/merge/.test(action)) return 'fa-code-merge';
+		return 'fa-screwdriver-wrench';
+	}
+
+	function addModerationAction(container, label, action) {
+		var button = document.createElement('button');
+		button.type = 'button';
+		button.className = 'postbit_moderate_action postbit_moderate_' + action.replace(/[^a-z0-9_-]/gi, '');
+		button.innerHTML = '<i class="fa-solid ' + actionIcon(action) + '" aria-hidden="true"></i><span></span>';
+		button.querySelector('span').textContent = label;
+		button.addEventListener('click', function() {
+			submitAction(container.closest('.postbit_moderate_wrap').getAttribute('data-post-id'), action, '');
+		});
+		container.appendChild(button);
+	}
+
+	document.querySelectorAll('.postbit_moderate_wrap').forEach(function(wrapper) {
+		var postId = wrapper.getAttribute('data-post-id');
+		var openingPostId = '{$thread['firstpost']}';
+		var checkbox = document.getElementById('inlinemod_' + postId);
+		var actions = wrapper.querySelector('.postbit_moderate_inline_actions');
+
+		if(postId === openingPostId || !checkbox || !actions) {
+			return;
+		}
+
+		Array.prototype.forEach.call(selector.options, function(option) {
+			if(!option.value) return;
+			addModerationAction(actions, option.textContent.trim(), option.value);
+		});
+	});
 
 	document.querySelectorAll('.post.unapproved_post .unapproved_post_actions').forEach(function(actions) {
 		var postId = actions.getAttribute('data-post-id');

@@ -3,6 +3,8 @@
 ## 1.0.4 - 2026-10-18
 
 - Replaced the understated adjacent-thread text with dedicated Previous Thread and Next Thread buttons below the thread.
+- Moved post reporting to a quick Report link beside each numbered post permalink and added permission-aware moderation shortcuts without removing MyBB's bulk inline moderation flow.
+- Split the Moderate menu by context: the opening post mirrors available thread tools, while replies mirror available inline-post tools, including custom moderator tools.
 
 ## 1.0.3 - 2026-10-18
 

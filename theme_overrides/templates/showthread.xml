@@ -120,6 +120,36 @@
 		var openingPost = document.getElementById("post_{$thread['firstpost']}");
 		if (openingPost) openingPost.classList.add("thread_starter");
 
+		(function addThreadModerationActions() {
+			if (!openingPost) return;
+
+			var wrapper = openingPost.querySelector(".postbit_moderate_wrap");
+			var menu = wrapper && wrapper.querySelector(".postbit_moderate_menu");
+			var actions = menu && menu.querySelector(".postbit_moderate_inline_actions");
+			var form = document.getElementById("moderator_options");
+			var selector = document.getElementById("moderator_options_selector");
+			if (!wrapper || !menu || !actions) return;
+
+			menu.querySelectorAll(".postbit_warn, .postbit_purgespammer").forEach(function(action) {
+				action.remove();
+			});
+
+			if (!form || !selector) return;
+			Array.prototype.forEach.call(selector.options, function(option) {
+				if (!option.value) return;
+				var button = document.createElement("button");
+				button.type = "button";
+				button.className = "postbit_moderate_action postbit_thread_action";
+				button.innerHTML = '<i class="fa-solid fa-gavel" aria-hidden="true"></i><span></span>';
+				button.querySelector("span").textContent = option.textContent.trim();
+				button.addEventListener("click", function() {
+					selector.value = option.value;
+					form.requestSubmit();
+				});
+				actions.appendChild(button);
+			});
+		}());
+
 		function generatedThreadUrl(toggle) {
 			var postToggle = document.querySelector(".postbit_share_wrap .showthread_share_toggle");
 			var boardUrl = toggle.getAttribute("data-board-url");
@@ -157,6 +187,39 @@
 				if (event.key !== "Escape" || options.hidden) return;
 				options.hidden = true;
 				toggle.setAttribute("aria-expanded", "false");
+				toggle.focus();
+			});
+		});
+
+		document.querySelectorAll(".postbit_moderate_wrap").forEach(function(moderate) {
+			var toggle = moderate.querySelector(".postbit_moderate_toggle");
+			var menu = moderate.querySelector(".postbit_moderate_menu");
+			var post = moderate.closest(".post");
+			var actions = menu.querySelectorAll("a, button");
+
+			if (!actions.length) return;
+			moderate.hidden = false;
+
+			function closeMenu() {
+				menu.hidden = true;
+				toggle.setAttribute("aria-expanded", "false");
+				if (post) post.classList.remove("moderate_menu_open");
+			}
+
+			toggle.addEventListener("click", function() {
+				var opening = menu.hidden;
+				menu.hidden = !opening;
+				toggle.setAttribute("aria-expanded", opening ? "true" : "false");
+				if (post) post.classList.toggle("moderate_menu_open", opening);
+			});
+
+			document.addEventListener("click", function(event) {
+				if (!moderate.contains(event.target)) closeMenu();
+			});
+
+			document.addEventListener("keydown", function(event) {
+				if (event.key !== "Escape" || menu.hidden) return;
+				closeMenu();
 				toggle.focus();
 			});
 		});
