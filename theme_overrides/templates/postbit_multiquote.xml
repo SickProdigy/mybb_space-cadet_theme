@@ -1,0 +1,12 @@
+<template name="postbit_multiquote" version="1818"><![CDATA[<div class="postbit_quote_menu" id="multiquote_menu_{$post['pid']}" style="display: none;">
+	<button class="postbit_quote_toggle" type="button" aria-expanded="false" aria-haspopup="menu"><span>{$lang->postbit_button_multiquote}</span><i class="fa-solid fa-caret-down" aria-hidden="true"></i></button>
+	<div class="postbit_quote_options" role="menu" hidden>
+		<a href="javascript:void(0)" onclick="Thread.multiQuote({$post['pid']}); return false;" id="multiquote_link_{$post['pid']}" title="Add this post to Quick Quote" class="postbit_multiquote postbit_mirage" role="menuitem"><i class="fa-solid fa-layer-group" aria-hidden="true"></i><span id="multiquote_{$post['pid']}">Quick Quote</span></a>
+		<a href="newreply.php?tid={$tid}&amp;replyto={$post['pid']}" title="Reply with this post quoted" class="postbit_quote_reply postbit_mirage" role="menuitem"><i class="fa-solid fa-quote-right" aria-hidden="true"></i><span>Quote Reply</span></a>
+	</div>
+</div>
+<script type="text/javascript">
+//<!--
+	$('#multiquote_menu_{$post['pid']}').css("display", "inline-flex");
+// -->
+</script>]]></template>

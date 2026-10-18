@@ -1,0 +1,7 @@
+<template name="portal_welcome_membertext" version="120"><![CDATA[<span class="smalltext"><em>{$lang->member_welcome_lastvisit}</em> {$lastvisit}<br />
+{$lang->since_then}<br />
+<span class="portal_icon_line"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i>{$lang->new_announcements}</span>
+<span class="portal_icon_line"><i class="fa-solid fa-comments" aria-hidden="true"></i>{$lang->new_threads}</span>
+<span class="portal_icon_line"><i class="fa-solid fa-message" aria-hidden="true"></i>{$lang->new_posts}</span><br />
+<a href="{$mybb->settings['bburl']}/search.php?action=getnew">{$lang->view_new}</a><br /><a href="{$mybb->settings['bburl']}/search.php?action=getdaily">{$lang->view_todays}</a>
+</span>]]></template>

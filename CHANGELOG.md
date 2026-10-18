@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.3 - 2026-10-18
+
+- Reworked Portal announcements with a right-side responsive sidebar, compact author identity, purple title accents, reverse gradient framing, Print, and client-side sharing.
+- Refined thread view with Portal-inspired framing, compact top tools, per-post sharing, a plain opening-post Reply, and a Quick Quote/Quote Reply menu.
+- Made thread sharing follow MyBB-generated friendly or dynamic links while retaining direct MyBB post permalinks.
+- Moved forum and thread browsing activity into compact panels below their primary content and reply areas.
+- Unified forum and subforum headings with the Space Cadet glow and gradient treatment.
+- Restyled Help Documents as responsive reading panels with clearer typography and usable content tables.
+
 ## 1.0.2 - 2026-10-12
 
 - Updated the theme baseline and import compatibility for MyBB 1.8.41.

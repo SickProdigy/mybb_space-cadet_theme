@@ -1,0 +1,1 @@
+<template name="showthread_add_poll" version="1800"><![CDATA[<li class="poll"><a href="polls.php?action=newpoll&amp;tid={$tid}" title="{$lang->add_poll_to_thread}"><i class="fa-solid fa-chart-bar" aria-hidden="true"></i><span>{$lang->add_poll_to_thread}</span></a></li>]]></template>

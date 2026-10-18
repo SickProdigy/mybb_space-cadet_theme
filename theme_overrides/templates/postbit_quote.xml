@@ -1,0 +1,1 @@
+<template name="postbit_quote" version="1818"><![CDATA[<a href="newreply.php?tid={$tid}" title="Reply to this thread" class="postbit_quote postbit_plain_reply postbit_mirage"><span>{$lang->postbit_button_quote}</span></a>]]></template>

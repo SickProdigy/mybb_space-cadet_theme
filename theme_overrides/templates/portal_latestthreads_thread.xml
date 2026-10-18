@@ -1,12 +1,12 @@
 <template name="portal_latestthreads_thread" version="1812"><![CDATA[<tr class="space_cadet_activity">
 <td class="{$altbg}">
-<strong><a class="activity_thread" href="{$mybb->settings['bburl']}/{$thread['threadlink']}" title="{$thread['fullsubject']}">{$thread['subject']}</a></strong>
-<span class="smalltext"><br />
-{$lang->forum} <a href="{$thread['forumlink']}">{$thread['forumname']}</a><br />
-<a class="activity_lastpost" href="{$thread['lastpostlink']}">{$lang->latest_threads_lastpost}</a> <span class="activity_author">{$lastposterlink}</span><br />
-<time class="activity_date">{$lastpostdate}</time><br />
-<strong>&raquo; </strong>{$lang->latest_threads_replies} {$thread['replies']}<br />
-<strong>&raquo; </strong>{$lang->latest_threads_views} {$thread['views']}
+<strong class="portal_activity_title"><a class="activity_thread" href="{$mybb->settings['bburl']}/{$thread['threadlink']}" title="{$thread['fullsubject']}">{$thread['fullsubject']}</a></strong>
+<span class="smalltext portal_activity_forum">{$lang->forum} <a href="{$thread['forumlink']}">{$thread['forumname']}</a></span>
+<span class="smalltext portal_activity_meta">
+	<span><a class="activity_lastpost" href="{$thread['lastpostlink']}">{$lang->latest_threads_lastpost}</a> <span class="activity_author">{$lastposterlink}</span></span>
+	<span class="portal_activity_stat">{$lang->latest_threads_replies} {$thread['replies']}</span>
+	<time class="activity_date">{$lastpostdate}</time>
+	<span class="portal_activity_stat">{$lang->latest_threads_views} {$thread['views']}</span>
 </span>
 </td>
 </tr>]]></template>

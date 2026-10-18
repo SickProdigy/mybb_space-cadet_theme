@@ -1,0 +1,258 @@
+<template name="showthread" version="1838"><![CDATA[<html>
+<head>
+<title>{$thread['subject']}</title>
+{$headerinclude}
+<script type="text/javascript">
+<!--
+	var quickdelete_confirm = "{$lang->quickdelete_confirm}";
+	var quickrestore_confirm = "{$lang->quickrestore_confirm}";
+	var allowEditReason = "{$mybb->settings['alloweditreason']}";
+	var thread_deleted = "{$thread_deleted}";
+	var visible_replies = "{$thread['replies']}";
+	lang.save_changes = "{$lang->save_changes}";
+	lang.cancel_edit = "{$lang->cancel_edit}";
+	lang.quick_edit_update_error = "{$lang->quick_edit_update_error}";
+	lang.quick_reply_post_error = "{$lang->quick_reply_post_error}";
+	lang.quick_delete_error = "{$lang->quick_delete_error}";
+	lang.quick_delete_success = "{$lang->quick_delete_success}";
+	lang.quick_delete_thread_success = "{$lang->quick_delete_thread_success}";
+	lang.quick_restore_error = "{$lang->quick_restore_error}";
+	lang.quick_restore_success = "{$lang->quick_restore_success}";
+	lang.editreason = "{$lang->postbit_editreason}";
+	lang.post_deleted_error = "{$lang->post_deleted_error}";
+	lang.softdelete_thread = "{$lang->soft_delete_thread}";
+	lang.restore_thread = "{$lang->restore_thread}";
+// -->
+</script>
+<!-- jeditable (jquery) -->
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/report.js?ver=1820"></script>
+<script src="{$mybb->asset_url}/jscripts/jeditable/jeditable.min.js"></script>
+<script type="text/javascript" src="{$mybb->asset_url}/jscripts/thread.js?ver=1838"></script>
+</head>
+<body>
+	{$header}
+	{$threadnotesbox}
+	{$pollbox}
+	<div class="float_left">
+		{$multipage}
+	</div>
+	<div class="showthread_topbar">
+		<div class="showthread_topbar_controls">
+			<ul class="thread_tools showthread_top_tools showthread_icon_tools" aria-label="Thread tools">
+				<li class="showthread_share_tool">
+					<div class="portal_share">
+						<button class="showthread_share_toggle" type="button" title="Share this thread" aria-label="Share this thread" aria-expanded="false" aria-haspopup="dialog" data-thread-url="" data-thread-id="{$tid}" data-board-url="{$mybb->settings['bburl']}">
+							<i class="fa-solid fa-share-nodes" aria-hidden="true"></i><span>Share</span>
+						</button>
+						<div class="portal_share_menu showthread_share_panel" role="dialog" aria-label="Share this thread" hidden>
+							<strong class="showthread_share_title">Share this thread</strong>
+							<div class="showthread_share_icons">
+								<button class="showthread_share_icon showthread_native_share" type="button" title="Share via device" aria-label="Share via device"><i class="fa-solid fa-arrow-up-from-bracket" aria-hidden="true"></i></button>
+								<a class="showthread_share_icon showthread_facebook_share" href="#" target="_blank" rel="noopener noreferrer" title="Share on Facebook" aria-label="Share on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+								<a class="showthread_share_icon showthread_x_share" href="#" target="_blank" rel="noopener noreferrer" title="Share on X" aria-label="Share on X"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+								<a class="showthread_share_icon showthread_reddit_share" href="#" target="_blank" rel="noopener noreferrer" title="Share on Reddit" aria-label="Share on Reddit"><i class="fa-brands fa-reddit-alien" aria-hidden="true"></i></a>
+								<a class="showthread_share_icon showthread_email_share" href="#" title="Share by email" aria-label="Share by email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+								<a class="showthread_share_icon showthread_print_share" href="printthread.php?tid={$tid}" title="View printable version" aria-label="View printable version"><i class="fa-solid fa-print" aria-hidden="true"></i></a>
+							</div>
+							<div class="showthread_copy_area">
+								<label for="showthread_share_url_top_{$tid}">Copy link:</label>
+								<div class="showthread_copy_row">
+									<input id="showthread_share_url_top_{$tid}" class="showthread_share_url" type="text" value="" readonly />
+									<button class="showthread_copy_share" type="button"><i class="fa-solid fa-copy" aria-hidden="true"></i><span>Copy</span></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				{$printthread}
+				{$addremovesubscription}
+				{$addpoll}
+			</ul>
+			{$ratethread}
+		</div>
+	</div>
+	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder tfixed clear showthread_panel">
+		<tr>
+			<td class="thead showthread_heading">
+				<div class="float_right">
+					<span class="smalltext"><strong><a href="showthread.php?mode={$thread_toggle}&amp;tid={$tid}&amp;pid={$pid}#pid{$pid}">{$lang->thread_toggle}</a>{$threadnoteslink}</strong></span>
+				</div>
+				<div class="showthread_title">
+					<strong>{$thread['displayprefix']}{$thread['subject']}</strong>
+				</div>
+			</td>
+		</tr>
+<tr><td id="posts_container" class="showthread_posts_container">
+	<div id="posts">
+		{$posts}
+	</div>
+</td></tr>
+		<tr>
+			<td class="tfoot showthread_footer">
+				{$search_thread}
+				<div>
+					<strong>&laquo; <a href="{$next_oldest_link}">{$lang->next_oldest}</a> | <a href="{$next_newest_link}">{$lang->next_newest}</a> &raquo;</strong>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<div class="showthread_bottom_actions">
+		{$newreply}
+	</div>
+	<div class="float_left">
+		{$multipage}
+	</div>
+	<br class="clear" />
+	{$quickreply}
+	{$usersbrowsing}
+	{$threadexbox}
+	{$similarthreads}
+	<br />
+	<div class="float_right" style="text-align: right;">
+		{$moderationoptions}
+		{$forumjump}
+	</div>
+	<br class="clear" />
+	{$footer}
+	<script type="text/javascript">
+	(function() {
+		var openingPost = document.getElementById("post_{$thread['firstpost']}");
+		if (openingPost) openingPost.classList.add("thread_starter");
+
+		function generatedThreadUrl(toggle) {
+			var postToggle = document.querySelector(".postbit_share_wrap .showthread_share_toggle");
+			var boardUrl = toggle.getAttribute("data-board-url");
+			var threadId = toggle.getAttribute("data-thread-id");
+
+			if (!postToggle) return boardUrl + "/showthread.php?tid=" + encodeURIComponent(threadId);
+
+			var url = new URL(postToggle.getAttribute("data-thread-url"), boardUrl + "/");
+			url.hash = "";
+			url.pathname = url.pathname.replace(/-post-\d+\.html$/, ".html");
+			url.searchParams.delete("pid");
+			if (/\/showthread\.php$/.test(url.pathname) && !url.searchParams.has("tid")) {
+				url.searchParams.set("tid", threadId);
+			}
+			return url.href;
+		}
+
+		document.querySelectorAll(".postbit_quote_menu").forEach(function(quoteMenu) {
+			var toggle = quoteMenu.querySelector(".postbit_quote_toggle");
+			var options = quoteMenu.querySelector(".postbit_quote_options");
+
+			toggle.addEventListener("click", function() {
+				var opening = options.hidden;
+				options.hidden = !opening;
+				toggle.setAttribute("aria-expanded", opening ? "true" : "false");
+			});
+
+			document.addEventListener("click", function(event) {
+				if (quoteMenu.contains(event.target)) return;
+				options.hidden = true;
+				toggle.setAttribute("aria-expanded", "false");
+			});
+
+			document.addEventListener("keydown", function(event) {
+				if (event.key !== "Escape" || options.hidden) return;
+				options.hidden = true;
+				toggle.setAttribute("aria-expanded", "false");
+				toggle.focus();
+			});
+		});
+
+		var shares = document.querySelectorAll(".showthread_share_tool .portal_share, .postbit_share_wrap");
+		if (!shares.length) return;
+		shares.forEach(function(share) {
+
+		var toggle = share.querySelector(".showthread_share_toggle");
+		var menu = share.querySelector(".portal_share_menu");
+		var post = share.closest(".post");
+		var url = toggle.getAttribute("data-thread-url") || generatedThreadUrl(toggle);
+		var title = document.title;
+		var urlField = share.querySelector(".showthread_share_url");
+
+		function closeMenu() {
+			menu.hidden = true;
+			toggle.setAttribute("aria-expanded", "false");
+			if (post) post.classList.remove("share_menu_open");
+		}
+
+		function copyLink(action) {
+			function showCopied() {
+				var label = action.querySelector("span");
+				if (!label) return;
+				var originalLabel = label.textContent;
+				label.textContent = "Copied";
+				window.setTimeout(function() { label.textContent = originalLabel; }, 1600);
+			}
+
+			if (navigator.clipboard && window.isSecureContext) {
+				navigator.clipboard.writeText(url).then(showCopied);
+				return;
+			}
+
+			var copy = document.createElement("textarea");
+			copy.value = url;
+			copy.setAttribute("readonly", "");
+			copy.style.position = "fixed";
+			copy.style.opacity = "0";
+			document.body.appendChild(copy);
+			copy.select();
+			document.execCommand("copy");
+			document.body.removeChild(copy);
+			showCopied();
+		}
+
+		toggle.addEventListener("click", function() {
+			var opening = menu.hidden;
+			menu.hidden = !opening;
+			toggle.setAttribute("aria-expanded", opening ? "true" : "false");
+			if (post) post.classList.toggle("share_menu_open", opening);
+
+			var emailSubject = "Thought you might like: " + title;
+			var emailBody = "Hello,\n\nI thought you may be interested in this discussion:\n\n" + title + "\n" + url + "\n\n";
+			share.querySelector(".showthread_email_share").href = "mailto:?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(emailBody);
+			share.querySelector(".showthread_facebook_share").href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
+			share.querySelector(".showthread_x_share").href = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(title) + "&url=" + encodeURIComponent(url);
+			share.querySelector(".showthread_reddit_share").href = "https://www.reddit.com/submit?url=" + encodeURIComponent(url) + "&title=" + encodeURIComponent(title);
+			urlField.value = url;
+		});
+
+		share.querySelector(".showthread_native_share").addEventListener("click", function() {
+			if (navigator.share) {
+				navigator.share({ title: title, url: url }).catch(function() {});
+			} else {
+				copyLink(this);
+			}
+		});
+
+		share.querySelector(".showthread_copy_share").addEventListener("click", function() {
+			copyLink(this);
+		});
+
+		urlField.addEventListener("click", function() {
+			this.select();
+		});
+
+		document.addEventListener("click", function(event) {
+			if (!share.contains(event.target)) closeMenu();
+		});
+
+		document.addEventListener("keydown", function(event) {
+			if (event.key !== "Escape" || menu.hidden) return;
+			closeMenu();
+			toggle.focus();
+		});
+		});
+	})();
+	</script>
+	<script type="text/javascript">
+		var thread_deleted = "{$thread_deleted}";
+		if(thread_deleted == "1")
+		{
+			$("#quick_reply_form, .new_reply_button, .thread_tools, .inline_rating").hide();
+			$("#moderator_options_selector option.option_mirage").attr("disabled","disabled");
+		}
+	</script>
+</body>
+</html>]]></template>

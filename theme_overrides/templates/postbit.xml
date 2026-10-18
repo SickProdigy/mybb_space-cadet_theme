@@ -42,7 +42,26 @@
 		{$post['button_pm']}{$post['button_find']}{$post['button_rep']}
 	</div>
 	<div class="postbit_buttons post_management_buttons float_right">
-		{$post['button_edit']}{$post['button_quickdelete']}{$post['button_quickrestore']}{$post['button_quote']}{$post['button_multiquote']}{$post['button_report']}{$post['button_warn']}{$post['button_purgespammer']}{$post['button_reply_pm']}{$post['button_replyall_pm']}{$post['button_forward_pm']}{$post['button_delete_pm']}
+		{$post['button_edit']}{$post['button_quickdelete']}{$post['button_quickrestore']}{$post['button_quote']}{$post['button_multiquote']}<div class="portal_share postbit_share_wrap">
+			<button class="postbit_share showthread_share_toggle" type="button" title="Share this post" aria-label="Share this post" aria-expanded="false" aria-haspopup="dialog" data-thread-url="{$post['postlink']}#pid{$post['pid']}"><span>Share</span></button>
+			<div class="portal_share_menu showthread_share_panel" role="dialog" aria-label="Share this post" hidden>
+				<strong class="showthread_share_title">Share this post</strong>
+				<div class="showthread_share_icons">
+					<button class="showthread_share_icon showthread_native_share" type="button" title="Share via device" aria-label="Share via device"><i class="fa-solid fa-arrow-up-from-bracket" aria-hidden="true"></i></button>
+					<a class="showthread_share_icon showthread_facebook_share" href="#" target="_blank" rel="noopener noreferrer" title="Share on Facebook" aria-label="Share on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+					<a class="showthread_share_icon showthread_x_share" href="#" target="_blank" rel="noopener noreferrer" title="Share on X" aria-label="Share on X"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+					<a class="showthread_share_icon showthread_reddit_share" href="#" target="_blank" rel="noopener noreferrer" title="Share on Reddit" aria-label="Share on Reddit"><i class="fa-brands fa-reddit-alien" aria-hidden="true"></i></a>
+					<a class="showthread_share_icon showthread_email_share" href="#" title="Share by email" aria-label="Share by email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+				</div>
+				<div class="showthread_copy_area">
+					<label for="post_share_url_{$post['pid']}">Copy link:</label>
+					<div class="showthread_copy_row">
+						<input id="post_share_url_{$post['pid']}" class="showthread_share_url" type="text" value="" readonly />
+						<button class="showthread_copy_share" type="button"><i class="fa-solid fa-copy" aria-hidden="true"></i><span>Copy</span></button>
+					</div>
+				</div>
+			</div>
+		</div>{$post['button_report']}{$post['button_warn']}{$post['button_purgespammer']}{$post['button_reply_pm']}{$post['button_replyall_pm']}{$post['button_forward_pm']}{$post['button_delete_pm']}
 	</div>
 </div>
 </div>]]></template>

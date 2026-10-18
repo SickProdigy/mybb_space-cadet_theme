@@ -7,24 +7,119 @@
 </head>
 <body>
 {$header}
-<table width="100%" cellspacing="0" cellpadding="{$theme['tablespace']}" border="0" align="center" class="portal_layout">
-<tr><td valign="top" width="200" class="portal_sidebar">
-<div class="portal_welcome_panel">{$welcome}</div>
-<div class="portal_sidebar_extras">
-{$pms}
-{$search}
-{$stats}
-{$whosonline}
-{$latestthreads}
+<div class="portal_layout">
+	<main class="portal_main">
+		{$announcements}
+		{$multipage}
+	</main>
+	<aside class="portal_sidebar" aria-label="Portal sidebar">
+		<div class="portal_welcome_panel">{$welcome}</div>
+		<div class="portal_sidebar_extras">
+			{$pms}
+			{$search}
+			{$stats}
+			{$whosonline}
+			{$latestthreads}
+		</div>
+	</aside>
 </div>
-</td>
-<td class="portal_spacer">&nbsp;</td>
-<td valign="top" class="portal_main">
-{$announcements}
-{$multipage}
-</td>
-</tr>
-</table>
+<script type="text/javascript">
+(function() {
+	function shareDetails(share) {
+		var announcement = share.closest(".portal_announcement");
+		var subjectLink = announcement.querySelector(".portal_announcement_subject a");
+		var toggle = share.querySelector(".portal_share_toggle");
+		return {
+			title: subjectLink ? subjectLink.textContent.trim() : document.title,
+			url: toggle.getAttribute("data-thread-url")
+		};
+	}
+
+	function closeShareMenus(except) {
+		document.querySelectorAll(".portal_share").forEach(function(share) {
+			if (share === except) return;
+			share.querySelector(".portal_share_menu").hidden = true;
+			share.querySelector(".portal_share_toggle").setAttribute("aria-expanded", "false");
+		});
+	}
+
+	function copyShareLink(url, action) {
+		function showCopied() {
+			var label = action.querySelector("span");
+			var originalLabel = label.textContent;
+			if (!label) return;
+			label.textContent = "Copied";
+			window.setTimeout(function() { label.textContent = originalLabel; }, 1600);
+		}
+
+		if (navigator.clipboard && window.isSecureContext) {
+			navigator.clipboard.writeText(url).then(showCopied);
+			return;
+		}
+
+		var copy = document.createElement("textarea");
+		copy.value = url;
+		copy.setAttribute("readonly", "");
+		copy.style.position = "fixed";
+		copy.style.opacity = "0";
+		document.body.appendChild(copy);
+		copy.select();
+		document.execCommand("copy");
+		document.body.removeChild(copy);
+		showCopied();
+	}
+
+	document.addEventListener("click", function(event) {
+		var toggle = event.target.closest(".portal_share_toggle");
+		if (toggle) {
+			var share = toggle.closest(".portal_share");
+			var menu = share.querySelector(".portal_share_menu");
+			var details = shareDetails(share);
+			var opening = menu.hidden;
+			closeShareMenus(share);
+			menu.hidden = !opening;
+			toggle.setAttribute("aria-expanded", opening ? "true" : "false");
+
+			share.querySelector(".portal_facebook_share").href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(details.url);
+			var emailSubject = "Thought you might like: " + details.title;
+			var emailBody = "Hello,\n\nI thought you may be interested in this discussion:\n\n"
+				+ details.title + "\n" + details.url + "\n\n";
+			share.querySelector(".portal_email_share").href = "mailto:?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(emailBody);
+
+			share.querySelector(".portal_x_share").href = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(details.title) + "&url=" + encodeURIComponent(details.url);
+			share.querySelector(".portal_reddit_share").href = "https://www.reddit.com/submit?url=" + encodeURIComponent(details.url) + "&title=" + encodeURIComponent(details.title);
+			return;
+		}
+
+		var nativeAction = event.target.closest(".portal_native_share");
+		if (nativeAction) {
+			var nativeShare = nativeAction.closest(".portal_share");
+			var nativeDetails = shareDetails(nativeShare);
+			if (navigator.share) {
+				navigator.share(nativeDetails).catch(function() {});
+			} else {
+				copyShareLink(nativeDetails.url, nativeAction);
+			}
+			return;
+		}
+
+		var copyAction = event.target.closest(".portal_copy_share");
+		if (copyAction) {
+			copyShareLink(shareDetails(copyAction.closest(".portal_share")).url, copyAction);
+			return;
+		}
+
+		if (!event.target.closest(".portal_share")) closeShareMenus();
+	});
+
+	document.addEventListener("keydown", function(event) {
+		if (event.key !== "Escape") return;
+		var openToggle = document.querySelector('.portal_share_toggle[aria-expanded="true"]');
+		closeShareMenus();
+		if (openToggle) openToggle.focus();
+	});
+})();
+</script>
 {$footer}
 </body>
 </html>]]></template>

@@ -1,0 +1,9 @@
+<template name="forumdisplay_usersbrowsing" version="1400"><![CDATA[<section class="forum_browsing_panel">
+	<header class="forum_browsing_header">
+		<i class="fa-solid fa-users" aria-hidden="true"></i>
+		<strong>{$lang->users_browsing_forum}</strong>
+	</header>
+	<div class="forum_browsing_list smalltext">
+		{$onlinemembers}{$onlinesep}{$invisonline}{$onlinesep2}{$guestsonline}
+	</div>
+</section>]]></template>

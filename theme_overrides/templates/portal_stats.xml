@@ -1,0 +1,17 @@
+<template name="portal_stats" version="1400"><![CDATA[<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+<tr>
+<td class="thead"><strong>{$lang->forum_stats}</strong></td>
+</tr>
+<tr>
+<td class="trow1">
+<span class="smalltext portal_icon_list">
+<span><i class="fa-solid fa-users" aria-hidden="true"></i>{$lang->num_members} {$stats['numusers']}</span>
+<span><i class="fa-solid fa-user-plus" aria-hidden="true"></i>{$lang->latest_member} {$newestmember}</span>
+<span><i class="fa-solid fa-comments" aria-hidden="true"></i>{$lang->num_threads} {$stats['numthreads']}</span>
+<span><i class="fa-solid fa-message" aria-hidden="true"></i>{$lang->num_posts} {$stats['numposts']}</span>
+<br /><a href="{$mybb->settings['bburl']}/stats.php">{$lang->full_stats}</a>
+</span>
+</td>
+</tr>
+</table>
+<br />]]></template>
