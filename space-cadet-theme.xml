@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 1.0.5 -->
+<!-- Space Cadet release 1.0.6 -->
 <theme name="Space Cadet" version="1841">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -434,7 +434,14 @@ a:active {
 	color: #fff;
 }
 
+.header_extras { position: relative; }
+
 .header_extras_menu {
+	position: absolute !important;
+	top: calc(100% + 2px) !important;
+	left: auto !important;
+	right: 0;
+	text-align: left;
 	z-index: 1000 !important;
 	box-sizing: border-box;
 	min-width: 170px;
@@ -447,7 +454,7 @@ a:active {
 
 .header_extras_menu .popup_item_container { margin: 0; }
 
-.popup_menu.header_extras_menu .popup_item {
+#header ul.menu .header_extras_menu .popup_item {
 	box-sizing: border-box;
 	display: block;
 	padding: 7px 12px;
@@ -456,7 +463,7 @@ a:active {
 	white-space: nowrap;
 }
 
-.popup_menu.header_extras_menu .popup_item:hover {
+#header ul.menu .header_extras_menu .popup_item:hover {
 	background: #414145;
 	color: #fff;
 }
@@ -7119,8 +7126,7 @@ blockquote,
 						{$menu_memberlist}
 						{$menu_calendar}
 						<li><a href="{$mybb->settings['bburl']}/misc.php?action=help" class="help"><i class="fa-solid fa-circle-question fa-fw" aria-hidden="true"></i> {$lang->toplinks_help}</a></li>
-						<li><a href="{$mybb->settings['bburl']}/misc.php?action=help" id="header_extras_menu"><i class="fa-solid fa-chevron-down fa-fw" aria-hidden="true"></i> Extras</a></li>
-					</ul>
+						<li class="header_extras"><a href="{$mybb->settings['bburl']}/misc.php?action=help" id="header_extras_menu"><i class="fa-solid fa-chevron-down fa-fw" aria-hidden="true"></i> Extras</a>
 					<div id="header_extras_menu_popup" class="popup_menu header_extras_menu" style="display: none;">
 						<div class="popup_item_container"><a class="popup_item" href="{$mybb->settings['bburl']}/misc.php?action=help&amp;hid=14">Account Upgrades</a></div>
 						<div class="popup_item_container"><a class="popup_item" href="{$mybb->settings['bburl']}/stats.php">Forum Stats</a></div>
@@ -7129,6 +7135,8 @@ blockquote,
 						<div class="popup_item_container"><a class="popup_item" href="{$mybb->settings['bburl']}/search.php?action=getdaily">{$lang->welcome_todaysposts}</a></div>
 						<div class="popup_item_container"><a class="popup_item" href="{$mybb->settings['bburl']}/misc.php?action=help&amp;hid=21">Keep in Touch!</a></div>
 					</div>
+						</li>
+					</ul>
 					<script type="text/javascript">
 						$(document).on("click.spaceCadetMenus", "#header_extras_menu, #header_account_menu, #header_messages_menu", function() {
 							$(".header_extras_menu, .header_account_menu").not("#" + this.id + "_popup").hide();
@@ -9860,6 +9868,41 @@ if(use_xmlhttprequest == "1")
 	</div>
 </div>
 </div>]]></template>
+<template name="postbit_edit" version="1818"><![CDATA[<a href="editpost.php?pid={$post['pid']}" id="edit_post_{$post['pid']}" title="{$lang->postbit_edit}" class="postbit_edit postbit_mirage"><span>{$lang->postbit_button_edit}</span></a>
+<div id="edit_post_{$post['pid']}_popup" class="popup_menu" style="display: none;"><div class="popup_item_container"><a href="javascript:void(0)" class="popup_item quick_edit_button" id="quick_edit_post_{$post['pid']}">{$lang->postbit_quick_edit}</a></div><div class="popup_item_container"><a href="editpost.php?pid={$post['pid']}" class="popup_item">{$lang->postbit_full_edit}</a></div></div>
+<script type="text/javascript">
+// <!--
+	if(use_xmlhttprequest == "1")
+	{
+		(function() {
+			var button = $("#edit_post_{$post['pid']}");
+			// MyBB uses document offsets; keep the popup outside positioned post containers.
+			var menu = $("#edit_post_{$post['pid']}_popup").appendTo(document.body);
+			var events = "resize.spaceCadetEdit{$post['pid']} scroll.spaceCadetEdit{$post['pid']}";
+			function positionMenu() {
+				if(!document.documentElement.contains(button[0])) {
+					$(window).off(events);
+					menu.remove();
+					return;
+				}
+				if(!menu.is(":visible")) {
+					return;
+				}
+				var offset = button.offset();
+				var viewportLeft = $(window).scrollLeft();
+				var maxLeft = viewportLeft + $(window).width() - menu.outerWidth();
+				menu.offset({
+					top: offset.top + button.outerHeight(),
+					left: Math.max(viewportLeft, Math.min(offset.left, maxLeft))
+				});
+			}
+			button.popupMenu();
+			button.on("click.spaceCadetEdit", positionMenu);
+			$(window).off(events).on(events, positionMenu);
+		})();
+	}
+// -->
+</script>]]></template>
 <template name="postbit_editedby" version="1800"><![CDATA[<span class="edited_post"><i class="fa-solid fa-pen fa-fw" aria-hidden="true"></i> {$post['editnote']} {$post['editedprofilelink']}.{$editreason}</span>]]></template>
 <template name="postbit_iplogged_hiden" version="1815"><![CDATA[<div class="post_moderator_info">
 <strong class="post_moderator_info_title">Mod Tools</strong>

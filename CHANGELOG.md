@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.6 - 2026-10-19
+
+- Fixed the Quick Edit / Full Edit dropdown appearing far below its post's Edit button, including when administrators edit another user's post.
+- Kept the Edit dropdown aligned with its button during browser resizing and scrolling, with horizontal positioning constrained to the viewport.
+- Anchored the Extras dropdown to its navigation button so it follows layout changes and navigation wrapping, matching the username and messages menus.
+
 ## 1.0.5 - 2026-10-18
 
 - Corrected the Extras dropdown alignment when the centered layout reaches its maximum width.

@@ -48,7 +48,7 @@ jobs:
 
           mkdir -p dist
           archive="dist/mybb-space-cadet-theme-$version.zip"
-          zip -X -q -r "$archive" images space-cadet-theme.xml README.md LICENSE
+          zip -X -q -r "$archive" images space-cadet-theme.xml README.md CONTRIBUTING.md CHANGELOG.md LICENSE
 
           archive_contents="$(unzip -Z1 "$archive")"
           required_entries=(
@@ -56,6 +56,8 @@ jobs:
             images/space-cadet/banner-bg.jpg
             space-cadet-theme.xml
             README.md
+            CONTRIBUTING.md
+            CHANGELOG.md
             LICENSE
           )
           for required_entry in "${required_entries[@]}"; do

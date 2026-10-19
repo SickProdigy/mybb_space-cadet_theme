@@ -1,0 +1,35 @@
+<template name="postbit_edit" version="1818"><![CDATA[<a href="editpost.php?pid={$post['pid']}" id="edit_post_{$post['pid']}" title="{$lang->postbit_edit}" class="postbit_edit postbit_mirage"><span>{$lang->postbit_button_edit}</span></a>
+<div id="edit_post_{$post['pid']}_popup" class="popup_menu" style="display: none;"><div class="popup_item_container"><a href="javascript:void(0)" class="popup_item quick_edit_button" id="quick_edit_post_{$post['pid']}">{$lang->postbit_quick_edit}</a></div><div class="popup_item_container"><a href="editpost.php?pid={$post['pid']}" class="popup_item">{$lang->postbit_full_edit}</a></div></div>
+<script type="text/javascript">
+// <!--
+	if(use_xmlhttprequest == "1")
+	{
+		(function() {
+			var button = $("#edit_post_{$post['pid']}");
+			// MyBB uses document offsets; keep the popup outside positioned post containers.
+			var menu = $("#edit_post_{$post['pid']}_popup").appendTo(document.body);
+			var events = "resize.spaceCadetEdit{$post['pid']} scroll.spaceCadetEdit{$post['pid']}";
+			function positionMenu() {
+				if(!document.documentElement.contains(button[0])) {
+					$(window).off(events);
+					menu.remove();
+					return;
+				}
+				if(!menu.is(":visible")) {
+					return;
+				}
+				var offset = button.offset();
+				var viewportLeft = $(window).scrollLeft();
+				var maxLeft = viewportLeft + $(window).width() - menu.outerWidth();
+				menu.offset({
+					top: offset.top + button.outerHeight(),
+					left: Math.max(viewportLeft, Math.min(offset.left, maxLeft))
+				});
+			}
+			button.popupMenu();
+			button.on("click.spaceCadetEdit", positionMenu);
+			$(window).off(events).on(events, positionMenu);
+		})();
+	}
+// -->
+</script>]]></template>

@@ -421,7 +421,14 @@ a:active {
 	color: #fff;
 }
 
+.header_extras { position: relative; }
+
 .header_extras_menu {
+	position: absolute !important;
+	top: calc(100% + 2px) !important;
+	left: auto !important;
+	right: 0;
+	text-align: left;
 	z-index: 1000 !important;
 	box-sizing: border-box;
 	min-width: 170px;
@@ -434,7 +441,7 @@ a:active {
 
 .header_extras_menu .popup_item_container { margin: 0; }
 
-.popup_menu.header_extras_menu .popup_item {
+#header ul.menu .header_extras_menu .popup_item {
 	box-sizing: border-box;
 	display: block;
 	padding: 7px 12px;
@@ -443,7 +450,7 @@ a:active {
 	white-space: nowrap;
 }
 
-.popup_menu.header_extras_menu .popup_item:hover {
+#header ul.menu .header_extras_menu .popup_item:hover {
 	background: #414145;
 	color: #fff;
 }

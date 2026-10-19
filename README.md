@@ -42,48 +42,9 @@ Space Cadet requires MyBB 1.8.41. Use the generated `space-cadet-theme.xml` for 
 
 For upgrades, replace `images/space-cadet/` with the release assets and import the new generated XML. Test upgrades on a non-production forum first; importing may create a separate theme instead of overwriting an existing customized installation.
 
-## Development Workflow
+## Contributing
 
-When changing a stock MyBB component, copy it from the upstream split into the matching override directory and edit the copy:
-
-```text
-upstream/mybb-1.8.41/theme_parts/templates/header.xml
-→ theme_overrides/templates/header.xml
-```
-
-Custom components can be created directly under `theme_overrides/`. If a file exists there, it should represent an intentional Space Cadet change.
-
-Build the importable child theme after editing overrides:
-
-```bash
-python3 scripts/assemble_theme.py
-python3 -c "import xml.etree.ElementTree as ET; ET.parse('space-cadet-theme.xml')"
-git diff --check
-```
-
-The first command assembles the release; the next two validate its XML and check for whitespace errors. The assembler includes theme properties, override stylesheets, and override templates only. All other components inherit from MyBB Master Style. Import `space-cadet-theme.xml` through **Admin CP → Templates & Style → Import a Theme** on a non-production forum.
-
-The XML does not contain binary assets. Copy `images/space-cadet/` to the same path beneath the MyBB installation before testing or publishing. Font Awesome Free 6.4.0 assets are vendored under `images/space-cadet/fontawesome/`, and Droid Sans webfonts are under `images/space-cadet/fonts/droid-sans/`. Retain both included license files when redistributing the theme.
-
-To refresh the split upstream reference from the official XML:
-
-```bash
-python3 scripts/split_theme.py
-```
-
-This command deletes and recreates only `upstream/mybb-1.8.41/theme_parts/`; it does not modify `theme_overrides/`.
-
-## Versioning
-
-Project metadata lives in `theme.json`:
-
-- `theme_version` is the Space Cadet release version and follows semantic versioning.
-- `mybb_version` is MyBB's compatibility code. Keep it at `1841` while targeting MyBB 1.8.41.
-- `name` and `output` control the generated theme name and filename.
-
-## Testing
-
-Confirm the generated XML parses and imports without warnings. Test guest/member sessions, forum and thread listings, search and help results, member lists and profiles, monthly and weekly calendars, private messages, moderation controls, header dropdowns, and post actions. Check desktop, narrow desktop browser windows, tablet, and phone widths, including menus and controls near viewport edges. Re-import into a clean MyBB 1.8.41 test installation before publishing a release.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the development workflow, build commands, upstream refresh instructions, and versioning guidance.
 
 ## Texture Credits
 
