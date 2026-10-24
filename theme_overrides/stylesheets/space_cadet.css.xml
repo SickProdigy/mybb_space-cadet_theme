@@ -792,7 +792,17 @@ a:active {
 }
 
 .forum_threadlist .inline_row td.trow_selected,
-.forum_threadlist tr.trow_selected td { background: #23232a; }
+.forum_threadlist tr.trow_selected td {
+	background: #2d3b60 !important;
+	box-shadow: inset 0 1px #52658f, inset 0 -1px #52658f;
+	color: #fff;
+}
+
+.forum_threadlist .inline_row td.trow_selected a,
+.forum_threadlist tr.trow_selected td a { color: #fff; }
+
+.forum_threadlist .inline_row td.trow_selected a:hover,
+.forum_threadlist tr.trow_selected td a:hover { color: #d9e2ff; }
 
 
 .forum_view_heading {
@@ -1211,14 +1221,6 @@ a:active {
 	gap: 16px;
 	margin: 10px 0 8px;
 }
-
-.showthread_browsing {
-	flex: 1 1 auto;
-	min-width: 0;
-	text-align: left;
-}
-
-.showthread_browsing_text { color: #a6a6ad; }
 
 .showthread_topbar_controls {
 	display: flex;
@@ -1773,11 +1775,6 @@ a.button.showthread_adjacent_button span {
 		width: 100%;
 	}
 
-	.showthread_browsing {
-		align-self: stretch;
-		width: 100%;
-	}
-
 	.showthread_topbar .showthread_share_panel {
 		left: auto;
 		right: 0;
@@ -2026,7 +2023,7 @@ a.button.showthread_adjacent_button span {
 .trow_shaded,
 .trow_selected,
 tr.trow_selected td {
-	background: #23232a;
+	background: #2d3b60;
 	color: #fff;
 }
 
@@ -3480,6 +3477,37 @@ blockquote,
 
 /* Responsive member directory. */
 .memberlist_table { table-layout: fixed; }
+
+/* Keep the standalone referral history consistent with other record tables. */
+.referral_list_table { table-layout: fixed; }
+
+.referral_list_table .referral_list_columns > td {
+	background: #1c1c1f;
+	border-right-color: transparent;
+	border-left-color: transparent;
+}
+
+.referral_list_table .referral_list_row > td {
+	background: #181818;
+	border-top-color: #101010;
+	border-right-color: transparent;
+	border-bottom-color: #242424;
+	border-left-color: transparent;
+	color: #ccc;
+}
+
+.referral_list_table .referral_list_row:hover > td { background: #1f1f22; }
+
+.referral_list_table .referral_list_date { text-align: right; }
+
+.referral_list_table .referral_list_user,
+.referral_list_table .referral_list_date { overflow-wrap: anywhere; }
+
+.referral_list_table .referral_list_empty {
+	padding: 16px 12px;
+	color: #aaaab2;
+	text-align: center;
+}
 
 .memberlist_heading_content {
 	display: flex;
@@ -5544,12 +5572,6 @@ blockquote,
 }
 
 .modqueue_thread_row + .modqueue_thread_row .modqueue_item_cell { border-top-width: 4px; }
-
-.modqueue_author,
-.modqueue_date {
-	color: #c5c1ca;
-	font-size: 12px;
-}
 
 .modqueue_message {
 	max-height: none;

@@ -1,0 +1,3 @@
+<template name="member_no_referrals" version="1820"><![CDATA[<tr class="referral_list_row">
+	<td class="trow1 referral_list_empty" colspan="2">{$lang->member_no_referrals}</td>
+</tr>]]></template>

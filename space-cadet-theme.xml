@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 1.0.6 -->
+<!-- Space Cadet release 1.0.7 -->
 <theme name="Space Cadet" version="1841">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -805,7 +805,17 @@ a:active {
 }
 
 .forum_threadlist .inline_row td.trow_selected,
-.forum_threadlist tr.trow_selected td { background: #23232a; }
+.forum_threadlist tr.trow_selected td {
+	background: #2d3b60 !important;
+	box-shadow: inset 0 1px #52658f, inset 0 -1px #52658f;
+	color: #fff;
+}
+
+.forum_threadlist .inline_row td.trow_selected a,
+.forum_threadlist tr.trow_selected td a { color: #fff; }
+
+.forum_threadlist .inline_row td.trow_selected a:hover,
+.forum_threadlist tr.trow_selected td a:hover { color: #d9e2ff; }
 
 
 .forum_view_heading {
@@ -1224,14 +1234,6 @@ a:active {
 	gap: 16px;
 	margin: 10px 0 8px;
 }
-
-.showthread_browsing {
-	flex: 1 1 auto;
-	min-width: 0;
-	text-align: left;
-}
-
-.showthread_browsing_text { color: #a6a6ad; }
 
 .showthread_topbar_controls {
 	display: flex;
@@ -1786,11 +1788,6 @@ a.button.showthread_adjacent_button span {
 		width: 100%;
 	}
 
-	.showthread_browsing {
-		align-self: stretch;
-		width: 100%;
-	}
-
 	.showthread_topbar .showthread_share_panel {
 		left: auto;
 		right: 0;
@@ -2039,7 +2036,7 @@ a.button.showthread_adjacent_button span {
 .trow_shaded,
 .trow_selected,
 tr.trow_selected td {
-	background: #23232a;
+	background: #2d3b60;
 	color: #fff;
 }
 
@@ -3493,6 +3490,37 @@ blockquote,
 
 /* Responsive member directory. */
 .memberlist_table { table-layout: fixed; }
+
+/* Keep the standalone referral history consistent with other record tables. */
+.referral_list_table { table-layout: fixed; }
+
+.referral_list_table .referral_list_columns > td {
+	background: #1c1c1f;
+	border-right-color: transparent;
+	border-left-color: transparent;
+}
+
+.referral_list_table .referral_list_row > td {
+	background: #181818;
+	border-top-color: #101010;
+	border-right-color: transparent;
+	border-bottom-color: #242424;
+	border-left-color: transparent;
+	color: #ccc;
+}
+
+.referral_list_table .referral_list_row:hover > td { background: #1f1f22; }
+
+.referral_list_table .referral_list_date { text-align: right; }
+
+.referral_list_table .referral_list_user,
+.referral_list_table .referral_list_date { overflow-wrap: anywhere; }
+
+.referral_list_table .referral_list_empty {
+	padding: 16px 12px;
+	color: #aaaab2;
+	text-align: center;
+}
 
 .memberlist_heading_content {
 	display: flex;
@@ -5558,12 +5586,6 @@ blockquote,
 
 .modqueue_thread_row + .modqueue_thread_row .modqueue_item_cell { border-top-width: 4px; }
 
-.modqueue_author,
-.modqueue_date {
-	color: #c5c1ca;
-	font-size: 12px;
-}
-
 .modqueue_message {
 	max-height: none;
 	padding: 10px;
@@ -7475,6 +7497,9 @@ document.addEventListener("DOMContentLoaded", function() {
 </tbody>
 </table>
 <br />]]></template>
+<template name="member_no_referrals" version="1820"><![CDATA[<tr class="referral_list_row">
+	<td class="trow1 referral_list_empty" colspan="2">{$lang->member_no_referrals}</td>
+</tr>]]></template>
 <template name="member_profile" version="1820"><![CDATA[<html>
 <head>
 <title>{$mybb->settings['bbname']} - {$lang->profile}</title>
@@ -7606,6 +7631,32 @@ document.addEventListener("DOMContentLoaded", function() {
 <strong>{$lang->email}</strong> <a href="mailto:{$memprofile['email']}">{$memprofile['email']}</a>
 </td>
 </tr>]]></template>
+<template name="member_referral_row" version="1822"><![CDATA[	<tr class="referral_list_row">
+		<td class="{$bg_color} referral_list_user">{$username}</td>
+		<td class="{$bg_color} referral_list_date">{$regdate}</td>
+	</tr>]]></template>
+<template name="member_referrals" version="1822"><![CDATA[<html>
+<head>
+<title>{$mybb->settings['bbname']} - {$lang->nav_referrals}</title>
+{$headerinclude}
+</head>
+<body>
+	{$header}
+	{$multipage}
+	<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder referral_list_table">
+	<tr>
+	<td class="thead" colspan="2"><strong>{$lang->referrals}</strong></td>
+	</tr>
+	<tr class="referral_list_columns">
+	<td class="tcat"><span class="smalltext"><strong>{$lang->username}</strong></span></td>
+	<td class="tcat referral_list_date"><span class="smalltext"><strong>{$lang->referral_date}</strong></span></td>
+	</tr>
+	{$referral_rows}
+	</table>
+	{$multipage}
+	{$footer}
+</body>
+</html>]]></template>
 <template name="member_register" version="1823"><![CDATA[<html>
 <head>
 <title>{$mybb->settings['bbname']} - {$lang->registration}</title>
@@ -10659,7 +10710,7 @@ if(use_xmlhttprequest == "1")
 </tr></table>
 </td>
 <td class="trow1">
-<input type="text" class="textbox" id="author" name="author" size="35" maxlength="{$mybb->settings['maxnamelength']}" /><br /><span class="smalltext"><input type="checkbox" class="checkbox" name="matchusername" value="1" checked="checked" /> {$lang->match_username}</span>
+<input type="text" class="textbox" id="author" name="author" size="35" maxlength="{$mybb->settings['maxnamelength']}" /><br /><span class="smalltext"><input type="checkbox" class="checkbox" id="author_match_exact" name="matchusername" value="1" checked="checked" /> <label for="author_match_exact">{$lang->match_username}</label></span>
 </td>
 </tr>
 <tr>
@@ -10720,22 +10771,33 @@ if(use_xmlhttprequest == "1")
 if(use_xmlhttprequest == "1")
 {
 	MyBB.select2();
-	$("#author").select2({
+	var authorField = $("#author");
+	var exactAuthor = $("#author_match_exact");
+	var enableExactAuthorSearch = function(openDropdown) {
+		if(authorField.data("select2"))
+		{
+			if(openDropdown)
+			{
+				authorField.select2("open");
+			}
+			return;
+		}
+
+		authorField.select2({
 		placeholder: "{$lang->search_user}",
 		minimumInputLength: 2,
 		multiple: false,
 		allowClear: true,
 		dropdownCssClass: "search_username_dropdown",
-		ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+		ajax: {
 			url: "xmlhttp.php?action=get_users",
 			dataType: 'json',
 			data: function (term, page) {
 				return {
-					query: term, // search term
+					query: term
 				};
 			},
-			results: function (data, page) { // parse the results into the format expected by Select2.
-				// since we are using custom formatting functions we do not need to alter remote JSON data
+			results: function (data, page) {
 				return {results: data};
 			}
 		},
@@ -10748,7 +10810,43 @@ if(use_xmlhttprequest == "1")
 				});
 			}
 		},
+		createSearchChoice: function(term, data) {
+			if($(data).filter(function() {
+				return this.text.localeCompare(term) === 0;
+			}).length === 0) {
+				return {id: term, text: term};
+			}
+		}
 	});
+
+		if(openDropdown)
+		{
+			authorField.select2("open");
+		}
+	};
+	var disableExactAuthorSearch = function() {
+		if(authorField.data("select2"))
+		{
+			authorField.select2("destroy");
+		}
+	};
+
+	exactAuthor.on("change", function() {
+		if(this.checked)
+		{
+			enableExactAuthorSearch(true);
+		}
+		else
+		{
+			disableExactAuthorSearch();
+			authorField.focus();
+		}
+	});
+
+	if(exactAuthor.prop("checked"))
+	{
+		enableExactAuthorSearch(false);
+	}
 }
 // -->
 </script>

@@ -26,7 +26,7 @@
 </tr></table>
 </td>
 <td class="trow1">
-<input type="text" class="textbox" id="author" name="author" size="35" maxlength="{$mybb->settings['maxnamelength']}" /><br /><span class="smalltext"><input type="checkbox" class="checkbox" name="matchusername" value="1" checked="checked" /> {$lang->match_username}</span>
+<input type="text" class="textbox" id="author" name="author" size="35" maxlength="{$mybb->settings['maxnamelength']}" /><br /><span class="smalltext"><input type="checkbox" class="checkbox" id="author_match_exact" name="matchusername" value="1" checked="checked" /> <label for="author_match_exact">{$lang->match_username}</label></span>
 </td>
 </tr>
 <tr>
@@ -87,22 +87,33 @@
 if(use_xmlhttprequest == "1")
 {
 	MyBB.select2();
-	$("#author").select2({
+	var authorField = $("#author");
+	var exactAuthor = $("#author_match_exact");
+	var enableExactAuthorSearch = function(openDropdown) {
+		if(authorField.data("select2"))
+		{
+			if(openDropdown)
+			{
+				authorField.select2("open");
+			}
+			return;
+		}
+
+		authorField.select2({
 		placeholder: "{$lang->search_user}",
 		minimumInputLength: 2,
 		multiple: false,
 		allowClear: true,
 		dropdownCssClass: "search_username_dropdown",
-		ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+		ajax: {
 			url: "xmlhttp.php?action=get_users",
 			dataType: 'json',
 			data: function (term, page) {
 				return {
-					query: term, // search term
+					query: term
 				};
 			},
-			results: function (data, page) { // parse the results into the format expected by Select2.
-				// since we are using custom formatting functions we do not need to alter remote JSON data
+			results: function (data, page) {
 				return {results: data};
 			}
 		},
@@ -115,7 +126,43 @@ if(use_xmlhttprequest == "1")
 				});
 			}
 		},
+		createSearchChoice: function(term, data) {
+			if($(data).filter(function() {
+				return this.text.localeCompare(term) === 0;
+			}).length === 0) {
+				return {id: term, text: term};
+			}
+		}
 	});
+
+		if(openDropdown)
+		{
+			authorField.select2("open");
+		}
+	};
+	var disableExactAuthorSearch = function() {
+		if(authorField.data("select2"))
+		{
+			authorField.select2("destroy");
+		}
+	};
+
+	exactAuthor.on("change", function() {
+		if(this.checked)
+		{
+			enableExactAuthorSearch(true);
+		}
+		else
+		{
+			disableExactAuthorSearch();
+			authorField.focus();
+		}
+	});
+
+	if(exactAuthor.prop("checked"))
+	{
+		enableExactAuthorSearch(false);
+	}
 }
 // -->
 </script>

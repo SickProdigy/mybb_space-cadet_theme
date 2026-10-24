@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.7 - 2026-10-24
+
+- Made Search author autocomplete follow the Match exact username checkbox, while unchecked searches retain a plain partial-match text field.
+- Increased selected-thread contrast with a blue highlight, white text, and visible row edges for moderation workflows.
+- Unified the referral-history table colors and removed unnecessary vertical separators.
+- Removed obsolete thread-browsing and moderation-queue CSS selectors left behind by earlier layout changes.
+
 ## 1.0.6 - 2026-10-19
 
 - Fixed the Quick Edit / Full Edit dropdown appearing far below its post's Edit button, including when administrators edit another user's post.
