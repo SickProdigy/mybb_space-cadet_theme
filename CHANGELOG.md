@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.10 - 2026-11-24
+
+- Explain Standard search word operators beside the keyword field without changing submitted queries or search scope.
+
 ## 1.0.9 - 2026-11-24
 
 - Hide Share controls for unsaved previews without reading an unavailable post permalink; derive published-post links from MyBB's native post-number link in both layouts, including newly loaded replies.

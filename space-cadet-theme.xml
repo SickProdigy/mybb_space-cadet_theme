@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 1.0.9 -->
+<!-- Space Cadet release 1.0.10 -->
 <theme name="Space Cadet" version="1841">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -10704,8 +10704,9 @@ if(use_xmlhttprequest == "1")
 <tr>
 <td class="trow1">
 <table><tr>
-<td valign="top"><input type="text" class="textbox" name="keywords" size="35" maxlength="250" /></td>
+<td valign="top"><input type="text" class="textbox" name="keywords" id="search_keywords" aria-describedby="search_keyword_help" size="35" maxlength="250" /></td>
 </tr>
+<tr><td><p class="smalltext" id="search_keyword_help">Using Standard search? To find separate words, try <code>xplorer and 500gb</code>. Use <code>or</code> for alternatives. Search entire post changes where to search, not how words are combined.</p></td></tr>
 <tr>
 <td>
 <span class="smalltext"><input type="radio" class="radio" name="postthread" value="1" checked="checked" />{$lang->search_entire_post}<br /><input type="radio" class="radio" name="postthread" value="2" />{$lang->search_titles_only}</span></td>
