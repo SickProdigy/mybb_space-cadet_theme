@@ -146,14 +146,24 @@
 			});
 		}());
 
+		function savedPostUrl(post) {
+			var permalink = post && post.querySelector(".post_number a[href]");
+			if (!permalink) return "";
+			try {
+				var url = new URL(permalink.getAttribute("href"), document.baseURI);
+				if (url.origin !== window.location.origin || !/^#pid[1-9][0-9]*$/.test(url.hash)) return "";
+				return url.href;
+			} catch (error) {
+				return "";
+			}
+		}
+
 		function generatedThreadUrl(toggle) {
-			var postToggle = document.querySelector(".postbit_share_wrap .showthread_share_toggle");
 			var boardUrl = toggle.getAttribute("data-board-url");
 			var threadId = toggle.getAttribute("data-thread-id");
-
-			if (!postToggle) return boardUrl + "/showthread.php?tid=" + encodeURIComponent(threadId);
-
-			var url = new URL(postToggle.getAttribute("data-thread-url"), boardUrl + "/");
+			var permalink = savedPostUrl(document.querySelector(".post"));
+			if (!permalink) return boardUrl + "/showthread.php?tid=" + encodeURIComponent(threadId);
+			var url = new URL(permalink);
 			url.hash = "";
 			url.pathname = url.pathname.replace(/-post-\d+\.html$/, ".html");
 			url.searchParams.delete("pid");
@@ -220,14 +230,21 @@
 			});
 		});
 
-		var shares = document.querySelectorAll(".showthread_share_tool .portal_share, .postbit_share_wrap");
-		if (!shares.length) return;
-		shares.forEach(function(share) {
+		function initializeShare(share) {
+		if (share.getAttribute("data-share-ready") === "1") return;
 
 		var toggle = share.querySelector(".showthread_share_toggle");
 		var menu = share.querySelector(".portal_share_menu");
 		var post = share.closest(".post");
-		var url = toggle.getAttribute("data-thread-url") || generatedThreadUrl(toggle);
+		var url = post ? savedPostUrl(post) : generatedThreadUrl(toggle);
+		if (!url) {
+			share.hidden = true;
+			menu.hidden = true;
+			return;
+		}
+		toggle.setAttribute("data-thread-url", url);
+		share.setAttribute("data-share-ready", "1");
+		share.hidden = false;
 		var title = document.title;
 		var urlField = share.querySelector(".showthread_share_url");
 
@@ -303,7 +320,15 @@
 			closeMenu();
 			toggle.focus();
 		});
-		});
+		}
+
+		document.querySelectorAll(".showthread_share_tool .portal_share, .postbit_share_wrap").forEach(initializeShare);
+		var posts = document.getElementById("posts");
+		if (posts && typeof MutationObserver !== "undefined") {
+			new MutationObserver(function() {
+				posts.querySelectorAll(".postbit_share_wrap").forEach(initializeShare);
+			}).observe(posts, { childList: true, subtree: true });
+		}
 	})();
 	</script>
 	<script type="text/javascript">

@@ -90,3 +90,13 @@ Record release changes in `CHANGELOG.md` and rebuild the XML after changing vers
 ## License
 
 By contributing, you agree that your contributions will be licensed under this repository's [license](LICENSE), including its attribution-preservation terms.
+
+## Post control regression fixture
+
+Run `php -S 127.0.0.1:8000` in the repository and open
+`http://127.0.0.1:8000/tests/render_fixtures.php` in a browser. Inspect
+`document.body.dataset.tests` for `passed`; repeat at desktop and narrow widths.
+The fixture evaluates the generated post templates with PHP warnings promoted to
+exceptions and exercises the generated Share script, moderation controls, and
+AJAX-inserted replies. It does not replace importing into MyBB or testing real
+permission grants and a fresh production error baseline.

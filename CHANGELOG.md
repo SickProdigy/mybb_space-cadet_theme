@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.9 - 2026-11-24
+
+- Hide Share controls for unsaved previews without reading an unavailable post permalink; derive published-post links from MyBB's native post-number link in both layouts, including newly loaded replies.
+
 ## 1.0.8 - 2026-11-13
 
 - Restored permission-controlled Warn and Purge Spammer links in the opening post's Moderate menu alongside thread moderation tools.

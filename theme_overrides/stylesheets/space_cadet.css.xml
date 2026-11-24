@@ -1463,6 +1463,8 @@ ul.showthread_top_tools li.showthread_share_tool {
 	outline: 0;
 }
 
+.postbit_share_wrap[hidden] { display: none !important; }
+
 .postbit_share_wrap {
 	position: relative;
 	z-index: 30;
