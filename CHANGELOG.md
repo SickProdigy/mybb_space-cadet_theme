@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.11 - 2026-11-24
+
+- Add optional mergeable English Help phrases for profile, login, posting, and reply controls, with safe installation and upgrade guidance.
+
 ## 1.0.10 - 2026-11-24
 
 - Explain Standard search word operators beside the keyword field without changing submitted queries or search scope.

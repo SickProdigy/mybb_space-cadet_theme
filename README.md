@@ -71,3 +71,9 @@ Copyright 2026 SickProdigy.
 The original Space Cadet theme code and assets are licensed under the GNU General Public License, version 3, with an additional attribution-preservation term permitted by section 7(b). Redistributions and modified versions must preserve the specified Space Cadet attribution in the theme footer, or in another prominent location in the theme interface if the work has no footer. A separate commercial license permitting removal of that attribution is available from SickProdigy. See [LICENSE](LICENSE) for the complete terms.
 
 The MyBB-derived baseline and bundled third-party components remain under their respective licenses. Retain all applicable MyBB, Font Awesome, Droid Sans, and texture copyright, license, and attribution notices.
+
+## Optional Help text
+
+See [language override guidance](extras/language-overrides/README.md) for editable
+English Help text that follows Space Cadet controls. Merge it manually into your
+existing custom language phrases; it is separate from the theme XML.
