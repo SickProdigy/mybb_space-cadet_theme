@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Space Cadet release 1.0.7 -->
+<!-- Space Cadet release 1.0.8 -->
 <theme name="Space Cadet" version="1841">
 <properties>
 		<templateset><![CDATA[1]]></templateset>
@@ -11106,10 +11106,6 @@ if(use_xmlhttprequest == "1")
 			var form = document.getElementById("moderator_options");
 			var selector = document.getElementById("moderator_options_selector");
 			if (!wrapper || !menu || !actions) return;
-
-			menu.querySelectorAll(".postbit_warn, .postbit_purgespammer").forEach(function(action) {
-				action.remove();
-			});
 
 			if (!form || !selector) return;
 			Array.prototype.forEach.call(selector.options, function(option) {

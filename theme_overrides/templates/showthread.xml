@@ -130,10 +130,6 @@
 			var selector = document.getElementById("moderator_options_selector");
 			if (!wrapper || !menu || !actions) return;
 
-			menu.querySelectorAll(".postbit_warn, .postbit_purgespammer").forEach(function(action) {
-				action.remove();
-			});
-
 			if (!form || !selector) return;
 			Array.prototype.forEach.call(selector.options, function(option) {
 				if (!option.value) return;

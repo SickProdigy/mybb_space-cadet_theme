@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.8 - 2026-11-13
+
+- Restored permission-controlled Warn and Purge Spammer links in the opening post's Moderate menu alongside thread moderation tools.
+
 ## 1.0.7 - 2026-10-24
 
 - Made Search author autocomplete follow the Match exact username checkbox, while unchecked searches retain a plain partial-match text field.
